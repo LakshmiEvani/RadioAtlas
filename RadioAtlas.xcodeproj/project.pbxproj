@@ -1,0 +1,640 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		873B5FE01E2FB6970057D735 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873B5FDF1E2FB6970057D735 /* AppDelegate.swift */; };
+		873B5FE21E2FB6970057D735 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873B5FE11E2FB6970057D735 /* MapViewController.swift */; };
+		873B5FE51E2FB6970057D735 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B5FE31E2FB6970057D735 /* Main.storyboard */; };
+		873B5FE81E2FB6970057D735 /* RadioAtlas.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 873B5FE61E2FB6970057D735 /* RadioAtlas.xcdatamodeld */; };
+		873B5FEA1E2FB6970057D735 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 873B5FE91E2FB6970057D735 /* Assets.xcassets */; };
+		873B5FED1E2FB6970057D735 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B5FEB1E2FB6970057D735 /* LaunchScreen.storyboard */; };
+		873B5FF81E2FB6980057D735 /* RadioAtlasTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873B5FF71E2FB6980057D735 /* RadioAtlasTests.swift */; };
+		873B60031E2FB6980057D735 /* RadioAtlasUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873B60021E2FB6980057D735 /* RadioAtlasUITests.swift */; };
+		873B60121E2FBB820057D735 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873B60111E2FBB820057D735 /* Reachability.swift */; };
+		873B60141E2FBB9A0057D735 /* PinAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873B60131E2FBB9A0057D735 /* PinAnnotation.swift */; };
+		873B60161E2FBBAF0057D735 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873B60151E2FBBAF0057D735 /* TableViewController.swift */; };
+		873B60181E2FBBC00057D735 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873B60171E2FBBC00057D735 /* TableViewCell.swift */; };
+		873B601F1E2FBC3B0057D735 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873B601E1E2FBC3B0057D735 /* Constants.swift */; };
+		873B60211E2FBC4B0057D735 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873B60201E2FBC4B0057D735 /* Client.swift */; };
+		873B60231E2FBC5D0057D735 /* Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873B60221E2FBC5D0057D735 /* Convenience.swift */; };
+		873B60281E2FBCFC0057D735 /* CoreDataStackManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873B60271E2FBCFC0057D735 /* CoreDataStackManager.swift */; };
+		873B602A1E2FBD120057D735 /* RadioInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873B60291E2FBD120057D735 /* RadioInfo.swift */; };
+		873B60311E2FBE6E0057D735 /* Station+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873B602F1E2FBE6E0057D735 /* Station+CoreDataClass.swift */; };
+		873B60351E2FD18E0057D735 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 873B60341E2FD18E0057D735 /* CoreLocation.framework */; };
+		873B60371E2FD1960057D735 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 873B60361E2FD1960057D735 /* AVFoundation.framework */; };
+		873B60391E2FD19F0057D735 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 873B60381E2FD19F0057D735 /* MapKit.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		873B5FF41E2FB6980057D735 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 873B5FD41E2FB6970057D735 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 873B5FDB1E2FB6970057D735;
+			remoteInfo = RadioAtlas;
+		};
+		873B5FFF1E2FB6980057D735 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 873B5FD41E2FB6970057D735 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 873B5FDB1E2FB6970057D735;
+			remoteInfo = RadioAtlas;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		873B5FDC1E2FB6970057D735 /* RadioAtlas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RadioAtlas.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		873B5FDF1E2FB6970057D735 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		873B5FE11E2FB6970057D735 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		873B5FE41E2FB6970057D735 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		873B5FE71E2FB6970057D735 /* RadioAtlas.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RadioAtlas.xcdatamodel; sourceTree = "<group>"; };
+		873B5FE91E2FB6970057D735 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		873B5FEC1E2FB6970057D735 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		873B5FEE1E2FB6970057D735 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		873B5FF31E2FB6980057D735 /* RadioAtlasTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RadioAtlasTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		873B5FF71E2FB6980057D735 /* RadioAtlasTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioAtlasTests.swift; sourceTree = "<group>"; };
+		873B5FF91E2FB6980057D735 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		873B5FFE1E2FB6980057D735 /* RadioAtlasUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RadioAtlasUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		873B60021E2FB6980057D735 /* RadioAtlasUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioAtlasUITests.swift; sourceTree = "<group>"; };
+		873B60041E2FB6980057D735 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		873B60111E2FBB820057D735 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
+		873B60131E2FBB9A0057D735 /* PinAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinAnnotation.swift; sourceTree = "<group>"; };
+		873B60151E2FBBAF0057D735 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		873B60171E2FBBC00057D735 /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		873B601E1E2FBC3B0057D735 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		873B60201E2FBC4B0057D735 /* Client.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
+		873B60221E2FBC5D0057D735 /* Convenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Convenience.swift; sourceTree = "<group>"; };
+		873B60271E2FBCFC0057D735 /* CoreDataStackManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStackManager.swift; sourceTree = "<group>"; };
+		873B60291E2FBD120057D735 /* RadioInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadioInfo.swift; sourceTree = "<group>"; };
+		873B602F1E2FBE6E0057D735 /* Station+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Station+CoreDataClass.swift"; sourceTree = "<group>"; };
+		873B60341E2FD18E0057D735 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		873B60361E2FD1960057D735 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		873B60381E2FD19F0057D735 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		873B5FD91E2FB6970057D735 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				873B60391E2FD19F0057D735 /* MapKit.framework in Frameworks */,
+				873B60371E2FD1960057D735 /* AVFoundation.framework in Frameworks */,
+				873B60351E2FD18E0057D735 /* CoreLocation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		873B5FF01E2FB6980057D735 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		873B5FFB1E2FB6980057D735 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		873B5FD31E2FB6970057D735 = {
+			isa = PBXGroup;
+			children = (
+				873B5FDE1E2FB6970057D735 /* RadioAtlas */,
+				873B5FF61E2FB6980057D735 /* RadioAtlasTests */,
+				873B60011E2FB6980057D735 /* RadioAtlasUITests */,
+				873B5FDD1E2FB6970057D735 /* Products */,
+				873B60331E2FD18E0057D735 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		873B5FDD1E2FB6970057D735 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				873B5FDC1E2FB6970057D735 /* RadioAtlas.app */,
+				873B5FF31E2FB6980057D735 /* RadioAtlasTests.xctest */,
+				873B5FFE1E2FB6980057D735 /* RadioAtlasUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		873B5FDE1E2FB6970057D735 /* RadioAtlas */ = {
+			isa = PBXGroup;
+			children = (
+				873B5FDF1E2FB6970057D735 /* AppDelegate.swift */,
+				873B5FEE1E2FB6970057D735 /* Info.plist */,
+				873B60241E2FBCB50057D735 /* Model */,
+				873B601B1E2FBC030057D735 /* API */,
+				873B60191E2FBBCA0057D735 /* Assets */,
+				873B60101E2FBB4E0057D735 /* View Controller */,
+			);
+			path = RadioAtlas;
+			sourceTree = "<group>";
+		};
+		873B5FF61E2FB6980057D735 /* RadioAtlasTests */ = {
+			isa = PBXGroup;
+			children = (
+				873B5FF71E2FB6980057D735 /* RadioAtlasTests.swift */,
+				873B5FF91E2FB6980057D735 /* Info.plist */,
+			);
+			path = RadioAtlasTests;
+			sourceTree = "<group>";
+		};
+		873B60011E2FB6980057D735 /* RadioAtlasUITests */ = {
+			isa = PBXGroup;
+			children = (
+				873B60021E2FB6980057D735 /* RadioAtlasUITests.swift */,
+				873B60041E2FB6980057D735 /* Info.plist */,
+			);
+			path = RadioAtlasUITests;
+			sourceTree = "<group>";
+		};
+		873B60101E2FBB4E0057D735 /* View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				873B5FE11E2FB6970057D735 /* MapViewController.swift */,
+				873B60111E2FBB820057D735 /* Reachability.swift */,
+				873B60131E2FBB9A0057D735 /* PinAnnotation.swift */,
+				873B60151E2FBBAF0057D735 /* TableViewController.swift */,
+				873B60171E2FBBC00057D735 /* TableViewCell.swift */,
+			);
+			name = "View Controller";
+			sourceTree = "<group>";
+		};
+		873B60191E2FBBCA0057D735 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				873B5FE91E2FB6970057D735 /* Assets.xcassets */,
+				873B5FEB1E2FB6970057D735 /* LaunchScreen.storyboard */,
+				873B5FE31E2FB6970057D735 /* Main.storyboard */,
+			);
+			name = Assets;
+			sourceTree = "<group>";
+		};
+		873B601B1E2FBC030057D735 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				873B601E1E2FBC3B0057D735 /* Constants.swift */,
+				873B60201E2FBC4B0057D735 /* Client.swift */,
+				873B60221E2FBC5D0057D735 /* Convenience.swift */,
+			);
+			name = API;
+			sourceTree = "<group>";
+		};
+		873B60241E2FBCB50057D735 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				873B602F1E2FBE6E0057D735 /* Station+CoreDataClass.swift */,
+				873B5FE61E2FB6970057D735 /* RadioAtlas.xcdatamodeld */,
+				873B60271E2FBCFC0057D735 /* CoreDataStackManager.swift */,
+				873B60291E2FBD120057D735 /* RadioInfo.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		873B60331E2FD18E0057D735 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				873B60381E2FD19F0057D735 /* MapKit.framework */,
+				873B60361E2FD1960057D735 /* AVFoundation.framework */,
+				873B60341E2FD18E0057D735 /* CoreLocation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		873B5FDB1E2FB6970057D735 /* RadioAtlas */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 873B60071E2FB6980057D735 /* Build configuration list for PBXNativeTarget "RadioAtlas" */;
+			buildPhases = (
+				873B5FD81E2FB6970057D735 /* Sources */,
+				873B5FD91E2FB6970057D735 /* Frameworks */,
+				873B5FDA1E2FB6970057D735 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RadioAtlas;
+			productName = RadioAtlas;
+			productReference = 873B5FDC1E2FB6970057D735 /* RadioAtlas.app */;
+			productType = "com.apple.product-type.application";
+		};
+		873B5FF21E2FB6980057D735 /* RadioAtlasTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 873B600A1E2FB6980057D735 /* Build configuration list for PBXNativeTarget "RadioAtlasTests" */;
+			buildPhases = (
+				873B5FEF1E2FB6980057D735 /* Sources */,
+				873B5FF01E2FB6980057D735 /* Frameworks */,
+				873B5FF11E2FB6980057D735 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				873B5FF51E2FB6980057D735 /* PBXTargetDependency */,
+			);
+			name = RadioAtlasTests;
+			productName = RadioAtlasTests;
+			productReference = 873B5FF31E2FB6980057D735 /* RadioAtlasTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		873B5FFD1E2FB6980057D735 /* RadioAtlasUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 873B600D1E2FB6980057D735 /* Build configuration list for PBXNativeTarget "RadioAtlasUITests" */;
+			buildPhases = (
+				873B5FFA1E2FB6980057D735 /* Sources */,
+				873B5FFB1E2FB6980057D735 /* Frameworks */,
+				873B5FFC1E2FB6980057D735 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				873B60001E2FB6980057D735 /* PBXTargetDependency */,
+			);
+			name = RadioAtlasUITests;
+			productName = RadioAtlasUITests;
+			productReference = 873B5FFE1E2FB6980057D735 /* RadioAtlasUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		873B5FD41E2FB6970057D735 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0820;
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = Souji;
+				TargetAttributes = {
+					873B5FDB1E2FB6970057D735 = {
+						CreatedOnToolsVersion = 8.2;
+						ProvisioningStyle = Automatic;
+					};
+					873B5FF21E2FB6980057D735 = {
+						CreatedOnToolsVersion = 8.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 873B5FDB1E2FB6970057D735;
+					};
+					873B5FFD1E2FB6980057D735 = {
+						CreatedOnToolsVersion = 8.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 873B5FDB1E2FB6970057D735;
+					};
+				};
+			};
+			buildConfigurationList = 873B5FD71E2FB6970057D735 /* Build configuration list for PBXProject "RadioAtlas" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 873B5FD31E2FB6970057D735;
+			productRefGroup = 873B5FDD1E2FB6970057D735 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				873B5FDB1E2FB6970057D735 /* RadioAtlas */,
+				873B5FF21E2FB6980057D735 /* RadioAtlasTests */,
+				873B5FFD1E2FB6980057D735 /* RadioAtlasUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		873B5FDA1E2FB6970057D735 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				873B5FED1E2FB6970057D735 /* LaunchScreen.storyboard in Resources */,
+				873B5FEA1E2FB6970057D735 /* Assets.xcassets in Resources */,
+				873B5FE51E2FB6970057D735 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		873B5FF11E2FB6980057D735 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		873B5FFC1E2FB6980057D735 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		873B5FD81E2FB6970057D735 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				873B5FE81E2FB6970057D735 /* RadioAtlas.xcdatamodeld in Sources */,
+				873B60231E2FBC5D0057D735 /* Convenience.swift in Sources */,
+				873B60281E2FBCFC0057D735 /* CoreDataStackManager.swift in Sources */,
+				873B60161E2FBBAF0057D735 /* TableViewController.swift in Sources */,
+				873B5FE21E2FB6970057D735 /* MapViewController.swift in Sources */,
+				873B60141E2FBB9A0057D735 /* PinAnnotation.swift in Sources */,
+				873B60121E2FBB820057D735 /* Reachability.swift in Sources */,
+				873B60181E2FBBC00057D735 /* TableViewCell.swift in Sources */,
+				873B60311E2FBE6E0057D735 /* Station+CoreDataClass.swift in Sources */,
+				873B5FE01E2FB6970057D735 /* AppDelegate.swift in Sources */,
+				873B602A1E2FBD120057D735 /* RadioInfo.swift in Sources */,
+				873B601F1E2FBC3B0057D735 /* Constants.swift in Sources */,
+				873B60211E2FBC4B0057D735 /* Client.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		873B5FEF1E2FB6980057D735 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				873B5FF81E2FB6980057D735 /* RadioAtlasTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		873B5FFA1E2FB6980057D735 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				873B60031E2FB6980057D735 /* RadioAtlasUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		873B5FF51E2FB6980057D735 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 873B5FDB1E2FB6970057D735 /* RadioAtlas */;
+			targetProxy = 873B5FF41E2FB6980057D735 /* PBXContainerItemProxy */;
+		};
+		873B60001E2FB6980057D735 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 873B5FDB1E2FB6970057D735 /* RadioAtlas */;
+			targetProxy = 873B5FFF1E2FB6980057D735 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		873B5FE31E2FB6970057D735 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				873B5FE41E2FB6970057D735 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		873B5FEB1E2FB6970057D735 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				873B5FEC1E2FB6970057D735 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		873B60051E2FB6980057D735 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		873B60061E2FB6980057D735 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		873B60081E2FB6980057D735 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				INFOPLIST_FILE = RadioAtlas/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.udacity.RadioAtlas;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		873B60091E2FB6980057D735 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				INFOPLIST_FILE = RadioAtlas/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.udacity.RadioAtlas;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		873B600B1E2FB6980057D735 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = RadioAtlasTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.udacity.RadioAtlasTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RadioAtlas.app/RadioAtlas";
+			};
+			name = Debug;
+		};
+		873B600C1E2FB6980057D735 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = RadioAtlasTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.udacity.RadioAtlasTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RadioAtlas.app/RadioAtlas";
+			};
+			name = Release;
+		};
+		873B600E1E2FB6980057D735 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				INFOPLIST_FILE = RadioAtlasUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.udacity.RadioAtlasUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = RadioAtlas;
+			};
+			name = Debug;
+		};
+		873B600F1E2FB6980057D735 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				INFOPLIST_FILE = RadioAtlasUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.udacity.RadioAtlasUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = RadioAtlas;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		873B5FD71E2FB6970057D735 /* Build configuration list for PBXProject "RadioAtlas" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				873B60051E2FB6980057D735 /* Debug */,
+				873B60061E2FB6980057D735 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		873B60071E2FB6980057D735 /* Build configuration list for PBXNativeTarget "RadioAtlas" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				873B60081E2FB6980057D735 /* Debug */,
+				873B60091E2FB6980057D735 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		873B600A1E2FB6980057D735 /* Build configuration list for PBXNativeTarget "RadioAtlasTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				873B600B1E2FB6980057D735 /* Debug */,
+				873B600C1E2FB6980057D735 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		873B600D1E2FB6980057D735 /* Build configuration list for PBXNativeTarget "RadioAtlasUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				873B600E1E2FB6980057D735 /* Debug */,
+				873B600F1E2FB6980057D735 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		873B5FE61E2FB6970057D735 /* RadioAtlas.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				873B5FE71E2FB6970057D735 /* RadioAtlas.xcdatamodel */,
+			);
+			currentVersion = 873B5FE71E2FB6970057D735 /* RadioAtlas.xcdatamodel */;
+			path = RadioAtlas.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 873B5FD41E2FB6970057D735 /* Project object */;
+}
