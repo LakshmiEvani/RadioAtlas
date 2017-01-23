@@ -12,6 +12,7 @@ import CoreData
 import AVFoundation
 import CoreLocation
 
+
 class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDelegate, CLLocationManagerDelegate, NSFetchedResultsControllerDelegate {
     
     //Outlets
@@ -40,23 +41,22 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        
-        mapView.delegate = self
         appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.setNetworkActivityIndicatorVisible(visible: true)
         
-        sharedContext.perform {
+
+              mapView.delegate = self
+              sharedContext.perform {
             
             self.addAnnotation()
             
         }
         determineCurrentLocation()
-        
+       
     }
     
-    
-    
-    func determineCurrentLocation()
-    {
+  
+    func determineCurrentLocation() {
         locationManager = CLLocationManager()
         
         // For use in foreground
@@ -77,16 +77,11 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 10.01, longitudeDelta: 10.01))
         
         mapView.setRegion(region, animated: true)
-        
-    }
+            }
     
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error)
-    {
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("Error \(error)")
     }
-    
-    
-    
     
     
     
@@ -140,6 +135,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
                         }
                     }
                     
+                    self.appDelegate.setNetworkActivityIndicatorVisible(visible: false)
+                    
                 } else {
                     
                     print("Map download failed")
@@ -173,6 +170,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
             audioPlayer.pause()
             playAndPause.setImage(UIImage(named: "play"), for: .normal)
             isPlaying = false
+            appDelegate.setNetworkActivityIndicatorVisible(visible: false)
             
         } else if isPlaying == false {
             
@@ -182,6 +180,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
             
             playAndPause.setImage(UIImage(named: "pause"), for: .normal)
             isPlaying = true
+            appDelegate.setNetworkActivityIndicatorVisible(visible: true)
         }
     }
     
@@ -201,7 +200,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
             
             self.audioPlayer!.play()
             self.isPlaying = true
-            
+            appDelegate.setNetworkActivityIndicatorVisible(visible: true)
             
         } catch let error as NSError {
             self.audioPlayer = nil
@@ -269,7 +268,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
             // Don't proceed with custom callout
             return
         }
-        
+        appDelegate.setNetworkActivityIndicatorVisible(visible: false)
         
         sharedContext.perform {
             
@@ -310,8 +309,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
             
             for found in result {
                 print((found as! Station).name)
-                if ((found as! Station).name == name)
-                {
+                if ((found as! Station).name == name) {
                     print(name)
                     
                     return true

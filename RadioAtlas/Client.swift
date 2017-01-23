@@ -89,27 +89,6 @@ class Client: NSObject {
         completionHandler(parsedResult, nil)
     }
     
-    /* // Helper function: Given a dictionary of parameters, convert to a string for a url
-     class func escapedParameters(_ parameters: [String : AnyObject]) -> String {
-     
-     var urlVars = [String]()
-     
-     for (key, value) in parameters {
-     
-     //Make sure that it is a string value
-     let stringValue = "\(value)"
-     
-     //Escape it
-     let escapedValue = stringValue.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
-     
-     // Append it
-     urlVars += [key + "=" + "\(escapedValue!)"]
-     
-     }
-     
-     return (!urlVars.isEmpty ? "?" : "") + urlVars.joined(separator: "&")
-     }
-     */
     // MARK: Shared Instance
     
     class func sharedInstance() -> Client {

@@ -151,16 +151,6 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
         return cell
     }
     
-    func accessoryButtonTapped(sender : UIButton){
-        print(sender.tag)
-        print("Tapped")
-        self.sharedContext.perform({
-            self.sharedContext.delete(self.station[sender.tag])
-            CoreDataStackManager.sharedInstance().saveContext()
-        })
-        
-    }
-    
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
