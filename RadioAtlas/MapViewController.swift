@@ -115,8 +115,17 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
                             let streamUrl = dictionary.streamUrl
                             let webUrl = dictionary.websiteURL
                             let id = dictionary.id
+                            var location: String!
                             
-                            let location = city! + ", " + state! +  ", " + country!
+                            if state != "" && state != nil {
+                                
+                                location = city! + ", " + state! +  ", " + country!
+                                
+                            } else {
+                               
+                            location = city! +  ", " + country!
+
+                            }
                             
                             // Here we create the annotation and set its coordiate, title, and subtitle properties
                             

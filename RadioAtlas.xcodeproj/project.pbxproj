@@ -28,6 +28,8 @@
 		873B60351E2FD18E0057D735 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 873B60341E2FD18E0057D735 /* CoreLocation.framework */; };
 		873B60371E2FD1960057D735 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 873B60361E2FD1960057D735 /* AVFoundation.framework */; };
 		873B60391E2FD19F0057D735 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 873B60381E2FD19F0057D735 /* MapKit.framework */; };
+		878130631E35C6FA00E70D0B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 873B5FE91E2FB6970057D735 /* Assets.xcassets */; };
+		878130641E35C6FB00E70D0B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 873B5FE91E2FB6970057D735 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -278,6 +280,7 @@
 				TargetAttributes = {
 					873B5FDB1E2FB6970057D735 = {
 						CreatedOnToolsVersion = 8.2;
+						DevelopmentTeam = 879NQX5T3A;
 						ProvisioningStyle = Automatic;
 					};
 					873B5FF21E2FB6980057D735 = {
@@ -327,6 +330,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				878130631E35C6FA00E70D0B /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -334,6 +338,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				878130641E35C6FB00E70D0B /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -505,11 +510,12 @@
 		873B60081E2FB6980057D735 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				DEVELOPMENT_TEAM = 879NQX5T3A;
 				INFOPLIST_FILE = RadioAtlas/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.udacity.RadioAtlas;
+				PRODUCT_BUNDLE_IDENTIFIER = com.evani.RadioAtlas;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -518,11 +524,12 @@
 		873B60091E2FB6980057D735 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				DEVELOPMENT_TEAM = 879NQX5T3A;
 				INFOPLIST_FILE = RadioAtlas/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.udacity.RadioAtlas;
+				PRODUCT_BUNDLE_IDENTIFIER = com.evani.RadioAtlas;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
