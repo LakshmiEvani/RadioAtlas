@@ -278,7 +278,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
             return
         }
         appDelegate.setNetworkActivityIndicatorVisible(visible: false)
-        
+               
         sharedContext.perform {
             
             
@@ -401,6 +401,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
                             
                             //lighten the favorites icon
                             view.leftCalloutAccessoryView = nil
+                                                        
                         }
                         
                         
