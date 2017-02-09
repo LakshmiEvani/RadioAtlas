@@ -41,7 +41,7 @@ extension Client {
                         count = count+1
                         
                         
-                        if count > 1800 {
+                        if count > 1000 {
                             
                             break
                         }

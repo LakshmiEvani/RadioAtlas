@@ -44,6 +44,9 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.setNetworkActivityIndicatorVisible(visible: true)
         
+       
+       
+        
 
               mapView.delegate = self
               sharedContext.perform {
@@ -197,7 +200,10 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
     func musicStream(music: String){
         
         //Setting music stream
-        do
+        
+       DispatchQueue.global(qos: .background).async {
+       
+            do
         {
             
             let audioSession = AVAudioSession.sharedInstance()
@@ -209,7 +215,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
             
             self.audioPlayer!.play()
             self.isPlaying = true
-            appDelegate.setNetworkActivityIndicatorVisible(visible: true)
+            self.appDelegate.setNetworkActivityIndicatorVisible(visible: true)
             
         } catch let error as NSError {
             self.audioPlayer = nil
@@ -218,6 +224,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
             print("AVAudioPlayer init failed")
             
         }
+    }
         
     }
     
@@ -401,6 +408,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
                             
                             //lighten the favorites icon
                             view.leftCalloutAccessoryView = nil
+                            view.image = UIImage(named: "mappoint")
                                                         
                         }
                         

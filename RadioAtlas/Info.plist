@@ -31,9 +31,11 @@
 	<string>Because I always want to know where you are</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Because I need to know where you are</string>
+	<key>UIApplicationExitsOnSuspend</key>
+	<false/>
 	<key>UIBackgroundModes</key>
 	<array>
-		<string></string>
+		<string>audio</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>

@@ -67,6 +67,8 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
     func musicStream(music: String){
         
         //Setting music stream
+        
+        DispatchQueue.global(qos: .background).async {
         do
         {
             
@@ -83,6 +85,8 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
             print(error.localizedDescription)
         } catch {
             print("AVAudioPlayer init failed")
+            
+        }
             
         }
         

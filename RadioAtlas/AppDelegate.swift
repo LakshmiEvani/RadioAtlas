@@ -8,12 +8,17 @@
 
 import UIKit
 import CoreData
+import AVFoundation
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
     var activityIndicatorSetVisibleCount = 0
+    var setCategoryErr: NSError!
+    var activationErr: NSError!
+    
+       //Network Activity Indicator
     
     func setNetworkActivityIndicatorVisible(visible: Bool) {
         if visible {
