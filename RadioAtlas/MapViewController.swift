@@ -13,7 +13,7 @@ import AVFoundation
 import CoreLocation
 
 
-class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDelegate, CLLocationManagerDelegate, NSFetchedResultsControllerDelegate {
+class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDelegate, CLLocationManagerDelegate, NSFetchedResultsControllerDelegate, UIPopoverPresentationControllerDelegate {
     
     //Outlets
     
@@ -35,7 +35,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
     @IBOutlet weak var favoriteButton: UIButton!
     // Core Data Convenience. Useful for fetching, adding and saving objects
     var sharedContext: NSManagedObjectContext = CoreDataStackManager.sharedInstance().managedObjectContext
-    
+   // var music = Music.sharedInstance()
     
     // Life Cycle
     override func viewDidLoad() {
@@ -43,17 +43,9 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         super.viewDidLoad()
         appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.setNetworkActivityIndicatorVisible(visible: true)
-        
-       
-       
-        
 
               mapView.delegate = self
-              sharedContext.perform {
-            
-            self.addAnnotation()
-            
-        }
+                self.addAnnotation()
         determineCurrentLocation()
        
     }
@@ -197,7 +189,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
     }
     
     
-    func musicStream(music: String){
+ /*   func musicStream(music: String){
         
         //Setting music stream
         
@@ -227,7 +219,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
     }
         
     }
-    
+   */
     
     @IBAction func volumeControlAction(_ sender: Any) {
         
@@ -284,12 +276,16 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
             // Don't proceed with custom callout
             return
         }
+        
+         view.image = UIImage(named: "pinView")
         appDelegate.setNetworkActivityIndicatorVisible(visible: false)
-               
+        
         sharedContext.perform {
             
             
             let annotationView = view.annotation as! PinAnnotation
+            
+           
             
             if (self.checkIfExists(name: annotationView.name))
             {
@@ -299,8 +295,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
             if let toOpen = annotationView.streamUrl {
                 
                 print("Music stream playing",toOpen)
-                self.musicStream(music: toOpen)
-                
+               
+                Music.sharedInstance.musicStream(music: toOpen)
             }
             
         }
@@ -338,8 +334,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
             print(fetchError)
         }
         
-        
-        
         return false
     }
     
@@ -362,6 +356,10 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         return urlString!
     }
     
+    
+    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
+        return .none
+    }
     
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         
@@ -387,7 +385,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
             
             if control == view.leftCalloutAccessoryView {
                 
-                sharedContext.perform {
                     
                     //Data is in this case the name of the entity
                     do {
@@ -404,18 +401,16 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
                         {
                             let stationDetails   = Station(id: annotationView.id,name: annotationView.name, streamUrl: annotationView.streamUrl, websiteURL: annotationView.websiteURL, latitude: annotationView.latitude, longitude: annotationView.longitude, location: annotationView.location, context: self.sharedContext)
                             self.favoriteStation = [stationDetails]
+                            view.image = UIImage(named: "link")
                             CoreDataStackManager.sharedInstance().saveContext()
                             
                             //lighten the favorites icon
                             view.leftCalloutAccessoryView = nil
-                            view.image = UIImage(named: "mappoint")
+                            
                                                         
                         }
                         
                         
-                        
-                        
-                    }
                 }
                 
             }

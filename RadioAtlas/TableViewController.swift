@@ -27,6 +27,7 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     var audioPlayer:AVPlayer!
     var selectedIndexPath: [IndexPath]!
+   // var music = Music.sharedInstance()
     
     //life cycle methods
     
@@ -34,7 +35,6 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
         super.viewDidLoad()
         
         appDelegate = UIApplication.shared.delegate as! AppDelegate
-        
         favoriteTableView.delegate = self
         favoriteTableView.dataSource = self
         
@@ -64,7 +64,7 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
         
     }
     
-    func musicStream(music: String){
+  /*  func musicStream(music: String){
         
         //Setting music stream
         
@@ -92,7 +92,7 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
         
     }
     
-    
+ */
     
     override func viewWillAppear(_ animated: Bool) {
         
@@ -161,7 +161,7 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
         tableView.deselectRow(at: indexPath, animated: true)
         let favoriteObject = (fetchedResultsController?.object(at: indexPath))! as Station
         
-        musicStream(music: favoriteObject.streamURL!)
+       Music.sharedInstance.musicStream(music: favoriteObject.streamURL!)
         
         
     }

@@ -17,6 +17,9 @@ public class Station: NSManagedObject {
         return CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
     }
     
+    func storeImage() -> UIImage?{
+        return UIImage(data: self.favoritePinImage! as Data)
+    }
     
     convenience init(id: String, name: String,streamUrl: String, websiteURL: String, latitude: Double, longitude: Double, location: String, context: NSManagedObjectContext) {
         
@@ -56,7 +59,7 @@ extension Station {
     @NSManaged public var state: String?
     @NSManaged public var country: String?
     @NSManaged public var stations: Station?
-    @NSManaged public var favorite: Bool
+     @NSManaged public var favoritePinImage: NSData?
     
     
 }
