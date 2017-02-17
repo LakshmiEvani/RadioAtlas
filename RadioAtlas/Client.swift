@@ -24,12 +24,20 @@ class Client: NSObject {
     
     //Get Method
     
+<<<<<<< HEAD
     func taskForGetMethodWithParameters(completionHandler:  @escaping (_ result: AnyObject?, _ error: NSError?) -> Void) {
+=======
+    func taskForGetMethodWithParameters(completionHandler: @escaping (_ result: AnyObject?, _ error: NSError?) -> Void) {
+>>>>>>> d3ab8abee534f72e0aa30047b4ef4d6a308f39ad
         
         // Build and configure GET request
         let urlString = Constants.BaseUrl
         let url = URL(string: urlString)
+<<<<<<< HEAD
         let request = URLRequest(url: url! as URL)
+=======
+        let request = URLRequest(url: url!)
+>>>>>>> d3ab8abee534f72e0aa30047b4ef4d6a308f39ad
         print("The request is:",request)
         // Make the request
         let task = session.dataTask(with: request, completionHandler: { (data, response, error) in
@@ -42,7 +50,11 @@ class Client: NSObject {
             }
             
             // GUARD: Did we get a successful 2XX response?
+<<<<<<< HEAD
             guard let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode >= 200 && statusCode <= 299 else {
+=======
+            guard let statusCode = (response as? HTTPURLResponse)?.statusCode , statusCode >= 200 && statusCode <= 299 else {
+>>>>>>> d3ab8abee534f72e0aa30047b4ef4d6a308f39ad
                 if let response = response as? HTTPURLResponse {
                     let userInfo = [NSLocalizedDescriptionKey: "Your Request returned an invalid respons! Status code: \(response.statusCode)!"]
                     completionHandler(nil, NSError(domain: "taskForGetMethod", code: 1, userInfo: userInfo))
@@ -65,7 +77,11 @@ class Client: NSObject {
             
             // Parse and use data
             
+<<<<<<< HEAD
             Client.parseJSONWithCompletionHandler(data: data, completionHandler: completionHandler)
+=======
+            Client.parseJSONWithCompletionHandler(data, completionHandler: completionHandler)
+>>>>>>> d3ab8abee534f72e0aa30047b4ef4d6a308f39ad
             
         })
         
@@ -75,7 +91,11 @@ class Client: NSObject {
     
     /* Helper: Given raw JSON, return a usable Foundation object */
     
+<<<<<<< HEAD
     class func parseJSONWithCompletionHandler(data: Data, completionHandler: (_ result: AnyObject?, _ error: NSError?) -> Void) {
+=======
+    class func parseJSONWithCompletionHandler(_ data: Data, completionHandler: (_ result: AnyObject?, _ error: NSError?) -> Void) {
+>>>>>>> d3ab8abee534f72e0aa30047b4ef4d6a308f39ad
         
         var parsedResult: AnyObject!
         do {

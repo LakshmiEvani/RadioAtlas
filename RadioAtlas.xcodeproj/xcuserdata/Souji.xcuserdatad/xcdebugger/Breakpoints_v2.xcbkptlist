@@ -10,11 +10,19 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RadioAtlas/MapViewController.swift"
+<<<<<<< HEAD
             timestampString = "509042380.819462"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "356"
             endingLineNumber = "356"
+=======
+            timestampString = "508467954.747055"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "338"
+            endingLineNumber = "338"
+>>>>>>> d3ab8abee534f72e0aa30047b4ef4d6a308f39ad
             landmarkName = "checkIfExists(name:)"
             landmarkType = "7">
             <Locations>
@@ -58,11 +66,19 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RadioAtlas/MapViewController.swift"
+<<<<<<< HEAD
             timestampString = "509042380.819462"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "354"
             endingLineNumber = "354"
+=======
+            timestampString = "508467954.747055"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "336"
+            endingLineNumber = "336"
+>>>>>>> d3ab8abee534f72e0aa30047b4ef4d6a308f39ad
             landmarkName = "checkIfExists(name:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -147,8 +163,13 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "115"
             endingLineNumber = "115"
+<<<<<<< HEAD
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
+=======
+            landmarkName = "TableViewController"
+            landmarkType = "3">
+>>>>>>> d3ab8abee534f72e0aa30047b4ef4d6a308f39ad
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -210,7 +231,13 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "230"
+<<<<<<< HEAD
             endingLineNumber = "230">
+=======
+            endingLineNumber = "230"
+            landmarkName = "controller(_:didChange:at:for:newIndexPath:)"
+            landmarkType = "7">
+>>>>>>> d3ab8abee534f72e0aa30047b4ef4d6a308f39ad
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -224,7 +251,13 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "229"
+<<<<<<< HEAD
             endingLineNumber = "229">
+=======
+            endingLineNumber = "229"
+            landmarkName = "controller(_:didChange:at:for:newIndexPath:)"
+            landmarkType = "7">
+>>>>>>> d3ab8abee534f72e0aa30047b4ef4d6a308f39ad
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -314,11 +347,19 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RadioAtlas/MapViewController.swift"
+<<<<<<< HEAD
             timestampString = "509042380.819462"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "353"
             endingLineNumber = "353"
+=======
+            timestampString = "508467954.747055"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "335"
+            endingLineNumber = "335"
+>>>>>>> d3ab8abee534f72e0aa30047b4ef4d6a308f39ad
             landmarkName = "checkIfExists(name:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -335,7 +376,11 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "117"
             endingLineNumber = "117"
+<<<<<<< HEAD
             landmarkName = "tableView(_:cellForRowAt:)"
+=======
+            landmarkName = "numberOfSections(in:)"
+>>>>>>> d3ab8abee534f72e0aa30047b4ef4d6a308f39ad
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -346,7 +391,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RadioAtlas/MapViewController.swift"
+<<<<<<< HEAD
             timestampString = "509042380.819462"
+=======
+            timestampString = "508456228.724138"
+>>>>>>> d3ab8abee534f72e0aa30047b4ef4d6a308f39ad
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "46"
@@ -394,12 +443,21 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RadioAtlas/MapViewController.swift"
+<<<<<<< HEAD
             timestampString = "509042380.819462"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "282"
             endingLineNumber = "282"
             landmarkName = "mapView(_:viewFor:)"
+=======
+            timestampString = "508467954.747055"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "277"
+            endingLineNumber = "277"
+            landmarkName = "mapView(_:didSelect:)"
+>>>>>>> d3ab8abee534f72e0aa30047b4ef4d6a308f39ad
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -410,11 +468,19 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RadioAtlas/MapViewController.swift"
+<<<<<<< HEAD
             timestampString = "509042380.819462"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "296"
             endingLineNumber = "296"
+=======
+            timestampString = "508467954.747055"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "279"
+            endingLineNumber = "279"
+>>>>>>> d3ab8abee534f72e0aa30047b4ef4d6a308f39ad
             landmarkName = "mapView(_:didSelect:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -426,11 +492,19 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RadioAtlas/MapViewController.swift"
+<<<<<<< HEAD
             timestampString = "509042380.819462"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "51"
             endingLineNumber = "51"
+=======
+            timestampString = "508467954.747055"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
+>>>>>>> d3ab8abee534f72e0aa30047b4ef4d6a308f39ad
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -442,7 +516,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RadioAtlas/MapViewController.swift"
+<<<<<<< HEAD
             timestampString = "509042380.819462"
+=======
+            timestampString = "508456228.724138"
+>>>>>>> d3ab8abee534f72e0aa30047b4ef4d6a308f39ad
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "46"
@@ -458,7 +536,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RadioAtlas/MapViewController.swift"
+<<<<<<< HEAD
             timestampString = "509042380.819462"
+=======
+            timestampString = "508456228.724138"
+>>>>>>> d3ab8abee534f72e0aa30047b4ef4d6a308f39ad
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "45"
@@ -499,6 +581,7 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+<<<<<<< HEAD
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
@@ -579,5 +662,7 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+=======
+>>>>>>> d3ab8abee534f72e0aa30047b4ef4d6a308f39ad
    </Breakpoints>
 </Bucket>

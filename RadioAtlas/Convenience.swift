@@ -41,7 +41,11 @@ extension Client {
                         count = count+1
                         
                         
+<<<<<<< HEAD
                         if count > 1500 {
+=======
+                        if count > 1000 {
+>>>>>>> d3ab8abee534f72e0aa30047b4ef4d6a308f39ad
                             
                             break
                         }

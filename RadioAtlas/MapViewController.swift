@@ -25,17 +25,28 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
     var appDelegate: AppDelegate!
     var client = Client.sharedInstance()
     var radioInfo = [RadioInfo]()
+<<<<<<< HEAD
     var locationManager = CLLocationManager()
     var favoriteStation = [Station]()
     var favorite : Bool = false
+=======
+    var audioPlayer:AVPlayer!
+    var locationManager = CLLocationManager()
+    var favoriteStation = [Station]()
+    var favorite : Bool = false
+    var isPlaying = false
+>>>>>>> d3ab8abee534f72e0aa30047b4ef4d6a308f39ad
     @IBOutlet weak var playAndPause: UIButton!
     
     @IBOutlet weak var favoriteButton: UIButton!
     // Core Data Convenience. Useful for fetching, adding and saving objects
     var sharedContext: NSManagedObjectContext = CoreDataStackManager.sharedInstance().managedObjectContext
    // var music = Music.sharedInstance()
+<<<<<<< HEAD
     var annotations = [MKAnnotation]()
     
+=======
+>>>>>>> d3ab8abee534f72e0aa30047b4ef4d6a308f39ad
     
     // Life Cycle
     override func viewDidLoad() {
@@ -46,7 +57,10 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
 
               mapView.delegate = self
                 self.addAnnotation()
+<<<<<<< HEAD
         
+=======
+>>>>>>> d3ab8abee534f72e0aa30047b4ef4d6a308f39ad
         determineCurrentLocation()
        
     }
@@ -90,7 +104,11 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
                 
                 if error == nil {
                     
+<<<<<<< HEAD
                     
+=======
+                    var annotations = [MKAnnotation]()
+>>>>>>> d3ab8abee534f72e0aa30047b4ef4d6a308f39ad
                     
                     for dictionary in result!{
                         
@@ -130,6 +148,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
                             annotation.streamUrl = streamUrl
                             
                             // Finally we place the annotation in an array of annotations.
+<<<<<<< HEAD
                             self.annotations.append(annotation)
                         }
                         
@@ -139,6 +158,16 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
                                 
                         // When the array is complete, we add the annotations to the map.
                         self.mapView.addAnnotations(self.annotations)
+=======
+                            annotations.append(annotation)
+                        }
+                        
+                        self.sharedContext.perform {
+                            // When the array is complete, we add the annotations to the map.
+                            self.mapView.addAnnotations(annotations)
+                            
+                        }
+>>>>>>> d3ab8abee534f72e0aa30047b4ef4d6a308f39ad
                     }
                     
                     self.appDelegate.setNetworkActivityIndicatorVisible(visible: false)
@@ -167,6 +196,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
     }
     
     
+<<<<<<< HEAD
    /* func filterDuplicates( includeElement: @escaping (_ lhs:MKAnnotation, _ rhs:MKAnnotation) -> Bool) -> [MKAnnotation]{
         var results = [MKAnnotation]()
         
@@ -204,10 +234,13 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
  
     
     
+=======
+>>>>>>> d3ab8abee534f72e0aa30047b4ef4d6a308f39ad
     
     
     @IBAction func playAndPauseAction(_ sender: Any) {
         
+<<<<<<< HEAD
         if Music.sharedInstance.isPlaying == true {
             
             Music.sharedInstance.audioPlayer.pause()
@@ -220,6 +253,23 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
             Music.sharedInstance.audioPlayer.play()
             playAndPause.setImage(UIImage(named: "pause"), for: .normal)
             Music.sharedInstance.isPlaying = true
+=======
+        if isPlaying == true {
+            
+            audioPlayer.pause()
+            playAndPause.setImage(UIImage(named: "play"), for: .normal)
+            isPlaying = false
+            appDelegate.setNetworkActivityIndicatorVisible(visible: false)
+            
+        } else if isPlaying == false {
+            
+            
+            audioPlayer.play()
+            
+            
+            playAndPause.setImage(UIImage(named: "pause"), for: .normal)
+            isPlaying = true
+>>>>>>> d3ab8abee534f72e0aa30047b4ef4d6a308f39ad
             appDelegate.setNetworkActivityIndicatorVisible(visible: true)
         }
     }
@@ -229,20 +279,30 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
     @IBAction func volumeControlAction(_ sender: Any) {
         
         let currentValue = volumeControl.value
+<<<<<<< HEAD
         Music.sharedInstance.audioPlayer?.volume = currentValue
+=======
+        audioPlayer?.volume = currentValue
+>>>>>>> d3ab8abee534f72e0aa30047b4ef4d6a308f39ad
     }
     
     
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         
+<<<<<<< HEAD
         
+=======
+>>>>>>> d3ab8abee534f72e0aa30047b4ef4d6a308f39ad
         if annotation is MKUserLocation
         {
             return nil
         }
         var annotationView = self.mapView.dequeueReusableAnnotationView(withIdentifier: "Pin")
+<<<<<<< HEAD
         
+=======
+>>>>>>> d3ab8abee534f72e0aa30047b4ef4d6a308f39ad
         if annotationView == nil{
             annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "Pin")
             annotationView?.canShowCallout = true
@@ -266,6 +326,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         }else{
             annotationView?.annotation = annotation
         }
+<<<<<<< HEAD
         
         
         annotationView?.image = UIImage(named: "mappoint")
@@ -278,6 +339,9 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
             }
         }
 
+=======
+        annotationView?.image = UIImage(named: "mappoint")
+>>>>>>> d3ab8abee534f72e0aa30047b4ef4d6a308f39ad
         return annotationView
         
     }
@@ -289,6 +353,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         
+<<<<<<< HEAD
         for annotation in annotations {
             
             if (annotation.coordinate.latitude == view.annotation?.coordinate.latitude) && (annotation.coordinate.longitude == view.annotation?.coordinate.latitude) {
@@ -301,6 +366,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
             
         }
         
+=======
+>>>>>>> d3ab8abee534f72e0aa30047b4ef4d6a308f39ad
         if view.annotation is MKUserLocation
         {
             // Don't proceed with custom callout
@@ -315,7 +382,10 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
             
             let annotationView = view.annotation as! PinAnnotation
             
+<<<<<<< HEAD
             
+=======
+>>>>>>> d3ab8abee534f72e0aa30047b4ef4d6a308f39ad
            
             
             if (self.checkIfExists(name: annotationView.name))
@@ -400,7 +470,11 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
             
             if annotationView.websiteURL != nil {
                 if let toOpen = annotationView.websiteURL{
+<<<<<<< HEAD
                     let urlString = verifyUrl(urlString: toOpen)
+=======
+                    var urlString = verifyUrl(urlString: toOpen)
+>>>>>>> d3ab8abee534f72e0aa30047b4ef4d6a308f39ad
                     UIApplication.shared.open(NSURL(string: urlString)! as URL, options: [:], completionHandler: nil)
                     
                 }
@@ -432,7 +506,11 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
                         {
                             let stationDetails   = Station(id: annotationView.id,name: annotationView.name, streamUrl: annotationView.streamUrl, websiteURL: annotationView.websiteURL, latitude: annotationView.latitude, longitude: annotationView.longitude, location: annotationView.location, context: self.sharedContext)
                             self.favoriteStation = [stationDetails]
+<<<<<<< HEAD
                             view.image = UIImage(named: "favorite")
+=======
+                            view.image = UIImage(named: "link")
+>>>>>>> d3ab8abee534f72e0aa30047b4ef4d6a308f39ad
                             CoreDataStackManager.sharedInstance().saveContext()
                             
                             //lighten the favorites icon
