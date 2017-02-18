@@ -31,7 +31,6 @@
 		878130631E35C6FA00E70D0B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 873B5FE91E2FB6970057D735 /* Assets.xcassets */; };
 		878130641E35C6FB00E70D0B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 873B5FE91E2FB6970057D735 /* Assets.xcassets */; };
 		87C7FF191E4E6790004533EC /* Music.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C7FF181E4E6790004533EC /* Music.swift */; };
-		87C7FF1F1E54EAC4004533EC /* (null) in Sources */ = {isa = PBXBuildFile; };
 		87E4158E1E589E700025EEFB /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E4158D1E589E700025EEFB /* TableView.swift */; };
 /* End PBXBuildFile section */
 
