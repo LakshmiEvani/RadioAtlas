@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Zf7-N9-cZI">
+=======
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Zf7-N9-cZI">
+>>>>>>> d3ab8abee534f72e0aa30047b4ef4d6a308f39ad
     <device id="retina3_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -98,7 +102,10 @@
                         <outlet property="playAndPause" destination="7AF-W0-hZz" id="d7o-Ac-mSv"/>
                         <outlet property="volumeControl" destination="udh-qt-qjV" id="R41-5q-KBC"/>
                         <segue destination="Kpc-D8-xBc" kind="show" identifier="stationDetails" id="y3w-l2-U3i"/>
+<<<<<<< HEAD
                         <segue destination="gaT-6p-0yy" kind="presentation" id="nPy-RT-A7z"/>
+=======
+>>>>>>> d3ab8abee534f72e0aa30047b4ef4d6a308f39ad
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XaR-vv-HOm" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -134,6 +141,7 @@
             </objects>
             <point key="canvasLocation" x="204" y="-284.70764617691157"/>
         </scene>
+<<<<<<< HEAD
         <!--TableView-->
         <scene sceneID="R41-NT-d4Z">
             <objects>
@@ -181,6 +189,8 @@
             </objects>
             <point key="canvasLocation" x="-593" y="820"/>
         </scene>
+=======
+>>>>>>> d3ab8abee534f72e0aa30047b4ef4d6a308f39ad
         <!--TableViewController-->
         <scene sceneID="jSf-L1-8mC">
             <objects>

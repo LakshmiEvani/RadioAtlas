@@ -40,9 +40,7 @@ extension Client {
                         
                         count = count+1
                         
-                        
-                        if count > 1500{
-                            
+                        if count > 1500 {
                             break
                         }
                            print(i)

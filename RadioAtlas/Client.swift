@@ -24,12 +24,12 @@ class Client: NSObject {
     
     //Get Method
     
-    func taskForGetMethodWithParameters(completionHandler:  @escaping (_ result: AnyObject?, _ error: NSError?) -> Void) {
-        
+    func taskForGetMethodWithParameters(completionHandler: @escaping (_ result: AnyObject?, _ error: NSError?) -> Void) {
         // Build and configure GET request
         let urlString = Constants.BaseUrl
         let url = URL(string: urlString)
-        let request = URLRequest(url: url! as URL)
+        let request = URLRequest(url: url!)
+
         print("The request is:",request)
         // Make the request
         let task = session.dataTask(with: request, completionHandler: { (data, response, error) in
@@ -42,7 +42,9 @@ class Client: NSObject {
             }
             
             // GUARD: Did we get a successful 2XX response?
-            guard let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode >= 200 && statusCode <= 299 else {
+
+            guard let statusCode = (response as? HTTPURLResponse)?.statusCode , statusCode >= 200 && statusCode <= 299 else {
+
                 if let response = response as? HTTPURLResponse {
                     let userInfo = [NSLocalizedDescriptionKey: "Your Request returned an invalid respons! Status code: \(response.statusCode)!"]
                     completionHandler(nil, NSError(domain: "taskForGetMethod", code: 1, userInfo: userInfo))
@@ -65,8 +67,7 @@ class Client: NSObject {
             
             // Parse and use data
             
-            Client.parseJSONWithCompletionHandler(data: data, completionHandler: completionHandler)
-            
+            Client.parseJSONWithCompletionHandler(data, completionHandler: completionHandler)
         })
         
         //start the request
@@ -75,7 +76,8 @@ class Client: NSObject {
     
     /* Helper: Given raw JSON, return a usable Foundation object */
     
-    class func parseJSONWithCompletionHandler(data: Data, completionHandler: (_ result: AnyObject?, _ error: NSError?) -> Void) {
+
+    class func parseJSONWithCompletionHandler(_ data: Data, completionHandler: (_ result: AnyObject?, _ error: NSError?) -> Void) {
         
         var parsedResult: AnyObject!
         do {
