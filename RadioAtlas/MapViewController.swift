@@ -28,7 +28,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
     var locationManager = CLLocationManager()
     var favoriteStation = [Station]()
     var favorite : Bool = false
-
+    var annotations = [MKAnnotation]()
     @IBOutlet weak var playAndPause: UIButton!
     
     @IBOutlet weak var favoriteButton: UIButton!
@@ -87,8 +87,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
                 
                 if error == nil {
                     
-
-                    var annotations = [MKAnnotation]()
                     
                     for dictionary in result!{
                         
@@ -100,9 +98,11 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
                             
                             
                             /* Get the lat and lon values to create a coordinate */
+                            let upperBound = 0.09
+                            let lowerBound = 0.01
                             
-                            let range = self.upperBound - self.lowerBound
-                            var randomValue = (Double(arc4random_uniform(UINT32_MAX)) / Double(UINT32_MAX)) * range + self.lowerBound
+                            let range = upperBound - lowerBound
+                            var randomValue = (Double(arc4random_uniform(UINT32_MAX)) / Double(UINT32_MAX)) * range + lowerBound
                             let  y = Double(round(randomValue * 100000)/100000)
                             
                              print(CLLocationDegrees(dictionary.latitude!))
@@ -179,34 +179,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         }
     }
     
-    //Generate a 4 preceision random number between .01 and .09
 
-     func random() -> Double {
-        
-        
-        let range = self.upperBound - self.lowerBound
-        let randomValue = (Double(arc4random_uniform(UINT32_MAX)) / Double(UINT32_MAX)) * range + self.lowerBound
-        return randomValue
-    }
-    
-
-   /* func filterDuplicates( includeElement: @escaping (_ lhs:MKAnnotation, _ rhs:MKAnnotation) -> Bool) -> [MKAnnotation]{
-        var results = [MKAnnotation]()
-        
-        forEach { (MKAnnotation) in
-            let existingElements = results.filter {
-                return includeElement(lhs: element, rhs: $0)
-            }
-            if existingElements.count == 0 {
-                results.append(element)
-            }
-        }
-        
-        return annotations
-    }
-    
-    
-  */
     
     func tappedOnMap(sender: UITapGestureRecognizer) {
         let location = sender.location(in: self.view)

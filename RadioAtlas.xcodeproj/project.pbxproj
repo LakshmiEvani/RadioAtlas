@@ -31,10 +31,8 @@
 		878130631E35C6FA00E70D0B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 873B5FE91E2FB6970057D735 /* Assets.xcassets */; };
 		878130641E35C6FB00E70D0B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 873B5FE91E2FB6970057D735 /* Assets.xcassets */; };
 		87C7FF191E4E6790004533EC /* Music.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C7FF181E4E6790004533EC /* Music.swift */; };
-<<<<<<< HEAD
-		87C7FF1F1E54EAC4004533EC /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C7FF1E1E54EAC4004533EC /* TableView.swift */; };
-=======
->>>>>>> d3ab8abee534f72e0aa30047b4ef4d6a308f39ad
+		87C7FF1F1E54EAC4004533EC /* (null) in Sources */ = {isa = PBXBuildFile; };
+		87E4158E1E589E700025EEFB /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E4158D1E589E700025EEFB /* TableView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,10 +81,7 @@
 		873B60361E2FD1960057D735 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		873B60381E2FD19F0057D735 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		87C7FF181E4E6790004533EC /* Music.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Music.swift; sourceTree = "<group>"; };
-<<<<<<< HEAD
-		87C7FF1E1E54EAC4004533EC /* TableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableView.swift; sourceTree = "<group>"; };
-=======
->>>>>>> d3ab8abee534f72e0aa30047b4ef4d6a308f39ad
+		87E4158D1E589E700025EEFB /* TableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,11 +172,8 @@
 				873B60131E2FBB9A0057D735 /* PinAnnotation.swift */,
 				873B60151E2FBBAF0057D735 /* TableViewController.swift */,
 				873B60171E2FBBC00057D735 /* TableViewCell.swift */,
+				87E4158D1E589E700025EEFB /* TableView.swift */,
 				87C7FF181E4E6790004533EC /* Music.swift */,
-<<<<<<< HEAD
-				87C7FF1E1E54EAC4004533EC /* TableView.swift */,
-=======
->>>>>>> d3ab8abee534f72e0aa30047b4ef4d6a308f39ad
 			);
 			name = "View Controller";
 			sourceTree = "<group>";
@@ -296,10 +288,7 @@
 					873B5FDB1E2FB6970057D735 = {
 						CreatedOnToolsVersion = 8.2;
 						DevelopmentTeam = 879NQX5T3A;
-<<<<<<< HEAD
 						LastSwiftMigration = 0820;
-=======
->>>>>>> d3ab8abee534f72e0aa30047b4ef4d6a308f39ad
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
@@ -309,19 +298,13 @@
 					};
 					873B5FF21E2FB6980057D735 = {
 						CreatedOnToolsVersion = 8.2;
-<<<<<<< HEAD
 						LastSwiftMigration = 0820;
-=======
->>>>>>> d3ab8abee534f72e0aa30047b4ef4d6a308f39ad
 						ProvisioningStyle = Automatic;
 						TestTargetID = 873B5FDB1E2FB6970057D735;
 					};
 					873B5FFD1E2FB6980057D735 = {
 						CreatedOnToolsVersion = 8.2;
-<<<<<<< HEAD
 						LastSwiftMigration = 0820;
-=======
->>>>>>> d3ab8abee534f72e0aa30047b4ef4d6a308f39ad
 						ProvisioningStyle = Automatic;
 						TestTargetID = 873B5FDB1E2FB6970057D735;
 					};
@@ -382,10 +365,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				873B5FE81E2FB6970057D735 /* RadioAtlas.xcdatamodeld in Sources */,
-<<<<<<< HEAD
-				87C7FF1F1E54EAC4004533EC /* TableView.swift in Sources */,
-=======
->>>>>>> d3ab8abee534f72e0aa30047b4ef4d6a308f39ad
+				87C7FF1F1E54EAC4004533EC /* (null) in Sources */,
 				873B60231E2FBC5D0057D735 /* Convenience.swift in Sources */,
 				873B60281E2FBCFC0057D735 /* CoreDataStackManager.swift in Sources */,
 				873B60161E2FBBAF0057D735 /* TableViewController.swift in Sources */,
@@ -397,6 +377,7 @@
 				873B5FE01E2FB6970057D735 /* AppDelegate.swift in Sources */,
 				873B602A1E2FBD120057D735 /* RadioInfo.swift in Sources */,
 				87C7FF191E4E6790004533EC /* Music.swift in Sources */,
+				87E4158E1E589E700025EEFB /* TableView.swift in Sources */,
 				873B601F1E2FBC3B0057D735 /* Constants.swift in Sources */,
 				873B60211E2FBC4B0057D735 /* Client.swift in Sources */,
 			);
