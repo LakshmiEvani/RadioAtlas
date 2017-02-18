@@ -2,11 +2,8 @@
   "images" : [
     {
       "idiom" : "universal",
-<<<<<<< HEAD
       "filename" : "new-play.pdf"
-=======
-      "filename" : "play.pdf"
->>>>>>> d3ab8abee534f72e0aa30047b4ef4d6a308f39ad
+
     }
   ],
   "info" : {

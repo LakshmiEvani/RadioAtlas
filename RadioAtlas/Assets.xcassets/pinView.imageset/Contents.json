@@ -2,20 +2,7 @@
   "images" : [
     {
       "idiom" : "universal",
-<<<<<<< HEAD
       "filename" : "black.pdf"
-=======
-      "scale" : "1x"
-    },
-    {
-      "idiom" : "universal",
-      "filename" : "dot-Mac-Logo-icon.png",
-      "scale" : "2x"
-    },
-    {
-      "idiom" : "universal",
-      "scale" : "3x"
->>>>>>> d3ab8abee534f72e0aa30047b4ef4d6a308f39ad
     }
   ],
   "info" : {
