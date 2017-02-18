@@ -35,7 +35,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
     var sharedContext: NSManagedObjectContext = CoreDataStackManager.sharedInstance().managedObjectContext
    // var music = Music.sharedInstance()
     var annotations = [MKAnnotation]()
-    
+    let upperBound = 0.09
+    let lowerBound = 0.01
     
     // Life Cycle
     override func viewDidLoad() {
@@ -102,8 +103,19 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
                             
                             
                             /* Get the lat and lon values to create a coordinate */
-                            let lat = CLLocationDegrees(dictionary.latitude!)
-                            let lon = CLLocationDegrees(dictionary.longitude!)
+                            
+                            let range = self.upperBound - self.lowerBound
+                            var randomValue = (Double(arc4random_uniform(UINT32_MAX)) / Double(UINT32_MAX)) * range + self.lowerBound
+                            let  y = Double(round(randomValue * 100000)/100000)
+                            
+                             print(CLLocationDegrees(dictionary.latitude!))
+                             print(CLLocationDegrees(dictionary.longitude!))
+                            
+                            let lat = CLLocationDegrees(dictionary.latitude!) + CLLocationDegrees(y)
+                            let lon = CLLocationDegrees(dictionary.longitude!) + CLLocationDegrees(y)
+                            print(lat)
+                            print(lon)
+                            
                             let name = dictionary.name
                             let city = dictionary.city
                             let state = dictionary.state
@@ -128,6 +140,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
                             let annotation = PinAnnotation(id: id!, name: name!, streamUrl:streamUrl!, websiteURL: webUrl!,location: location, latitude: dictionary.latitude!, longitude: dictionary.longitude! )
                             
                             annotation.streamUrl = streamUrl
+                            
+                            
                             
                             // Finally we place the annotation in an array of annotations.
                             self.annotations.append(annotation)
@@ -166,7 +180,17 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         }
     }
     
+    //Generate a 4 preceision random number between .01 and .09
+
+     func random() -> Double {
+        
+        
+        let range = self.upperBound - self.lowerBound
+        let randomValue = (Double(arc4random_uniform(UINT32_MAX)) / Double(UINT32_MAX)) * range + self.lowerBound
+        return randomValue
+    }
     
+  
    /* func filterDuplicates( includeElement: @escaping (_ lhs:MKAnnotation, _ rhs:MKAnnotation) -> Bool) -> [MKAnnotation]{
         var results = [MKAnnotation]()
         
@@ -267,18 +291,18 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
             annotationView?.annotation = annotation
         }
         
-        
-        annotationView?.image = UIImage(named: "mappoint")
-        
-        for annotation in annotations {
+       if checkIfExists(name:annotation.title!!){
             
-            if (annotation.coordinate.latitude == annotation.coordinate.latitude) && (annotation.coordinate.longitude == annotation.coordinate.latitude) {
-                
-                annotationView?.image = UIImage(named: "multipleStationsPin")
-            }
+            annotationView?.image = UIImage(named: "favorite")
         }
-
+        
+        else {
+        annotationView?.image = UIImage(named: "mappoint")
+            
+        }
+        
         return annotationView
+       
         
     }
     

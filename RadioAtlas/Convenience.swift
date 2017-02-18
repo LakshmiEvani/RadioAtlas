@@ -18,6 +18,8 @@ extension Client {
         taskForGetMethodWithParameters( completionHandler: {
             (results, error) in
             
+           
+                
             let parsedResult = results
             //   print("The parsedResult are: ",parsedResult)
             
@@ -28,7 +30,7 @@ extension Client {
                 
                 // print("The parsed result of values are:",parsedResult?["values"] )
                 
-                if let result = parsedResult?["values"] as? [NSArray]{
+                if let result =  parsedResult?["values"] as? [NSArray]{
                     
                     var resultList = [NSArray]()
                     
@@ -36,17 +38,21 @@ extension Client {
                     
                     for i in result {
                         
-                        
-                        
                         count = count+1
                         
                         
-                        if count > 1500 {
+                        if count > 1500{
                             
                             break
                         }
-                        //   print(i)
+                           print(i)
                         
+                        let id = i[0] as? String
+                        let name = i[1] as? String
+                        let websiteURL = i[5] as? String
+                        let city = i[6] as? String
+                        let state = i[7] as? String
+                        let country = i[8] as? String
                         let latitude = i[3] as? String
                         let longitude = i[4] as? String
                         let streamUrl = i[2] as? String
@@ -55,18 +61,25 @@ extension Client {
                         
                         let y = NumberFormatter().number(from: longitude!)?.doubleValue
                         
+                      //  if id == nil || name == nil || websiteURL == nil  || city == nil || state == nil  || country == nil  {
+                        
                         if x != nil && y != nil && streamUrl != nil {
                             
                             //  print(" x, y: ", "\(x)\(y)")
                             
                             resultList.append(i)
+                            
                         } else {
                             
                             print("Error in latitude or longitude")
                         }
                         
-                    }
-                    
+                      //  } else {
+                            
+                            
+                        //}
+                
+                }
                     
                     // print("Student resultList",resultList)
                     

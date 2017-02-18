@@ -113,16 +113,13 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
         let favoriteObject = (fetchedResultsController?.object(at: indexPath))! as Station
         let cell = tableView.dequeueReusableCell(withIdentifier: "TableViewCell") as! TableViewCell
         
-        sharedContext.perform {
             cell.name.text = favoriteObject.name
             cell.location.text = favoriteObject.location
-            
-            
-            
+        
             // Set image
             self.configureCell(cell: cell, indexPath: indexPath as NSIndexPath)
             
-        }
+       
         
         return cell
     }
