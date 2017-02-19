@@ -47,15 +47,31 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         
         super.viewDidLoad()
         
+        mapView.showsPointsOfInterest = true
+        
         stepper.transform = CGAffineTransform.init(rotationAngle: 360.0 / 1.2)
+        initializations()
+        
+    }
+    
+    func initializations() {
+        
+        
+        
         appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.setNetworkActivityIndicatorVisible(visible: true)
-
+        
+        var worldRegion : MKCoordinateRegion
+        worldRegion = MKCoordinateRegionForMapRect(MKMapRectWorld)
+        mapView.setRegion(worldRegion,animated: false)
+        
         mapView.delegate = self
         self.addAnnotation()
+ 
         
-        determineCurrentLocation()
+        
     }
+
     
   
     func determineCurrentLocation() {
@@ -76,7 +92,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         let userLocation:CLLocation = locations.first! as CLLocation
         
         let center = CLLocationCoordinate2D(latitude: userLocation.coordinate.latitude, longitude: userLocation.coordinate.longitude)
-        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 10.01, longitudeDelta: 10.01))
+         let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 4.075, longitudeDelta: 4.075))
         
         mapView.setRegion(region, animated: true)
             }
@@ -96,8 +112,13 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
                 
                 if error == nil {
                     
+                    //RE* Begin
                     
+                    var counter : Int
+                    counter = 0
                     for dictionary in result!{
+                        
+                        counter = counter + 1
                         
                         
                         // Notice that the float values are being used to create CLLocationDegree values.
@@ -109,14 +130,44 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
                             /* Get the lat and lon values to create a coordinate */
                             let upperBound = 0.09
                             let lowerBound = 0.01
+                            var lat_temp : CLLocationDegrees
+                            var lon_temp : CLLocationDegrees
+                            
+                            
                             
                             let range = upperBound - lowerBound
                             var randomValue = (Double(arc4random_uniform(UINT32_MAX)) / Double(UINT32_MAX)) * range + lowerBound
                             let  y = Double(round(randomValue * 100000)/100000)
                             
-                            let lat = CLLocationDegrees(dictionary.latitude!) + CLLocationDegrees(y)
-                            let lon = CLLocationDegrees(dictionary.longitude!) + CLLocationDegrees(y)
-                                                    let name = dictionary.name
+                            // print(CLLocationDegrees(dictionary.latitude!))
+                            // print(CLLocationDegrees(dictionary.longitude!))
+                            
+                            if (counter % 8 == 0 || counter % 9 == 0) {
+                                lat_temp = CLLocationDegrees(dictionary.latitude!) + CLLocationDegrees(y)
+                                lon_temp = CLLocationDegrees(dictionary.longitude!) + CLLocationDegrees(y)
+                            }
+                            else if (counter % 6 == 0 || counter % 7 == 0) {
+                                lat_temp = CLLocationDegrees(dictionary.latitude!) - CLLocationDegrees(y)
+                                lon_temp = CLLocationDegrees(dictionary.longitude!) - CLLocationDegrees(y)
+                            }
+                            else if (counter % 4 == 0 || counter % 5 == 0) {
+                                lat_temp = CLLocationDegrees(dictionary.latitude!) - CLLocationDegrees(y)
+                                lon_temp = CLLocationDegrees(dictionary.longitude!) + CLLocationDegrees(y)
+                            }
+                            else {
+                                lat_temp = CLLocationDegrees(dictionary.latitude!) + CLLocationDegrees(y)
+                                lon_temp = CLLocationDegrees(dictionary.longitude!) - CLLocationDegrees(y)
+                            }
+                            
+                            let lat = lat_temp
+                            let lon = lon_temp
+                            
+                            //RE* End
+                            
+                            // print(lat)
+                            // print(lon)
+                            
+                            let name = dictionary.name
                             let city = dictionary.city
                             let state = dictionary.state
                             let country = dictionary.country
@@ -130,30 +181,48 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
                                 location = city! + ", " + state! +  ", " + country!
                                 
                             } else {
-                               
-                            location = city! +  ", " + country!
-
+                                
+                                location = city! +  ", " + country!
+                                
                             }
                             
                             // Here we create the annotation and set its coordiate, title, and subtitle properties
                             
-                            let annotation = PinAnnotation(id: id!, name: name!, streamUrl:streamUrl!, websiteURL: webUrl!,location: location, latitude: dictionary.latitude!, longitude: dictionary.longitude! )
+                            let annotation = PinAnnotation(id: id!, name: name!, streamUrl:streamUrl!, websiteURL: webUrl!,location: location, latitude: lat, longitude: lon )
                             
                             annotation.streamUrl = streamUrl
                             
-                            // Finally we place the annotation in an array of annotations.
-
-                            self.annotations.append(annotation)
                             
+                            
+                            // Finally we place the annotation in an array of annotations.
+                            
+                            //self.annotations.append(annotation)
+                            
+                            //RE* begin
+                            DispatchQueue.main.async() {
+                                self.mapView.addAnnotation(annotation)
+                                
+                            }
+                            //RE* end
                         }
                         
-                       // W hen the array is complete, we add the annotations to the map.
-                        self.mapView.addAnnotations(self.annotations)
                         
+                        // print("The annotations are: ", self.annotations)
+                        
+                        
+                        // When the array is complete, we add the annotations to the map.
+                        //self.mapView.addAnnotations(self.annotations)
                         
                     }
                     
-                    self.appDelegate.setNetworkActivityIndicatorVisible(visible: false)
+                    //RE* begin
+                    DispatchQueue.main.async() {
+                        self.appDelegate.setNetworkActivityIndicatorVisible(visible: false)
+                        self.determineCurrentLocation()
+                        
+                    }
+                    //RE* end
+                    
                     
                 } else {
                     
