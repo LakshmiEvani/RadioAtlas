@@ -29,7 +29,12 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
     var favoriteStation = [Station]()
     var favorite : Bool = false
     var annotations = [MKAnnotation]()
+    var mapViewZoomStepperValue: Double = -1.0
     @IBOutlet weak var playAndPause: UIButton!
+    
+  
+    @IBOutlet weak var stepper: UIStepper!
+    
     
     @IBOutlet weak var favoriteButton: UIButton!
     // Core Data Convenience. Useful for fetching, adding and saving objects
@@ -41,11 +46,15 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
+        stepper.transform = CGAffineTransform.init(rotationAngle: 360.0 / 1.2)
         appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.setNetworkActivityIndicatorVisible(visible: true)
 
-              mapView.delegate = self
-                self.addAnnotation()
+        mapView.delegate = self
+        self.addAnnotation()
+        
+        determineCurrentLocation()
     }
     
   
@@ -105,15 +114,9 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
                             var randomValue = (Double(arc4random_uniform(UINT32_MAX)) / Double(UINT32_MAX)) * range + lowerBound
                             let  y = Double(round(randomValue * 100000)/100000)
                             
-                             print(CLLocationDegrees(dictionary.latitude!))
-                             print(CLLocationDegrees(dictionary.longitude!))
-                            
                             let lat = CLLocationDegrees(dictionary.latitude!) + CLLocationDegrees(y)
                             let lon = CLLocationDegrees(dictionary.longitude!) + CLLocationDegrees(y)
-                            print(lat)
-                            print(lon)
-                            
-                            let name = dictionary.name
+                                                    let name = dictionary.name
                             let city = dictionary.city
                             let state = dictionary.state
                             let country = dictionary.country
@@ -138,19 +141,15 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
                             
                             annotation.streamUrl = streamUrl
                             
-                            
-                            
                             // Finally we place the annotation in an array of annotations.
 
                             self.annotations.append(annotation)
+                            
                         }
                         
-                        
-                        print("The annotations are: ", self.annotations)
-                        
-                                
-                        // When the array is complete, we add the annotations to the map.
+                       // W hen the array is complete, we add the annotations to the map.
                         self.mapView.addAnnotations(self.annotations)
+                        
                         
                     }
                     
@@ -181,25 +180,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
     
 
     
-    func tappedOnMap(sender: UITapGestureRecognizer) {
-        let location = sender.location(in: self.view)
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "TableView") as! TableView
-        vc.modalPresentationStyle = .popover
-        // vc.preferredContentSize = CGSizeMake(200, 150)
-        
-        if let popoverController = vc.popoverPresentationController {
-            // Create popover at tapped point.
-            popoverController.delegate = self
-            //   popoverController.sourceRect = CGRectMake(location.x, location.y, 20, 10)
-            popoverController.sourceView = self.view
-            self.present(vc, animated: true, completion: nil)
-        }
-    }
-
- 
-    
-    
     
     @IBAction func playAndPauseAction(_ sender: Any) {
         
@@ -227,6 +207,45 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         Music.sharedInstance.audioPlayer?.volume = currentValue
     }
     
+ 
+    func zoomInPinAnnotationLocation(targetMapViewName : MKMapView?, delta: Double)
+    {
+        var region: MKCoordinateRegion = targetMapViewName!.region
+        region.span.latitudeDelta /= delta
+        region.span.longitudeDelta /= delta
+        targetMapViewName!.region = region
+        
+    }
+    func zoomOutPinAnnotationLocation(targetMapViewName : MKMapView?,delta: Double)
+    {
+        var region: MKCoordinateRegion = targetMapViewName!.region
+        region.span.latitudeDelta *= delta
+        region.span.longitudeDelta *= delta
+        targetMapViewName!.region = region
+    }
+
+    
+    
+    @IBAction func zoonImAndOut(_ sender: Any) {
+        
+        if (stepper.value  > mapViewZoomStepperValue)
+        {
+            mapViewZoomStepperValue = mapViewZoomStepperValue + 1.0
+            
+            //Zoom In
+            
+           // mapView.isZoomEnabled = true
+            zoomInPinAnnotationLocation(targetMapViewName: mapView, delta: 3.0)
+        }
+        else
+        {
+            mapViewZoomStepperValue = stepper.value - 1.0
+            
+            //Zoom Out
+            zoomOutPinAnnotationLocation(targetMapViewName: mapView, delta: 3.0)
+        }
+
+    }
     
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
@@ -283,18 +302,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         
-        for annotation in annotations {
-            
-            if (annotation.coordinate.latitude == view.annotation?.coordinate.latitude) && (annotation.coordinate.longitude == view.annotation?.coordinate.latitude) {
-                let tapGesture = UITapGestureRecognizer(target: self, action: Selector("tappedOnMap:"))
-                view.isUserInteractionEnabled = true
-                view.addGestureRecognizer(tapGesture)
-                print("This coordinate already exist")
-                
-            }
-            
-        }
-        
         if view.annotation is MKUserLocation
         {
             // Don't proceed with custom callout
@@ -317,9 +324,10 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
             
             if let toOpen = annotationView.streamUrl {
                 
-                print("Music stream playing",toOpen)
+              //  print("Music stream playing",toOpen)
                
                 Music.sharedInstance.musicStream(music: toOpen)
+                self.playAndPause.setImage(UIImage(named: "pause"), for: .normal)
             }
             
         }
@@ -340,12 +348,12 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         
         do {
             let result = try self.sharedContext.fetch(fetchRequest)
-            print(result)
+            //print(result)
             
             for found in result {
-                print((found as! Station).name)
+              //  print((found as! Station).name)
                 if ((found as! Station).name == name) {
-                    print(name)
+                 //   print(name)
                     
                     return true
                 }
@@ -354,7 +362,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
             
         } catch {
             let fetchError = error as NSError
-            print(fetchError)
+          //  print(fetchError)
         }
         
         return false
@@ -362,6 +370,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
     
     func verifyUrl (urlString: String?) -> String {
         //Check for nil
+        
         if let urlString = urlString {
             // create NSURL instance
             if let url = NSURL(string: urlString) {
@@ -371,7 +380,9 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
                 let predicate = NSPredicate(format:"SELF MATCHES %@", argumentArray:[regEx])
                 if (predicate.evaluate(with: urlString) == false)
                 {
-                    return "http://" + urlString
+                    //return "http://" + urlString
+                    return urlString
+
                 }
                 
             }
@@ -456,7 +467,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
             
             let dest = segue.destination as! TableViewController
             dest.station = favoriteStation
-            print("There is data in favories", dest.station)
+          //  print("There is data in favories", dest.station)
             
         default:
             print("Unknown segue")

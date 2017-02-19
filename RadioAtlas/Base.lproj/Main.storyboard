@@ -74,6 +74,12 @@
                                     <segue destination="QDi-LV-j8K" kind="show" identifier="favoriteStations" id="pSh-OU-EqZ"/>
                                 </connections>
                             </button>
+                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="XBo-ht-DsJ">
+                                <rect key="frame" x="221" y="98" width="94" height="29"/>
+                                <connections>
+                                    <action selector="zoonImAndOut:" destination="tmg-mo-T3o" eventType="valueChanged" id="DuL-RC-MlD"/>
+                                </connections>
+                            </stepper>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -82,12 +88,14 @@
                             <constraint firstItem="UVV-WV-ibx" firstAttribute="centerY" secondItem="udh-qt-qjV" secondAttribute="centerY" id="B9O-tb-i6D"/>
                             <constraint firstItem="o2O-Le-CHD" firstAttribute="top" secondItem="UVV-WV-ibx" secondAttribute="bottom" constant="24" id="Gwn-Uh-J5s"/>
                             <constraint firstItem="7AF-W0-hZz" firstAttribute="leading" secondItem="Jba-SE-lO6" secondAttribute="leadingMargin" constant="10" id="I1a-Xj-vNK"/>
+                            <constraint firstItem="XBo-ht-DsJ" firstAttribute="top" secondItem="7yS-y9-ht0" secondAttribute="bottom" constant="34" id="ZyF-wy-BNb"/>
                             <constraint firstItem="bB8-uh-7h7" firstAttribute="centerX" secondItem="Jba-SE-lO6" secondAttribute="centerX" id="cMy-tV-e0t"/>
                             <constraint firstItem="bB8-uh-7h7" firstAttribute="top" secondItem="Jba-SE-lO6" secondAttribute="top" constant="20" symbolic="YES" id="crv-5a-NgE"/>
                             <constraint firstItem="udh-qt-qjV" firstAttribute="leading" secondItem="7AF-W0-hZz" secondAttribute="trailing" constant="21" id="dQ8-on-Cez"/>
                             <constraint firstItem="UVV-WV-ibx" firstAttribute="centerY" secondItem="7AF-W0-hZz" secondAttribute="centerY" id="eee-Y5-2Li"/>
                             <constraint firstItem="UVV-WV-ibx" firstAttribute="leading" secondItem="udh-qt-qjV" secondAttribute="trailing" constant="25" id="g1W-dU-A8r"/>
                             <constraint firstItem="udh-qt-qjV" firstAttribute="centerX" secondItem="Jba-SE-lO6" secondAttribute="centerX" constant="-3.5" id="ojt-TU-lsT"/>
+                            <constraint firstItem="XBo-ht-DsJ" firstAttribute="trailing" secondItem="Jba-SE-lO6" secondAttribute="trailingMargin" constant="11" id="unR-J6-ZUU"/>
                             <constraint firstItem="bB8-uh-7h7" firstAttribute="leading" secondItem="Jba-SE-lO6" secondAttribute="leadingMargin" constant="-27" id="vul-vL-Hdf"/>
                         </constraints>
                     </view>
@@ -96,6 +104,7 @@
                         <outlet property="favoriteButton" destination="UVV-WV-ibx" id="THK-I4-nRX"/>
                         <outlet property="mapView" destination="bB8-uh-7h7" id="inN-Sp-EsF"/>
                         <outlet property="playAndPause" destination="7AF-W0-hZz" id="d7o-Ac-mSv"/>
+                        <outlet property="stepper" destination="XBo-ht-DsJ" id="DQX-Fw-7Pa"/>
                         <outlet property="volumeControl" destination="udh-qt-qjV" id="R41-5q-KBC"/>
                         <segue destination="Kpc-D8-xBc" kind="show" identifier="stationDetails" id="y3w-l2-U3i"/>
                         <segue destination="gaT-6p-0yy" kind="presentation" id="nPy-RT-A7z"/>
@@ -103,7 +112,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XaR-vv-HOm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-620.23988005997012" y="29.600000000000001"/>
+            <point key="canvasLocation" x="-620.625" y="28.75"/>
         </scene>
         <!--DetailViewController-->
         <scene sceneID="FzL-Jt-Bdd">
@@ -256,6 +265,6 @@
     </scenes>
     <resources>
         <image name="favorites" width="103" height="103"/>
-        <image name="pause" width="125" height="125"/>
+        <image name="pause" width="122" height="122"/>
     </resources>
 </document>

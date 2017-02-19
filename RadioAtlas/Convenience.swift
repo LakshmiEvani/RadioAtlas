@@ -18,10 +18,6 @@ extension Client {
         taskForGetMethodWithParameters( completionHandler: {
             (results, error) in
             
-           
-                
-            let parsedResult = results
-            //   print("The parsedResult are: ",parsedResult)
             
             if error != nil {
                 completionHandler(nil, "Could not get results. in result")
@@ -30,7 +26,7 @@ extension Client {
                 
                 // print("The parsed result of values are:",parsedResult?["values"] )
                 
-                if let result =  parsedResult?["values"] as? [NSArray]{
+                if let result =  results?["values"] as? [NSArray]{
                     
                     var resultList = [NSArray]()
                     
@@ -38,46 +34,50 @@ extension Client {
                     
                     for i in result {
                         
+                do {
+                    
                         count = count+1
+                    //print(count)
+                    
+                                           
+                    
+                         //  print(i)
                         
-                        if count > 1500 {
-                            break
-                        }
-                           print(i)
-                        
-                        let id = i[0] as? String
-                        let name = i[1] as? String
-                        let websiteURL = i[5] as? String
-                        let city = i[6] as? String
-                        let state = i[7] as? String
-                        let country = i[8] as? String
-                        let latitude = i[3] as? String
-                        let longitude = i[4] as? String
+                      _ = try i[0] as? String
+                        _ = try i[1] as? String
+                        _ = try i[5] as? String
+                        _ = try i[6] as? String
+                        _ = try i[7] as? String
+                        _ = try i[8] as? String
+                        let latitude =  i[3] as? String
+                        let longitude =  i[4] as? String
                         let streamUrl = i[2] as? String
                         
-                        let x = NumberFormatter().number(from: latitude!)?.doubleValue
+                        let x = try NumberFormatter().number(from: latitude!)?.doubleValue
                         
-                        let y = NumberFormatter().number(from: longitude!)?.doubleValue
+                        let y = try NumberFormatter().number(from: longitude!)?.doubleValue
                         
                       //  if id == nil || name == nil || websiteURL == nil  || city == nil || state == nil  || country == nil  {
                         
-                        if x != nil && y != nil && streamUrl != nil {
+                        if x != nil && y != nil && streamUrl != nil  {
                             
                             //  print(" x, y: ", "\(x)\(y)")
                             
-                            resultList.append(i)
+                            try resultList.append(i)
                             
                         } else {
                             
                             print("Error in latitude or longitude")
                         }
                         
-                      //  } else {
+                      } catch {
                             
-                            
-                        //}
+                            print("Error in the element",i)
+                    }
                 
                 }
+                    
+                    
                     
                     // print("Student resultList",resultList)
                     
@@ -93,6 +93,9 @@ extension Client {
                     
                     completionHandler(self.radioStations, nil)
                     
+                } else {
+                    
+                     completionHandler([], "Could not get results. in result")
                 }
                 
                 

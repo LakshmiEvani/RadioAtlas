@@ -27,7 +27,7 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     var audioPlayer:AVPlayer!
     var selectedIndexPath: [IndexPath]!
-   // var music = Music.sharedInstance()
+  
     
     //life cycle methods
     
@@ -43,13 +43,13 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "streamURL", ascending: true)]
         
-        print("The fetch request is", fetchRequest)
+       // print("The fetch request is", fetchRequest)
         
         // Create the Fetched Results Controller
         fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: sharedContext, sectionNameKeyPath: nil, cacheName: nil)
         perFormFetch()
         fetchedResultsController.delegate = self
-        print("Items in fetched Results controller: ",fetchedResultsController)
+        //print("Items in fetched Results controller: ",fetchedResultsController)
     }
     
     // MARK: - TableViewController (Fetches)

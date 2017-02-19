@@ -13,7 +13,7 @@ extension Client{
     // MARK: Radio Station Constant values
     struct Constants {
         
-        static let BaseUrl = "https://sheets.googleapis.com/v4/spreadsheets/1BTI4xTfrAu3oSrXATb6VfpXxVHhS85BdD7hLW7sJvBU/values/A2:I2000?key=AIzaSyBo1OtS_4J6SFtSwtGZldqgW3ZnMypJljc"
+        static let BaseUrl = "https://sheets.googleapis.com/v4/spreadsheets/1BTI4xTfrAu3oSrXATb6VfpXxVHhS85BdD7hLW7sJvBU/values/A2:I10000?key=AIzaSyBo1OtS_4J6SFtSwtGZldqgW3ZnMypJljc"
         
     }
     
