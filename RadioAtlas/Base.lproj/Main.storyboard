@@ -86,6 +86,15 @@
                                     <action selector="zoonImAndOut:" destination="tmg-mo-T3o" eventType="valueChanged" id="DuL-RC-MlD"/>
                                 </connections>
                             </stepper>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" editable="NO" text="Loading Radio Stations" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fb2-Ol-aye">
+                                <rect key="frame" x="40" y="269" width="240" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="MMx-p0-aKY"/>
+                                </constraints>
+                                <color key="textColor" red="0.035294117647058823" green="0.29019607843137257" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -96,14 +105,17 @@
                             <constraint firstItem="7AF-W0-hZz" firstAttribute="leading" secondItem="Jba-SE-lO6" secondAttribute="leadingMargin" constant="10" id="I1a-Xj-vNK"/>
                             <constraint firstItem="XBo-ht-DsJ" firstAttribute="centerX" secondItem="UVV-WV-ibx" secondAttribute="centerX" id="Jms-8K-Ysz"/>
                             <constraint firstItem="tJP-a8-iaI" firstAttribute="centerY" secondItem="bB8-uh-7h7" secondAttribute="centerY" id="QEI-Vq-y14"/>
+                            <constraint firstItem="fb2-Ol-aye" firstAttribute="top" secondItem="tJP-a8-iaI" secondAttribute="bottom" id="Unv-N9-V04"/>
                             <constraint firstItem="tJP-a8-iaI" firstAttribute="centerX" secondItem="udh-qt-qjV" secondAttribute="centerX" id="Xxj-qy-sbr"/>
                             <constraint firstItem="bB8-uh-7h7" firstAttribute="centerX" secondItem="Jba-SE-lO6" secondAttribute="centerX" id="cMy-tV-e0t"/>
                             <constraint firstItem="bB8-uh-7h7" firstAttribute="top" secondItem="Jba-SE-lO6" secondAttribute="top" constant="20" symbolic="YES" id="crv-5a-NgE"/>
+                            <constraint firstItem="fb2-Ol-aye" firstAttribute="leading" secondItem="Jba-SE-lO6" secondAttribute="leadingMargin" constant="24" id="cyd-LW-A2h"/>
                             <constraint firstItem="udh-qt-qjV" firstAttribute="leading" secondItem="7AF-W0-hZz" secondAttribute="trailing" constant="21" id="dQ8-on-Cez"/>
                             <constraint firstItem="UVV-WV-ibx" firstAttribute="centerY" secondItem="7AF-W0-hZz" secondAttribute="centerY" id="eee-Y5-2Li"/>
                             <constraint firstItem="UVV-WV-ibx" firstAttribute="leading" secondItem="udh-qt-qjV" secondAttribute="trailing" constant="25" id="g1W-dU-A8r"/>
                             <constraint firstItem="XBo-ht-DsJ" firstAttribute="top" secondItem="7yS-y9-ht0" secondAttribute="bottom" constant="8" symbolic="YES" id="mJG-yu-Xya"/>
                             <constraint firstItem="udh-qt-qjV" firstAttribute="centerX" secondItem="Jba-SE-lO6" secondAttribute="centerX" constant="-3.5" id="ojt-TU-lsT"/>
+                            <constraint firstItem="fb2-Ol-aye" firstAttribute="centerX" secondItem="bB8-uh-7h7" secondAttribute="centerX" id="qB0-TI-cIL"/>
                             <constraint firstItem="bB8-uh-7h7" firstAttribute="leading" secondItem="Jba-SE-lO6" secondAttribute="leadingMargin" constant="-27" id="vul-vL-Hdf"/>
                         </constraints>
                     </view>
@@ -113,6 +125,7 @@
                         <outlet property="favoriteButton" destination="UVV-WV-ibx" id="THK-I4-nRX"/>
                         <outlet property="mapView" destination="bB8-uh-7h7" id="inN-Sp-EsF"/>
                         <outlet property="playAndPause" destination="7AF-W0-hZz" id="d7o-Ac-mSv"/>
+                        <outlet property="progressMessage" destination="fb2-Ol-aye" id="UAX-fW-zdp"/>
                         <outlet property="stepper" destination="XBo-ht-DsJ" id="DQX-Fw-7Pa"/>
                         <outlet property="volumeControl" destination="udh-qt-qjV" id="R41-5q-KBC"/>
                         <segue destination="Kpc-D8-xBc" kind="show" identifier="stationDetails" id="y3w-l2-U3i"/>
@@ -172,7 +185,7 @@
                                         <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rUc-Ss-BbH" id="tsk-sT-PbT">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -219,7 +232,7 @@
                                         <rect key="frame" x="0.0" y="28" width="344" height="55"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VVm-P0-Ydo" id="M5L-R4-1zb">
-                                            <rect key="frame" x="0.0" y="0.0" width="344" height="55"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="344" height="54"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ffz-S1-kDP">

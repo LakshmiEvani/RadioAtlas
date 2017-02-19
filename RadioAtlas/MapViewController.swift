@@ -20,6 +20,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
     @IBOutlet var mapView: MKMapView!
     
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
+    @IBOutlet weak var progressMessage: UITextView!
     @IBOutlet weak var volumeControl: UISlider!
     // Properties
     
@@ -97,6 +99,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         
         mapView.setRegion(region, animated: true)
         activityIndicator.isHidden = true
+        progressMessage.isHidden = true
             }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
@@ -203,6 +206,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
                             //RE* begin
                             DispatchQueue.main.async() {
                                 self.mapView.addAnnotation(annotation)
+                                self.progressMessage.text = "Loading " + String(counter) + " Radio Stations"
                                 
                             }
                             //RE* end
