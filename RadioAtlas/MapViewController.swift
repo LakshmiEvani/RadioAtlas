@@ -19,6 +19,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
     
     @IBOutlet var mapView: MKMapView!
     
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var volumeControl: UISlider!
     // Properties
     
@@ -95,6 +96,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
          let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 4.075, longitudeDelta: 4.075))
         
         mapView.setRegion(region, animated: true)
+        activityIndicator.isHidden = true
             }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
