@@ -467,9 +467,31 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
             
             mapView.setRegion(region, animated: true)
             
+            let annotationView = closestStation as! PinAnnotation
+            
+            if (self.checkIfExists(name: annotationView.name))
+            {
+                view.leftCalloutAccessoryView = nil
+            }
+            
+            if let toOpen = annotationView.streamUrl {
+                
+                //  print("Music stream playing",toOpen)
+                
+                Music.sharedInstance.musicStream(music: toOpen)
+                self.playAndPause.setImage(UIImage(named: "pause"), for: .normal)
+            }
+            
+            
+            mapView.addAnnotation(closestStation)
+            mapView.selectAnnotation(closestStation, animated: true)
+            
+            
+            return
+            
         }
         
-        return
+        
         
         if view.annotation is MKUserLocation
         {
