@@ -13,6 +13,7 @@ import AVFoundation
 import CoreLocation
 
 
+
 class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDelegate, CLLocationManagerDelegate, NSFetchedResultsControllerDelegate, UIPopoverPresentationControllerDelegate {
     
     //Outlets
@@ -33,10 +34,15 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
     var favorite : Bool = false
     var annotations = [MKAnnotation]()
     var mapViewZoomStepperValue: Double = -1.0
+    
+    let clusteringManager = FBClusteringManager()
+    let configuration = FBAnnotationClusterViewConfiguration.default()
+    //var userLoc : CLLocation = 0.0
+    
     @IBOutlet weak var playAndPause: UIButton!
     
   
-    @IBOutlet weak var stepper: UIStepper!
+
     
     
     @IBOutlet weak var favoriteButton: UIButton!
@@ -52,7 +58,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         
         mapView.showsPointsOfInterest = true
         
-        stepper.transform = CGAffineTransform.init(rotationAngle: 360.0 / 1.2)
+    
         initializations()
         
     }
@@ -64,18 +70,23 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.setNetworkActivityIndicatorVisible(visible: true)
         
-        var worldRegion : MKCoordinateRegion
-        worldRegion = MKCoordinateRegionForMapRect(MKMapRectWorld)
-        mapView.setRegion(worldRegion,animated: false)
-        
+        setWorldRegion()
         mapView.delegate = self
         self.addAnnotation()
  
         
         
     }
+    
+    func setWorldRegion() {
+        var worldRegion : MKCoordinateRegion
+        worldRegion = MKCoordinateRegionForMapRect(MKMapRectWorld)
+        mapView.setRegion(worldRegion,animated: false)
+
+    }
 
     
+   
   
     func determineCurrentLocation() {
         locationManager = CLLocationManager()
@@ -93,11 +104,13 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let userLocation:CLLocation = locations.first! as CLLocation
+        //userLoc = userLocation
         
         let center = CLLocationCoordinate2D(latitude: userLocation.coordinate.latitude, longitude: userLocation.coordinate.longitude)
          let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 4.075, longitudeDelta: 4.075))
         
-        mapView.setRegion(region, animated: true)
+        //mapView.setRegion(region, animated: true)
+        setWorldRegion()
         activityIndicator.isHidden = true
         progressMessage.isHidden = true
             }
@@ -109,6 +122,10 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
     
     
     func addAnnotation(){
+        
+        var closestStation : String
+        var distanceToStation : CLLocationDegrees
+        distanceToStation = 200.0
         
         client.getStations { (result, error) in
             
@@ -163,6 +180,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
                                 lat_temp = CLLocationDegrees(dictionary.latitude!) + CLLocationDegrees(y)
                                 lon_temp = CLLocationDegrees(dictionary.longitude!) - CLLocationDegrees(y)
                             }
+                      
                             
                             let lat = lat_temp
                             let lon = lon_temp
@@ -201,11 +219,12 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
                             
                             // Finally we place the annotation in an array of annotations.
                             
-                            //self.annotations.append(annotation)
+                            self.annotations.append(annotation)
                             
                             //RE* begin
                             DispatchQueue.main.async() {
-                                self.mapView.addAnnotation(annotation)
+                                
+                                //self.mapView.addAnnotation(annotation)
                                 self.progressMessage.text = "Loading " + String(counter) + " Radio Stations"
                                 
                             }
@@ -223,10 +242,16 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
                     
                     //RE* begin
                     DispatchQueue.main.async() {
+                        
+                        self.clusteringManager.add(annotations: self.annotations)
+                        self.clusteringManager.delegate = self
                         self.appDelegate.setNetworkActivityIndicatorVisible(visible: false)
                         self.determineCurrentLocation()
                         
                     }
+                    
+                    
+                  
                     //RE* end
                     
                     
@@ -251,6 +276,18 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
             }
             
         }
+    }
+    
+    func playClosestStation(closestStation :String)
+    
+    {
+        sharedContext.perform {
+            
+            Music.sharedInstance.musicStream(music: closestStation)
+            self.playAndPause.setImage(UIImage(named: "pause"), for: .normal)
+            
+        }
+
     }
     
 
@@ -300,35 +337,33 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
     }
 
     
-    
-    @IBAction func zoonImAndOut(_ sender: Any) {
-        
-        if (stepper.value  > mapViewZoomStepperValue)
-        {
-            mapViewZoomStepperValue = mapViewZoomStepperValue + 1.0
-            
-            //Zoom In
-            
-           // mapView.isZoomEnabled = true
-            zoomInPinAnnotationLocation(targetMapViewName: mapView, delta: 3.0)
-        }
-        else
-        {
-            mapViewZoomStepperValue = stepper.value - 1.0
-            
-            //Zoom Out
-            zoomOutPinAnnotationLocation(targetMapViewName: mapView, delta: 3.0)
-        }
+   
 
-    }
     
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        
+        var reuseId = ""
         
         if annotation is MKUserLocation
         {
             return nil
         }
+        
+        if annotation is FBAnnotationCluster {
+            
+            reuseId = "Cluster"
+            var clusterView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId)
+            if clusterView == nil {
+                clusterView = FBAnnotationClusterView(annotation: annotation, reuseIdentifier: reuseId, configuration: self.configuration)
+            } else {
+                clusterView?.annotation = annotation
+            }
+            
+            return clusterView
+            
+        }
+        
         var annotationView = self.mapView.dequeueReusableAnnotationView(withIdentifier: "Pin")
 
         if annotationView == nil{
@@ -370,12 +405,71 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         
     }
     
+    func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+        
+        DispatchQueue.global(qos: .userInitiated).async {
+            let mapBoundsWidth = Double(self.mapView.bounds.size.width)
+            let mapRectWidth = self.mapView.visibleMapRect.size.width
+            let scale = mapBoundsWidth / mapRectWidth
+            
+            let annotationArray = self.clusteringManager.clusteredAnnotations(withinMapRect: self.mapView.visibleMapRect, zoomScale:scale)
+            
+            DispatchQueue.main.async {
+                self.clusteringManager.display(annotations: annotationArray, onMapView:self.mapView)
+            }
+        }
+        
+    }
     
+    func findClosestStation(annotations:[MKAnnotation], coordinate:CLLocationCoordinate2D) -> MKAnnotation {
+        var closest : MKAnnotation = annotations[0]
+        
+        //Max possible distance between 2 points
+        var distance = CLLocationDistance(20036332.8)
+        
+        
+        for annotation in annotations {
+            
+            let annotationCoord : CLLocation = CLLocation(latitude: annotation.coordinate.latitude,longitude: annotation.coordinate.longitude)
+            let clusterCoord : CLLocation = CLLocation(latitude: coordinate.latitude,longitude: coordinate.longitude)
+            
+            if (clusterCoord.distance(from: annotationCoord) <= distance) {
+                closest = annotation
+                distance = clusterCoord.distance(from: annotationCoord)
+            }
+            
+        }
+        
+        return closest
+    }
+  
     
     // This delegate method is implemented to respond to taps. It opens the system browser
     // to the URL specified in the annotationViews subtitle property.
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        
+        
+        
+        if view is FBAnnotationClusterView {
+            //let annotationCluster = view.annotation as! FBAnnotation
+            
+            var clusterAnnotations : [MKAnnotation]
+            var closestStation : MKAnnotation
+            
+            let cView = view as! FBAnnotationClusterView
+            clusterAnnotations = cView.getClusterAnnotations()
+            closestStation = findClosestStation(annotations: cView.getClusterAnnotations(),coordinate: (cView.annotation?.coordinate)!)
+           
+            let span = MKCoordinateSpanMake(3.5, 3.5)
+            
+            let region = MKCoordinateRegion(center: closestStation.coordinate, span: span)
+            
+            mapView.setRegion(region, animated: true)
+            
+        }
+        
+        return
         
         if view.annotation is MKUserLocation
         {
@@ -559,5 +653,11 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
     
 }
 
+extension MapViewController : FBClusteringManagerDelegate {
+    
+    func cellSizeFactor(forCoordinator coordinator:FBClusteringManager) -> CGFloat {
+        return 1.0
+    }
+}
 
 

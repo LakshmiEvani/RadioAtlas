@@ -7,6 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4B7275221E5A8CF0004D9A33 /* FBAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7275171E5A8CF0004D9A33 /* FBAnnotation.swift */; };
+		4B7275231E5A8CF0004D9A33 /* FBAnnotationCluster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7275181E5A8CF0004D9A33 /* FBAnnotationCluster.swift */; };
+		4B7275241E5A8CF0004D9A33 /* FBAnnotationClusterTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7275191E5A8CF0004D9A33 /* FBAnnotationClusterTemplate.swift */; };
+		4B7275251E5A8CF0004D9A33 /* FBAnnotationClusterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B72751A1E5A8CF0004D9A33 /* FBAnnotationClusterView.swift */; };
+		4B7275261E5A8CF0004D9A33 /* FBAnnotationClusterViewConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B72751B1E5A8CF0004D9A33 /* FBAnnotationClusterViewConfiguration.swift */; };
+		4B7275281E5A8CF0004D9A33 /* FBBoundingBox+MapKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B72751D1E5A8CF0004D9A33 /* FBBoundingBox+MapKit.swift */; };
+		4B7275291E5A8CF0004D9A33 /* FBClusteringManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B72751E1E5A8CF0004D9A33 /* FBClusteringManager.swift */; };
+		4B72752A1E5A8CF0004D9A33 /* FBQuadTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B72751F1E5A8CF0004D9A33 /* FBQuadTree.swift */; };
+		4B72752B1E5A8CF0004D9A33 /* FBQuadTreeNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7275201E5A8CF0004D9A33 /* FBQuadTreeNode.swift */; };
+		4B72752C1E5A8CF0004D9A33 /* FBZoomLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7275211E5A8CF0004D9A33 /* FBZoomLevel.swift */; };
+		4B72752E1E5A8DD1004D9A33 /* FBBoundingBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B72752D1E5A8DD1004D9A33 /* FBBoundingBox.swift */; };
 		873B5FE01E2FB6970057D735 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873B5FDF1E2FB6970057D735 /* AppDelegate.swift */; };
 		873B5FE21E2FB6970057D735 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873B5FE11E2FB6970057D735 /* MapViewController.swift */; };
 		873B5FE51E2FB6970057D735 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B5FE31E2FB6970057D735 /* Main.storyboard */; };
@@ -51,6 +62,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4B7275171E5A8CF0004D9A33 /* FBAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBAnnotation.swift; sourceTree = "<group>"; };
+		4B7275181E5A8CF0004D9A33 /* FBAnnotationCluster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBAnnotationCluster.swift; sourceTree = "<group>"; };
+		4B7275191E5A8CF0004D9A33 /* FBAnnotationClusterTemplate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBAnnotationClusterTemplate.swift; sourceTree = "<group>"; };
+		4B72751A1E5A8CF0004D9A33 /* FBAnnotationClusterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBAnnotationClusterView.swift; sourceTree = "<group>"; };
+		4B72751B1E5A8CF0004D9A33 /* FBAnnotationClusterViewConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBAnnotationClusterViewConfiguration.swift; sourceTree = "<group>"; };
+		4B72751D1E5A8CF0004D9A33 /* FBBoundingBox+MapKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FBBoundingBox+MapKit.swift"; sourceTree = "<group>"; };
+		4B72751E1E5A8CF0004D9A33 /* FBClusteringManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBClusteringManager.swift; sourceTree = "<group>"; };
+		4B72751F1E5A8CF0004D9A33 /* FBQuadTree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBQuadTree.swift; sourceTree = "<group>"; };
+		4B7275201E5A8CF0004D9A33 /* FBQuadTreeNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBQuadTreeNode.swift; sourceTree = "<group>"; };
+		4B7275211E5A8CF0004D9A33 /* FBZoomLevel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBZoomLevel.swift; sourceTree = "<group>"; };
+		4B72752D1E5A8DD1004D9A33 /* FBBoundingBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBBoundingBox.swift; sourceTree = "<group>"; };
 		873B5FDC1E2FB6970057D735 /* RadioAtlas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RadioAtlas.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		873B5FDF1E2FB6970057D735 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		873B5FE11E2FB6970057D735 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -133,8 +155,6 @@
 		873B5FDE1E2FB6970057D735 /* RadioAtlas */ = {
 			isa = PBXGroup;
 			children = (
-				873B5FDF1E2FB6970057D735 /* AppDelegate.swift */,
-				873B5FEE1E2FB6970057D735 /* Info.plist */,
 				873B60241E2FBCB50057D735 /* Model */,
 				873B601B1E2FBC030057D735 /* API */,
 				873B60191E2FBBCA0057D735 /* Assets */,
@@ -164,6 +184,19 @@
 		873B60101E2FBB4E0057D735 /* View Controller */ = {
 			isa = PBXGroup;
 			children = (
+				4B72752D1E5A8DD1004D9A33 /* FBBoundingBox.swift */,
+				4B7275171E5A8CF0004D9A33 /* FBAnnotation.swift */,
+				4B7275181E5A8CF0004D9A33 /* FBAnnotationCluster.swift */,
+				4B7275191E5A8CF0004D9A33 /* FBAnnotationClusterTemplate.swift */,
+				4B72751A1E5A8CF0004D9A33 /* FBAnnotationClusterView.swift */,
+				4B72751B1E5A8CF0004D9A33 /* FBAnnotationClusterViewConfiguration.swift */,
+				4B72751D1E5A8CF0004D9A33 /* FBBoundingBox+MapKit.swift */,
+				4B72751E1E5A8CF0004D9A33 /* FBClusteringManager.swift */,
+				4B72751F1E5A8CF0004D9A33 /* FBQuadTree.swift */,
+				4B7275201E5A8CF0004D9A33 /* FBQuadTreeNode.swift */,
+				4B7275211E5A8CF0004D9A33 /* FBZoomLevel.swift */,
+				873B5FDF1E2FB6970057D735 /* AppDelegate.swift */,
+				873B5FEE1E2FB6970057D735 /* Info.plist */,
 				873B5FE11E2FB6970057D735 /* MapViewController.swift */,
 				873B60111E2FBB820057D735 /* Reachability.swift */,
 				873B60131E2FBB9A0057D735 /* PinAnnotation.swift */,
@@ -361,17 +394,28 @@
 			buildActionMask = 2147483647;
 			files = (
 				873B5FE81E2FB6970057D735 /* RadioAtlas.xcdatamodeld in Sources */,
+				4B7275291E5A8CF0004D9A33 /* FBClusteringManager.swift in Sources */,
 				873B60231E2FBC5D0057D735 /* Convenience.swift in Sources */,
 				873B60281E2FBCFC0057D735 /* CoreDataStackManager.swift in Sources */,
 				873B60161E2FBBAF0057D735 /* TableViewController.swift in Sources */,
+				4B7275261E5A8CF0004D9A33 /* FBAnnotationClusterViewConfiguration.swift in Sources */,
+				4B7275251E5A8CF0004D9A33 /* FBAnnotationClusterView.swift in Sources */,
 				873B5FE21E2FB6970057D735 /* MapViewController.swift in Sources */,
+				4B72752B1E5A8CF0004D9A33 /* FBQuadTreeNode.swift in Sources */,
 				873B60141E2FBB9A0057D735 /* PinAnnotation.swift in Sources */,
 				873B60121E2FBB820057D735 /* Reachability.swift in Sources */,
 				873B60181E2FBBC00057D735 /* TableViewCell.swift in Sources */,
+				4B7275221E5A8CF0004D9A33 /* FBAnnotation.swift in Sources */,
+				4B7275231E5A8CF0004D9A33 /* FBAnnotationCluster.swift in Sources */,
 				873B60311E2FBE6E0057D735 /* Station+CoreDataClass.swift in Sources */,
+				4B7275281E5A8CF0004D9A33 /* FBBoundingBox+MapKit.swift in Sources */,
+				4B7275241E5A8CF0004D9A33 /* FBAnnotationClusterTemplate.swift in Sources */,
 				873B5FE01E2FB6970057D735 /* AppDelegate.swift in Sources */,
 				873B602A1E2FBD120057D735 /* RadioInfo.swift in Sources */,
+				4B72752E1E5A8DD1004D9A33 /* FBBoundingBox.swift in Sources */,
+				4B72752A1E5A8CF0004D9A33 /* FBQuadTree.swift in Sources */,
 				87C7FF191E4E6790004533EC /* Music.swift in Sources */,
+				4B72752C1E5A8CF0004D9A33 /* FBZoomLevel.swift in Sources */,
 				873B601F1E2FBC3B0057D735 /* Constants.swift in Sources */,
 				873B60211E2FBC4B0057D735 /* Client.swift in Sources */,
 			);
