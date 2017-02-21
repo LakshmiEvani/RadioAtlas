@@ -111,6 +111,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         
         //Paint the annotations by setting region
         setWorldRegion(animated: false)
+        activityIndicator.isHidden = true
+        progressMessage.isHidden = true
         
         locationManager = CLLocationManager()
         
@@ -134,8 +136,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         
         //mapView.setRegion(region, animated: true)
         
-        activityIndicator.isHidden = true
-        progressMessage.isHidden = true
+       
             }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
