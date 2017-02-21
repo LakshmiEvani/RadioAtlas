@@ -106,7 +106,7 @@ public class FBClusteringManager {
 
 				switch count {
 				case 0: break
-				case 1...20:
+				case 1...10:
 					clusteredAnnotations += annotations
 				default:
 					let coordinate = CLLocationCoordinate2D(

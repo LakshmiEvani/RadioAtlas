@@ -13,6 +13,24 @@ import AVFoundation
 import CoreLocation
 
 
+extension MKMapView {
+    
+    // delta is the zoom factor
+    // 2 will zoom out x2
+    // .5 will zoom in by x2
+    
+    func setZoomByDelta(delta: Double, animated: Bool, center: CLLocationCoordinate2D) {
+        var _region = region;
+        var _span = region.span;
+        _span.latitudeDelta *= delta;
+        _span.longitudeDelta *= delta;
+        _region.span = _span;
+        _region.center = center
+        
+        setRegion(_region, animated: animated)
+    }
+}
+
 
 class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDelegate, CLLocationManagerDelegate, NSFetchedResultsControllerDelegate, UIPopoverPresentationControllerDelegate {
     
@@ -466,12 +484,9 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
             let cView = view as! FBAnnotationClusterView
             clusterAnnotations = cView.getClusterAnnotations()
             closestStation = findClosestStation(annotations: cView.getClusterAnnotations(),coordinate: (cView.annotation?.coordinate)!)
-           
-            let span = MKCoordinateSpanMake(3.5, 3.5)
+     
             
-            let region = MKCoordinateRegion(center: closestStation.coordinate, span: span)
-            
-            mapView.setRegion(region, animated: true)
+            mapView.setZoomByDelta(delta: 0.03125, animated: true, center: closestStation.coordinate)
             
             let annotationView = closestStation as! PinAnnotation
             
