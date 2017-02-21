@@ -22,6 +22,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
     
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
+    @IBOutlet weak var btnWorld: UIButton!
     @IBOutlet weak var progressMessage: UITextView!
     @IBOutlet weak var volumeControl: UISlider!
     // Properties
@@ -70,7 +71,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.setNetworkActivityIndicatorVisible(visible: true)
         
-        setWorldRegion()
+        setWorldRegion(animated: false)
         mapView.delegate = self
         self.addAnnotation()
  
@@ -78,10 +79,10 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         
     }
     
-    func setWorldRegion() {
+    func setWorldRegion(animated: Bool) {
         var worldRegion : MKCoordinateRegion
         worldRegion = MKCoordinateRegionForMapRect(MKMapRectWorld)
-        mapView.setRegion(worldRegion,animated: false)
+        mapView.setRegion(worldRegion,animated: animated)
 
     }
 
@@ -110,7 +111,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
          let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 4.075, longitudeDelta: 4.075))
         
         //mapView.setRegion(region, animated: true)
-        setWorldRegion()
+        setWorldRegion(animated: false)
         activityIndicator.isHidden = true
         progressMessage.isHidden = true
             }
@@ -120,6 +121,11 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
     }
     
     
+    @IBAction func btnWorldClick(_ sender: Any) {
+        
+        setWorldRegion(animated: true)
+        
+    }
     
     func addAnnotation(){
         
