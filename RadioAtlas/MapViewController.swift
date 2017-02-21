@@ -108,6 +108,10 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
    
   
     func determineCurrentLocation() {
+        
+        //Paint the annotations by setting region
+        setWorldRegion(animated: false)
+        
         locationManager = CLLocationManager()
         
         // For use in foreground
@@ -129,7 +133,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
          let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 4.075, longitudeDelta: 4.075))
         
         //mapView.setRegion(region, animated: true)
-        setWorldRegion(animated: false)
+        
         activityIndicator.isHidden = true
         progressMessage.isHidden = true
             }
