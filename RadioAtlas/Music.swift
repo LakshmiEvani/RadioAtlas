@@ -14,16 +14,17 @@ class Music {
     
     static var sharedInstance = Music()
     var isPlaying = false
-    var audioPlayer:AVPlayer!
+    var audioPlayer:RadioAVPlayer!
     var appDelegate = UIApplication.shared.delegate as! AppDelegate
+  
+    
     
     private init() {
-        print(musicStream)
+     //   print(musicStream)
     }
 
 
-       func musicStream(music: String){
-        
+    func musicStream(playerItem: RadioAVPlayerItem){
         
         //Setting music stream
         
@@ -31,13 +32,12 @@ class Music {
             
             do
             {
-                
                 let audioSession = AVAudioSession.sharedInstance()
                 try audioSession.setCategory(AVAudioSessionCategoryPlayback)
+            
                 
-                let fileURL = NSURL(string: music)
-                let playerItem = AVPlayerItem(url: fileURL as! URL)
-                self.audioPlayer = AVPlayer(playerItem: playerItem)
+                self.audioPlayer = RadioAVPlayer(playerItem: playerItem)
+                
                 self.audioPlayer!.play()
                 self.isPlaying = true
                 self.appDelegate.setNetworkActivityIndicatorVisible(visible: true)
@@ -47,9 +47,12 @@ class Music {
                 print(error.localizedDescription)
             } catch {
                 print("AVAudioPlayer init failed")
+ 
                 
             }
         }
     }
+    
+    
        
 }

@@ -130,7 +130,9 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
         tableView.deselectRow(at: indexPath, animated: true)
         let favoriteObject = (fetchedResultsController?.object(at: indexPath))! as Station
         
-       Music.sharedInstance.musicStream(music: favoriteObject.streamURL!)
+        var playerItem = AVPlayerItem(url: NSURL(string: favoriteObject.streamURL!) as! URL)
+        
+        Music.sharedInstance.musicStream(playerItem: playerItem as! RadioAVPlayerItem)
         
         
     }
