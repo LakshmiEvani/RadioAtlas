@@ -11,6 +11,7 @@ import MapKit
 import CoreData
 import AVFoundation
 import CoreLocation
+import MarqueeLabel
 
 
 extension MKMapView {

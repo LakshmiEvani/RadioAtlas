@@ -1,0 +1,860 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1A936AA20D5829F8333A98E33C3E6E77 /* Pods-RadioAtlasTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = FD0AAB592A20748A9F929C7F63ED17E5 /* Pods-RadioAtlasTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2E59718BFD1E78961B6F4BBC82A67C71 /* Pods-RadioAtlas-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C22061334F3A7D62A324102F8D859D11 /* Pods-RadioAtlas-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		39CE61BA38E80A4826345C5526C65D44 /* Pods-RadioAtlas-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 49AC37BCF381EA6D57ABDB82B4E5376B /* Pods-RadioAtlas-dummy.m */; };
+		7703B9807113704838423390F75687DD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC32878090C4B2B93381956161EC0930 /* Foundation.framework */; };
+		81757F684D084AC69DAE797488D314F2 /* MarqueeLabel-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E283C91420494B7638FD65B8C82DF6 /* MarqueeLabel-dummy.m */; };
+		85A2FE6BB40052C17E257AF6A6A81417 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC32878090C4B2B93381956161EC0930 /* Foundation.framework */; };
+		8E878DBFB3084764CC6C6DABF56FE08A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC32878090C4B2B93381956161EC0930 /* Foundation.framework */; };
+		9C317D641981B99A343E714E535BB6B0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BF675A168132FD52AED630F977FE906 /* UIKit.framework */; };
+		B5AF6FA02BAAD34ADFAAECFB3155779E /* Pods-RadioAtlasUITests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FA541FD3170671960F9CEC98293BEBC /* Pods-RadioAtlasUITests-dummy.m */; };
+		B6C73605DC09E97AC5C684BA2CEE6D81 /* Pods-RadioAtlasTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A3ACBCB490C6AF1EC81B35D8186B8291 /* Pods-RadioAtlasTests-dummy.m */; };
+		B812F90DB775AFDF1DFA13480D844916 /* MarqueeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A9923BCEFC384F176B7DCC0BC296ED /* MarqueeLabel.swift */; };
+		C008460584EEBA4FEB3BAC5C17D74EE2 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0203FCF2E38F9E0B8C4E69853543A3E /* QuartzCore.framework */; };
+		DB923051D121B166B855AF1C0809BAEF /* MarqueeLabel-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A0B4B86F747A0F130511FF1AAE24285 /* MarqueeLabel-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E508A5AA7C3107AC891687B1E3867F81 /* Pods-RadioAtlasUITests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 1702A8FCAF69CBEF503E600DA7086EC1 /* Pods-RadioAtlasUITests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E93F4084D20B1DBA9FBB20C397C6A7BB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC32878090C4B2B93381956161EC0930 /* Foundation.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		10F8321749B6AEFE14CC7E0EF3C2D3C6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 320AD47B0C6BA014D301395D3BFC8FB6;
+			remoteInfo = MarqueeLabel;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		00113989072348A86540EFD297810B0C /* MarqueeLabel.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MarqueeLabel.xcconfig; sourceTree = "<group>"; };
+		0DC10542DC03E7CD4221A15889FBD252 /* MarqueeLabel-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MarqueeLabel-prefix.pch"; sourceTree = "<group>"; };
+		0FA541FD3170671960F9CEC98293BEBC /* Pods-RadioAtlasUITests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-RadioAtlasUITests-dummy.m"; sourceTree = "<group>"; };
+		1702A8FCAF69CBEF503E600DA7086EC1 /* Pods-RadioAtlasUITests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-RadioAtlasUITests-umbrella.h"; sourceTree = "<group>"; };
+		1A0A5324F2465951F9879C857662373D /* MarqueeLabel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = MarqueeLabel.framework; path = MarqueeLabel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		202EDCFAA40AFACE3AB67D703A0681A3 /* Pods_RadioAtlasTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_RadioAtlasTests.framework; path = "Pods-RadioAtlasTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2124E938A27543756EA0C9BC6F91A4F9 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		21EF794FFF860A2E2EA02EEE0CC32A97 /* Pods-RadioAtlas.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-RadioAtlas.modulemap"; sourceTree = "<group>"; };
+		267493252439749C9D286DD70C54E2AE /* Pods-RadioAtlasTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-RadioAtlasTests-acknowledgements.plist"; sourceTree = "<group>"; };
+		290701C302265937990FCA39BC829A1D /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2D99EA491F7D59FCD13BB011E592A18A /* Pods-RadioAtlasUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-RadioAtlasUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		31247758A2CFA50D9B81A68A1E0E932C /* Pods-RadioAtlasUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-RadioAtlasUITests.modulemap"; sourceTree = "<group>"; };
+		331D65851FDE7DE74EB79298586CA4E8 /* Pods-RadioAtlasTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-RadioAtlasTests.debug.xcconfig"; sourceTree = "<group>"; };
+		332A302DCAD191810B8A9816E714BF2A /* Pods-RadioAtlasUITests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-RadioAtlasUITests-acknowledgements.plist"; sourceTree = "<group>"; };
+		49AC37BCF381EA6D57ABDB82B4E5376B /* Pods-RadioAtlas-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-RadioAtlas-dummy.m"; sourceTree = "<group>"; };
+		52C52EDA485F78710B741A91180E8D4A /* Pods-RadioAtlas-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-RadioAtlas-acknowledgements.plist"; sourceTree = "<group>"; };
+		56A4489D3B9D424E27863EC27B34B5EF /* Pods-RadioAtlasTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-RadioAtlasTests-frameworks.sh"; sourceTree = "<group>"; };
+		5BF675A168132FD52AED630F977FE906 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		614F18C49249D2E3D7476AE9EDCE2A3E /* Pods_RadioAtlas.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_RadioAtlas.framework; path = "Pods-RadioAtlas.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		649B4D4D3E0E159484A6C342A62EC841 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		68415E65476EB7EE2E47A5B4A3F06C16 /* MarqueeLabel.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = MarqueeLabel.modulemap; sourceTree = "<group>"; };
+		68DFD868829A40673AE5993804C7C66C /* Pods-RadioAtlasUITests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-RadioAtlasUITests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		7DA29F776BA23BD68612577A7AD9EF5A /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8A0B4B86F747A0F130511FF1AAE24285 /* MarqueeLabel-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MarqueeLabel-umbrella.h"; sourceTree = "<group>"; };
+		8AE40ABAEA00D26BB5412D7F77746075 /* Pods-RadioAtlasTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-RadioAtlasTests.modulemap"; sourceTree = "<group>"; };
+		8DA25F796049EE6CE1E50459821B0FAC /* Pods-RadioAtlas-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-RadioAtlas-frameworks.sh"; sourceTree = "<group>"; };
+		8F4FE30E78B310557CAEE10F8B02221F /* Pods-RadioAtlasUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-RadioAtlasUITests.release.xcconfig"; sourceTree = "<group>"; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		955A9C3B20B2DEDEF85F2F026B493711 /* Pods-RadioAtlas-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-RadioAtlas-acknowledgements.markdown"; sourceTree = "<group>"; };
+		A3ACBCB490C6AF1EC81B35D8186B8291 /* Pods-RadioAtlasTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-RadioAtlasTests-dummy.m"; sourceTree = "<group>"; };
+		A6F22C4A8B169877286045230C0122F6 /* Pods-RadioAtlas-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-RadioAtlas-resources.sh"; sourceTree = "<group>"; };
+		AE2E165EBA0605D24F879A4CDA50962D /* Pods-RadioAtlas.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-RadioAtlas.release.xcconfig"; sourceTree = "<group>"; };
+		B3E283C91420494B7638FD65B8C82DF6 /* MarqueeLabel-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MarqueeLabel-dummy.m"; sourceTree = "<group>"; };
+		BA6D2DD7A5282677907FE17FB374E87F /* Pods-RadioAtlasTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-RadioAtlasTests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		C1064F327D34CD651177B926460C9401 /* Pods_RadioAtlasUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_RadioAtlasUITests.framework; path = "Pods-RadioAtlasUITests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C22061334F3A7D62A324102F8D859D11 /* Pods-RadioAtlas-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-RadioAtlas-umbrella.h"; sourceTree = "<group>"; };
+		C5A9923BCEFC384F176B7DCC0BC296ED /* MarqueeLabel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MarqueeLabel.swift; path = Sources/Swift/MarqueeLabel.swift; sourceTree = "<group>"; };
+		DEB7FD7AD4B7C66ADDF68D1EC931C833 /* Pods-RadioAtlasTests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-RadioAtlasTests-resources.sh"; sourceTree = "<group>"; };
+		E0203FCF2E38F9E0B8C4E69853543A3E /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
+		E51652967C7E1D29EE09654E11C9A174 /* Pods-RadioAtlasTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-RadioAtlasTests.release.xcconfig"; sourceTree = "<group>"; };
+		E8D271007164F469D6239E2006F9E1D6 /* Pods-RadioAtlasUITests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-RadioAtlasUITests-resources.sh"; sourceTree = "<group>"; };
+		EC32878090C4B2B93381956161EC0930 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		EDEE6E946B33B24049B0045F2FE2AA4A /* Pods-RadioAtlas.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-RadioAtlas.debug.xcconfig"; sourceTree = "<group>"; };
+		FA37754AE2E1C7D17206490C5E9BC74F /* Pods-RadioAtlasUITests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-RadioAtlasUITests-frameworks.sh"; sourceTree = "<group>"; };
+		FD0AAB592A20748A9F929C7F63ED17E5 /* Pods-RadioAtlasTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-RadioAtlasTests-umbrella.h"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		07078B2A815B8C3EC573A391538F4655 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7703B9807113704838423390F75687DD /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		34C26F900EC22BE85E9EA20E39C5A0DD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E93F4084D20B1DBA9FBB20C397C6A7BB /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6244C691218A523E889FCD03BEFD52CB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				85A2FE6BB40052C17E257AF6A6A81417 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F5881BC4ADA6E767FAC6CDFC9A796C14 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8E878DBFB3084764CC6C6DABF56FE08A /* Foundation.framework in Frameworks */,
+				C008460584EEBA4FEB3BAC5C17D74EE2 /* QuartzCore.framework in Frameworks */,
+				9C317D641981B99A343E714E535BB6B0 /* UIKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0A79C62A5B8127199A168C762B28E04C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1A0A5324F2465951F9879C857662373D /* MarqueeLabel.framework */,
+				614F18C49249D2E3D7476AE9EDCE2A3E /* Pods_RadioAtlas.framework */,
+				202EDCFAA40AFACE3AB67D703A0681A3 /* Pods_RadioAtlasTests.framework */,
+				C1064F327D34CD651177B926460C9401 /* Pods_RadioAtlasUITests.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		122DA2E5084A4393C29BE363C764795C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E5E9260013FA223D81B907D9285F6EA1 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		20DA320FF167EC638CA071968B203376 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				7DA29F776BA23BD68612577A7AD9EF5A /* Info.plist */,
+				68415E65476EB7EE2E47A5B4A3F06C16 /* MarqueeLabel.modulemap */,
+				00113989072348A86540EFD297810B0C /* MarqueeLabel.xcconfig */,
+				B3E283C91420494B7638FD65B8C82DF6 /* MarqueeLabel-dummy.m */,
+				0DC10542DC03E7CD4221A15889FBD252 /* MarqueeLabel-prefix.pch */,
+				8A0B4B86F747A0F130511FF1AAE24285 /* MarqueeLabel-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/MarqueeLabel";
+			sourceTree = "<group>";
+		};
+		2E03FF9FD369DEDDE2430505DC95F00A /* Pods-RadioAtlasUITests */ = {
+			isa = PBXGroup;
+			children = (
+				290701C302265937990FCA39BC829A1D /* Info.plist */,
+				31247758A2CFA50D9B81A68A1E0E932C /* Pods-RadioAtlasUITests.modulemap */,
+				68DFD868829A40673AE5993804C7C66C /* Pods-RadioAtlasUITests-acknowledgements.markdown */,
+				332A302DCAD191810B8A9816E714BF2A /* Pods-RadioAtlasUITests-acknowledgements.plist */,
+				0FA541FD3170671960F9CEC98293BEBC /* Pods-RadioAtlasUITests-dummy.m */,
+				FA37754AE2E1C7D17206490C5E9BC74F /* Pods-RadioAtlasUITests-frameworks.sh */,
+				E8D271007164F469D6239E2006F9E1D6 /* Pods-RadioAtlasUITests-resources.sh */,
+				1702A8FCAF69CBEF503E600DA7086EC1 /* Pods-RadioAtlasUITests-umbrella.h */,
+				2D99EA491F7D59FCD13BB011E592A18A /* Pods-RadioAtlasUITests.debug.xcconfig */,
+				8F4FE30E78B310557CAEE10F8B02221F /* Pods-RadioAtlasUITests.release.xcconfig */,
+			);
+			name = "Pods-RadioAtlasUITests";
+			path = "Target Support Files/Pods-RadioAtlasUITests";
+			sourceTree = "<group>";
+		};
+		385F135C89B39F39B01D288D34E843EF /* Swift */ = {
+			isa = PBXGroup;
+			children = (
+				C5A9923BCEFC384F176B7DCC0BC296ED /* MarqueeLabel.swift */,
+			);
+			name = Swift;
+			sourceTree = "<group>";
+		};
+		525FA405AF2C98970D415CAB624258F1 /* MarqueeLabel */ = {
+			isa = PBXGroup;
+			children = (
+				20DA320FF167EC638CA071968B203376 /* Support Files */,
+				385F135C89B39F39B01D288D34E843EF /* Swift */,
+			);
+			name = MarqueeLabel;
+			path = MarqueeLabel;
+			sourceTree = "<group>";
+		};
+		5A32E81BAAF57F11ADA37F022BF97847 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				525FA405AF2C98970D415CAB624258F1 /* MarqueeLabel */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		7DB346D0F39D3F0E887471402A8071AB = {
+			isa = PBXGroup;
+			children = (
+				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
+				122DA2E5084A4393C29BE363C764795C /* Frameworks */,
+				5A32E81BAAF57F11ADA37F022BF97847 /* Pods */,
+				0A79C62A5B8127199A168C762B28E04C /* Products */,
+				D281D8897347412B81A6A64F43B481A3 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		8CDAB7981326BE2DC8AC98C901E51481 /* Pods-RadioAtlasTests */ = {
+			isa = PBXGroup;
+			children = (
+				649B4D4D3E0E159484A6C342A62EC841 /* Info.plist */,
+				8AE40ABAEA00D26BB5412D7F77746075 /* Pods-RadioAtlasTests.modulemap */,
+				BA6D2DD7A5282677907FE17FB374E87F /* Pods-RadioAtlasTests-acknowledgements.markdown */,
+				267493252439749C9D286DD70C54E2AE /* Pods-RadioAtlasTests-acknowledgements.plist */,
+				A3ACBCB490C6AF1EC81B35D8186B8291 /* Pods-RadioAtlasTests-dummy.m */,
+				56A4489D3B9D424E27863EC27B34B5EF /* Pods-RadioAtlasTests-frameworks.sh */,
+				DEB7FD7AD4B7C66ADDF68D1EC931C833 /* Pods-RadioAtlasTests-resources.sh */,
+				FD0AAB592A20748A9F929C7F63ED17E5 /* Pods-RadioAtlasTests-umbrella.h */,
+				331D65851FDE7DE74EB79298586CA4E8 /* Pods-RadioAtlasTests.debug.xcconfig */,
+				E51652967C7E1D29EE09654E11C9A174 /* Pods-RadioAtlasTests.release.xcconfig */,
+			);
+			name = "Pods-RadioAtlasTests";
+			path = "Target Support Files/Pods-RadioAtlasTests";
+			sourceTree = "<group>";
+		};
+		B6BA50CD389973015175EFF8319230C8 /* Pods-RadioAtlas */ = {
+			isa = PBXGroup;
+			children = (
+				2124E938A27543756EA0C9BC6F91A4F9 /* Info.plist */,
+				21EF794FFF860A2E2EA02EEE0CC32A97 /* Pods-RadioAtlas.modulemap */,
+				955A9C3B20B2DEDEF85F2F026B493711 /* Pods-RadioAtlas-acknowledgements.markdown */,
+				52C52EDA485F78710B741A91180E8D4A /* Pods-RadioAtlas-acknowledgements.plist */,
+				49AC37BCF381EA6D57ABDB82B4E5376B /* Pods-RadioAtlas-dummy.m */,
+				8DA25F796049EE6CE1E50459821B0FAC /* Pods-RadioAtlas-frameworks.sh */,
+				A6F22C4A8B169877286045230C0122F6 /* Pods-RadioAtlas-resources.sh */,
+				C22061334F3A7D62A324102F8D859D11 /* Pods-RadioAtlas-umbrella.h */,
+				EDEE6E946B33B24049B0045F2FE2AA4A /* Pods-RadioAtlas.debug.xcconfig */,
+				AE2E165EBA0605D24F879A4CDA50962D /* Pods-RadioAtlas.release.xcconfig */,
+			);
+			name = "Pods-RadioAtlas";
+			path = "Target Support Files/Pods-RadioAtlas";
+			sourceTree = "<group>";
+		};
+		D281D8897347412B81A6A64F43B481A3 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				B6BA50CD389973015175EFF8319230C8 /* Pods-RadioAtlas */,
+				8CDAB7981326BE2DC8AC98C901E51481 /* Pods-RadioAtlasTests */,
+				2E03FF9FD369DEDDE2430505DC95F00A /* Pods-RadioAtlasUITests */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		E5E9260013FA223D81B907D9285F6EA1 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				EC32878090C4B2B93381956161EC0930 /* Foundation.framework */,
+				E0203FCF2E38F9E0B8C4E69853543A3E /* QuartzCore.framework */,
+				5BF675A168132FD52AED630F977FE906 /* UIKit.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		05A7B3E7C3C587C1CE72CF0E7E6B9247 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E508A5AA7C3107AC891687B1E3867F81 /* Pods-RadioAtlasUITests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		673BFB6A91D881BFD048912A481BA746 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2E59718BFD1E78961B6F4BBC82A67C71 /* Pods-RadioAtlas-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		699572B4EEAA91C9D62DB0428BFB485D /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1A936AA20D5829F8333A98E33C3E6E77 /* Pods-RadioAtlasTests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AC4CC9FD659266292E00B030BE3557AE /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DB923051D121B166B855AF1C0809BAEF /* MarqueeLabel-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		3109F0AE5235867F7C1DE721AE76E984 /* Pods-RadioAtlas */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 112958DB8FEAAF56E1D4CE0CDBB3F810 /* Build configuration list for PBXNativeTarget "Pods-RadioAtlas" */;
+			buildPhases = (
+				4350015184930EFFC78E9E1D174BC97E /* Sources */,
+				34C26F900EC22BE85E9EA20E39C5A0DD /* Frameworks */,
+				673BFB6A91D881BFD048912A481BA746 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DE31A001B9DEE14E21A251734824D563 /* PBXTargetDependency */,
+			);
+			name = "Pods-RadioAtlas";
+			productName = "Pods-RadioAtlas";
+			productReference = 614F18C49249D2E3D7476AE9EDCE2A3E /* Pods_RadioAtlas.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		320AD47B0C6BA014D301395D3BFC8FB6 /* MarqueeLabel */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AB93BA3C12E3426B5019CB531E1C08DC /* Build configuration list for PBXNativeTarget "MarqueeLabel" */;
+			buildPhases = (
+				E424089A1B4CDB88E747B5F58F5C64AC /* Sources */,
+				F5881BC4ADA6E767FAC6CDFC9A796C14 /* Frameworks */,
+				AC4CC9FD659266292E00B030BE3557AE /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MarqueeLabel;
+			productName = MarqueeLabel;
+			productReference = 1A0A5324F2465951F9879C857662373D /* MarqueeLabel.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		BEFE61CC1AE90B4B194C03A950EBD2CD /* Pods-RadioAtlasTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 099C971EE1BD1B913E0C6C975442475C /* Build configuration list for PBXNativeTarget "Pods-RadioAtlasTests" */;
+			buildPhases = (
+				E692C8089D8673EEE0A152D4382B5288 /* Sources */,
+				6244C691218A523E889FCD03BEFD52CB /* Frameworks */,
+				699572B4EEAA91C9D62DB0428BFB485D /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-RadioAtlasTests";
+			productName = "Pods-RadioAtlasTests";
+			productReference = 202EDCFAA40AFACE3AB67D703A0681A3 /* Pods_RadioAtlasTests.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		DD744C25AAE40A50A49EBB0E3D2631F1 /* Pods-RadioAtlasUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 40543964335F85A91472A4DD90719615 /* Build configuration list for PBXNativeTarget "Pods-RadioAtlasUITests" */;
+			buildPhases = (
+				89058754DBCDB1E67AEDAAE4899614FB /* Sources */,
+				07078B2A815B8C3EC573A391538F4655 /* Frameworks */,
+				05A7B3E7C3C587C1CE72CF0E7E6B9247 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-RadioAtlasUITests";
+			productName = "Pods-RadioAtlasUITests";
+			productReference = C1064F327D34CD651177B926460C9401 /* Pods_RadioAtlasUITests.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0700;
+			};
+			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
+			productRefGroup = 0A79C62A5B8127199A168C762B28E04C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				320AD47B0C6BA014D301395D3BFC8FB6 /* MarqueeLabel */,
+				3109F0AE5235867F7C1DE721AE76E984 /* Pods-RadioAtlas */,
+				BEFE61CC1AE90B4B194C03A950EBD2CD /* Pods-RadioAtlasTests */,
+				DD744C25AAE40A50A49EBB0E3D2631F1 /* Pods-RadioAtlasUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4350015184930EFFC78E9E1D174BC97E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				39CE61BA38E80A4826345C5526C65D44 /* Pods-RadioAtlas-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		89058754DBCDB1E67AEDAAE4899614FB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B5AF6FA02BAAD34ADFAAECFB3155779E /* Pods-RadioAtlasUITests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E424089A1B4CDB88E747B5F58F5C64AC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				81757F684D084AC69DAE797488D314F2 /* MarqueeLabel-dummy.m in Sources */,
+				B812F90DB775AFDF1DFA13480D844916 /* MarqueeLabel.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E692C8089D8673EEE0A152D4382B5288 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B6C73605DC09E97AC5C684BA2CEE6D81 /* Pods-RadioAtlasTests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		DE31A001B9DEE14E21A251734824D563 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = MarqueeLabel;
+			target = 320AD47B0C6BA014D301395D3BFC8FB6 /* MarqueeLabel */;
+			targetProxy = 10F8321749B6AEFE14CC7E0EF3C2D3C6 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		60829701B5DF1BB1D80CD22A9C02124A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8F4FE30E78B310557CAEE10F8B02221F /* Pods-RadioAtlasUITests.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-RadioAtlasUITests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-RadioAtlasUITests/Pods-RadioAtlasUITests.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_RadioAtlasUITests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		673254EEAF0B5BF4596080C749645884 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		70ABA47267BBEA871686EC702E7A1B07 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 331D65851FDE7DE74EB79298586CA4E8 /* Pods-RadioAtlasTests.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-RadioAtlasTests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-RadioAtlasTests/Pods-RadioAtlasTests.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_RadioAtlasTests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		82CDB5E2FA8B417121B0A8AA1DE431D8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AE2E165EBA0605D24F879A4CDA50962D /* Pods-RadioAtlas.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-RadioAtlas/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-RadioAtlas/Pods-RadioAtlas.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_RadioAtlas;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		88DFC47A0C9814B0988605B66C66BCBE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2D99EA491F7D59FCD13BB011E592A18A /* Pods-RadioAtlasUITests.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-RadioAtlasUITests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-RadioAtlasUITests/Pods-RadioAtlasUITests.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_RadioAtlasUITests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		8EBAC7E4B2C6D75C9CCD7EEDCBE95BFC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = EDEE6E946B33B24049B0045F2FE2AA4A /* Pods-RadioAtlas.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-RadioAtlas/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-RadioAtlas/Pods-RadioAtlas.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_RadioAtlas;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		B7A438A0809F408030BB48D47D4A47D1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 00113989072348A86540EFD297810B0C /* MarqueeLabel.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/MarqueeLabel/MarqueeLabel-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/MarqueeLabel/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/MarqueeLabel/MarqueeLabel.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = MarqueeLabel;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		C03E9E17149486CB2BF86F6DBC122936 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 00113989072348A86540EFD297810B0C /* MarqueeLabel.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/MarqueeLabel/MarqueeLabel-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/MarqueeLabel/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/MarqueeLabel/MarqueeLabel.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = MarqueeLabel;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		E4F26E6EB105713A6A7E7E2E283AC2DF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		E823BB9DC0FA73CDAC813A98918F1DE7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E51652967C7E1D29EE09654E11C9A174 /* Pods-RadioAtlasTests.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-RadioAtlasTests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-RadioAtlasTests/Pods-RadioAtlasTests.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_RadioAtlasTests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		099C971EE1BD1B913E0C6C975442475C /* Build configuration list for PBXNativeTarget "Pods-RadioAtlasTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				70ABA47267BBEA871686EC702E7A1B07 /* Debug */,
+				E823BB9DC0FA73CDAC813A98918F1DE7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		112958DB8FEAAF56E1D4CE0CDBB3F810 /* Build configuration list for PBXNativeTarget "Pods-RadioAtlas" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8EBAC7E4B2C6D75C9CCD7EEDCBE95BFC /* Debug */,
+				82CDB5E2FA8B417121B0A8AA1DE431D8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E4F26E6EB105713A6A7E7E2E283AC2DF /* Debug */,
+				673254EEAF0B5BF4596080C749645884 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		40543964335F85A91472A4DD90719615 /* Build configuration list for PBXNativeTarget "Pods-RadioAtlasUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				88DFC47A0C9814B0988605B66C66BCBE /* Debug */,
+				60829701B5DF1BB1D80CD22A9C02124A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AB93BA3C12E3426B5019CB531E1C08DC /* Build configuration list for PBXNativeTarget "MarqueeLabel" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B7A438A0809F408030BB48D47D4A47D1 /* Debug */,
+				C03E9E17149486CB2BF86F6DBC122936 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+}

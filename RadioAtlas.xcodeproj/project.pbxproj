@@ -20,6 +20,7 @@
 		4B72752B1E5A8CF0004D9A33 /* FBQuadTreeNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7275201E5A8CF0004D9A33 /* FBQuadTreeNode.swift */; };
 		4B72752C1E5A8CF0004D9A33 /* FBZoomLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7275211E5A8CF0004D9A33 /* FBZoomLevel.swift */; };
 		4B72752E1E5A8DD1004D9A33 /* FBBoundingBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B72752D1E5A8DD1004D9A33 /* FBBoundingBox.swift */; };
+		7D67D284014609AA2167E64A /* Pods_RadioAtlas.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D304623B70BA7360E16934D6 /* Pods_RadioAtlas.framework */; };
 		873B5FE01E2FB6970057D735 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873B5FDF1E2FB6970057D735 /* AppDelegate.swift */; };
 		873B5FE21E2FB6970057D735 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873B5FE11E2FB6970057D735 /* MapViewController.swift */; };
 		873B5FE51E2FB6970057D735 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B5FE31E2FB6970057D735 /* Main.storyboard */; };
@@ -44,6 +45,8 @@
 		878130631E35C6FA00E70D0B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 873B5FE91E2FB6970057D735 /* Assets.xcassets */; };
 		878130641E35C6FB00E70D0B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 873B5FE91E2FB6970057D735 /* Assets.xcassets */; };
 		87C7FF191E4E6790004533EC /* Music.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C7FF181E4E6790004533EC /* Music.swift */; };
+		D3026B89E55364DECBE4877B /* Pods_RadioAtlasTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97C20605922CC577CF14A5A0 /* Pods_RadioAtlasTests.framework */; };
+		E649A9022A23FAEB13284159 /* Pods_RadioAtlasUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8934AC8AC195250FD3522B8E /* Pods_RadioAtlasUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +80,7 @@
 		4B7275201E5A8CF0004D9A33 /* FBQuadTreeNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBQuadTreeNode.swift; sourceTree = "<group>"; };
 		4B7275211E5A8CF0004D9A33 /* FBZoomLevel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBZoomLevel.swift; sourceTree = "<group>"; };
 		4B72752D1E5A8DD1004D9A33 /* FBBoundingBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBBoundingBox.swift; sourceTree = "<group>"; };
+		5B90876A0EC360AAC0265B8E /* Pods-RadioAtlasUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RadioAtlasUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RadioAtlasUITests/Pods-RadioAtlasUITests.release.xcconfig"; sourceTree = "<group>"; };
 		873B5FDC1E2FB6970057D735 /* RadioAtlas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RadioAtlas.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		873B5FDF1E2FB6970057D735 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		873B5FE11E2FB6970057D735 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -105,6 +109,14 @@
 		873B60361E2FD1960057D735 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		873B60381E2FD19F0057D735 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		87C7FF181E4E6790004533EC /* Music.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Music.swift; sourceTree = "<group>"; };
+		8934AC8AC195250FD3522B8E /* Pods_RadioAtlasUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RadioAtlasUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		97C20605922CC577CF14A5A0 /* Pods_RadioAtlasTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RadioAtlasTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A4A5998B6A3BAA06FEA190C /* Pods-RadioAtlas.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RadioAtlas.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RadioAtlas/Pods-RadioAtlas.debug.xcconfig"; sourceTree = "<group>"; };
+		AB0D97FF36DEB17814F15965 /* Pods-RadioAtlasUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RadioAtlasUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RadioAtlasUITests/Pods-RadioAtlasUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		B1D107EC6E00268C784D529E /* Pods-RadioAtlas.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RadioAtlas.release.xcconfig"; path = "Pods/Target Support Files/Pods-RadioAtlas/Pods-RadioAtlas.release.xcconfig"; sourceTree = "<group>"; };
+		C6DADF5F341C327C325DD40E /* Pods-RadioAtlasTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RadioAtlasTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RadioAtlasTests/Pods-RadioAtlasTests.release.xcconfig"; sourceTree = "<group>"; };
+		D2AD0BD8ABFD2859F926FF88 /* Pods-RadioAtlasTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RadioAtlasTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RadioAtlasTests/Pods-RadioAtlasTests.debug.xcconfig"; sourceTree = "<group>"; };
+		D304623B70BA7360E16934D6 /* Pods_RadioAtlas.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RadioAtlas.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +127,7 @@
 				873B60391E2FD19F0057D735 /* MapKit.framework in Frameworks */,
 				873B60371E2FD1960057D735 /* AVFoundation.framework in Frameworks */,
 				873B60351E2FD18E0057D735 /* CoreLocation.framework in Frameworks */,
+				7D67D284014609AA2167E64A /* Pods_RadioAtlas.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -122,6 +135,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3026B89E55364DECBE4877B /* Pods_RadioAtlasTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -129,6 +143,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E649A9022A23FAEB13284159 /* Pods_RadioAtlasUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -161,6 +176,7 @@
 				873B60011E2FB6980057D735 /* RadioAtlasUITests */,
 				873B5FDD1E2FB6970057D735 /* Products */,
 				873B60331E2FD18E0057D735 /* Frameworks */,
+				EA55D68214D8DA14C8410FB1 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -258,8 +274,24 @@
 				873B60381E2FD19F0057D735 /* MapKit.framework */,
 				873B60361E2FD1960057D735 /* AVFoundation.framework */,
 				873B60341E2FD18E0057D735 /* CoreLocation.framework */,
+				D304623B70BA7360E16934D6 /* Pods_RadioAtlas.framework */,
+				97C20605922CC577CF14A5A0 /* Pods_RadioAtlasTests.framework */,
+				8934AC8AC195250FD3522B8E /* Pods_RadioAtlasUITests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EA55D68214D8DA14C8410FB1 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9A4A5998B6A3BAA06FEA190C /* Pods-RadioAtlas.debug.xcconfig */,
+				B1D107EC6E00268C784D529E /* Pods-RadioAtlas.release.xcconfig */,
+				D2AD0BD8ABFD2859F926FF88 /* Pods-RadioAtlasTests.debug.xcconfig */,
+				C6DADF5F341C327C325DD40E /* Pods-RadioAtlasTests.release.xcconfig */,
+				AB0D97FF36DEB17814F15965 /* Pods-RadioAtlasUITests.debug.xcconfig */,
+				5B90876A0EC360AAC0265B8E /* Pods-RadioAtlasUITests.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -269,9 +301,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 873B60071E2FB6980057D735 /* Build configuration list for PBXNativeTarget "RadioAtlas" */;
 			buildPhases = (
+				4251A65853A392C7A7754E8B /* [CP] Check Pods Manifest.lock */,
 				873B5FD81E2FB6970057D735 /* Sources */,
 				873B5FD91E2FB6970057D735 /* Frameworks */,
 				873B5FDA1E2FB6970057D735 /* Resources */,
+				68F30E45F119D8132A29D0B1 /* [CP] Embed Pods Frameworks */,
+				D518300A5B3DE768A38D21C1 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -286,9 +321,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 873B600A1E2FB6980057D735 /* Build configuration list for PBXNativeTarget "RadioAtlasTests" */;
 			buildPhases = (
+				0F38DC5D50D7095BA0911157 /* [CP] Check Pods Manifest.lock */,
 				873B5FEF1E2FB6980057D735 /* Sources */,
 				873B5FF01E2FB6980057D735 /* Frameworks */,
 				873B5FF11E2FB6980057D735 /* Resources */,
+				04D1762A64EB271AC38247A6 /* [CP] Embed Pods Frameworks */,
+				46CCE0C519744862F63692F9 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -304,9 +342,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 873B600D1E2FB6980057D735 /* Build configuration list for PBXNativeTarget "RadioAtlasUITests" */;
 			buildPhases = (
+				9ACAF29AA92C59DC29B82D5E /* [CP] Check Pods Manifest.lock */,
 				873B5FFA1E2FB6980057D735 /* Sources */,
 				873B5FFB1E2FB6980057D735 /* Frameworks */,
 				873B5FFC1E2FB6980057D735 /* Resources */,
+				407FA513F74C372AA37668FF /* [CP] Embed Pods Frameworks */,
+				2E05C7EC5EF92E044DAA5307 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -401,6 +442,144 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		04D1762A64EB271AC38247A6 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RadioAtlasTests/Pods-RadioAtlasTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		0F38DC5D50D7095BA0911157 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		2E05C7EC5EF92E044DAA5307 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RadioAtlasUITests/Pods-RadioAtlasUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		407FA513F74C372AA37668FF /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RadioAtlasUITests/Pods-RadioAtlasUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4251A65853A392C7A7754E8B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		46CCE0C519744862F63692F9 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RadioAtlasTests/Pods-RadioAtlasTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		68F30E45F119D8132A29D0B1 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RadioAtlas/Pods-RadioAtlas-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9ACAF29AA92C59DC29B82D5E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		D518300A5B3DE768A38D21C1 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RadioAtlas/Pods-RadioAtlas-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		873B5FD81E2FB6970057D735 /* Sources */ = {
@@ -581,6 +760,7 @@
 		};
 		873B60081E2FB6980057D735 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9A4A5998B6A3BAA06FEA190C /* Pods-RadioAtlas.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -597,6 +777,7 @@
 		};
 		873B60091E2FB6980057D735 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B1D107EC6E00268C784D529E /* Pods-RadioAtlas.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -613,6 +794,7 @@
 		};
 		873B600B1E2FB6980057D735 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D2AD0BD8ABFD2859F926FF88 /* Pods-RadioAtlasTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -627,6 +809,7 @@
 		};
 		873B600C1E2FB6980057D735 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C6DADF5F341C327C325DD40E /* Pods-RadioAtlasTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -641,6 +824,7 @@
 		};
 		873B600E1E2FB6980057D735 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AB0D97FF36DEB17814F15965 /* Pods-RadioAtlasUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = RadioAtlasUITests/Info.plist;
@@ -654,6 +838,7 @@
 		};
 		873B600F1E2FB6980057D735 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5B90876A0EC360AAC0265B8E /* Pods-RadioAtlasUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = RadioAtlasUITests/Info.plist;
