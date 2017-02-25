@@ -31,6 +31,13 @@ extension MKMapView {
     }
 }
 
+struct PlayNext {
+    var name : String
+    var city : String
+    var country : String
+    var stationData : String
+}
+
 
 
 class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDelegate, CLLocationManagerDelegate, NSFetchedResultsControllerDelegate, UIPopoverPresentationControllerDelegate,RadioAVPlayerItemDelegate {
@@ -55,11 +62,18 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
     var annotations = [MKAnnotation]()
     var mapViewZoomStepperValue: Double = -1.0
     private var playerItemContext = 0
+
+    
+    
     
     let clusteringManager = FBClusteringManager()
     let configuration = FBAnnotationClusterViewConfiguration.default()
     //var userLoc : CLLocation = 0.0
     var playerItem : AVPlayerItem? = nil
+    var nowPlayingData : String = ""
+    var playNextData : String = ""
+    
+    var previousStationData : String = ""
     
 
     
@@ -313,50 +327,59 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
             
         }
     }
-    
-    func playClosestStation(closestStation :String)
-    
-    {
-        sharedContext.perform {
-            
-            self.playMusic(music: closestStation)
-            
-          
-            
-        }
 
-    }
-    
     
     
     func playMusic(music: String) {
         
+        previousStationData = ""
+        
+        statusUpdate(message: "Tuning ..")
+        
         
         if (playerItem != nil)
         {
-            playerItem?.removeObserver(self, forKeyPath: "timedMetadata")
+            removeObservers(playerItem: playerItem!)
         }
         
          playerItem = RadioAVPlayerItem(url: NSURL(string: music) as! URL)
-        
-        
-       
-        playerItem?.addObserver(self,
-                               //  forKeyPath: #keyPath(AVPlayerItem.status),
-            forKeyPath: "timedMetadata",
-            options: [.old, .new],
-            //options: .new,
-            //context: &self.playerItemContext)
-            context: nil)
+         addObservers(playerItem: playerItem!)
         
         Music.sharedInstance.musicStream(playerItem: playerItem! as! RadioAVPlayerItem)
         self.playAndPause.setImage(UIImage(named: "pause"), for: .normal)
         
     }
     
+    func removeObservers(playerItem: AVPlayerItem) {
+        
+        playerItem.removeObserver(self, forKeyPath: "timedMetadata")
+        playerItem.removeObserver(self, forKeyPath:"status")
+    }
+    
+    func addObservers(playerItem: AVPlayerItem) {
+        
+        
+        playerItem.addObserver(self,
+                                //  forKeyPath: #keyPath(AVPlayerItem.status),
+            forKeyPath: "timedMetadata",
+            options: [.old, .new],
+            //options: .new,
+            //context: &self.playerItemContext)
+            context: nil)
+        
+        
+        playerItem.addObserver(self,
+                                // forKeyPath: #keyPath(AVPlayerItem.status),
+            forKeyPath: "status",
+            options: [.old, .new],
+            context: nil)
+        
+    }
+    
     func removePlayerItemObserver(playerItem: RadioAVPlayerItem)
     {
         playerItem.removeObserver(self, forKeyPath: "timedMetadata")
+        playerItem.removeObserver(self, forKeyPath: "status")
     }
 
     
@@ -539,16 +562,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
                 view.leftCalloutAccessoryView = nil
             }
             
-          /*  if let toOpen = annotationView.streamUrl {
-                
-                //  print("Music stream playing",toOpen)
-                
-                playMusic(music: toOpen)
-                
-              
-            } */
-            
-            
             mapView.addAnnotation(closestStation)
             mapView.selectAnnotation(closestStation, animated: true)
             
@@ -571,20 +584,22 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         sharedContext.perform {
             
             
-            let annotationView = view.annotation as! PinAnnotation
+            let annotation = view.annotation as! PinAnnotation
             
             
-            if (self.checkIfExists(name: annotationView.name))
+            if (self.checkIfExists(name: annotation.name))
             {
                 view.leftCalloutAccessoryView = nil
             }
             
-            if let toOpen = annotationView.streamUrl {
+            if let toOpen = annotation.streamUrl {
                 
               //  print("Music stream playing",toOpen)
                 
-                
-               
+                self.playNextData = annotation.name
+                if (annotation.location != nil) {
+                   self.playNextData + " ∞∞ " + annotation.location
+                }
                 self.playMusic(music: toOpen)
             }
             
@@ -719,24 +734,63 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
  //   override open func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?)
     
     
+    
+    
     override func observeValue(forKeyPath keyPath: String?,
                                of object: Any?,
                                change: [NSKeyValueChangeKey : Any]?,
                                context: UnsafeMutableRawPointer?)
      {
         
-        if keyPath != "timedMetadata" { return }
+       
         
         var data: AVPlayerItem = object as! AVPlayerItem
+        var newData : String = ""
         
-        for item in data.timedMetadata! as [AVMetadataItem] {
-            if (item != nil)
-            {
-             print(item.value)
+        
+       if (keyPath == "timedMetadata")
+       {
+        
+            for item in data.timedMetadata! as [AVMetadataItem] {
+                if (item != nil)
+                {
+                    newData.append(" ∞∞ ")
+                    newData.append(item.value!.description)
+                    
+                }
             }
+        
+        if (newData != nil && newData != previousStationData) {
+            previousStationData = newData
+            nowPlayingData = playNextData + newData
+            print(nowPlayingData)
+        }
+        
+        }
+        else if (keyPath == "status")
+       {
+        
+            let playerItem:AVPlayerItem = object as! AVPlayerItem
+        
+        
+        if playerItem.status ==  AVPlayerItemStatus.readyToPlay{
+            statusUpdate(message: "Playing ..")
+        } else if playerItem.status == AVPlayerItemStatus.failed {
+            statusUpdate(message: "Invalid Radio Stream ..")
+        }
+        
+        
+        }
+       else {
+        return
         }
     }
     
+    func statusUpdate(message: String) {
+        
+         NSLog(message)
+        
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -768,12 +822,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         
         present(alert, animated: true, completion: nil)
     }
-    
-    deinit {
-        if playerItem != nil {
-       playerItem?.removeObserver(self, forKeyPath:"timedMetadata")
-        }
-    }
+  
+
     
 }
 
