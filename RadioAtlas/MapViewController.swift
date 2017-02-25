@@ -36,6 +36,7 @@ extension MKMapView {
 class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDelegate, CLLocationManagerDelegate, NSFetchedResultsControllerDelegate, UIPopoverPresentationControllerDelegate,RadioAVPlayerItemDelegate {
     
     //Outlets
+    @IBOutlet weak var favorite: UIBarButtonItem!
     
     @IBOutlet var mapView: MKMapView!
     
@@ -51,7 +52,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
     var radioInfo = [RadioInfo]()
     var locationManager = CLLocationManager()
     var favoriteStation = [Station]()
-    var favorite : Bool = false
+   // var favorite : Bool = false
     var annotations = [MKAnnotation]()
     var mapViewZoomStepperValue: Double = -1.0
     private var playerItemContext = 0
@@ -81,12 +82,16 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         super.viewDidLoad()
         
         mapView.showsPointsOfInterest = true
-      
-    
+      // navigationController?.istrans
         initializations()
         
     }
     
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated);
+         navigationController?.isToolbarHidden = true
+    }
     
     
     func initializations() {
