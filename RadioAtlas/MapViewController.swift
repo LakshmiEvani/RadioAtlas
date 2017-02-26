@@ -44,8 +44,11 @@ struct PlayNext {
 class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDelegate, CLLocationManagerDelegate, NSFetchedResultsControllerDelegate, UIPopoverPresentationControllerDelegate,RadioAVPlayerItemDelegate {
     
     //Outlets
+   
     
     @IBOutlet var mapView: MKMapView!
+   
+    @IBOutlet weak var nowPlayingLabel: MarqueeLabel!
     
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
@@ -71,7 +74,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
     let configuration = FBAnnotationClusterViewConfiguration.default()
     //var userLoc : CLLocation = 0.0
     var playerItem : AVPlayerItem? = nil
-    var nowPlayingData : String = ""
+    //var nowPlayingData : String = ""
     var playNextData : String = ""
     
     var previousStationData : String = ""
@@ -132,6 +135,10 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
     func determineCurrentLocation() {
         
         //Paint the annotations by setting region
+        
+        nowPlayingLabel.text = "Tap dots to play. Pinch or double-tap to zoom."
+        nowPlayingLabel.triggerScrollStart()
+        
         setWorldRegion(animated: false)
         activityIndicator.isHidden = true
         progressMessage.isHidden = true
@@ -335,7 +342,9 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         
         previousStationData = ""
         
-        statusUpdate(message: "Tuning ..")
+
+        
+        statusUpdate(message: "Tuning to Radio Station..")
         
         
         if (playerItem != nil)
@@ -599,7 +608,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
                 
                 self.playNextData = annotation.name
                 if (annotation.location != nil) {
-                   self.playNextData + " ∞∞ " + annotation.location
+                   self.playNextData = self.playNextData + " ∞∞ " + annotation.location
                 }
                 self.playMusic(music: toOpen)
             }
@@ -747,6 +756,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         
         var data: AVPlayerItem = object as! AVPlayerItem
         var newData : String = ""
+        var nowPlayingData : String = ""
         
         
        if (keyPath == "timedMetadata")
@@ -764,7 +774,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         if (newData != nil && newData != previousStationData) {
             previousStationData = newData
             nowPlayingData = playNextData + newData
-            print(nowPlayingData)
+            statusUpdate(message: nowPlayingData)
+
         }
         
         }
@@ -775,9 +786,10 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         
         
         if playerItem.status ==  AVPlayerItemStatus.readyToPlay{
-            statusUpdate(message: "Playing ..")
+            nowPlayingData = playNextData
+            statusUpdate(message: nowPlayingData)
         } else if playerItem.status == AVPlayerItemStatus.failed {
-            statusUpdate(message: "Invalid Radio Stream ..")
+            statusUpdate(message: "Invalid radio stream. Try another station.", error: true)
         }
         
         
@@ -787,7 +799,23 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         }
     }
     
-    func statusUpdate(message: String) {
+    func statusUpdate(message: String,error: Bool = false) {
+        
+        DispatchQueue.main.async {
+            
+            self.nowPlayingLabel.text = message
+            if(error) {
+                self.nowPlayingLabel.textColor = UIColor.white
+                self.nowPlayingLabel.font.withSize(20.0)
+                self.nowPlayingLabel.backgroundColor = UIColor.red
+            }
+            else {
+                self.nowPlayingLabel.textColor = UIColor(red:0.04, green:0.29, blue:0.60, alpha:1.0)
+                 self.nowPlayingLabel.font.withSize(14.0)
+                self.nowPlayingLabel.backgroundColor = UIColor.clear
+                
+            }
+        }
         
          NSLog(message)
         
