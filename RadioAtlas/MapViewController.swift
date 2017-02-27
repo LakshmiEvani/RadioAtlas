@@ -41,7 +41,7 @@ struct PlayNext {
 
 
 
-class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDelegate, CLLocationManagerDelegate, NSFetchedResultsControllerDelegate, UIPopoverPresentationControllerDelegate,RadioAVPlayerItemDelegate, UIGestureRecognizerDelegate {
+class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDelegate, CLLocationManagerDelegate, NSFetchedResultsControllerDelegate, UIPopoverPresentationControllerDelegate,RadioAVPlayerItemDelegate, UIGestureRecognizerDelegate, TableViewControllerDelegate {
     
     //Outlets
    
@@ -427,17 +427,22 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         
         if Music.sharedInstance.isPlaying == true {
             
-            Music.sharedInstance.audioPlayer.pause()
-            playAndPause.setImage(UIImage(named: "play"), for: .normal)
-            Music.sharedInstance.isPlaying = false
-            appDelegate.setNetworkActivityIndicatorVisible(visible: false)
+              if (Music.sharedInstance.audioPlayer != nil) {
+            
+                Music.sharedInstance.audioPlayer.pause()
+                playAndPause.setImage(UIImage(named: "play"), for: .normal)
+                Music.sharedInstance.isPlaying = false
+                appDelegate.setNetworkActivityIndicatorVisible(visible: false)
+            }
             
         } else if Music.sharedInstance.isPlaying == false {
             
-            Music.sharedInstance.audioPlayer.play()
-            playAndPause.setImage(UIImage(named: "pause"), for: .normal)
-            Music.sharedInstance.isPlaying = true
-            appDelegate.setNetworkActivityIndicatorVisible(visible: true)
+            if (Music.sharedInstance.audioPlayer != nil) {
+                Music.sharedInstance.audioPlayer.play()
+                playAndPause.setImage(UIImage(named: "pause"), for: .normal)
+                Music.sharedInstance.isPlaying = true
+                appDelegate.setNetworkActivityIndicatorVisible(visible: true)
+            }
         }
     }
     
@@ -1017,6 +1022,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
             print("segue called")
             
             let dest = segue.destination as! TableViewController
+            dest.tvcDelegate = self
             dest.station = favoriteStation
           //  print("There is data in favories", dest.station)
             
