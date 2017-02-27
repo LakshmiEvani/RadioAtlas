@@ -41,10 +41,11 @@ struct PlayNext {
 
 
 
-class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDelegate, CLLocationManagerDelegate, NSFetchedResultsControllerDelegate, UIPopoverPresentationControllerDelegate,RadioAVPlayerItemDelegate {
+class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDelegate, CLLocationManagerDelegate, NSFetchedResultsControllerDelegate, UIPopoverPresentationControllerDelegate,RadioAVPlayerItemDelegate, UIGestureRecognizerDelegate {
     
     //Outlets
    
+    @IBOutlet weak var centerFocus: UIImageView!
     
     @IBOutlet var mapView: MKMapView!
    
@@ -63,9 +64,19 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
     var locationManager = CLLocationManager()
     var favoriteStation = [Station]()
     var favorite : Bool = false
-    var annotations = [MKAnnotation]()
+    var annotations = [PinAnnotation]()
     var mapViewZoomStepperValue: Double = -1.0
     private var playerItemContext = 0
+    private var isUpdating = false
+    var isMapLoaded = false
+    
+    var regionWillChangeAnimatedCalled : Bool = false
+    var regionChangedBecauseAnnotationSelected : Bool = false
+    var selectedFromRegionChange : Bool = false
+    var skipRegionAnnotationSelection : Bool = false
+    var skipRegionClustering : Bool = false
+    var mapDragged : Bool = false
+    var prevZoomLevel : Double = 17.0
 
     
     
@@ -97,6 +108,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        //mapView.mapType = MKMapType.hybrid
         
         mapView.showsPointsOfInterest = true
       
@@ -119,15 +131,31 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         self.addAnnotation()
  
         
+        let mapDragRecognizer = UIPanGestureRecognizer(target: self, action: #selector(self.didDragMap(gestureRecognizer:)))
+        mapDragRecognizer.delegate = self
+        self.mapView.addGestureRecognizer(mapDragRecognizer)
+        
         
     }
     
     func setWorldRegion(animated: Bool) {
         var worldRegion : MKCoordinateRegion
         worldRegion = MKCoordinateRegionForMapRect(MKMapRectWorld)
+        skipRegionAnnotationSelection = true
+        //set the world zoom level
+        self.prevZoomLevel == 17.0
         mapView.setRegion(worldRegion,animated: animated)
+        //centerFocus.isHidden = false
 
     }
+    
+    
+    
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
+    }
+    
+
 
     
    
@@ -135,6 +163,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
     func determineCurrentLocation() {
         
         //Paint the annotations by setting region
+        isMapLoaded = true
         
         nowPlayingLabel.text = "Tap dots to play. Pinch or double-tap to zoom."
         nowPlayingLabel.triggerScrollStart()
@@ -506,43 +535,152 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         
     }
     
+    
+    
+    
+    func didDragMap(gestureRecognizer: UIGestureRecognizer) {
+        
+        if (gestureRecognizer.state == UIGestureRecognizerState.began) {
+            //print("Map drag began")
+            centerFocus.isHidden = false
+        }
+        
+        if (gestureRecognizer.state == UIGestureRecognizerState.ended) {
+            
+           // print("Map drag ended")
+            mapDragged = true
+            centerFocus.isHidden = true
+            
+            return
+            
+           // DispatchQueue.global(qos: .userInitiated).async {
+                let mapBoundsWidth = Double(self.mapView.bounds.size.width)
+                let mapRectWidth = self.mapView.visibleMapRect.size.width
+                let scale = mapBoundsWidth / mapRectWidth
+                
+                let annotationArray = self.clusteringManager.pinAnnotationsRect(withinMapRect: self.mapView.visibleMapRect, zoomScale:scale)
+                
+             /*   DispatchQueue.main.async {
+                    self.clusteringManager.display(annotations: annotationArray, onMapView:self.mapView)
+                } */
+                
+                var closestStation : MKAnnotation
+                if (annotationArray.count > 0)
+                {
+                    closestStation = self.findClosestStation(annotations: annotationArray,coordinate: self.mapView.centerCoordinate)
+                    print(closestStation.title)
+                  //  DispatchQueue.main.async {
+                  // self.playFromAnnotation(annotation: closestStation as! PinAnnotation)
+                    
+                    mapView.addAnnotation(closestStation)
+                    mapView.selectAnnotation(closestStation, animated: true)
+                    
+                  //   self.mapView.setZoomByDelta(delta: 1, animated: true, center: closestStation.coordinate)
+                      //   }
+                    
+                    
+                }
+            //}
+            
+            
+        }
+    }
+    
+    func mapView(_ mapView: MKMapView, regionWillChangeAnimated animated: Bool) {
+        
+        regionWillChangeAnimatedCalled = true;
+        regionChangedBecauseAnnotationSelected = false;
+        
+    }
+    
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+        
+        if (!isMapLoaded) {
+            return
+        }
+        
+        if (isUpdating) {
+            return
+        }
+        
+        if (skipRegionClustering) {
+            skipRegionClustering = false
+            return
+        }
+       
+        
+            isUpdating = true
         
         DispatchQueue.global(qos: .userInitiated).async {
             let mapBoundsWidth = Double(self.mapView.bounds.size.width)
             let mapRectWidth = self.mapView.visibleMapRect.size.width
             let scale = mapBoundsWidth / mapRectWidth
+            let zoomLevel : Double = abs(ceil(log2(scale)))
+            //let zoomLevel : Double = 20.0 - abs(zoomExponent)
+            
             
             let annotationArray = self.clusteringManager.clusteredAnnotations(withinMapRect: self.mapView.visibleMapRect, zoomScale:scale)
             
             DispatchQueue.main.async {
                 self.clusteringManager.display(annotations: annotationArray, onMapView:self.mapView)
             }
-        }
-        
-    }
-    
-    func findClosestStation(annotations:[MKAnnotation], coordinate:CLLocationCoordinate2D) -> MKAnnotation {
-        var closest : MKAnnotation = annotations[0]
-        
-        //Max possible distance between 2 points
-        var distance = CLLocationDistance(20036332.8)
-        
-        
-        for annotation in annotations {
             
-            let annotationCoord : CLLocation = CLLocation(latitude: annotation.coordinate.latitude,longitude: annotation.coordinate.longitude)
-            let clusterCoord : CLLocation = CLLocation(latitude: coordinate.latitude,longitude: coordinate.longitude)
+            if (self.skipRegionAnnotationSelection) {
+                self.skipRegionAnnotationSelection = false
+                return
+            }
             
-            if (clusterCoord.distance(from: annotationCoord) <= distance) {
-                closest = annotation
-                distance = clusterCoord.distance(from: annotationCoord)
+            
+            //if zoomed in or out then don't select annotation
+            if (self.prevZoomLevel == 17.0)
+            {
+                self.prevZoomLevel = zoomLevel
+            }
+            else if (zoomLevel != self.prevZoomLevel) // Means that map is zoomed in or out
+            {
+                self.prevZoomLevel = zoomLevel
+                //Only if user dragged zoomed the map
+                
+                if (!self.regionChangedBecauseAnnotationSelected)
+                {
+                    return
+                }
+               if (self.mapDragged) {
+                    self.mapDragged = false
+                    return
+                }
+                
+            }
+            
+            if (!self.regionChangedBecauseAnnotationSelected) {
+            
+                var closestStation : MKAnnotation
+                if (annotationArray.count > 0)
+                {
+                    closestStation = self.findClosestStation(annotations: annotationArray,coordinate: self.mapView.centerCoordinate)
+                    //print(closestStation.title)
+                    DispatchQueue.main.async {
+                        // self.playFromAnnotation(annotation: closestStation as! PinAnnotation)
+                        self.selectedFromRegionChange = true
+                        //mapView.addAnnotation(closestStation)
+                        mapView.selectAnnotation(closestStation, animated: true)
+                        self.selectedFromRegionChange = false
+                        
+                
+                        //   self.mapView.setZoomByDelta(delta: 1, animated: true, center: closestStation.coordinate)
+                    }
+                
+                
+                }
             }
             
         }
+         isUpdating = false
         
-        return closest
+        
     }
+    
+
   
     
     // This delegate method is implemented to respond to taps. It opens the system browser
@@ -550,7 +688,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         
-        
+         regionChangedBecauseAnnotationSelected = regionWillChangeAnimatedCalled
         
         if view is FBAnnotationClusterView {
             //let annotationCluster = view.annotation as! FBAnnotation
@@ -560,10 +698,17 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
             
             let cView = view as! FBAnnotationClusterView
             clusterAnnotations = cView.getClusterAnnotations()
-            closestStation = findClosestStation(annotations: cView.getClusterAnnotations(),coordinate: (cView.annotation?.coordinate)!)
+            if (clusterAnnotations.count > 0) {
+            closestStation = findClosestStation(annotations: cView.getClusterAnnotations() as! [PinAnnotation],coordinate: (cView.annotation?.coordinate)!)
      
-            
-            mapView.setZoomByDelta(delta: 0.03125, animated: true, center: closestStation.coordinate)
+            //do not zoom in if user dragged map, else zoom in if user selected point
+            var delta = 0.03125
+            if (selectedFromRegionChange) {
+                skipRegionClustering = true
+                delta = 1.0
+            }
+                
+            mapView.setZoomByDelta(delta: delta, animated: true, center: closestStation.coordinate)
             
             let annotationView = closestStation as! PinAnnotation
             
@@ -574,6 +719,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
             
             mapView.addAnnotation(closestStation)
             mapView.selectAnnotation(closestStation, animated: true)
+            }
             
             
             return
@@ -602,18 +748,53 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
                 view.leftCalloutAccessoryView = nil
             }
             
-            if let toOpen = annotation.streamUrl {
-                
-              //  print("Music stream playing",toOpen)
-                
-                self.playNextData = annotation.name
-                if (annotation.location != nil) {
-                   self.playNextData = self.playNextData + " ∞∞ " + annotation.location
-                }
-                self.playMusic(music: toOpen)
+                          //  print("Music stream playing",toOpen)
+                self.playFromAnnotation(annotation: annotation)
+            
+            
+            
+        }
+        
+        regionWillChangeAnimatedCalled = false
+        regionChangedBecauseAnnotationSelected = false
+        
+        
+    }
+    
+    func findClosestStation(annotations:[MKAnnotation], coordinate:CLLocationCoordinate2D) -> MKAnnotation {
+        
+        var closest : MKAnnotation = annotations[0]
+        
+        
+        //Max possible distance between 2 points
+        var distance = CLLocationDistance(20036332.8)
+        let minDistance : CLLocationDistance = CLLocationDistance(482803.2)
+        
+        
+        for annotation in annotations {
+            
+            let annotationCoord : CLLocation = CLLocation(latitude: annotation.coordinate.latitude,longitude: annotation.coordinate.longitude)
+            let clusterCoord : CLLocation = CLLocation(latitude: coordinate.latitude,longitude: coordinate.longitude)
+            
+            if (clusterCoord.distance(from: annotationCoord) <= distance) {
+                closest = annotation
+                distance = clusterCoord.distance(from: annotationCoord)
             }
             
         }
+        
+        return closest
+    }
+    
+    func playFromAnnotation(annotation: PinAnnotation) {
+        
+        playNextData = annotation.name
+        if (annotation.location != nil) {
+            self.playNextData = self.playNextData + " ∞∞ " + annotation.location
+        }
+        
+        playMusic(music: annotation.streamUrl)
+
         
     }
     
@@ -817,7 +998,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
             }
         }
         
-         NSLog(message)
+         print(message)
         
     }
     

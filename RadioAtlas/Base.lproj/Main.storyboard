@@ -39,7 +39,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" pitchEnabled="NO" showsUserLocation="YES" showsBuildings="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bB8-uh-7h7">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" showsBuildings="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bB8-uh-7h7">
                                 <rect key="frame" x="-11" y="20" width="342" height="548"/>
                                 <connections>
                                     <outlet property="delegate" destination="tmg-mo-T3o" id="UMY-Gj-Sfq"/>
@@ -148,10 +148,15 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </label>
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="center" translatesAutoresizingMaskIntoConstraints="NO" id="TCg-qb-4VU">
+                                <rect key="frame" x="40" y="221.5" width="240" height="125"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="UVV-WV-ibx" firstAttribute="leading" secondItem="Xz0-ir-Y4k" secondAttribute="trailing" constant="15" id="4ng-oh-3cM"/>
+                            <constraint firstItem="TCg-qb-4VU" firstAttribute="leading" secondItem="fb2-Ol-aye" secondAttribute="leading" id="5i3-wG-GpI"/>
+                            <constraint firstItem="TCg-qb-4VU" firstAttribute="trailing" secondItem="fb2-Ol-aye" secondAttribute="trailing" id="61m-ZT-9bb"/>
                             <constraint firstItem="OK7-Pk-kuF" firstAttribute="leading" secondItem="b0b-7v-QAm" secondAttribute="trailing" constant="12" id="6Y6-ni-aIJ"/>
                             <constraint firstItem="6PE-Lx-BlR" firstAttribute="leading" secondItem="fb2-Ol-aye" secondAttribute="leading" id="7GJ-g6-gq8"/>
                             <constraint firstItem="7AF-W0-hZz" firstAttribute="leading" secondItem="Jba-SE-lO6" secondAttribute="leadingMargin" constant="15" id="7qy-Gd-nU0"/>
@@ -177,6 +182,8 @@
                             <constraint firstItem="79W-Qq-ZtL" firstAttribute="leading" secondItem="OK7-Pk-kuF" secondAttribute="trailing" constant="9" id="ZCx-6S-6mE"/>
                             <constraint firstItem="b0b-7v-QAm" firstAttribute="leading" secondItem="7AF-W0-hZz" secondAttribute="leading" id="aRO-Oo-2LQ"/>
                             <constraint firstItem="Xz0-ir-Y4k" firstAttribute="top" secondItem="6PE-Lx-BlR" secondAttribute="bottom" constant="8" symbolic="YES" id="ay8-VC-ccI"/>
+                            <constraint firstItem="TCg-qb-4VU" firstAttribute="bottom" secondItem="fb2-Ol-aye" secondAttribute="bottom" id="d5Y-2R-clc"/>
+                            <constraint firstItem="TCg-qb-4VU" firstAttribute="centerY" secondItem="Jba-SE-lO6" secondAttribute="centerY" id="fCZ-nI-Tex"/>
                             <constraint firstItem="udh-qt-qjV" firstAttribute="leading" secondItem="UVV-WV-ibx" secondAttribute="trailing" constant="15" id="gu4-kG-8QB"/>
                             <constraint firstItem="tJP-a8-iaI" firstAttribute="centerX" secondItem="fb2-Ol-aye" secondAttribute="centerX" id="hvB-Rw-Typ"/>
                             <constraint firstItem="o2O-Le-CHD" firstAttribute="top" secondItem="7AF-W0-hZz" secondAttribute="bottom" constant="18" id="mxe-Wt-wSR"/>
@@ -194,6 +201,7 @@
                     <connections>
                         <outlet property="activityIndicator" destination="tJP-a8-iaI" id="24W-oK-3MB"/>
                         <outlet property="btnWorld" destination="Xz0-ir-Y4k" id="rQi-o2-iDU"/>
+                        <outlet property="centerFocus" destination="TCg-qb-4VU" id="uRk-mi-IgZ"/>
                         <outlet property="favoriteButton" destination="UVV-WV-ibx" id="THK-I4-nRX"/>
                         <outlet property="mapView" destination="bB8-uh-7h7" id="inN-Sp-EsF"/>
                         <outlet property="nowPlayingLabel" destination="6PE-Lx-BlR" id="WSk-T1-oDU"/>
@@ -358,6 +366,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="center" width="123" height="123"/>
         <image name="favorites" width="103" height="103"/>
         <image name="pause" width="122" height="122"/>
         <image name="world" width="122" height="122"/>
