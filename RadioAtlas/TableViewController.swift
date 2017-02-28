@@ -11,12 +11,19 @@ import UIKit
 import CoreData
 import AVFoundation
 
+
+protocol TableViewControllerDelegate {
+    func playFromAnnotation(annotation: PinAnnotation)
+}
+
+
 class TableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate {
     
     // Variable Declaration
     
     @IBOutlet var favoriteTableView: UITableView!
     var appDelegate = UIApplication.shared.delegate as! AppDelegate
+    var tvcDelegate : TableViewControllerDelegate?
     var station = [Station]()
     // Properties
     var client = Client.sharedInstance()
@@ -37,6 +44,8 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
         appDelegate = UIApplication.shared.delegate as! AppDelegate
         favoriteTableView.delegate = self
         favoriteTableView.dataSource = self
+        
+        
         
         print("Items in Station:", station)
         let fetchRequest: NSFetchRequest<Station> =  Station.fetchRequest()
@@ -81,6 +90,10 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     func configureCell(cell: UITableViewCell, indexPath: NSIndexPath) {
         guard let selectedObject = fetchedResultsController.object(at: indexPath as IndexPath) as? Station else { fatalError("Unexpected Object in FetchedResultsController") }
+        cell.selectedBackgroundView?.backgroundColor = UIColor(red:0.04, green:0.29, blue:0.60, alpha:1.0)
+        cell.selectionStyle = UITableViewCellSelectionStyle.blue
+        
+        
         // Populate cell from the NSManagedObject instance
         print("Object for configuration: \(selectedObject)")
     }
@@ -127,13 +140,19 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        tableView.deselectRow(at: indexPath, animated: true)
+        //tableView.deselectRow(at: indexPath, animated: true)
         let favoriteObject = (fetchedResultsController?.object(at: indexPath))! as Station
         
+        let dummyAnnotation = PinAnnotation(id: favoriteObject.id!, name: favoriteObject.name!, streamUrl: favoriteObject.streamURL!, websiteURL: favoriteObject.websiteURL!, location: favoriteObject.location!, latitude: favoriteObject.latitude, longitude: favoriteObject.longitude)
+        
+        if (tvcDelegate != nil) {
+            tvcDelegate?.playFromAnnotation(annotation: dummyAnnotation)
+        }
+                /*
         var playerItem = AVPlayerItem(url: NSURL(string: favoriteObject.streamURL!) as! URL)
         
         Music.sharedInstance.musicStream(playerItem: playerItem as! RadioAVPlayerItem)
-        
+        */
         
     }
     
