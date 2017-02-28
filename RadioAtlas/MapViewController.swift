@@ -45,6 +45,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
     //Outlets
     @IBOutlet weak var favorite: UIBarButtonItem!
     
+    @IBOutlet weak var playButton: UIBarButtonItem!
+    
     @IBOutlet var mapView: MKMapView!
     
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!

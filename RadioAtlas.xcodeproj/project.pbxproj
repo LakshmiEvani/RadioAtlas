@@ -44,6 +44,7 @@
 		878130631E35C6FA00E70D0B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 873B5FE91E2FB6970057D735 /* Assets.xcassets */; };
 		878130641E35C6FB00E70D0B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 873B5FE91E2FB6970057D735 /* Assets.xcassets */; };
 		87C7FF191E4E6790004533EC /* Music.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C7FF181E4E6790004533EC /* Music.swift */; };
+		91DC8D521E64F23700C891DA /* CustomToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91DC8D511E64F23700C891DA /* CustomToolbar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,6 +106,7 @@
 		873B60361E2FD1960057D735 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		873B60381E2FD19F0057D735 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		87C7FF181E4E6790004533EC /* Music.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Music.swift; sourceTree = "<group>"; };
+		91DC8D511E64F23700C891DA /* CustomToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomToolbar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -217,6 +219,7 @@
 				87C7FF181E4E6790004533EC /* Music.swift */,
 				4B6D27CB1E614674002A56BF /* RadioAVPlayer.swift */,
 				4B6D27CD1E6147A2002A56BF /* RadioAVPlayerItem.swift */,
+				91DC8D511E64F23700C891DA /* CustomToolbar.swift */,
 			);
 			name = "View Controller";
 			sourceTree = "<group>";
@@ -415,6 +418,7 @@
 				873B60161E2FBBAF0057D735 /* TableViewController.swift in Sources */,
 				4B7275261E5A8CF0004D9A33 /* FBAnnotationClusterViewConfiguration.swift in Sources */,
 				4B7275251E5A8CF0004D9A33 /* FBAnnotationClusterView.swift in Sources */,
+				91DC8D521E64F23700C891DA /* CustomToolbar.swift in Sources */,
 				873B5FE21E2FB6970057D735 /* MapViewController.swift in Sources */,
 				4B6D27CE1E6147A2002A56BF /* RadioAVPlayerItem.swift in Sources */,
 				4B72752B1E5A8CF0004D9A33 /* FBQuadTreeNode.swift in Sources */,
