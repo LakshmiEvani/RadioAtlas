@@ -79,7 +79,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
     var mapDragged : Bool = false
     var prevZoomLevel : Double = 17.0
 
-    
+    @IBOutlet weak var mapViewZoomStepper: UIStepper!
+    var mapViewZoomStepperValue: Double = -1.0
     
     
     let clusteringManager = FBClusteringManager()
@@ -155,6 +156,43 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
     }
     
     
+    
+    // Zoom In and Zoom Out 
+    
+    @IBAction func ZoomInAndZoomOut(_ sender: Any) {
+        
+        if (mapViewZoomStepper.value  > mapViewZoomStepperValue)
+        {
+            mapViewZoomStepperValue = mapViewZoomStepperValue + 1.0
+            
+            //Zoom In
+            mapView.zoomInPinAnnotationLocation(mapView, delta: 3.0)
+        }
+        else
+        {
+            mapViewZoomStepperValue = mapViewZoomStepper.value - 1.0
+            
+            //Zoom Out
+            mapView.zoomOutPinAnnotationLocation(mapView, delta: 3.0)
+        }
+    }
+    
+    func zoomInPinAnnotationLocation(targetMapViewName : MKMapView?, delta: Double)
+    {
+        var region: MKCoordinateRegion = targetMapViewName!.region
+        region.span.latitudeDelta /= delta
+        region.span.longitudeDelta /= delta
+        targetMapViewName!.region = region
+        
+    }
+    func zoomOutPinAnnotationLocation(targetMapViewName : MKMapView?,delta: Double)
+    {
+        var region: MKCoordinateRegion = targetMapViewName!.region
+        region.span.latitudeDelta *= delta
+        region.span.longitudeDelta *= delta
+        targetMapViewName!.region = region
+    }
+
     
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         return true

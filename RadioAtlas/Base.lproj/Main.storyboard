@@ -41,7 +41,7 @@
                         <viewControllerLayoutGuide type="bottom" id="o2O-Le-CHD"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Jba-SE-lO6">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" pitchEnabled="NO" showsUserLocation="YES" showsBuildings="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bB8-uh-7h7">
@@ -69,7 +69,7 @@
                                 <state key="normal" image="favorites"/>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" editable="NO" text="Loading Radio Stations" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fb2-Ol-aye">
-                                <rect key="frame" x="40" y="312.5" width="240" height="34"/>
+                                <rect key="frame" x="40" y="269" width="240" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="FZV-7I-0OM"/>
                                 </constraints>
@@ -96,7 +96,7 @@
                                 </connections>
                             </slider>
                             <activityIndicatorView contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="tJP-a8-iaI">
-                                <rect key="frame" x="142" y="265.5" width="37" height="37"/>
+                                <rect key="frame" x="142" y="222" width="37" height="37"/>
                                 <color key="color" red="0.035294117649999998" green="0.2901960784" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                             </activityIndicatorView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pause" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b0b-7v-QAm">
@@ -128,7 +128,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6PE-Lx-BlR" userLabel="Marquee" customClass="MarqueeLabel" customModule="MarqueeLabel">
-                                <rect key="frame" x="40" y="481" width="240" height="21"/>
+                                <rect key="frame" x="40" y="349" width="240" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="ukz-1f-kN2"/>
                                 </constraints>
@@ -151,8 +151,14 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="center" translatesAutoresizingMaskIntoConstraints="NO" id="TCg-qb-4VU">
-                                <rect key="frame" x="40" y="221.5" width="240" height="125"/>
+                                <rect key="frame" x="40" y="178" width="240" height="125"/>
                             </imageView>
+                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="lOb-E8-kPT">
+                                <rect key="frame" x="210" y="91" width="94" height="29"/>
+                                <connections>
+                                    <action selector="ZoomInAndZoomOut:" destination="tmg-mo-T3o" eventType="valueChanged" id="JZQ-0A-2sg"/>
+                                </connections>
+                            </stepper>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -172,7 +178,9 @@
                             <constraint firstItem="Xz0-ir-Y4k" firstAttribute="bottom" secondItem="UVV-WV-ibx" secondAttribute="bottom" id="H1a-t7-aCa"/>
                             <constraint firstItem="fb2-Ol-aye" firstAttribute="top" secondItem="tJP-a8-iaI" secondAttribute="bottom" constant="10" id="HFe-Gc-tb8"/>
                             <constraint firstItem="Xz0-ir-Y4k" firstAttribute="leading" secondItem="7AF-W0-hZz" secondAttribute="trailing" constant="15" id="Hgf-Je-Hy3"/>
+                            <constraint firstItem="lOb-E8-kPT" firstAttribute="top" secondItem="7yS-y9-ht0" secondAttribute="bottom" constant="27" id="Ibt-Hq-Qdi"/>
                             <constraint firstItem="bB8-uh-7h7" firstAttribute="centerX" secondItem="tJP-a8-iaI" secondAttribute="centerX" id="JYH-p1-XkV"/>
+                            <constraint firstItem="lOb-E8-kPT" firstAttribute="trailing" secondItem="Jba-SE-lO6" secondAttribute="trailingMargin" id="Ja0-kJ-vSi"/>
                             <constraint firstItem="7AF-W0-hZz" firstAttribute="top" secondItem="6PE-Lx-BlR" secondAttribute="bottom" constant="8" symbolic="YES" id="LfU-1T-gdX"/>
                             <constraint firstItem="OK7-Pk-kuF" firstAttribute="baseline" secondItem="79W-Qq-ZtL" secondAttribute="baseline" id="Nd9-AP-Yhq"/>
                             <constraint firstItem="fb2-Ol-aye" firstAttribute="leading" secondItem="Jba-SE-lO6" secondAttribute="leadingMargin" constant="24" id="Q2Q-Fb-SZQ"/>
@@ -226,6 +234,7 @@
                         <outlet property="favorite" destination="Dmu-D9-iUE" id="Cmc-vN-9AH"/>
                         <outlet property="favoriteButton" destination="UVV-WV-ibx" id="THK-I4-nRX"/>
                         <outlet property="mapView" destination="bB8-uh-7h7" id="inN-Sp-EsF"/>
+                        <outlet property="mapViewZoomStepper" destination="lOb-E8-kPT" id="5iu-Zy-E28"/>
                         <outlet property="nowPlayingLabel" destination="6PE-Lx-BlR" id="WSk-T1-oDU"/>
                         <outlet property="playAndPause" destination="7AF-W0-hZz" id="d7o-Ac-mSv"/>
                         <outlet property="playButton" destination="25h-66-d73" id="Ber-Yl-R3d"/>
@@ -247,11 +256,11 @@
                         <viewControllerLayoutGuide type="bottom" id="GFf-mN-SrO"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="qlT-zb-3xp">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8xR-Eq-k4t">
-                                <rect key="frame" x="-9" y="72" width="336" height="504"/>
+                                <rect key="frame" x="-9" y="72" width="336" height="416"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -276,7 +285,7 @@
                         <viewControllerLayoutGuide type="bottom" id="4Fv-gI-LhB"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ENi-6Y-2DU">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="56" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4Jf-US-nfB">
@@ -287,7 +296,7 @@
                                         <rect key="frame" x="0.0" y="28" width="344" height="56"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VVm-P0-Ydo" id="M5L-R4-1zb">
-                                            <rect key="frame" x="0.0" y="0.0" width="344" height="55"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="344" height="56"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kgf-L1-h9y">
@@ -330,7 +339,7 @@
                             <constraint firstItem="4Jf-US-nfB" firstAttribute="top" secondItem="bQp-HI-dGC" secondAttribute="bottom" id="t7j-Vj-TYP"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Favorite Stations" id="vAg-Rq-BqU"/>
+                    <navigationItem key="navigationItem" title="Back" id="fwA-2V-9DS"/>
                     <connections>
                         <outlet property="favoriteTableView" destination="4Jf-US-nfB" id="Tp4-gb-6li"/>
                     </connections>
@@ -341,6 +350,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="center" width="123" height="123"/>
         <image name="favorite" width="12" height="12"/>
         <image name="favorites" width="103" height="103"/>
         <image name="mappoint" width="9" height="9"/>
