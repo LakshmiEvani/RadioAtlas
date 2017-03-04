@@ -41,7 +41,7 @@ struct PlayNext {
 
 
 
-class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDelegate, CLLocationManagerDelegate, NSFetchedResultsControllerDelegate, UIPopoverPresentationControllerDelegate,RadioAVPlayerItemDelegate, UIGestureRecognizerDelegate, TableViewControllerDelegate {
+class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDelegate, CLLocationManagerDelegate, NSFetchedResultsControllerDelegate, UIPopoverPresentationControllerDelegate,RadioAVPlayerItemDelegate,RadioAVPlayerDelegate ,UIGestureRecognizerDelegate, TableViewControllerDelegate {
     
     //Outlets
     @IBOutlet weak var favorite: UIBarButtonItem!
@@ -79,6 +79,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
     var skipRegionClustering : Bool = false
     var mapDragged : Bool = false
     var prevZoomLevel : Double = 17.0
+    private let PlayerStatusObservingContext = UnsafeMutablePointer<Int>(bitPattern: 1)
 
     @IBOutlet weak var mapViewZoomStepper: UIStepper!
     //var mapViewZoomStepperValue: Double = -1.0
@@ -136,12 +137,30 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         setWorldRegion(animated: false)
         mapView.delegate = self
         self.addAnnotation()
- 
         
         let mapDragRecognizer = UIPanGestureRecognizer(target: self, action: #selector(self.didDragMap(gestureRecognizer:)))
         mapDragRecognizer.delegate = self
         self.mapView.addGestureRecognizer(mapDragRecognizer)
         
+       
+        
+       }
+    
+    func addPlayerObservers(player: RadioAVPlayer) {
+        
+        player.addObserver(self,
+                                forKeyPath: "currentItem.status",
+                                options: [.new, .initial],
+                                context: nil)
+        
+        player.addObserver(self,
+                                forKeyPath: "currentItem.duration",
+                                context: nil)
+        
+        player.addObserver(self,
+                           forKeyPath: "rate",
+                           context: nil)
+
         
     }
     
@@ -426,19 +445,31 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
             removeObservers(playerItem: playerItem!)
         }
         
+   
+
+        
          playerItem = RadioAVPlayerItem(url: NSURL(string: music) as! URL)
          addObservers(playerItem: playerItem!)
         
-        Music.sharedInstance.musicStream(playerItem: playerItem! as! RadioAVPlayerItem)
-        self.playAndPause.setImage(UIImage(named: "pause"), for: .normal)
+        
+      
+        Music.sharedInstance.musicStream(playerItem: playerItem! as! RadioAVPlayerItem, viewController: self)
+        playPauseImageUpdate(play: false)
         
     }
     
     func removeObservers(playerItem: AVPlayerItem) {
-        
         playerItem.removeObserver(self, forKeyPath: "timedMetadata")
         playerItem.removeObserver(self, forKeyPath:"status")
     }
+    
+    func removePlayerObservers(player: RadioAVPlayer) {
+        player.removeObserver(self, forKeyPath: "currentItem.status")
+        player.removeObserver(self, forKeyPath: "currentItem.duration")
+        
+    }
+    
+    
     
     func addObservers(playerItem: AVPlayerItem) {
         
@@ -475,7 +506,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
               if (Music.sharedInstance.audioPlayer != nil) {
             
                 Music.sharedInstance.audioPlayer.pause()
-                playAndPause.setImage(UIImage(named: "play"), for: .normal)
+                playPauseImageUpdate(play: true)
                 Music.sharedInstance.isPlaying = false
                 appDelegate.setNetworkActivityIndicatorVisible(visible: false)
             }
@@ -484,7 +515,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
             
             if (Music.sharedInstance.audioPlayer != nil) {
                 Music.sharedInstance.audioPlayer.play()
-                playAndPause.setImage(UIImage(named: "pause"), for: .normal)
+                playPauseImageUpdate(play: false)
                 Music.sharedInstance.isPlaying = true
                 appDelegate.setNetworkActivityIndicatorVisible(visible: true)
             }
@@ -974,15 +1005,19 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
                                context: UnsafeMutableRawPointer?)
      {
         
+        
        
         
-        var data: AVPlayerItem = object as! AVPlayerItem
+       
         var newData : String = ""
         var nowPlayingData : String = ""
         
         
        if (keyPath == "timedMetadata")
        {
+        
+        
+            let data: AVPlayerItem = object as! AVPlayerItem
         
             for item in data.timedMetadata! as [AVMetadataItem] {
                 if (item != nil)
@@ -1009,13 +1044,32 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         
         if playerItem.status ==  AVPlayerItemStatus.readyToPlay{
             nowPlayingData = playNextData
+            playPauseImageUpdate(play: false)
+            
+            
             statusUpdate(message: nowPlayingData)
         } else if playerItem.status == AVPlayerItemStatus.failed {
             statusUpdate(message: "Invalid radio stream. Try another station.", error: true)
+             playPauseImageUpdate(play: true)
         }
         
         
         }
+       else if (keyPath == "rate") {
+        //let player:AVPlayer = object as! AVPlayer
+        switch (object! as AnyObject).rate as Float {
+        case 0.0:
+            playPauseImageUpdate(play: true)
+
+        case 1.0:
+            playPauseImageUpdate(play: false)
+
+        default:
+            // shouldn't get here...
+            true
+        }
+        
+       }
        else {
         return
         }
@@ -1041,6 +1095,18 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         
          print(message)
         
+    }
+    
+    func playPauseImageUpdate(play: Bool)
+    {
+         DispatchQueue.main.async {
+            if (play) {
+                self.playAndPause.setImage(UIImage(named: "play"), for: .normal)
+            }
+            else {
+                self.playAndPause.setImage(UIImage(named: "pause"), for: .normal)
+            }
+        }
     }
     
     override func didReceiveMemoryWarning() {

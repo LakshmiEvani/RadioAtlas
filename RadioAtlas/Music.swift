@@ -16,15 +16,22 @@ class Music {
     var isPlaying = false
     var audioPlayer:RadioAVPlayer!
     var appDelegate = UIApplication.shared.delegate as! AppDelegate
+   
   
     
     
     private init() {
      //   print(musicStream)
+        
+        
+       }
+    
+    func getPlayer() -> RadioAVPlayer {
+        return audioPlayer
     }
 
 
-    func musicStream(playerItem: RadioAVPlayerItem){
+    func musicStream(playerItem: RadioAVPlayerItem, viewController : RadioAVPlayerDelegate){
         
         //Setting music stream
         
@@ -37,6 +44,8 @@ class Music {
             
                 
                 self.audioPlayer = RadioAVPlayer(playerItem: playerItem)
+                self.audioPlayer.delegate = viewController
+                self.audioPlayer.addObservers(del: viewController)
                 
                 self.audioPlayer!.play()
                 self.isPlaying = true
