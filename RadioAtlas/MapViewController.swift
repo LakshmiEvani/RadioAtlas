@@ -377,6 +377,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
                         self.clusteringManager.add(annotations: self.annotations)
                         self.clusteringManager.delegate = self
                         self.appDelegate.setNetworkActivityIndicatorVisible(visible: false)
+                        self.centerFocus.isHidden = false
                         self.determineCurrentLocation()
                         
                     }
@@ -581,7 +582,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
             centerFocus.isHidden = true
             
             return
-            
+            /*
            // DispatchQueue.global(qos: .userInitiated).async {
                 let mapBoundsWidth = Double(self.mapView.bounds.size.width)
                 let mapRectWidth = self.mapView.visibleMapRect.size.width
@@ -611,7 +612,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
                 }
             //}
             
-            
+            */
         }
     }
     
@@ -648,7 +649,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
             //let zoomLevel : Double = 20.0 - abs(zoomExponent)
             
             
-            let annotationArray = self.clusteringManager.clusteredAnnotations(withinMapRect: self.mapView.visibleMapRect, zoomScale:scale)
+             let annotationArray = self.clusteringManager.clusteredAnnotations(withinMapRect: self.mapView.visibleMapRect, zoomScale:scale)
+             let annotationNonClusteredArray = self.clusteringManager.allAnnotations()
             
             DispatchQueue.main.async {
                 self.clusteringManager.display(annotations: annotationArray, onMapView:self.mapView)
@@ -686,12 +688,19 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
                 var closestStation : MKAnnotation
                 if (annotationArray.count > 0)
                 {
-                    closestStation = self.findClosestStation(annotations: annotationArray,coordinate: self.mapView.centerCoordinate)
+                    closestStation = self.findClosestStation(annotations: annotationNonClusteredArray,coordinate: self.mapView.centerCoordinate)
                     //print(closestStation.title)
                     DispatchQueue.main.async {
                         // self.playFromAnnotation(annotation: closestStation as! PinAnnotation)
                         self.selectedFromRegionChange = true
-                        //mapView.addAnnotation(closestStation)
+                        
+                        let visibleAnnotations : Set = mapView.annotations(in: mapView.visibleMapRect)
+                        let isAnnotationVisible : Bool = visibleAnnotations.contains(closestStation as! AnyHashable)
+                        
+                        if (!isAnnotationVisible) {
+                            mapView.addAnnotation(closestStation)
+                        }
+                        
                         mapView.selectAnnotation(closestStation, animated: true)
                         self.selectedFromRegionChange = false
                         
@@ -801,7 +810,9 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         
         
         for annotation in annotations {
-            
+           //Look for only pin annotations and not cluster annotations
+         //   if (type(of: annotation) == MKAnnotation.self)
+           // {
             let annotationCoord : CLLocation = CLLocation(latitude: annotation.coordinate.latitude,longitude: annotation.coordinate.longitude)
             let clusterCoord : CLLocation = CLLocation(latitude: coordinate.latitude,longitude: coordinate.longitude)
             
@@ -809,6 +820,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
                 closest = annotation
                 distance = clusterCoord.distance(from: annotationCoord)
             }
+           // }
             
         }
         
