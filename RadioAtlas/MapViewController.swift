@@ -46,6 +46,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
     //Outlets
     @IBOutlet weak var favorite: UIBarButtonItem!
     
+    @IBOutlet weak var centerFocus: UIImageView!
     @IBOutlet weak var playButton: UIBarButtonItem!
     
     @IBOutlet var mapView: MKMapView!
@@ -80,7 +81,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
     var prevZoomLevel : Double = 17.0
 
     @IBOutlet weak var mapViewZoomStepper: UIStepper!
-    var mapViewZoomStepperValue: Double = -1.0
+    //var mapViewZoomStepperValue: Double = -1.0
     
     
     let clusteringManager = FBClusteringManager()
@@ -166,14 +167,14 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
             mapViewZoomStepperValue = mapViewZoomStepperValue + 1.0
             
             //Zoom In
-            mapView.zoomInPinAnnotationLocation(mapView, delta: 3.0)
+            zoomInPinAnnotationLocation(targetMapViewName: mapView, delta: 3.0)
         }
         else
         {
             mapViewZoomStepperValue = mapViewZoomStepper.value - 1.0
             
             //Zoom Out
-            mapView.zoomOutPinAnnotationLocation(mapView, delta: 3.0)
+            zoomOutPinAnnotationLocation(targetMapViewName: mapView, delta: 3.0)
         }
     }
     
@@ -497,26 +498,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         Music.sharedInstance.audioPlayer?.volume = currentValue
     }
     
- 
-    func zoomInPinAnnotationLocation(targetMapViewName : MKMapView?, delta: Double)
-    {
-        var region: MKCoordinateRegion = targetMapViewName!.region
-        region.span.latitudeDelta /= delta
-        region.span.longitudeDelta /= delta
-        targetMapViewName!.region = region
-        
-    }
-    func zoomOutPinAnnotationLocation(targetMapViewName : MKMapView?,delta: Double)
-    {
-        var region: MKCoordinateRegion = targetMapViewName!.region
-        region.span.latitudeDelta *= delta
-        region.span.longitudeDelta *= delta
-        targetMapViewName!.region = region
-    }
-
-    
-   
-
     
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {

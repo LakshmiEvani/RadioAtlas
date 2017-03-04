@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "MapViewController.(mapView(MKMapView, regionDidChangeAnimated : Bool) -&gt; ()).(closure #1):MapViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "ceil(zoomExponent)">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "MapViewController.(didDragMap(gestureRecognizer : UIGestureRecognizer) -&gt; ()).(closure #1):MapViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "MapViewController.findClosestStation(annotations : [PinAnnotation], coordinate : CLLocationCoordinate2D) -&gt; PinAnnotation:MapViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "MapViewController.mapView(MKMapView, didSelect : MKAnnotationView) -&gt; ():MapViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "specialized MapViewController.(mapView(MKMapView, regionDidChangeAnimated : Bool) -&gt; ()).(closure #1).(closure #2):MapViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "MapViewController.findClosestStation(annotations : [PinAnnotation], coordinate : CLLocationCoordinate2D) -&gt; MKAnnotation:MapViewController.swift">
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>
