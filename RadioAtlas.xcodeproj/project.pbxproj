@@ -20,8 +20,10 @@
 		4B72752B1E5A8CF0004D9A33 /* FBQuadTreeNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7275201E5A8CF0004D9A33 /* FBQuadTreeNode.swift */; };
 		4B72752C1E5A8CF0004D9A33 /* FBZoomLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7275211E5A8CF0004D9A33 /* FBZoomLevel.swift */; };
 		4B72752E1E5A8DD1004D9A33 /* FBBoundingBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B72752D1E5A8DD1004D9A33 /* FBBoundingBox.swift */; };
-		6EA43EE0F8A6513D16DD850A /* Pods_RadioAtlas.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 682C343BA47DC6935EBC7A88 /* Pods_RadioAtlas.framework */; };
+		585E7ECFF98FAEB26632A021 /* Pods_RadioAtlas.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A544FBC0C1CF8C48FF927B31 /* Pods_RadioAtlas.framework */; };
 		7D67D284014609AA2167E64A /* BuildFile in Frameworks */ = {isa = PBXBuildFile; };
+		81F51C7EF9DFDA44E0713AC7 /* Pods_RadioAtlasTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67B8E6D29DCA2EE58DA0BACC /* Pods_RadioAtlasTests.framework */; };
+		83E21F9224F451BA9BDD3930 /* Pods_RadioAtlasUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2731D04F69021E7CCFC4062E /* Pods_RadioAtlasUITests.framework */; };
 		873B5FE01E2FB6970057D735 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873B5FDF1E2FB6970057D735 /* AppDelegate.swift */; };
 		873B5FE21E2FB6970057D735 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873B5FE11E2FB6970057D735 /* MapViewController.swift */; };
 		873B5FE51E2FB6970057D735 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B5FE31E2FB6970057D735 /* Main.storyboard */; };
@@ -47,8 +49,6 @@
 		878130641E35C6FB00E70D0B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 873B5FE91E2FB6970057D735 /* Assets.xcassets */; };
 		87C7FF191E4E6790004533EC /* Music.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C7FF181E4E6790004533EC /* Music.swift */; };
 		91DC8D521E64F23700C891DA /* CustomToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91DC8D511E64F23700C891DA /* CustomToolbar.swift */; };
-		9DC2F7665AEDCC48D8F10A3B /* Pods_RadioAtlasUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99A8866871503ECFBF717318 /* Pods_RadioAtlasUITests.framework */; };
-		CE02A18BECF772897D68A6C6 /* Pods_RadioAtlasTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D46D8E4595C5A55FBDC761D9 /* Pods_RadioAtlasTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,9 +69,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		09E6704FA36A0B0C4436E0AE /* Pods-RadioAtlas.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RadioAtlas.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RadioAtlas/Pods-RadioAtlas.debug.xcconfig"; sourceTree = "<group>"; };
-		3B1D4FA1167BFDC570334867 /* Pods-RadioAtlasTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RadioAtlasTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RadioAtlasTests/Pods-RadioAtlasTests.release.xcconfig"; sourceTree = "<group>"; };
-		44EC7075F4A6AC726EE70160 /* Pods-RadioAtlasTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RadioAtlasTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RadioAtlasTests/Pods-RadioAtlasTests.debug.xcconfig"; sourceTree = "<group>"; };
+		18956C87962CF36D650C1CE1 /* Pods-RadioAtlasTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RadioAtlasTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RadioAtlasTests/Pods-RadioAtlasTests.release.xcconfig"; sourceTree = "<group>"; };
+		2731D04F69021E7CCFC4062E /* Pods_RadioAtlasUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RadioAtlasUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B6D27CB1E614674002A56BF /* RadioAVPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadioAVPlayer.swift; sourceTree = "<group>"; };
 		4B6D27CD1E6147A2002A56BF /* RadioAVPlayerItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadioAVPlayerItem.swift; sourceTree = "<group>"; };
 		4B7275171E5A8CF0004D9A33 /* FBAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBAnnotation.swift; sourceTree = "<group>"; };
@@ -85,8 +84,10 @@
 		4B7275201E5A8CF0004D9A33 /* FBQuadTreeNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBQuadTreeNode.swift; sourceTree = "<group>"; };
 		4B7275211E5A8CF0004D9A33 /* FBZoomLevel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBZoomLevel.swift; sourceTree = "<group>"; };
 		4B72752D1E5A8DD1004D9A33 /* FBBoundingBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBBoundingBox.swift; sourceTree = "<group>"; };
+		4FD6ABCF3E54E52169449B89 /* Pods-RadioAtlasUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RadioAtlasUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RadioAtlasUITests/Pods-RadioAtlasUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		5B90876A0EC360AAC0265B8E /* Pods-RadioAtlasUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RadioAtlasUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RadioAtlasUITests/Pods-RadioAtlasUITests.release.xcconfig"; sourceTree = "<group>"; };
-		682C343BA47DC6935EBC7A88 /* Pods_RadioAtlas.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RadioAtlas.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		67B8E6D29DCA2EE58DA0BACC /* Pods_RadioAtlasTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RadioAtlasTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		84542CAAC8716CFA99BC138F /* Pods-RadioAtlas.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RadioAtlas.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RadioAtlas/Pods-RadioAtlas.debug.xcconfig"; sourceTree = "<group>"; };
 		873B5FDC1E2FB6970057D735 /* RadioAtlas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RadioAtlas.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		873B5FDF1E2FB6970057D735 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		873B5FE11E2FB6970057D735 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -116,10 +117,9 @@
 		873B60381E2FD19F0057D735 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		87C7FF181E4E6790004533EC /* Music.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Music.swift; sourceTree = "<group>"; };
 		91DC8D511E64F23700C891DA /* CustomToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomToolbar.swift; sourceTree = "<group>"; };
-		99A8866871503ECFBF717318 /* Pods_RadioAtlasUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RadioAtlasUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		BD424E6C0E7C989D8BDE3718 /* Pods-RadioAtlas.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RadioAtlas.release.xcconfig"; path = "Pods/Target Support Files/Pods-RadioAtlas/Pods-RadioAtlas.release.xcconfig"; sourceTree = "<group>"; };
-		D46D8E4595C5A55FBDC761D9 /* Pods_RadioAtlasTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RadioAtlasTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E13518F9AC66607813C91481 /* Pods-RadioAtlasUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RadioAtlasUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RadioAtlasUITests/Pods-RadioAtlasUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		A544FBC0C1CF8C48FF927B31 /* Pods_RadioAtlas.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RadioAtlas.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA2C7AFBAF94704F064051A6 /* Pods-RadioAtlas.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RadioAtlas.release.xcconfig"; path = "Pods/Target Support Files/Pods-RadioAtlas/Pods-RadioAtlas.release.xcconfig"; sourceTree = "<group>"; };
+		ADA244868D71D525B6AB9076 /* Pods-RadioAtlasTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RadioAtlasTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RadioAtlasTests/Pods-RadioAtlasTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,7 +131,7 @@
 				873B60371E2FD1960057D735 /* AVFoundation.framework in Frameworks */,
 				873B60351E2FD18E0057D735 /* CoreLocation.framework in Frameworks */,
 				7D67D284014609AA2167E64A /* BuildFile in Frameworks */,
-				6EA43EE0F8A6513D16DD850A /* Pods_RadioAtlas.framework in Frameworks */,
+				585E7ECFF98FAEB26632A021 /* Pods_RadioAtlas.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -139,7 +139,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE02A18BECF772897D68A6C6 /* Pods_RadioAtlasTests.framework in Frameworks */,
+				81F51C7EF9DFDA44E0713AC7 /* Pods_RadioAtlasTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -147,7 +147,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9DC2F7665AEDCC48D8F10A3B /* Pods_RadioAtlasUITests.framework in Frameworks */,
+				83E21F9224F451BA9BDD3930 /* Pods_RadioAtlasUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -279,9 +279,9 @@
 				873B60381E2FD19F0057D735 /* MapKit.framework */,
 				873B60361E2FD1960057D735 /* AVFoundation.framework */,
 				873B60341E2FD18E0057D735 /* CoreLocation.framework */,
-				682C343BA47DC6935EBC7A88 /* Pods_RadioAtlas.framework */,
-				D46D8E4595C5A55FBDC761D9 /* Pods_RadioAtlasTests.framework */,
-				99A8866871503ECFBF717318 /* Pods_RadioAtlasUITests.framework */,
+				A544FBC0C1CF8C48FF927B31 /* Pods_RadioAtlas.framework */,
+				67B8E6D29DCA2EE58DA0BACC /* Pods_RadioAtlasTests.framework */,
+				2731D04F69021E7CCFC4062E /* Pods_RadioAtlasUITests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -290,11 +290,11 @@
 			isa = PBXGroup;
 			children = (
 				5B90876A0EC360AAC0265B8E /* Pods-RadioAtlasUITests.release.xcconfig */,
-				09E6704FA36A0B0C4436E0AE /* Pods-RadioAtlas.debug.xcconfig */,
-				BD424E6C0E7C989D8BDE3718 /* Pods-RadioAtlas.release.xcconfig */,
-				44EC7075F4A6AC726EE70160 /* Pods-RadioAtlasTests.debug.xcconfig */,
-				3B1D4FA1167BFDC570334867 /* Pods-RadioAtlasTests.release.xcconfig */,
-				E13518F9AC66607813C91481 /* Pods-RadioAtlasUITests.debug.xcconfig */,
+				84542CAAC8716CFA99BC138F /* Pods-RadioAtlas.debug.xcconfig */,
+				AA2C7AFBAF94704F064051A6 /* Pods-RadioAtlas.release.xcconfig */,
+				ADA244868D71D525B6AB9076 /* Pods-RadioAtlasTests.debug.xcconfig */,
+				18956C87962CF36D650C1CE1 /* Pods-RadioAtlasTests.release.xcconfig */,
+				4FD6ABCF3E54E52169449B89 /* Pods-RadioAtlasUITests.debug.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -766,7 +766,7 @@
 		};
 		873B60081E2FB6980057D735 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 09E6704FA36A0B0C4436E0AE /* Pods-RadioAtlas.debug.xcconfig */;
+			baseConfigurationReference = 84542CAAC8716CFA99BC138F /* Pods-RadioAtlas.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -783,7 +783,7 @@
 		};
 		873B60091E2FB6980057D735 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BD424E6C0E7C989D8BDE3718 /* Pods-RadioAtlas.release.xcconfig */;
+			baseConfigurationReference = AA2C7AFBAF94704F064051A6 /* Pods-RadioAtlas.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -800,7 +800,7 @@
 		};
 		873B600B1E2FB6980057D735 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 44EC7075F4A6AC726EE70160 /* Pods-RadioAtlasTests.debug.xcconfig */;
+			baseConfigurationReference = ADA244868D71D525B6AB9076 /* Pods-RadioAtlasTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -815,7 +815,7 @@
 		};
 		873B600C1E2FB6980057D735 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3B1D4FA1167BFDC570334867 /* Pods-RadioAtlasTests.release.xcconfig */;
+			baseConfigurationReference = 18956C87962CF36D650C1CE1 /* Pods-RadioAtlasTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -830,7 +830,7 @@
 		};
 		873B600E1E2FB6980057D735 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E13518F9AC66607813C91481 /* Pods-RadioAtlasUITests.debug.xcconfig */;
+			baseConfigurationReference = 4FD6ABCF3E54E52169449B89 /* Pods-RadioAtlasUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = RadioAtlasUITests/Info.plist;

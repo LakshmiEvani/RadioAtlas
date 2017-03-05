@@ -32,12 +32,6 @@ extension MKMapView {
     }
 }
 
-struct PlayNext {
-    var name : String
-    var city : String
-    var country : String
-    var stationData : String
-}
 
 
 
@@ -50,9 +44,11 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
     @IBOutlet weak var playButton: UIBarButtonItem!
     
     @IBOutlet var mapView: MKMapView!
+    @IBOutlet weak var btnNext: UIButton!
    
     @IBOutlet weak var nowPlayingLabel: MarqueeLabel!
     
+    @IBOutlet weak var btnPrev: UIButton!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     @IBOutlet weak var btnWorld: UIButton!
@@ -71,6 +67,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
     private var playerItemContext = 0
     private var isUpdating = false
     var isMapLoaded = false
+    
     
     var regionWillChangeAnimatedCalled : Bool = false
     var regionChangedBecauseAnnotationSelected : Bool = false
@@ -93,31 +90,31 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
     var playNextData : String = ""
     
     var previousStationData : String = ""
-    
+    var prevStationHistory = [PinAnnotation]()
+    var nextStationHistory = [PinAnnotation]()
 
     
     @IBOutlet weak var playAndPause: UIButton!
     
-  
-
-    
-    
     @IBOutlet weak var favoriteButton: UIButton!
     // Core Data Convenience. Useful for fetching, adding and saving objects
     var sharedContext: NSManagedObjectContext = CoreDataStackManager.sharedInstance().managedObjectContext
-   // var music = Music.sharedInstance()
-
     
-    // Life Cycle
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        //mapView.mapType = MKMapType.hybrid
-        
-        mapView.showsPointsOfInterest = true
-      // navigationController?.istrans
+        setUIAttributes()
         initializations()
         
+    }
+    
+    func setUIAttributes()
+    {
+        //mapView.mapType = MKMapType.hybrid
+        mapView.showsPointsOfInterest = true
+        //btnNext.isHidden = true
+        playAndPause.isOpaque = true
     }
     
     
@@ -128,8 +125,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
     
     
     func initializations() {
-        
-        
         
         appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.setNetworkActivityIndicatorVisible(visible: true)
@@ -142,7 +137,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         mapDragRecognizer.delegate = self
         self.mapView.addGestureRecognizer(mapDragRecognizer)
         
-       
+        
         
        }
     
@@ -445,9 +440,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
             removeObservers(playerItem: playerItem!)
         }
         
-   
-
-        
+       
          playerItem = RadioAVPlayerItem(url: NSURL(string: music) as! URL)
          addObservers(playerItem: playerItem!)
         
@@ -469,7 +462,54 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         
     }
     
+    @IBAction func btnNextClick(_ sender: Any) {
+        
+        if (nextStationHistory.count > 0) {
+            
+            var annotation : PinAnnotation = nextStationHistory.popLast()!
+            //prevStationHistory.append(annotation)
+            //playFromAnnotation(annotation: annotation)
+            let center = CLLocationCoordinate2D(latitude: annotation.coordinate.latitude, longitude: annotation.coordinate.longitude)
+            
+            //navigate map back to the previous annotation
+            mapView.setZoomByDelta(delta: 1, animated: true, center: annotation.coordinate)
+           // nextStationHistory.removeLast()
+            
+        }
+        
+    }
     
+    
+    
+    @IBAction func btnPrevClicked(_ sender: Any) {
+        
+        if (prevStationHistory.count > 1) {
+            
+            nextStationHistory.append(prevStationHistory.popLast()!)
+            //prevStationHistory.removeLast()
+           
+            //prevStationHistory.popLast()!
+            let annotation : PinAnnotation = prevStationHistory.last!
+            
+            //playFromAnnotation(annotation: annotation)
+            
+            let center = CLLocationCoordinate2D(latitude: annotation.coordinate.latitude, longitude: annotation.coordinate.longitude)
+            
+            //navigate map back to the previous annotation
+          
+            mapView.setZoomByDelta(delta: 1, animated: true, center: annotation.coordinate)
+                
+           // mapView.setRegion(region,animated: true)
+
+            
+            //prevStationHistory.removeLast()
+            
+            
+        }
+        
+       
+        
+    }
     
     func addObservers(playerItem: AVPlayerItem) {
         
@@ -725,6 +765,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
                         // self.playFromAnnotation(annotation: closestStation as! PinAnnotation)
                         self.selectedFromRegionChange = true
                         
+                        
                         let visibleAnnotations : Set = mapView.annotations(in: mapView.visibleMapRect)
                         let isAnnotationVisible : Bool = visibleAnnotations.contains(closestStation as! AnyHashable)
                         
@@ -748,6 +789,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         
         
     }
+    
+ 
     
 
   
@@ -866,6 +909,9 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         }
         
         playMusic(music: annotation.streamUrl)
+        prevStationHistory.append(annotation)
+        
+        
 
         
     }
@@ -1049,8 +1095,12 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
             
             statusUpdate(message: nowPlayingData)
         } else if playerItem.status == AVPlayerItemStatus.failed {
-            statusUpdate(message: "Invalid radio stream. Try another station.", error: true)
+            statusUpdate(message: "Unable to play radio stream. Try another station.", error: true)
              playPauseImageUpdate(play: true)
+             playAndPause.isOpaque = true
+            
+            //remove the invalid item from history
+            //prevStationHistory.removeLast()
         }
         
         
@@ -1060,9 +1110,12 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         switch (object! as AnyObject).rate as Float {
         case 0.0:
             playPauseImageUpdate(play: true)
+            playAndPause.isOpaque = false
 
-        case 1.0:
+
+        case 1.0:            
             playPauseImageUpdate(play: false)
+            playAndPause.isOpaque = false
 
         default:
             // shouldn't get here...

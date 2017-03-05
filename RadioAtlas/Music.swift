@@ -17,6 +17,7 @@ class Music {
     var audioPlayer:RadioAVPlayer!
     var appDelegate = UIApplication.shared.delegate as! AppDelegate
    
+   
   
     
     
@@ -49,6 +50,7 @@ class Music {
                 
                 self.audioPlayer!.play()
                 self.isPlaying = true
+              
                 self.appDelegate.setNetworkActivityIndicatorVisible(visible: true)
                 
             } catch let error as NSError {

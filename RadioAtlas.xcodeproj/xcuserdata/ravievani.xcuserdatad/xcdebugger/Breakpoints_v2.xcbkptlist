@@ -31,7 +31,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1010"
             endingLineNumber = "1010"
-            landmarkName = "didReceiveMemoryWarning()"
+            landmarkName = "statusUpdate(message:error:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -79,8 +79,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1014"
             endingLineNumber = "1014"
-            landmarkName = "MapViewController"
-            landmarkType = "3">
+            landmarkName = "statusUpdate(message:error:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -95,7 +95,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1012"
             endingLineNumber = "1012"
-            landmarkName = "didReceiveMemoryWarning()"
+            landmarkName = "statusUpdate(message:error:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
