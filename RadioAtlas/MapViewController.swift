@@ -41,14 +41,18 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
     @IBOutlet weak var favorite: UIBarButtonItem!
     
     @IBOutlet weak var centerFocus: UIImageView!
-    @IBOutlet weak var playButton: UIBarButtonItem!
+    
+    @IBOutlet weak var fastForward: UIBarButtonItem!
+   
+    @IBOutlet weak var reWind: UIBarButtonItem!
+    @IBOutlet weak var playAndPauseBar: UIBarButtonItem!
     
     @IBOutlet var mapView: MKMapView!
-    @IBOutlet weak var btnNext: UIButton!
+   // @IBOutlet weak var btnNext: UIButton!
    
     @IBOutlet weak var nowPlayingLabel: MarqueeLabel!
     
-    @IBOutlet weak var btnPrev: UIButton!
+   // @IBOutlet weak var btnPrev: UIButton!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     @IBOutlet weak var btnWorld: UIButton!
@@ -94,7 +98,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
     var nextStationHistory = [PinAnnotation]()
 
     
-    @IBOutlet weak var playAndPause: UIButton!
+   // @IBOutlet weak var playAndPause: UIButton!
     
     @IBOutlet weak var favoriteButton: UIButton!
     // Core Data Convenience. Useful for fetching, adding and saving objects
@@ -114,7 +118,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         //mapView.mapType = MKMapType.hybrid
         mapView.showsPointsOfInterest = true
         //btnNext.isHidden = true
-        playAndPause.isOpaque = true
+       // payAndPauseBar.isOpaque = true
     }
     
     
@@ -123,6 +127,29 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
          navigationController?.isToolbarHidden = true
     }
     
+    @IBAction func playAndPauseBarAction(_ sender: Any) {
+        
+        if Music.sharedInstance.isPlaying == true {
+            
+            if (Music.sharedInstance.audioPlayer != nil) {
+                
+                Music.sharedInstance.audioPlayer.pause()
+                playPauseImageUpdate(play: true)
+                Music.sharedInstance.isPlaying = false
+                appDelegate.setNetworkActivityIndicatorVisible(visible: false)
+            }
+            
+        } else if Music.sharedInstance.isPlaying == false {
+            
+            if (Music.sharedInstance.audioPlayer != nil) {
+                Music.sharedInstance.audioPlayer.play()
+                playPauseImageUpdate(play: false)
+                Music.sharedInstance.isPlaying = true
+                appDelegate.setNetworkActivityIndicatorVisible(visible: true)
+            }
+        }
+    }
+       
     
     func initializations() {
         
@@ -462,7 +489,54 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         
     }
     
-    @IBAction func btnNextClick(_ sender: Any) {
+    @IBAction func reWindAction(_ sender: Any) {
+        
+        if (prevStationHistory.count > 1) {
+            
+            nextStationHistory.append(prevStationHistory.popLast()!)
+            //prevStationHistory.removeLast()
+            
+            //prevStationHistory.popLast()!
+            let annotation : PinAnnotation = prevStationHistory.last!
+            
+            //playFromAnnotation(annotation: annotation)
+            
+            let center = CLLocationCoordinate2D(latitude: annotation.coordinate.latitude, longitude: annotation.coordinate.longitude)
+            
+            //navigate map back to the previous annotation
+            
+            mapView.setZoomByDelta(delta: 1, animated: true, center: annotation.coordinate)
+            
+            // mapView.setRegion(region,animated: true)
+            
+            
+            //prevStationHistory.removeLast()
+            
+            
+        }
+        
+
+    }
+    
+    @IBAction func fastForwardAction(_ sender: Any) {
+        
+        if (nextStationHistory.count > 0) {
+            
+            var annotation : PinAnnotation = nextStationHistory.popLast()!
+            //prevStationHistory.append(annotation)
+            //playFromAnnotation(annotation: annotation)
+            let center = CLLocationCoordinate2D(latitude: annotation.coordinate.latitude, longitude: annotation.coordinate.longitude)
+            
+            //navigate map back to the previous annotation
+            mapView.setZoomByDelta(delta: 1, animated: true, center: annotation.coordinate)
+            // nextStationHistory.removeLast()
+            
+        }
+    }
+    
+
+    
+  /*  @IBAction func btnNextClick(_ sender: Any) {
         
         if (nextStationHistory.count > 0) {
             
@@ -510,7 +584,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
        
         
     }
-    
+  */
     func addObservers(playerItem: AVPlayerItem) {
         
         
@@ -539,7 +613,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
 
     
     
-    @IBAction func playAndPauseAction(_ sender: Any) {
+  /*  @IBAction func playAndPauseAction(_ sender: Any) {
         
         if Music.sharedInstance.isPlaying == true {
             
@@ -562,7 +636,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         }
     }
     
-    
+    */
  
     @IBAction func volumeControlAction(_ sender: Any) {
         
@@ -1097,7 +1171,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         } else if playerItem.status == AVPlayerItemStatus.failed {
             statusUpdate(message: "Unable to play radio stream. Try another station.", error: true)
              playPauseImageUpdate(play: true)
-             playAndPause.isOpaque = true
+          //  payAndPauseBar.isOpaque = true
             
             //remove the invalid item from history
             //prevStationHistory.removeLast()
@@ -1110,12 +1184,12 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         switch (object! as AnyObject).rate as Float {
         case 0.0:
             playPauseImageUpdate(play: true)
-            playAndPause.isOpaque = false
+          //  payAndPauseBar.isOpaque = false
 
 
         case 1.0:            
             playPauseImageUpdate(play: false)
-            playAndPause.isOpaque = false
+          //  payAndPauseBar.isOpaque = false
 
         default:
             // shouldn't get here...
@@ -1154,10 +1228,10 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
     {
          DispatchQueue.main.async {
             if (play) {
-                self.playAndPause.setImage(UIImage(named: "play"), for: .normal)
+                self.playAndPauseBar.image = UIImage(named: "play")
             }
             else {
-                self.playAndPause.setImage(UIImage(named: "pause"), for: .normal)
+                self.playAndPauseBar.image = UIImage(named: "pause")
             }
         }
     }
