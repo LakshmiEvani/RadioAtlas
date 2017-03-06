@@ -110,8 +110,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         super.viewDidLoad()
         setUIAttributes()
         initializations()
-       // self.navigationController?.isNavigationBarHidden = false
-        
+    
     }
     
     func setUIAttributes()
