@@ -50,6 +50,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
     @IBOutlet var mapView: MKMapView!
    // @IBOutlet weak var btnNext: UIButton!
    
+    @IBOutlet weak var barBtnWorld: UIBarButtonItem!
     @IBOutlet weak var nowPlayingLabel: MarqueeLabel!
     
    // @IBOutlet weak var btnPrev: UIButton!
@@ -156,7 +157,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.setNetworkActivityIndicatorVisible(visible: true)
         
-        setWorldRegion(animated: false)
+       // setWorldRegion(animated: false)
         mapView.delegate = self
         self.addAnnotation()
         
@@ -193,7 +194,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         //set the world zoom level
         self.prevZoomLevel == 17.0
         mapView.setRegion(worldRegion,animated: animated)
-        //centerFocus.isHidden = false
+        centerFocus.isHidden = false
 
     }
     
@@ -277,7 +278,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         let center = CLLocationCoordinate2D(latitude: userLocation.coordinate.latitude, longitude: userLocation.coordinate.longitude)
          let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 4.075, longitudeDelta: 4.075))
         
-        //mapView.setRegion(region, animated: true)
+    //mapView.setRegion(region, animated: true)
         
        
             }
@@ -293,6 +294,11 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         
     }
     
+    @IBAction func barBtnWorldClick(_ sender: Any) {
+        
+        setWorldRegion(animated: true)
+        
+    }
     func addAnnotation(){
         
         var closestStation : String
@@ -419,6 +425,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
                         self.clusteringManager.delegate = self
                         self.appDelegate.setNetworkActivityIndicatorVisible(visible: false)
                         self.centerFocus.isHidden = false
+                        //self.setWorldRegion(animated: true)
                         self.determineCurrentLocation()
                         
                     }
@@ -510,7 +517,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
             // mapView.setRegion(region,animated: true)
             
             
-            //prevStationHistory.removeLast()
+            prevStationHistory.removeLast()
             
             
         }
@@ -1215,8 +1222,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
             else {
                 self.nowPlayingLabel.textColor = UIColor(red:0.04, green:0.29, blue:0.60, alpha:1.0)
                  self.nowPlayingLabel.font.withSize(14.0)
-                self.nowPlayingLabel.backgroundColor = UIColor.clear
-                
+                self.nowPlayingLabel.backgroundColor = UIColor(red:0.98, green:0.98, blue:0.98, alpha:1.0)
             }
         }
         

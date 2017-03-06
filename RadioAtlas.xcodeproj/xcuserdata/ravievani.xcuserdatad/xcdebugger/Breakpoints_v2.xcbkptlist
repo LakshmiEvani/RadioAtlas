@@ -10,12 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RadioAtlas/MapViewController.swift"
-            timestampString = "509859289.839369"
+            timestampString = "510469854.018642"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1000"
-            endingLineNumber = "1000"
-            landmarkName = "statusUpdate(message:error:)"
+            startingLineNumber = "1001"
+            endingLineNumber = "1001"
+            landmarkName = "checkIfExists(name:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -26,12 +26,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RadioAtlas/MapViewController.swift"
-            timestampString = "509859289.839369"
+            timestampString = "510469854.018642"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1010"
-            endingLineNumber = "1010"
-            landmarkName = "statusUpdate(message:error:)"
+            startingLineNumber = "1011"
+            endingLineNumber = "1011"
+            landmarkName = "checkIfExists(name:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -42,12 +42,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RadioAtlas/MapViewController.swift"
-            timestampString = "509859289.839369"
+            timestampString = "510469854.018642"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "438"
-            endingLineNumber = "438"
-            landmarkName = "playAndPauseAction(_:)"
+            startingLineNumber = "439"
+            endingLineNumber = "439"
+            landmarkName = "addAnnotation()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -58,12 +58,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RadioAtlas/MapViewController.swift"
-            timestampString = "509860325.229499"
+            timestampString = "510469854.018642"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1031"
-            endingLineNumber = "1031"
-            landmarkName = "prepare(for:sender:)"
+            startingLineNumber = "1032"
+            endingLineNumber = "1032"
+            landmarkName = "checkIfExists(name:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -74,12 +74,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RadioAtlas/MapViewController.swift"
-            timestampString = "509859289.839369"
+            timestampString = "510469854.018642"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1014"
-            endingLineNumber = "1014"
-            landmarkName = "statusUpdate(message:error:)"
+            startingLineNumber = "1015"
+            endingLineNumber = "1015"
+            landmarkName = "checkIfExists(name:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -90,12 +90,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RadioAtlas/MapViewController.swift"
-            timestampString = "509859289.839369"
+            timestampString = "510469854.018642"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1012"
-            endingLineNumber = "1012"
-            landmarkName = "statusUpdate(message:error:)"
+            startingLineNumber = "1013"
+            endingLineNumber = "1013"
+            landmarkName = "checkIfExists(name:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

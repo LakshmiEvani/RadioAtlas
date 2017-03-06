@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Zf7-N9-cZI">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1217" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Zf7-N9-cZI">
     <device id="retina4_7" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
@@ -115,28 +115,6 @@
                                     <action selector="ZoomInAndZoomOut:" destination="tmg-mo-T3o" eventType="valueChanged" id="JZQ-0A-2sg"/>
                                 </connections>
                             </stepper>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c0X-AR-YLM">
-                                <rect key="frame" x="391" y="72" width="30" height="30"/>
-                                <color key="backgroundColor" red="0.039215686274509803" green="0.29411764705882354" blue="0.59607843137254901" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="15"/>
-                                <state key="normal" title="|&lt;">
-                                    <color key="titleColor" red="0.95294117649999999" green="0.93725490199999995" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="btnPrevClicked:" destination="tmg-mo-T3o" eventType="touchUpInside" id="U5Y-3s-ydb"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RkL-6c-V8r">
-                                <rect key="frame" x="429" y="72" width="30" height="30"/>
-                                <color key="backgroundColor" red="0.070588235294117646" green="0.29411764705882354" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="15"/>
-                                <state key="normal" title="&gt;|">
-                                    <color key="titleColor" red="0.95294117649999999" green="0.93725490199999995" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="btnNextClick:" destination="tmg-mo-T3o" eventType="touchUpInside" id="Xwg-CZ-68I"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6PE-Lx-BlR" userLabel="Marquee" customClass="MarqueeLabel" customModule="MarqueeLabel">
                                 <rect key="frame" x="-7" y="302" width="674" height="29"/>
                                 <color key="backgroundColor" red="0.97638851404190063" green="0.97652500867843628" blue="0.9763454794883728" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -173,19 +151,15 @@
                             <constraint firstItem="lOb-E8-kPT" firstAttribute="trailing" secondItem="Jba-SE-lO6" secondAttribute="trailingMargin" id="Ja0-kJ-vSi"/>
                             <constraint firstItem="6PE-Lx-BlR" firstAttribute="leading" secondItem="bB8-uh-7h7" secondAttribute="leading" id="PER-Ym-039"/>
                             <constraint firstItem="fb2-Ol-aye" firstAttribute="leading" secondItem="Jba-SE-lO6" secondAttribute="leadingMargin" constant="24" id="Q2Q-Fb-SZQ"/>
-                            <constraint firstItem="RkL-6c-V8r" firstAttribute="top" secondItem="7yS-y9-ht0" secondAttribute="bottom" constant="8" symbolic="YES" id="TCl-Fa-KHo"/>
                             <constraint firstItem="bB8-uh-7h7" firstAttribute="centerX" secondItem="Jba-SE-lO6" secondAttribute="centerX" constant="2.5" id="USP-ax-L08"/>
                             <constraint firstAttribute="trailing" secondItem="6PE-Lx-BlR" secondAttribute="trailing" id="d29-lv-4RV"/>
                             <constraint firstItem="TCg-qb-4VU" firstAttribute="bottom" secondItem="fb2-Ol-aye" secondAttribute="bottom" id="d5Y-2R-clc"/>
-                            <constraint firstItem="lOb-E8-kPT" firstAttribute="leading" secondItem="RkL-6c-V8r" secondAttribute="trailing" constant="94" id="dMr-1t-mOc"/>
                             <constraint firstItem="TCg-qb-4VU" firstAttribute="centerY" secondItem="Jba-SE-lO6" secondAttribute="centerY" id="fCZ-nI-Tex"/>
                             <constraint firstItem="tJP-a8-iaI" firstAttribute="centerX" secondItem="fb2-Ol-aye" secondAttribute="centerX" id="hvB-Rw-Typ"/>
-                            <constraint firstItem="RkL-6c-V8r" firstAttribute="leading" secondItem="c0X-AR-YLM" secondAttribute="trailing" constant="8" symbolic="YES" id="mly-dR-FIg"/>
                             <constraint firstItem="bB8-uh-7h7" firstAttribute="leading" secondItem="Jba-SE-lO6" secondAttribute="leadingMargin" constant="-27" id="tty-IM-QTS"/>
                             <constraint firstItem="bB8-uh-7h7" firstAttribute="top" secondItem="Jba-SE-lO6" secondAttribute="top" constant="20" symbolic="YES" id="vWy-hB-7Wd"/>
                             <constraint firstItem="bB8-uh-7h7" firstAttribute="bottom" secondItem="o2O-Le-CHD" secondAttribute="top" constant="44" id="wmG-rp-a4p"/>
                             <constraint firstItem="tJP-a8-iaI" firstAttribute="centerY" secondItem="Jba-SE-lO6" secondAttribute="centerY" id="yZm-z3-AFJ"/>
-                            <constraint firstItem="RkL-6c-V8r" firstAttribute="baseline" secondItem="c0X-AR-YLM" secondAttribute="baseline" id="z08-fY-mGk"/>
                         </constraints>
                     </view>
                     <toolbarItems>

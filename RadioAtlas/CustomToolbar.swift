@@ -14,7 +14,7 @@ class CustomToolbar: UIToolbar {
     override func sizeThatFits(_ size: CGSize) -> CGSize {
         
         var newSize: CGSize = super.sizeThatFits(size)
-        newSize.height = 100  // there to set your toolbar height
+        newSize.height = 44  // there to set your toolbar height
         
         return newSize
     }
