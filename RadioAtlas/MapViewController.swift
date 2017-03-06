@@ -110,6 +110,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         super.viewDidLoad()
         setUIAttributes()
         initializations()
+       // self.navigationController?.isNavigationBarHidden = false
         
     }
     
@@ -124,7 +125,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated);
-         navigationController?.isToolbarHidden = true
+        // navigationController?.isToolbarHidden = true
     }
     
     @IBAction func playAndPauseBarAction(_ sender: Any) {

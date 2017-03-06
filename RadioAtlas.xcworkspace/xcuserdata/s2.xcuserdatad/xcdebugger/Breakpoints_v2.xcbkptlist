@@ -10,13 +10,29 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RadioAtlas/MapViewController.swift"
-            timestampString = "510433476.62869"
+            timestampString = "510461245.13192"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1234"
-            endingLineNumber = "1234"
+            startingLineNumber = "1235"
+            endingLineNumber = "1235"
             landmarkName = "playPauseImageUpdate(play:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RadioAtlas/PageViewController.swift"
+            timestampString = "510461245.13192"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
+            landmarkName = "PageViewController"
+            landmarkType = "4">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
