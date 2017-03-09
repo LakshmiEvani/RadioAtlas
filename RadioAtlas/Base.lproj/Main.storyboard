@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Zf7-N9-cZI">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="LUv-BG-LVY">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -13,7 +13,11 @@
         <!--Page View Controller-->
         <scene sceneID="ryg-43-i5h">
             <objects>
-                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="LUv-BG-LVY" customClass="PageViewController" customModule="RadioAtlas" customModuleProvider="target" sceneMemberID="viewController"/>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="LUv-BG-LVY" customClass="PageViewController" customModule="RadioAtlas" customModuleProvider="target" sceneMemberID="viewController">
+                    <connections>
+                        <segue destination="Zf7-N9-cZI" kind="showDetail" identifier="mapView" id="HpV-lV-3Bg"/>
+                    </connections>
+                </pageViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T36-qH-22N" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2132" y="22"/>
@@ -34,7 +38,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MYB-NJ-cZb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2206" y="785"/>
+            <point key="canvasLocation" x="-2207.1999999999998" y="784.85757121439292"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="xvi-4S-AL1">
@@ -261,7 +265,7 @@
                                         <rect key="frame" x="0.0" y="28" width="399" height="56"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VVm-P0-Ydo" id="M5L-R4-1zb">
-                                            <rect key="frame" x="0.0" y="0.0" width="399" height="55"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="399" height="56"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kgf-L1-h9y">

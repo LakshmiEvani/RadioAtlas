@@ -39,7 +39,21 @@ class PageViewController: UIPageViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    // Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        switch segue.identifier! {
+        case "mapView":
+            print("segue called")
+            
+            let dest = segue.destination as! MapViewController
+        
+        default:
+            print("Unknown segue")
+        }
+        
+    }
     /*
     // MARK: - Navigation
 
@@ -56,12 +70,41 @@ extension PageViewController: UIPageViewControllerDataSource {
     
     func pageViewController(_ pageViewController: UIPageViewController,
                             viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        return nil
+            guard let viewControllerIndex = orderedViewControllers.index(of: viewController) else {
+                return nil
+            }
+            
+            let previousIndex = viewControllerIndex - 1
+            
+            guard previousIndex >= 0 else {
+                return nil
+            }
+            
+            guard orderedViewControllers.count > previousIndex else {
+                return nil
+            }
+            
+            return orderedViewControllers[previousIndex]
     }
     
     func pageViewController(_ pageViewController: UIPageViewController,
                             viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        return nil
+        guard let viewControllerIndex = orderedViewControllers.index(of: viewController) else {
+            return nil
+        }
+        
+        let nextIndex = viewControllerIndex + 1
+        let orderedViewControllersCount = orderedViewControllers.count
+        
+        guard orderedViewControllersCount != nextIndex else {
+            return nil
+        }
+        
+        guard orderedViewControllersCount > nextIndex else {
+            return nil
+        }
+        
+        return orderedViewControllers[nextIndex]
     }
     
 }
