@@ -7,6 +7,7 @@ target 'RadioAtlas' do
 
   # Pods for RadioAtlas
   pod 'MarqueeLabel/Swift'
+  pod 'Font-Awesome-Swift', '~> 1.6.1'
 
   target 'RadioAtlasTests' do
     inherit! :search_paths

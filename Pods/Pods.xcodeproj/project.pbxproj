@@ -7,77 +7,111 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		05F33B4B13BC0DCE6EE7518267C0F46B /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 677BD20CCF699E480225F577E20A63CC /* CoreText.framework */; };
 		1A936AA20D5829F8333A98E33C3E6E77 /* Pods-RadioAtlasTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = FD0AAB592A20748A9F929C7F63ED17E5 /* Pods-RadioAtlasTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2E59718BFD1E78961B6F4BBC82A67C71 /* Pods-RadioAtlas-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C22061334F3A7D62A324102F8D859D11 /* Pods-RadioAtlas-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		39CE61BA38E80A4826345C5526C65D44 /* Pods-RadioAtlas-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 49AC37BCF381EA6D57ABDB82B4E5376B /* Pods-RadioAtlas-dummy.m */; };
-		7703B9807113704838423390F75687DD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC32878090C4B2B93381956161EC0930 /* Foundation.framework */; };
-		81757F684D084AC69DAE797488D314F2 /* MarqueeLabel-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E283C91420494B7638FD65B8C82DF6 /* MarqueeLabel-dummy.m */; };
-		85A2FE6BB40052C17E257AF6A6A81417 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC32878090C4B2B93381956161EC0930 /* Foundation.framework */; };
-		8E878DBFB3084764CC6C6DABF56FE08A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC32878090C4B2B93381956161EC0930 /* Foundation.framework */; };
-		9C317D641981B99A343E714E535BB6B0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BF675A168132FD52AED630F977FE906 /* UIKit.framework */; };
+		207D725533423D55A24FA53494476090 /* FAIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E03F48880639C627B0213337DFE6AB /* FAIcon.swift */; };
+		2BF115CB201E1A96E4ECF16D9B386017 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D7C6B1F087D994C9EC4732C58EBFBA5 /* UIKit.framework */; };
+		7703B9807113704838423390F75687DD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D28F57A5F07B072EAEC564D36AC6C78D /* Foundation.framework */; };
+		81757F684D084AC69DAE797488D314F2 /* MarqueeLabel-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1642175EEC4ECDC8646D909E523639A0 /* MarqueeLabel-dummy.m */; };
+		85A2FE6BB40052C17E257AF6A6A81417 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D28F57A5F07B072EAEC564D36AC6C78D /* Foundation.framework */; };
+		862F6576D6B64D137E1F6E464F9A906E /* Font-Awesome-Swift.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 50624A0D0ABEBA5F9F8A0CBB778C69B9 /* Font-Awesome-Swift.bundle */; };
+		8E878DBFB3084764CC6C6DABF56FE08A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D28F57A5F07B072EAEC564D36AC6C78D /* Foundation.framework */; };
+		94AD925604BA6F2EAFE9BA9810C92959 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D28F57A5F07B072EAEC564D36AC6C78D /* Foundation.framework */; };
+		97EB5D6AB85CB2B95475D551F6B14A73 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D28F57A5F07B072EAEC564D36AC6C78D /* Foundation.framework */; };
+		9C317D641981B99A343E714E535BB6B0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D7C6B1F087D994C9EC4732C58EBFBA5 /* UIKit.framework */; };
+		A4742149453AD46E590B715335CECF22 /* Font-Awesome-Swift-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 850A68582A06838C8A792E8E565E3034 /* Font-Awesome-Swift-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AC24B7BFE64B154BB0EDB1E294D4D9DC /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5E803BB91D219995631593A6F4912055 /* FontAwesome.ttf */; };
 		B5AF6FA02BAAD34ADFAAECFB3155779E /* Pods-RadioAtlasUITests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FA541FD3170671960F9CEC98293BEBC /* Pods-RadioAtlasUITests-dummy.m */; };
 		B6C73605DC09E97AC5C684BA2CEE6D81 /* Pods-RadioAtlasTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A3ACBCB490C6AF1EC81B35D8186B8291 /* Pods-RadioAtlasTests-dummy.m */; };
-		B812F90DB775AFDF1DFA13480D844916 /* MarqueeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A9923BCEFC384F176B7DCC0BC296ED /* MarqueeLabel.swift */; };
-		C008460584EEBA4FEB3BAC5C17D74EE2 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0203FCF2E38F9E0B8C4E69853543A3E /* QuartzCore.framework */; };
-		DB923051D121B166B855AF1C0809BAEF /* MarqueeLabel-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A0B4B86F747A0F130511FF1AAE24285 /* MarqueeLabel-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B812F90DB775AFDF1DFA13480D844916 /* MarqueeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AFD4DE5F843CE2EDBD1803F0458B437 /* MarqueeLabel.swift */; };
+		C008460584EEBA4FEB3BAC5C17D74EE2 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3D741AE82305179C3D796A84CFA7AD5 /* QuartzCore.framework */; };
+		CE259EF414BCAE0AFFC46311C12921B2 /* Pods-RadioAtlas-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 49AC37BCF381EA6D57ABDB82B4E5376B /* Pods-RadioAtlas-dummy.m */; };
+		DB923051D121B166B855AF1C0809BAEF /* MarqueeLabel-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = A60FC0B8E57FF8B148B4288EBA98E84D /* MarqueeLabel-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E508A5AA7C3107AC891687B1E3867F81 /* Pods-RadioAtlasUITests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 1702A8FCAF69CBEF503E600DA7086EC1 /* Pods-RadioAtlasUITests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E93F4084D20B1DBA9FBB20C397C6A7BB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC32878090C4B2B93381956161EC0930 /* Foundation.framework */; };
+		E7E94390A1CF40ED6C3C620B0BE8B0A0 /* Font-Awesome-Swift-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CDFA6AB86E911D2E67F4468DE5090B6 /* Font-Awesome-Swift-dummy.m */; };
+		FA5EC5772BF1B586B49DA4D83AF70E76 /* Pods-RadioAtlas-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C22061334F3A7D62A324102F8D859D11 /* Pods-RadioAtlas-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		10F8321749B6AEFE14CC7E0EF3C2D3C6 /* PBXContainerItemProxy */ = {
+		246630687B8C5DB27DE057AC417479D3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 320AD47B0C6BA014D301395D3BFC8FB6;
 			remoteInfo = MarqueeLabel;
 		};
+		5610B1F4D2362CB2D11C1B82DB9119DA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BA453546C51032641C49CACBC22725EE;
+			remoteInfo = "Font-Awesome-Swift";
+		};
+		682BD0987EB17880E3025EFA1CCEBF82 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9735AA72928D41DB06EA697E23930C72;
+			remoteInfo = "Font-Awesome-Swift-Font-Awesome-Swift";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		00113989072348A86540EFD297810B0C /* MarqueeLabel.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MarqueeLabel.xcconfig; sourceTree = "<group>"; };
-		0DC10542DC03E7CD4221A15889FBD252 /* MarqueeLabel-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MarqueeLabel-prefix.pch"; sourceTree = "<group>"; };
+		07402A88B215735941F67E9BFDE40012 /* Font_Awesome_Swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Font_Awesome_Swift.framework; path = "Font-Awesome-Swift.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		080B17445D27DD04A01CF5D385CE7046 /* Font-Awesome-Swift.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Font-Awesome-Swift.xcconfig"; sourceTree = "<group>"; };
 		0FA541FD3170671960F9CEC98293BEBC /* Pods-RadioAtlasUITests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-RadioAtlasUITests-dummy.m"; sourceTree = "<group>"; };
+		153E2331808BA415FEECE6F08D94D6D1 /* Pods_RadioAtlasUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_RadioAtlasUITests.framework; path = "Pods-RadioAtlasUITests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1642175EEC4ECDC8646D909E523639A0 /* MarqueeLabel-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MarqueeLabel-dummy.m"; sourceTree = "<group>"; };
 		1702A8FCAF69CBEF503E600DA7086EC1 /* Pods-RadioAtlasUITests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-RadioAtlasUITests-umbrella.h"; sourceTree = "<group>"; };
-		1A0A5324F2465951F9879C857662373D /* MarqueeLabel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = MarqueeLabel.framework; path = MarqueeLabel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		202EDCFAA40AFACE3AB67D703A0681A3 /* Pods_RadioAtlasTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_RadioAtlasTests.framework; path = "Pods-RadioAtlasTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		185DDD52A09438DA4D28D3C252613740 /* MarqueeLabel.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MarqueeLabel.xcconfig; sourceTree = "<group>"; };
+		1D18157ECA50DAD85C666A7101CE0D1F /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2124E938A27543756EA0C9BC6F91A4F9 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		21EF794FFF860A2E2EA02EEE0CC32A97 /* Pods-RadioAtlas.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-RadioAtlas.modulemap"; sourceTree = "<group>"; };
 		267493252439749C9D286DD70C54E2AE /* Pods-RadioAtlasTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-RadioAtlasTests-acknowledgements.plist"; sourceTree = "<group>"; };
 		290701C302265937990FCA39BC829A1D /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		296F9BC3549DADF9CCE6D04AD5F98666 /* Pods_RadioAtlasTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_RadioAtlasTests.framework; path = "Pods-RadioAtlasTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D99EA491F7D59FCD13BB011E592A18A /* Pods-RadioAtlasUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-RadioAtlasUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		31247758A2CFA50D9B81A68A1E0E932C /* Pods-RadioAtlasUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-RadioAtlasUITests.modulemap"; sourceTree = "<group>"; };
+		3128B96C275B6CDB24412CEA99292F17 /* Font-Awesome-Swift-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Font-Awesome-Swift-prefix.pch"; sourceTree = "<group>"; };
 		331D65851FDE7DE74EB79298586CA4E8 /* Pods-RadioAtlasTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-RadioAtlasTests.debug.xcconfig"; sourceTree = "<group>"; };
 		332A302DCAD191810B8A9816E714BF2A /* Pods-RadioAtlasUITests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-RadioAtlasUITests-acknowledgements.plist"; sourceTree = "<group>"; };
+		3B3EA33C568DA125288B2EA16A04AF81 /* MarqueeLabel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = MarqueeLabel.framework; path = MarqueeLabel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3E01ECC3636C2027131CC4624F4F81CC /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		49AC37BCF381EA6D57ABDB82B4E5376B /* Pods-RadioAtlas-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-RadioAtlas-dummy.m"; sourceTree = "<group>"; };
+		50624A0D0ABEBA5F9F8A0CBB778C69B9 /* Font-Awesome-Swift.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = "Font-Awesome-Swift.bundle"; path = "Font-Awesome-Swift.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
 		52C52EDA485F78710B741A91180E8D4A /* Pods-RadioAtlas-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-RadioAtlas-acknowledgements.plist"; sourceTree = "<group>"; };
 		56A4489D3B9D424E27863EC27B34B5EF /* Pods-RadioAtlasTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-RadioAtlasTests-frameworks.sh"; sourceTree = "<group>"; };
-		5BF675A168132FD52AED630F977FE906 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
-		614F18C49249D2E3D7476AE9EDCE2A3E /* Pods_RadioAtlas.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_RadioAtlas.framework; path = "Pods-RadioAtlas.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5D7C6B1F087D994C9EC4732C58EBFBA5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		5E803BB91D219995631593A6F4912055 /* FontAwesome.ttf */ = {isa = PBXFileReference; includeInIndex = 1; name = FontAwesome.ttf; path = Source/FontAwesome.ttf; sourceTree = "<group>"; };
+		632C680249F088BA99B498358BAEEF0A /* MarqueeLabel-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MarqueeLabel-prefix.pch"; sourceTree = "<group>"; };
+		638E919EE699D8EF12803A3C8C95B7CC /* ResourceBundle-Font-Awesome-Swift-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-Font-Awesome-Swift-Info.plist"; sourceTree = "<group>"; };
 		649B4D4D3E0E159484A6C342A62EC841 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		68415E65476EB7EE2E47A5B4A3F06C16 /* MarqueeLabel.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = MarqueeLabel.modulemap; sourceTree = "<group>"; };
+		677BD20CCF699E480225F577E20A63CC /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/CoreText.framework; sourceTree = DEVELOPER_DIR; };
 		68DFD868829A40673AE5993804C7C66C /* Pods-RadioAtlasUITests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-RadioAtlasUITests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		7DA29F776BA23BD68612577A7AD9EF5A /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8A0B4B86F747A0F130511FF1AAE24285 /* MarqueeLabel-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MarqueeLabel-umbrella.h"; sourceTree = "<group>"; };
+		7AFD4DE5F843CE2EDBD1803F0458B437 /* MarqueeLabel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MarqueeLabel.swift; path = Sources/Swift/MarqueeLabel.swift; sourceTree = "<group>"; };
+		850A68582A06838C8A792E8E565E3034 /* Font-Awesome-Swift-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Font-Awesome-Swift-umbrella.h"; sourceTree = "<group>"; };
 		8AE40ABAEA00D26BB5412D7F77746075 /* Pods-RadioAtlasTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-RadioAtlasTests.modulemap"; sourceTree = "<group>"; };
+		8CDFA6AB86E911D2E67F4468DE5090B6 /* Font-Awesome-Swift-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Font-Awesome-Swift-dummy.m"; sourceTree = "<group>"; };
 		8DA25F796049EE6CE1E50459821B0FAC /* Pods-RadioAtlas-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-RadioAtlas-frameworks.sh"; sourceTree = "<group>"; };
 		8F4FE30E78B310557CAEE10F8B02221F /* Pods-RadioAtlasUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-RadioAtlasUITests.release.xcconfig"; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		955A9C3B20B2DEDEF85F2F026B493711 /* Pods-RadioAtlas-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-RadioAtlas-acknowledgements.markdown"; sourceTree = "<group>"; };
 		A3ACBCB490C6AF1EC81B35D8186B8291 /* Pods-RadioAtlasTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-RadioAtlasTests-dummy.m"; sourceTree = "<group>"; };
+		A5647EDCE99701A989BF4877E7FAA7CE /* MarqueeLabel.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = MarqueeLabel.modulemap; sourceTree = "<group>"; };
+		A60FC0B8E57FF8B148B4288EBA98E84D /* MarqueeLabel-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MarqueeLabel-umbrella.h"; sourceTree = "<group>"; };
 		A6F22C4A8B169877286045230C0122F6 /* Pods-RadioAtlas-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-RadioAtlas-resources.sh"; sourceTree = "<group>"; };
 		AE2E165EBA0605D24F879A4CDA50962D /* Pods-RadioAtlas.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-RadioAtlas.release.xcconfig"; sourceTree = "<group>"; };
-		B3E283C91420494B7638FD65B8C82DF6 /* MarqueeLabel-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MarqueeLabel-dummy.m"; sourceTree = "<group>"; };
 		BA6D2DD7A5282677907FE17FB374E87F /* Pods-RadioAtlasTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-RadioAtlasTests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		C1064F327D34CD651177B926460C9401 /* Pods_RadioAtlasUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_RadioAtlasUITests.framework; path = "Pods-RadioAtlasUITests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BAB42C3FBA10F67739FD4E68F9EF17FE /* Pods_RadioAtlas.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_RadioAtlas.framework; path = "Pods-RadioAtlas.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C22061334F3A7D62A324102F8D859D11 /* Pods-RadioAtlas-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-RadioAtlas-umbrella.h"; sourceTree = "<group>"; };
-		C5A9923BCEFC384F176B7DCC0BC296ED /* MarqueeLabel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MarqueeLabel.swift; path = Sources/Swift/MarqueeLabel.swift; sourceTree = "<group>"; };
+		D0E03F48880639C627B0213337DFE6AB /* FAIcon.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FAIcon.swift; path = Source/FAIcon.swift; sourceTree = "<group>"; };
+		D28F57A5F07B072EAEC564D36AC6C78D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		DEB7FD7AD4B7C66ADDF68D1EC931C833 /* Pods-RadioAtlasTests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-RadioAtlasTests-resources.sh"; sourceTree = "<group>"; };
-		E0203FCF2E38F9E0B8C4E69853543A3E /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
 		E51652967C7E1D29EE09654E11C9A174 /* Pods-RadioAtlasTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-RadioAtlasTests.release.xcconfig"; sourceTree = "<group>"; };
 		E8D271007164F469D6239E2006F9E1D6 /* Pods-RadioAtlasUITests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-RadioAtlasUITests-resources.sh"; sourceTree = "<group>"; };
-		EC32878090C4B2B93381956161EC0930 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		EDEE6E946B33B24049B0045F2FE2AA4A /* Pods-RadioAtlas.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-RadioAtlas.debug.xcconfig"; sourceTree = "<group>"; };
+		F3D741AE82305179C3D796A84CFA7AD5 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
+		F8F43A15CBF4E61BD2C7E6AA014E4E4E /* Font-Awesome-Swift.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Font-Awesome-Swift.modulemap"; sourceTree = "<group>"; };
 		FA37754AE2E1C7D17206490C5E9BC74F /* Pods-RadioAtlasUITests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-RadioAtlasUITests-frameworks.sh"; sourceTree = "<group>"; };
 		FD0AAB592A20748A9F929C7F63ED17E5 /* Pods-RadioAtlasTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-RadioAtlasTests-umbrella.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -91,11 +125,10 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		34C26F900EC22BE85E9EA20E39C5A0DD /* Frameworks */ = {
+		2873547DCFC3CAB37C66BCF0A909F826 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E93F4084D20B1DBA9FBB20C397C6A7BB /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -104,6 +137,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				85A2FE6BB40052C17E257AF6A6A81417 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		83672F0B28CB7C01A84D7FD4926A689F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				97EB5D6AB85CB2B95475D551F6B14A73 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -117,37 +158,85 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F6291121CF999A2EE75BE05F8F951899 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				05F33B4B13BC0DCE6EE7518267C0F46B /* CoreText.framework in Frameworks */,
+				94AD925604BA6F2EAFE9BA9810C92959 /* Foundation.framework in Frameworks */,
+				2BF115CB201E1A96E4ECF16D9B386017 /* UIKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0A79C62A5B8127199A168C762B28E04C /* Products */ = {
+		085678940A1D8C8FD6ECC077E756217C /* iOS */ = {
 			isa = PBXGroup;
 			children = (
-				1A0A5324F2465951F9879C857662373D /* MarqueeLabel.framework */,
-				614F18C49249D2E3D7476AE9EDCE2A3E /* Pods_RadioAtlas.framework */,
-				202EDCFAA40AFACE3AB67D703A0681A3 /* Pods_RadioAtlasTests.framework */,
-				C1064F327D34CD651177B926460C9401 /* Pods_RadioAtlasUITests.framework */,
+				677BD20CCF699E480225F577E20A63CC /* CoreText.framework */,
+				D28F57A5F07B072EAEC564D36AC6C78D /* Foundation.framework */,
+				F3D741AE82305179C3D796A84CFA7AD5 /* QuartzCore.framework */,
+				5D7C6B1F087D994C9EC4732C58EBFBA5 /* UIKit.framework */,
 			);
-			name = Products;
+			name = iOS;
 			sourceTree = "<group>";
 		};
-		122DA2E5084A4393C29BE363C764795C /* Frameworks */ = {
+		0C1EE1FD15E7A3D27A450008A6CA984B /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				E5E9260013FA223D81B907D9285F6EA1 /* iOS */,
+				F8F43A15CBF4E61BD2C7E6AA014E4E4E /* Font-Awesome-Swift.modulemap */,
+				080B17445D27DD04A01CF5D385CE7046 /* Font-Awesome-Swift.xcconfig */,
+				8CDFA6AB86E911D2E67F4468DE5090B6 /* Font-Awesome-Swift-dummy.m */,
+				3128B96C275B6CDB24412CEA99292F17 /* Font-Awesome-Swift-prefix.pch */,
+				850A68582A06838C8A792E8E565E3034 /* Font-Awesome-Swift-umbrella.h */,
+				1D18157ECA50DAD85C666A7101CE0D1F /* Info.plist */,
+				638E919EE699D8EF12803A3C8C95B7CC /* ResourceBundle-Font-Awesome-Swift-Info.plist */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/Font-Awesome-Swift";
+			sourceTree = "<group>";
+		};
+		11CA3924DDD325FDD45F734C67E45ECD /* MarqueeLabel */ = {
+			isa = PBXGroup;
+			children = (
+				2706450D7FE4DD9D580F886906581139 /* Support Files */,
+				ED01278BD51C65B74194440D70834377 /* Swift */,
+			);
+			name = MarqueeLabel;
+			path = MarqueeLabel;
+			sourceTree = "<group>";
+		};
+		14B8B9B15ECBE87983FF987239AB2D7B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				085678940A1D8C8FD6ECC077E756217C /* iOS */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		20DA320FF167EC638CA071968B203376 /* Support Files */ = {
+		24CE27CDED18F46D62014102E6CF1AA8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				7DA29F776BA23BD68612577A7AD9EF5A /* Info.plist */,
-				68415E65476EB7EE2E47A5B4A3F06C16 /* MarqueeLabel.modulemap */,
-				00113989072348A86540EFD297810B0C /* MarqueeLabel.xcconfig */,
-				B3E283C91420494B7638FD65B8C82DF6 /* MarqueeLabel-dummy.m */,
-				0DC10542DC03E7CD4221A15889FBD252 /* MarqueeLabel-prefix.pch */,
-				8A0B4B86F747A0F130511FF1AAE24285 /* MarqueeLabel-umbrella.h */,
+				50624A0D0ABEBA5F9F8A0CBB778C69B9 /* Font-Awesome-Swift.bundle */,
+				07402A88B215735941F67E9BFDE40012 /* Font_Awesome_Swift.framework */,
+				3B3EA33C568DA125288B2EA16A04AF81 /* MarqueeLabel.framework */,
+				BAB42C3FBA10F67739FD4E68F9EF17FE /* Pods_RadioAtlas.framework */,
+				296F9BC3549DADF9CCE6D04AD5F98666 /* Pods_RadioAtlasTests.framework */,
+				153E2331808BA415FEECE6F08D94D6D1 /* Pods_RadioAtlasUITests.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2706450D7FE4DD9D580F886906581139 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				3E01ECC3636C2027131CC4624F4F81CC /* Info.plist */,
+				A5647EDCE99701A989BF4877E7FAA7CE /* MarqueeLabel.modulemap */,
+				185DDD52A09438DA4D28D3C252613740 /* MarqueeLabel.xcconfig */,
+				1642175EEC4ECDC8646D909E523639A0 /* MarqueeLabel-dummy.m */,
+				632C680249F088BA99B498358BAEEF0A /* MarqueeLabel-prefix.pch */,
+				A60FC0B8E57FF8B148B4288EBA98E84D /* MarqueeLabel-umbrella.h */,
 			);
 			name = "Support Files";
 			path = "../Target Support Files/MarqueeLabel";
@@ -171,41 +260,34 @@
 			path = "Target Support Files/Pods-RadioAtlasUITests";
 			sourceTree = "<group>";
 		};
-		385F135C89B39F39B01D288D34E843EF /* Swift */ = {
+		54E96B7D683906272917605B53C4C923 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				C5A9923BCEFC384F176B7DCC0BC296ED /* MarqueeLabel.swift */,
+				5E803BB91D219995631593A6F4912055 /* FontAwesome.ttf */,
 			);
-			name = Swift;
-			sourceTree = "<group>";
-		};
-		525FA405AF2C98970D415CAB624258F1 /* MarqueeLabel */ = {
-			isa = PBXGroup;
-			children = (
-				20DA320FF167EC638CA071968B203376 /* Support Files */,
-				385F135C89B39F39B01D288D34E843EF /* Swift */,
-			);
-			name = MarqueeLabel;
-			path = MarqueeLabel;
-			sourceTree = "<group>";
-		};
-		5A32E81BAAF57F11ADA37F022BF97847 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				525FA405AF2C98970D415CAB624258F1 /* MarqueeLabel */,
-			);
-			name = Pods;
+			name = Resources;
 			sourceTree = "<group>";
 		};
 		7DB346D0F39D3F0E887471402A8071AB = {
 			isa = PBXGroup;
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
-				122DA2E5084A4393C29BE363C764795C /* Frameworks */,
-				5A32E81BAAF57F11ADA37F022BF97847 /* Pods */,
-				0A79C62A5B8127199A168C762B28E04C /* Products */,
+				14B8B9B15ECBE87983FF987239AB2D7B /* Frameworks */,
+				97C2A87C9F53DAD89DB24888C7817C47 /* Pods */,
+				24CE27CDED18F46D62014102E6CF1AA8 /* Products */,
 				D281D8897347412B81A6A64F43B481A3 /* Targets Support Files */,
 			);
+			sourceTree = "<group>";
+		};
+		8C902367A6C2A6E99B7513078ECB0A98 /* Font-Awesome-Swift */ = {
+			isa = PBXGroup;
+			children = (
+				D0E03F48880639C627B0213337DFE6AB /* FAIcon.swift */,
+				54E96B7D683906272917605B53C4C923 /* Resources */,
+				0C1EE1FD15E7A3D27A450008A6CA984B /* Support Files */,
+			);
+			name = "Font-Awesome-Swift";
+			path = "Font-Awesome-Swift";
 			sourceTree = "<group>";
 		};
 		8CDAB7981326BE2DC8AC98C901E51481 /* Pods-RadioAtlasTests */ = {
@@ -224,6 +306,15 @@
 			);
 			name = "Pods-RadioAtlasTests";
 			path = "Target Support Files/Pods-RadioAtlasTests";
+			sourceTree = "<group>";
+		};
+		97C2A87C9F53DAD89DB24888C7817C47 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8C902367A6C2A6E99B7513078ECB0A98 /* Font-Awesome-Swift */,
+				11CA3924DDD325FDD45F734C67E45ECD /* MarqueeLabel */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		B6BA50CD389973015175EFF8319230C8 /* Pods-RadioAtlas */ = {
@@ -254,14 +345,12 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		E5E9260013FA223D81B907D9285F6EA1 /* iOS */ = {
+		ED01278BD51C65B74194440D70834377 /* Swift */ = {
 			isa = PBXGroup;
 			children = (
-				EC32878090C4B2B93381956161EC0930 /* Foundation.framework */,
-				E0203FCF2E38F9E0B8C4E69853543A3E /* QuartzCore.framework */,
-				5BF675A168132FD52AED630F977FE906 /* UIKit.framework */,
+				7AFD4DE5F843CE2EDBD1803F0458B437 /* MarqueeLabel.swift */,
 			);
-			name = iOS;
+			name = Swift;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -275,19 +364,19 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		673BFB6A91D881BFD048912A481BA746 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				2E59718BFD1E78961B6F4BBC82A67C71 /* Pods-RadioAtlas-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		699572B4EEAA91C9D62DB0428BFB485D /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				1A936AA20D5829F8333A98E33C3E6E77 /* Pods-RadioAtlasTests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9FE90BD587DC38307F3E3E9A27FF6543 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA5EC5772BF1B586B49DA4D83AF70E76 /* Pods-RadioAtlas-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -299,27 +388,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C2873D7F48D5059CA50A79ADE29E0859 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4742149453AD46E590B715335CECF22 /* Font-Awesome-Swift-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		3109F0AE5235867F7C1DE721AE76E984 /* Pods-RadioAtlas */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 112958DB8FEAAF56E1D4CE0CDBB3F810 /* Build configuration list for PBXNativeTarget "Pods-RadioAtlas" */;
-			buildPhases = (
-				4350015184930EFFC78E9E1D174BC97E /* Sources */,
-				34C26F900EC22BE85E9EA20E39C5A0DD /* Frameworks */,
-				673BFB6A91D881BFD048912A481BA746 /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				DE31A001B9DEE14E21A251734824D563 /* PBXTargetDependency */,
-			);
-			name = "Pods-RadioAtlas";
-			productName = "Pods-RadioAtlas";
-			productReference = 614F18C49249D2E3D7476AE9EDCE2A3E /* Pods_RadioAtlas.framework */;
-			productType = "com.apple.product-type.framework";
-		};
 		320AD47B0C6BA014D301395D3BFC8FB6 /* MarqueeLabel */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = AB93BA3C12E3426B5019CB531E1C08DC /* Build configuration list for PBXNativeTarget "MarqueeLabel" */;
@@ -334,7 +413,62 @@
 			);
 			name = MarqueeLabel;
 			productName = MarqueeLabel;
-			productReference = 1A0A5324F2465951F9879C857662373D /* MarqueeLabel.framework */;
+			productReference = 3B3EA33C568DA125288B2EA16A04AF81 /* MarqueeLabel.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		9735AA72928D41DB06EA697E23930C72 /* Font-Awesome-Swift-Font-Awesome-Swift */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3196888FC4BA2CC8F14DE782D510C49D /* Build configuration list for PBXNativeTarget "Font-Awesome-Swift-Font-Awesome-Swift" */;
+			buildPhases = (
+				25A6BBD7F5E29C3374417679ED84EAD4 /* Sources */,
+				2873547DCFC3CAB37C66BCF0A909F826 /* Frameworks */,
+				E7CEF4EBC3888DA3128E6CEB79BE5BBD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Font-Awesome-Swift-Font-Awesome-Swift";
+			productName = "Font-Awesome-Swift-Font-Awesome-Swift";
+			productReference = 50624A0D0ABEBA5F9F8A0CBB778C69B9 /* Font-Awesome-Swift.bundle */;
+			productType = "com.apple.product-type.bundle";
+		};
+		A032BA9AD4F0B2D067223DC41EA2FC39 /* Pods-RadioAtlas */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 19A8D8F8B0D931BBE5ECC7C8466FF6B7 /* Build configuration list for PBXNativeTarget "Pods-RadioAtlas" */;
+			buildPhases = (
+				FF0F967B3E55C37A46D25439E5DF82F7 /* Sources */,
+				83672F0B28CB7C01A84D7FD4926A689F /* Frameworks */,
+				9FE90BD587DC38307F3E3E9A27FF6543 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8B21DB9487DD026465E21374E857F022 /* PBXTargetDependency */,
+				D7E1D12BF35B495B70CAEBB620D2A691 /* PBXTargetDependency */,
+			);
+			name = "Pods-RadioAtlas";
+			productName = "Pods-RadioAtlas";
+			productReference = BAB42C3FBA10F67739FD4E68F9EF17FE /* Pods_RadioAtlas.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		BA453546C51032641C49CACBC22725EE /* Font-Awesome-Swift */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C44699AC6ECDFB00A9014C5FB5C7E1E8 /* Build configuration list for PBXNativeTarget "Font-Awesome-Swift" */;
+			buildPhases = (
+				D88D19D75A2C129F5E1811B75B9D7702 /* Sources */,
+				F6291121CF999A2EE75BE05F8F951899 /* Frameworks */,
+				9081D6494BFC478079119EBA113E216F /* Resources */,
+				C2873D7F48D5059CA50A79ADE29E0859 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				84F4642A21AF7C7C12FE5C7959D975B0 /* PBXTargetDependency */,
+			);
+			name = "Font-Awesome-Swift";
+			productName = "Font-Awesome-Swift";
+			productReference = 07402A88B215735941F67E9BFDE40012 /* Font_Awesome_Swift.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		BEFE61CC1AE90B4B194C03A950EBD2CD /* Pods-RadioAtlasTests */ = {
@@ -351,7 +485,7 @@
 			);
 			name = "Pods-RadioAtlasTests";
 			productName = "Pods-RadioAtlasTests";
-			productReference = 202EDCFAA40AFACE3AB67D703A0681A3 /* Pods_RadioAtlasTests.framework */;
+			productReference = 296F9BC3549DADF9CCE6D04AD5F98666 /* Pods_RadioAtlasTests.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		DD744C25AAE40A50A49EBB0E3D2631F1 /* Pods-RadioAtlasUITests */ = {
@@ -368,7 +502,7 @@
 			);
 			name = "Pods-RadioAtlasUITests";
 			productName = "Pods-RadioAtlasUITests";
-			productReference = C1064F327D34CD651177B926460C9401 /* Pods_RadioAtlasUITests.framework */;
+			productReference = 153E2331808BA415FEECE6F08D94D6D1 /* Pods_RadioAtlasUITests.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -388,24 +522,44 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = 0A79C62A5B8127199A168C762B28E04C /* Products */;
+			productRefGroup = 24CE27CDED18F46D62014102E6CF1AA8 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
+				BA453546C51032641C49CACBC22725EE /* Font-Awesome-Swift */,
+				9735AA72928D41DB06EA697E23930C72 /* Font-Awesome-Swift-Font-Awesome-Swift */,
 				320AD47B0C6BA014D301395D3BFC8FB6 /* MarqueeLabel */,
-				3109F0AE5235867F7C1DE721AE76E984 /* Pods-RadioAtlas */,
+				A032BA9AD4F0B2D067223DC41EA2FC39 /* Pods-RadioAtlas */,
 				BEFE61CC1AE90B4B194C03A950EBD2CD /* Pods-RadioAtlasTests */,
 				DD744C25AAE40A50A49EBB0E3D2631F1 /* Pods-RadioAtlasUITests */,
 			);
 		};
 /* End PBXProject section */
 
+/* Begin PBXResourcesBuildPhase section */
+		9081D6494BFC478079119EBA113E216F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				862F6576D6B64D137E1F6E464F9A906E /* Font-Awesome-Swift.bundle in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E7CEF4EBC3888DA3128E6CEB79BE5BBD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AC24B7BFE64B154BB0EDB1E294D4D9DC /* FontAwesome.ttf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
-		4350015184930EFFC78E9E1D174BC97E /* Sources */ = {
+		25A6BBD7F5E29C3374417679ED84EAD4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				39CE61BA38E80A4826345C5526C65D44 /* Pods-RadioAtlas-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -414,6 +568,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				B5AF6FA02BAAD34ADFAAECFB3155779E /* Pods-RadioAtlasUITests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D88D19D75A2C129F5E1811B75B9D7702 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				207D725533423D55A24FA53494476090 /* FAIcon.swift in Sources */,
+				E7E94390A1CF40ED6C3C620B0BE8B0A0 /* Font-Awesome-Swift-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -434,18 +597,109 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		FF0F967B3E55C37A46D25439E5DF82F7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE259EF414BCAE0AFFC46311C12921B2 /* Pods-RadioAtlas-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		DE31A001B9DEE14E21A251734824D563 /* PBXTargetDependency */ = {
+		84F4642A21AF7C7C12FE5C7959D975B0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Font-Awesome-Swift-Font-Awesome-Swift";
+			target = 9735AA72928D41DB06EA697E23930C72 /* Font-Awesome-Swift-Font-Awesome-Swift */;
+			targetProxy = 682BD0987EB17880E3025EFA1CCEBF82 /* PBXContainerItemProxy */;
+		};
+		8B21DB9487DD026465E21374E857F022 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Font-Awesome-Swift";
+			target = BA453546C51032641C49CACBC22725EE /* Font-Awesome-Swift */;
+			targetProxy = 5610B1F4D2362CB2D11C1B82DB9119DA /* PBXContainerItemProxy */;
+		};
+		D7E1D12BF35B495B70CAEBB620D2A691 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = MarqueeLabel;
 			target = 320AD47B0C6BA014D301395D3BFC8FB6 /* MarqueeLabel */;
-			targetProxy = 10F8321749B6AEFE14CC7E0EF3C2D3C6 /* PBXContainerItemProxy */;
+			targetProxy = 246630687B8C5DB27DE057AC417479D3 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		3115B9D92FDFC33AB6AE9FCB1EC621A5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AE2E165EBA0605D24F879A4CDA50962D /* Pods-RadioAtlas.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-RadioAtlas/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-RadioAtlas/Pods-RadioAtlas.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_RadioAtlas;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		3BEF268AFD9FFF2E045EC17D1A359AD9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = EDEE6E946B33B24049B0045F2FE2AA4A /* Pods-RadioAtlas.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-RadioAtlas/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-RadioAtlas/Pods-RadioAtlas.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_RadioAtlas;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
 		60829701B5DF1BB1D80CD22A9C02124A /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8F4FE30E78B310557CAEE10F8B02221F /* Pods-RadioAtlasUITests.release.xcconfig */;
@@ -556,41 +810,6 @@
 			};
 			name = Debug;
 		};
-		82CDB5E2FA8B417121B0A8AA1DE431D8 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = AE2E165EBA0605D24F879A4CDA50962D /* Pods-RadioAtlas.release.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-RadioAtlas/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-RadioAtlas/Pods-RadioAtlas.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_RadioAtlas;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
 		88DFC47A0C9814B0988605B66C66BCBE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 2D99EA491F7D59FCD13BB011E592A18A /* Pods-RadioAtlasUITests.debug.xcconfig */;
@@ -626,9 +845,26 @@
 			};
 			name = Debug;
 		};
-		8EBAC7E4B2C6D75C9CCD7EEDCBE95BFC /* Debug */ = {
+		8FEBF703E1D0A71A402EEB1A7AB85212 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EDEE6E946B33B24049B0045F2FE2AA4A /* Pods-RadioAtlas.debug.xcconfig */;
+			baseConfigurationReference = 080B17445D27DD04A01CF5D385CE7046 /* Font-Awesome-Swift.xcconfig */;
+			buildSettings = {
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/Font-Awesome-Swift";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Font-Awesome-Swift/ResourceBundle-Font-Awesome-Swift-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				PRODUCT_NAME = "Font-Awesome-Swift";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
+		AAE4B714984E1DE3070F5A17B4945C27 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 080B17445D27DD04A01CF5D385CE7046 /* Font-Awesome-Swift.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -641,21 +877,18 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-RadioAtlas/Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/Font-Awesome-Swift/Font-Awesome-Swift-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Font-Awesome-Swift/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-RadioAtlas/Pods-RadioAtlas.modulemap";
+				MODULEMAP_FILE = "Target Support Files/Font-Awesome-Swift/Font-Awesome-Swift.modulemap";
 				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_RadioAtlas;
+				PRODUCT_NAME = Font_Awesome_Swift;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -664,7 +897,7 @@
 		};
 		B7A438A0809F408030BB48D47D4A47D1 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 00113989072348A86540EFD297810B0C /* MarqueeLabel.xcconfig */;
+			baseConfigurationReference = 185DDD52A09438DA4D28D3C252613740 /* MarqueeLabel.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -697,7 +930,7 @@
 		};
 		C03E9E17149486CB2BF86F6DBC122936 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 00113989072348A86540EFD297810B0C /* MarqueeLabel.xcconfig */;
+			baseConfigurationReference = 185DDD52A09438DA4D28D3C252613740 /* MarqueeLabel.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -806,6 +1039,55 @@
 			};
 			name = Release;
 		};
+		E8D5556FCC4AC3195E8C139BCA8BE29E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 080B17445D27DD04A01CF5D385CE7046 /* Font-Awesome-Swift.xcconfig */;
+			buildSettings = {
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/Font-Awesome-Swift";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Font-Awesome-Swift/ResourceBundle-Font-Awesome-Swift-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				PRODUCT_NAME = "Font-Awesome-Swift";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
+		EBC842B877A9A93E281CA742403BE7F7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 080B17445D27DD04A01CF5D385CE7046 /* Font-Awesome-Swift.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Font-Awesome-Swift/Font-Awesome-Swift-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Font-Awesome-Swift/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Font-Awesome-Swift/Font-Awesome-Swift.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = Font_Awesome_Swift;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -818,11 +1100,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		112958DB8FEAAF56E1D4CE0CDBB3F810 /* Build configuration list for PBXNativeTarget "Pods-RadioAtlas" */ = {
+		19A8D8F8B0D931BBE5ECC7C8466FF6B7 /* Build configuration list for PBXNativeTarget "Pods-RadioAtlas" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				8EBAC7E4B2C6D75C9CCD7EEDCBE95BFC /* Debug */,
-				82CDB5E2FA8B417121B0A8AA1DE431D8 /* Release */,
+				3BEF268AFD9FFF2E045EC17D1A359AD9 /* Debug */,
+				3115B9D92FDFC33AB6AE9FCB1EC621A5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -832,6 +1114,15 @@
 			buildConfigurations = (
 				E4F26E6EB105713A6A7E7E2E283AC2DF /* Debug */,
 				673254EEAF0B5BF4596080C749645884 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3196888FC4BA2CC8F14DE782D510C49D /* Build configuration list for PBXNativeTarget "Font-Awesome-Swift-Font-Awesome-Swift" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8FEBF703E1D0A71A402EEB1A7AB85212 /* Debug */,
+				E8D5556FCC4AC3195E8C139BCA8BE29E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -850,6 +1141,15 @@
 			buildConfigurations = (
 				B7A438A0809F408030BB48D47D4A47D1 /* Debug */,
 				C03E9E17149486CB2BF86F6DBC122936 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C44699AC6ECDFB00A9014C5FB5C7E1E8 /* Build configuration list for PBXNativeTarget "Font-Awesome-Swift" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AAE4B714984E1DE3070F5A17B4945C27 /* Debug */,
+				EBC842B877A9A93E281CA742403BE7F7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

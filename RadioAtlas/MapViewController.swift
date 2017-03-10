@@ -12,6 +12,7 @@ import CoreData
 import AVFoundation
 import CoreLocation
 import MarqueeLabel
+import Font_Awesome_Swift
 
 
 extension MKMapView {
@@ -43,20 +44,23 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
     @IBOutlet weak var centerFocus: UIImageView!
     
     @IBOutlet weak var fastForward: UIBarButtonItem!
-   
+    
     @IBOutlet weak var reWind: UIBarButtonItem!
     @IBOutlet weak var playAndPauseBar: UIBarButtonItem!
     
     @IBOutlet var mapView: MKMapView!
-   // @IBOutlet weak var btnNext: UIButton!
-   
+    // @IBOutlet weak var btnNext: UIButton!
+    
+    @IBOutlet weak var btnZoomIn: UIBarButtonItem!
+    
     @IBOutlet weak var barBtnWorld: UIBarButtonItem!
     @IBOutlet weak var nowPlayingLabel: MarqueeLabel!
     
-   // @IBOutlet weak var btnPrev: UIButton!
+    // @IBOutlet weak var btnPrev: UIButton!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
-    @IBOutlet weak var btnWorld: UIButton!
+    @IBOutlet weak var btnZoomOut: UIBarButtonItem!
+    
     @IBOutlet weak var progressMessage: UITextView!
     @IBOutlet weak var volumeControl: UISlider!
     // Properties
@@ -66,7 +70,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
     var radioInfo = [RadioInfo]()
     var locationManager = CLLocationManager()
     var favoriteStation = [Station]()
-   // var favorite : Bool = false
+    // var favorite : Bool = false
     var annotations = [MKAnnotation]()
     var mapViewZoomStepperValue: Double = -1.0
     private var playerItemContext = 0
@@ -81,14 +85,24 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
     var skipRegionClustering : Bool = false
     var mapDragged : Bool = false
     var prevZoomLevel : Double = 17.0
+    var currentlyPlaying: MKAnnotation? = nil
     private let PlayerStatusObservingContext = UnsafeMutablePointer<Int>(bitPattern: 1)
-
+    
     @IBOutlet weak var mapViewZoomStepper: UIStepper!
     //var mapViewZoomStepperValue: Double = -1.0
     
     
     let clusteringManager = FBClusteringManager()
     let configuration = FBAnnotationClusterViewConfiguration.default()
+    let DARK_FOREGROUND_COLOR = UIColor(red:0.04, green:0.29, blue:0.60, alpha:1.0)
+    let DISABLED_COLOR = UIColor.init(white: 0.8, alpha: 1.0)
+    let LIGHT_BACKGROUND_COLOR = UIColor(red:0.98, green:0.98, blue:0.98, alpha:1.0)
+    let TOOLBAR_BUTTON_SIZE : CGFloat = 25
+    let PLAY_BUTTON_SIZE : CGFloat = 35
+    let MAX_ZOOM_OUT = 17.0
+    let MAX_ZOOM_IN = 5.0
+    
+    
     //var userLoc : CLLocation = 0.0
     var playerItem : AVPlayerItem? = nil
     //var nowPlayingData : String = ""
@@ -97,9 +111,9 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
     var previousStationData : String = ""
     var prevStationHistory = [PinAnnotation]()
     var nextStationHistory = [PinAnnotation]()
-
     
-   // @IBOutlet weak var playAndPause: UIButton!
+    
+    // @IBOutlet weak var playAndPause: UIButton!
     
     @IBOutlet weak var favoriteButton: UIButton!
     // Core Data Convenience. Useful for fetching, adding and saving objects
@@ -111,15 +125,56 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         super.viewDidLoad()
         setUIAttributes()
         initializations()
-    
+        
     }
+    
     
     func setUIAttributes()
     {
         //mapView.mapType = MKMapType.hybrid
         mapView.showsPointsOfInterest = true
+        
+        
+        
+        fastForward.setFAIcon(icon: .FAStepForward, iconSize: TOOLBAR_BUTTON_SIZE)
+        fastForward.tintColor = DARK_FOREGROUND_COLOR
+        fastForward.isEnabled = false
+        
+        
+        fastForward.setTitlePositionAdjustment(UIOffset(horizontal: 10, vertical: 100), for: UIBarMetrics.default)
+        
+        reWind.setFAIcon(icon: .FAStepBackward, iconSize: TOOLBAR_BUTTON_SIZE)
+        reWind.tintColor = DARK_FOREGROUND_COLOR
+        reWind.isEnabled = false
+        // reWind.imageInsets = UIEdgeInsets.init(top: 0, left: -15, bottom: -20, right: 0)
+        
+        playAndPauseBar.setFAIcon(icon: .FAPlay, iconSize: PLAY_BUTTON_SIZE)
+        playAndPauseBar.tintColor = DARK_FOREGROUND_COLOR
+        playAndPauseBar.isEnabled = false
+        
+        
+        barBtnWorld.setFAIcon(icon: .FAGlobe, iconSize: TOOLBAR_BUTTON_SIZE)
+        barBtnWorld.tintColor = DARK_FOREGROUND_COLOR
+        barBtnWorld.isEnabled = false
+        
+        favorite.setFAIcon(icon: .FAHeart, iconSize: TOOLBAR_BUTTON_SIZE)
+        favorite.tintColor = DARK_FOREGROUND_COLOR
+        
+        
+        btnZoomIn.setFAIcon(icon: .FAExpand, iconSize: TOOLBAR_BUTTON_SIZE)
+        btnZoomIn.tintColor = DARK_FOREGROUND_COLOR
+        
+        btnZoomOut.setFAIcon(icon: .FACompress, iconSize: TOOLBAR_BUTTON_SIZE)
+        btnZoomOut.tintColor = DARK_FOREGROUND_COLOR
+        btnZoomOut.isEnabled = false
+        
+        nowPlayingLabel.backgroundColor = self.LIGHT_BACKGROUND_COLOR
+        
+        //fastForward.setFAText(prefixText: "testting", icon: nil, postfixText: "", size: 20)
+        
+        
         //btnNext.isHidden = true
-       // payAndPauseBar.isOpaque = true
+        // payAndPauseBar.isOpaque = true
     }
     
     
@@ -150,14 +205,14 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
             }
         }
     }
-       
+    
     
     func initializations() {
         
         appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.setNetworkActivityIndicatorVisible(visible: true)
         
-       // setWorldRegion(animated: false)
+        // setWorldRegion(animated: false)
         mapView.delegate = self
         self.addAnnotation()
         
@@ -167,91 +222,153 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         
         
         
-       }
+    }
     
     func addPlayerObservers(player: RadioAVPlayer) {
         
         player.addObserver(self,
-                                forKeyPath: "currentItem.status",
-                                options: [.new, .initial],
-                                context: nil)
+                           forKeyPath: "currentItem.status",
+                           options: [.new, .initial],
+                           context: nil)
         
         player.addObserver(self,
-                                forKeyPath: "currentItem.duration",
-                                context: nil)
+                           forKeyPath: "currentItem.duration",
+                           context: nil)
         
         player.addObserver(self,
                            forKeyPath: "rate",
                            context: nil)
-
+        
         
     }
     
-    func setWorldRegion(animated: Bool) {
+    func setWorldRegion(animated: Bool, changeCenter:Bool=false) {
         var worldRegion : MKCoordinateRegion
         worldRegion = MKCoordinateRegionForMapRect(MKMapRectWorld)
         skipRegionAnnotationSelection = true
         //set the world zoom level
         self.prevZoomLevel == 17.0
+        
+        if (changeCenter && currentlyPlaying != nil)
+        {
+            worldRegion.center = (currentlyPlaying?.coordinate)!
+        }
+        
         mapView.setRegion(worldRegion,animated: animated)
         centerFocus.isHidden = false
-
-    }
-    
-    
-    
-    // Zoom In and Zoom Out 
-    
-    @IBAction func ZoomInAndZoomOut(_ sender: Any) {
         
-        if (mapViewZoomStepper.value  > mapViewZoomStepperValue)
-        {
-            mapViewZoomStepperValue = mapViewZoomStepperValue + 1.0
-            
-            //Zoom In
-            zoomInPinAnnotationLocation(targetMapViewName: mapView, delta: 3.0)
-        }
-        else
-        {
-            mapViewZoomStepperValue = mapViewZoomStepper.value - 1.0
-            
-            //Zoom Out
-            zoomOutPinAnnotationLocation(targetMapViewName: mapView, delta: 3.0)
-        }
+        
     }
+    
+    
+    @IBAction func btnZoomInClick(_ sender: Any) {
+        
+        regionChangedBecauseAnnotationSelected = false
+        zoomInPinAnnotationLocation(targetMapViewName: mapView, delta: 2.5)
+        
+        
+        
+    }
+    
+    @IBAction func btnZoomOutClick(_ sender: Any) {
+        
+        regionChangedBecauseAnnotationSelected = false
+        zoomOutPinAnnotationLocation(targetMapViewName: mapView, delta: 2.5)
+        btnZoomIn.isEnabled = true
+    }
+    
+    func getZoomLevel() -> Double {
+        let mapBoundsWidth = Double(self.mapView.bounds.size.width)
+        let mapRectWidth = self.mapView.visibleMapRect.size.width
+        let scale = mapBoundsWidth / mapRectWidth
+        let zoomLevel : Double = abs(ceil(log2(scale)))
+        
+        return zoomLevel
+        
+    }
+    
     
     func zoomInPinAnnotationLocation(targetMapViewName : MKMapView?, delta: Double)
     {
-        var region: MKCoordinateRegion = targetMapViewName!.region
-        region.span.latitudeDelta /= delta
-        region.span.longitudeDelta /= delta
-        targetMapViewName!.region = region
+        
+        //if zoom level just above  min  zoom
+        if (getZoomLevel() <= MAX_ZOOM_IN) {
+            
+            //No more Zoom in allowed
+            btnZoomIn.isEnabled = false
+            
+        } else {
+            
+            
+            var region: MKCoordinateRegion = targetMapViewName!.region
+            region.span.latitudeDelta /= delta
+            region.span.longitudeDelta /= delta
+            if (currentlyPlaying != nil) {
+                region.center = (currentlyPlaying?.coordinate)!
+            }
+            targetMapViewName!.region = region
+        }
+        
+        btnZoomOut.isEnabled = true
+        barBtnWorld.isEnabled = true
         
     }
+    
+    func checkZoomOutButtonStatus() -> Bool {
+        
+        var status : Bool = false
+        
+        if (getZoomLevel() >= MAX_ZOOM_OUT - 1 ) {
+            //set to world region
+            setWorldRegion(animated: true, changeCenter: true)
+            btnZoomOut.isEnabled = false
+            barBtnWorld.isEnabled = false
+            status = true
+            
+        }
+        
+        return status
+        
+    }
+    
+    
     func zoomOutPinAnnotationLocation(targetMapViewName : MKMapView?,delta: Double)
     {
-        var region: MKCoordinateRegion = targetMapViewName!.region
-        region.span.latitudeDelta *= delta
-        region.span.longitudeDelta *= delta
-        targetMapViewName!.region = region
+        //if zoom level just below max zoom
+        if (checkZoomOutButtonStatus() ) {
+        }
+        else {
+            var region: MKCoordinateRegion = targetMapViewName!.region
+            region.span.latitudeDelta *= delta
+            region.span.longitudeDelta *= delta
+            if (currentlyPlaying != nil) {
+                region.center = (currentlyPlaying?.coordinate)!
+            }
+            
+            targetMapViewName!.region = region
+            //checkZoomOutButtonStatus()
+        }
+        
+        btnZoomIn.isEnabled = true
+        
     }
-
+    
     
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         return true
     }
     
-
-
     
-   
-  
+    
+    
+    
+    
     func determineCurrentLocation() {
         
         //Paint the annotations by setting region
         isMapLoaded = true
         
-        nowPlayingLabel.text = "Tap dots to play. Pinch or double-tap to zoom."
+        nowPlayingLabel.text = "Move map to tune radio station at a location OR Tap dots to play. Pinch or double-tap to zoom."
         nowPlayingLabel.triggerScrollStart()
         
         setWorldRegion(animated: false)
@@ -276,29 +393,29 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         //userLoc = userLocation
         
         let center = CLLocationCoordinate2D(latitude: userLocation.coordinate.latitude, longitude: userLocation.coordinate.longitude)
-         let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 4.075, longitudeDelta: 4.075))
+        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 4.075, longitudeDelta: 4.075))
         
-    //mapView.setRegion(region, animated: true)
+        //mapView.setRegion(region, animated: true)
         
-       
-            }
+        
+    }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("Error \(error)")
     }
     
     
-    @IBAction func btnWorldClick(_ sender: Any) {
-        
-        setWorldRegion(animated: true)
-        
-    }
     
     @IBAction func barBtnWorldClick(_ sender: Any) {
         
-        setWorldRegion(animated: true)
+        
+        setWorldRegion(animated: true, changeCenter: true)
+        barBtnWorld.isEnabled = false
+        btnZoomOut.isEnabled = false
+        
         
     }
+    
     func addAnnotation(){
         
         var closestStation : String
@@ -358,7 +475,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
                                 lat_temp = CLLocationDegrees(dictionary.latitude!) + CLLocationDegrees(y)
                                 lon_temp = CLLocationDegrees(dictionary.longitude!) - CLLocationDegrees(y)
                             }
-                      
+                            
                             
                             let lat = lat_temp
                             let lon = lon_temp
@@ -424,14 +541,14 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
                         self.clusteringManager.add(annotations: self.annotations)
                         self.clusteringManager.delegate = self
                         self.appDelegate.setNetworkActivityIndicatorVisible(visible: false)
-                        self.centerFocus.isHidden = false
+                        // self.centerFocus.isHidden = false
                         //self.setWorldRegion(animated: true)
                         self.determineCurrentLocation()
                         
                     }
                     
                     
-                  
+                    
                     //RE* end
                     
                     
@@ -457,14 +574,14 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
             
         }
     }
-
+    
     
     
     func playMusic(music: String) {
         
         previousStationData = ""
         
-
+        
         
         statusUpdate(message: "Tuning to Radio Station..")
         
@@ -474,12 +591,12 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
             removeObservers(playerItem: playerItem!)
         }
         
-       
-         playerItem = RadioAVPlayerItem(url: NSURL(string: music) as! URL)
-         addObservers(playerItem: playerItem!)
+        
+        playerItem = RadioAVPlayerItem(url: NSURL(string: music) as! URL)
+        addObservers(playerItem: playerItem!)
         
         
-      
+        
         Music.sharedInstance.musicStream(playerItem: playerItem! as! RadioAVPlayerItem, viewController: self)
         playPauseImageUpdate(play: false)
         
@@ -500,7 +617,10 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         
         if (prevStationHistory.count > 1) {
             
+            
+            
             nextStationHistory.append(prevStationHistory.popLast()!)
+            fastForward.isEnabled = true
             //prevStationHistory.removeLast()
             
             //prevStationHistory.popLast()!
@@ -519,16 +639,22 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
             
             prevStationHistory.removeLast()
             
+            if (prevStationHistory.count < 1)
+            {
+                reWind.isEnabled = false
+            }
+            
             
         }
         
-
+        
     }
     
     @IBAction func fastForwardAction(_ sender: Any) {
         
         if (nextStationHistory.count > 0) {
             
+            //reWind.isEnabled = true
             var annotation : PinAnnotation = nextStationHistory.popLast()!
             //prevStationHistory.append(annotation)
             //playFromAnnotation(annotation: annotation)
@@ -538,23 +664,11 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
             mapView.setZoomByDelta(delta: 1, animated: true, center: annotation.coordinate)
             // nextStationHistory.removeLast()
             
-        }
-    }
-    
-
-    
-  /*  @IBAction func btnNextClick(_ sender: Any) {
-        
-        if (nextStationHistory.count > 0) {
+            if (nextStationHistory.count == 0)
+            {
+                fastForward.isEnabled = false
+            }
             
-            var annotation : PinAnnotation = nextStationHistory.popLast()!
-            //prevStationHistory.append(annotation)
-            //playFromAnnotation(annotation: annotation)
-            let center = CLLocationCoordinate2D(latitude: annotation.coordinate.latitude, longitude: annotation.coordinate.longitude)
-            
-            //navigate map back to the previous annotation
-            mapView.setZoomByDelta(delta: 1, animated: true, center: annotation.coordinate)
-           // nextStationHistory.removeLast()
             
         }
         
@@ -562,41 +676,11 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
     
     
     
-    @IBAction func btnPrevClicked(_ sender: Any) {
-        
-        if (prevStationHistory.count > 1) {
-            
-            nextStationHistory.append(prevStationHistory.popLast()!)
-            //prevStationHistory.removeLast()
-           
-            //prevStationHistory.popLast()!
-            let annotation : PinAnnotation = prevStationHistory.last!
-            
-            //playFromAnnotation(annotation: annotation)
-            
-            let center = CLLocationCoordinate2D(latitude: annotation.coordinate.latitude, longitude: annotation.coordinate.longitude)
-            
-            //navigate map back to the previous annotation
-          
-            mapView.setZoomByDelta(delta: 1, animated: true, center: annotation.coordinate)
-                
-           // mapView.setRegion(region,animated: true)
-
-            
-            //prevStationHistory.removeLast()
-            
-            
-        }
-        
-       
-        
-    }
-  */
     func addObservers(playerItem: AVPlayerItem) {
         
         
         playerItem.addObserver(self,
-                                //  forKeyPath: #keyPath(AVPlayerItem.status),
+                               //  forKeyPath: #keyPath(AVPlayerItem.status),
             forKeyPath: "timedMetadata",
             options: [.old, .new],
             //options: .new,
@@ -605,7 +689,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         
         
         playerItem.addObserver(self,
-                                // forKeyPath: #keyPath(AVPlayerItem.status),
+                               // forKeyPath: #keyPath(AVPlayerItem.status),
             forKeyPath: "status",
             options: [.old, .new],
             context: nil)
@@ -617,34 +701,10 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         playerItem.removeObserver(self, forKeyPath: "timedMetadata")
         playerItem.removeObserver(self, forKeyPath: "status")
     }
-
     
     
-  /*  @IBAction func playAndPauseAction(_ sender: Any) {
-        
-        if Music.sharedInstance.isPlaying == true {
-            
-              if (Music.sharedInstance.audioPlayer != nil) {
-            
-                Music.sharedInstance.audioPlayer.pause()
-                playPauseImageUpdate(play: true)
-                Music.sharedInstance.isPlaying = false
-                appDelegate.setNetworkActivityIndicatorVisible(visible: false)
-            }
-            
-        } else if Music.sharedInstance.isPlaying == false {
-            
-            if (Music.sharedInstance.audioPlayer != nil) {
-                Music.sharedInstance.audioPlayer.play()
-                playPauseImageUpdate(play: false)
-                Music.sharedInstance.isPlaying = true
-                appDelegate.setNetworkActivityIndicatorVisible(visible: true)
-            }
-        }
-    }
     
-    */
- 
+    
     @IBAction func volumeControlAction(_ sender: Any) {
         
         let currentValue = volumeControl.value
@@ -677,7 +737,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         }
         
         var annotationView = self.mapView.dequeueReusableAnnotationView(withIdentifier: "Pin")
-
+        
         if annotationView == nil{
             annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "Pin")
             annotationView?.canShowCallout = true
@@ -701,19 +761,19 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         }else{
             annotationView?.annotation = annotation
         }
-
         
-       if checkIfExists(name:annotation.title!!){
+        
+        if checkIfExists(name:annotation.title!!){
             
             annotationView?.image = UIImage(named: "favorite")
         }
-        
+            
         else {
-        annotationView?.image = UIImage(named: "mappoint")
+            annotationView?.image = UIImage(named: "mappoint")
             
         }
         return annotationView
-       
+        
         
     }
     
@@ -724,47 +784,16 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         
         if (gestureRecognizer.state == UIGestureRecognizerState.began) {
             //print("Map drag began")
-            centerFocus.isHidden = false
+            //centerFocus.isHidden = false
         }
         
         if (gestureRecognizer.state == UIGestureRecognizerState.ended) {
             
-           // print("Map drag ended")
+            // print("Map drag ended")
             mapDragged = true
-            centerFocus.isHidden = true
+            //centerFocus.isHidden = true
             
             return
-            /*
-           // DispatchQueue.global(qos: .userInitiated).async {
-                let mapBoundsWidth = Double(self.mapView.bounds.size.width)
-                let mapRectWidth = self.mapView.visibleMapRect.size.width
-                let scale = mapBoundsWidth / mapRectWidth
-                
-                let annotationArray = self.clusteringManager.pinAnnotationsRect(withinMapRect: self.mapView.visibleMapRect, zoomScale:scale)
-                
-             /*   DispatchQueue.main.async {
-                    self.clusteringManager.display(annotations: annotationArray, onMapView:self.mapView)
-                } */
-                
-                var closestStation : MKAnnotation
-                if (annotationArray.count > 0)
-                {
-                    closestStation = self.findClosestStation(annotations: annotationArray,coordinate: self.mapView.centerCoordinate)
-                    print(closestStation.title)
-                  //  DispatchQueue.main.async {
-                  // self.playFromAnnotation(annotation: closestStation as! PinAnnotation)
-                    
-                    mapView.addAnnotation(closestStation)
-                    mapView.selectAnnotation(closestStation, animated: true)
-                    
-                  //   self.mapView.setZoomByDelta(delta: 1, animated: true, center: closestStation.coordinate)
-                      //   }
-                    
-                    
-                }
-            //}
-            
-            */
         }
     }
     
@@ -789,9 +818,9 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
             skipRegionClustering = false
             return
         }
-       
         
-            isUpdating = true
+        
+        isUpdating = true
         
         DispatchQueue.global(qos: .userInitiated).async {
             let mapBoundsWidth = Double(self.mapView.bounds.size.width)
@@ -801,8 +830,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
             //let zoomLevel : Double = 20.0 - abs(zoomExponent)
             
             
-             let annotationArray = self.clusteringManager.clusteredAnnotations(withinMapRect: self.mapView.visibleMapRect, zoomScale:scale)
-             let annotationNonClusteredArray = self.clusteringManager.allAnnotations()
+            let annotationArray = self.clusteringManager.clusteredAnnotations(withinMapRect: self.mapView.visibleMapRect, zoomScale:scale)
+            let annotationNonClusteredArray = self.clusteringManager.allAnnotations()
             
             DispatchQueue.main.async {
                 self.clusteringManager.display(annotations: annotationArray, onMapView:self.mapView)
@@ -815,7 +844,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
             
             
             //if zoomed in or out then don't select annotation
-            if (self.prevZoomLevel == 17.0)
+            if (self.prevZoomLevel == self.MAX_ZOOM_OUT)
             {
                 self.prevZoomLevel = zoomLevel
             }
@@ -828,7 +857,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
                 {
                     return
                 }
-               if (self.mapDragged) {
+                if (self.mapDragged) {
                     self.mapDragged = false
                     return
                 }
@@ -836,7 +865,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
             }
             
             if (!self.regionChangedBecauseAnnotationSelected) {
-            
+                
                 var closestStation : MKAnnotation
                 if (annotationArray.count > 0)
                 {
@@ -857,31 +886,31 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
                         mapView.selectAnnotation(closestStation, animated: true)
                         self.selectedFromRegionChange = false
                         
-                
+                        
                         //   self.mapView.setZoomByDelta(delta: 1, animated: true, center: closestStation.coordinate)
                     }
-                
-                
+                    
+                    
                 }
             }
             
         }
-         isUpdating = false
+        isUpdating = false
         
         
     }
     
- 
     
-
-  
+    
+    
+    
     
     // This delegate method is implemented to respond to taps. It opens the system browser
     // to the URL specified in the annotationViews subtitle property.
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         
-         regionChangedBecauseAnnotationSelected = regionWillChangeAnimatedCalled
+        regionChangedBecauseAnnotationSelected = regionWillChangeAnimatedCalled
         
         if view is FBAnnotationClusterView {
             //let annotationCluster = view.annotation as! FBAnnotation
@@ -892,26 +921,30 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
             let cView = view as! FBAnnotationClusterView
             clusterAnnotations = cView.getClusterAnnotations()
             if (clusterAnnotations.count > 0) {
-            closestStation = findClosestStation(annotations: cView.getClusterAnnotations() as! [PinAnnotation],coordinate: (cView.annotation?.coordinate)!)
-     
-            //do not zoom in if user dragged map, else zoom in if user selected point
-            var delta = 0.03125
-            if (selectedFromRegionChange) {
-                skipRegionClustering = true
-                delta = 1.0
-            }
+                closestStation = findClosestStation(annotations: cView.getClusterAnnotations() as! [PinAnnotation],coordinate: (cView.annotation?.coordinate)!)
                 
-            mapView.setZoomByDelta(delta: delta, animated: true, center: closestStation.coordinate)
-            
-            let annotationView = closestStation as! PinAnnotation
-            
-            if (self.checkIfExists(name: annotationView.name))
-            {
-                view.leftCalloutAccessoryView = nil
-            }
-            
-            mapView.addAnnotation(closestStation)
-            mapView.selectAnnotation(closestStation, animated: true)
+                //do not zoom in if user dragged map, else zoom in if user selected point
+                var delta = 0.03125
+                if (selectedFromRegionChange) {
+                    skipRegionClustering = true
+                    delta = 1.0
+                }
+                
+                mapView.setZoomByDelta(delta: delta, animated: true, center: closestStation.coordinate)
+                
+                btnZoomOut.isEnabled = true
+                barBtnWorld.isEnabled = true
+                
+                
+                let annotationView = closestStation as! PinAnnotation
+                
+                if (self.checkIfExists(name: annotationView.name))
+                {
+                    view.leftCalloutAccessoryView = nil
+                }
+                
+                mapView.addAnnotation(closestStation)
+                mapView.selectAnnotation(closestStation, animated: true)
             }
             
             
@@ -927,7 +960,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
             return
         }
         
-         view.image = UIImage(named: "pinView")
+        view.image = UIImage(named: "pinView")
         appDelegate.setNetworkActivityIndicatorVisible(visible: false)
         
         sharedContext.perform {
@@ -941,8 +974,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
                 view.leftCalloutAccessoryView = nil
             }
             
-                          //  print("Music stream playing",toOpen)
-                self.playFromAnnotation(annotation: annotation)
+            //  print("Music stream playing",toOpen)
+            self.playFromAnnotation(annotation: annotation)
             
             
             
@@ -965,9 +998,9 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         
         
         for annotation in annotations {
-           //Look for only pin annotations and not cluster annotations
-         //   if (type(of: annotation) == MKAnnotation.self)
-           // {
+            //Look for only pin annotations and not cluster annotations
+            //   if (type(of: annotation) == MKAnnotation.self)
+            // {
             let annotationCoord : CLLocation = CLLocation(latitude: annotation.coordinate.latitude,longitude: annotation.coordinate.longitude)
             let clusterCoord : CLLocation = CLLocation(latitude: coordinate.latitude,longitude: coordinate.longitude)
             
@@ -975,7 +1008,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
                 closest = annotation
                 distance = clusterCoord.distance(from: annotationCoord)
             }
-           // }
+            // }
             
         }
         
@@ -990,10 +1023,11 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         }
         
         playMusic(music: annotation.streamUrl)
+        currentlyPlaying = annotation
         prevStationHistory.append(annotation)
         
         
-
+        
         
     }
     
@@ -1014,9 +1048,9 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
             //print(result)
             
             for found in result {
-              //  print((found as! Station).name)
+                //  print((found as! Station).name)
                 if ((found as! Station).name == name) {
-                 //   print(name)
+                    //   print(name)
                     
                     return true
                 }
@@ -1025,7 +1059,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
             
         } catch {
             let fetchError = error as NSError
-          //  print(fetchError)
+            //  print(fetchError)
         }
         
         return false
@@ -1045,7 +1079,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
                 {
                     //return "http://" + urlString
                     return urlString
-
+                    
                 }
                 
             }
@@ -1067,7 +1101,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
             if annotationView.websiteURL != nil {
                 if let toOpen = annotationView.websiteURL{
                     var urlString = verifyUrl(urlString: toOpen)
-
+                    
                     UIApplication.shared.open(NSURL(string: urlString)! as URL, options: [:], completionHandler: nil)
                     
                 }
@@ -1083,33 +1117,33 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
             
             if control == view.leftCalloutAccessoryView {
                 
+                
+                //Data is in this case the name of the entity
+                do {
                     
-                    //Data is in this case the name of the entity
-                    do {
+                    
+                    if (self.checkIfExists(name: annotationView.name))
+                    {
+                        let alertTitle = "Favorite Exists"
+                        let alertMessage = "This station is already in your favorites"
+                        let actionTitle = "OK"
+                        self.showAlert(alertTitle, alertMessage: alertMessage, actionTitle: actionTitle)
+                    }
+                    else
+                    {
+                        let stationDetails   = Station(id: annotationView.id,name: annotationView.name, streamUrl: annotationView.streamUrl, websiteURL: annotationView.websiteURL, latitude: annotationView.latitude, longitude: annotationView.longitude, location: annotationView.location, context: self.sharedContext)
+                        self.favoriteStation = [stationDetails]
+                        
+                        view.image = UIImage(named: "favorite")
+                        CoreDataStackManager.sharedInstance().saveContext()
+                        
+                        //lighten the favorites icon
+                        view.leftCalloutAccessoryView = nil
                         
                         
-                        if (self.checkIfExists(name: annotationView.name))
-                        {
-                            let alertTitle = "Favorite Exists"
-                            let alertMessage = "This station is already in your favorites"
-                            let actionTitle = "OK"
-                            self.showAlert(alertTitle, alertMessage: alertMessage, actionTitle: actionTitle)
-                        }
-                        else
-                        {
-                            let stationDetails   = Station(id: annotationView.id,name: annotationView.name, streamUrl: annotationView.streamUrl, websiteURL: annotationView.websiteURL, latitude: annotationView.latitude, longitude: annotationView.longitude, location: annotationView.location, context: self.sharedContext)
-                            self.favoriteStation = [stationDetails]
-
-                            view.image = UIImage(named: "favorite")
-                            CoreDataStackManager.sharedInstance().saveContext()
-                            
-                            //lighten the favorites icon
-                            view.leftCalloutAccessoryView = nil
-                            
-                                                        
-                        }
-                        
-                        
+                    }
+                    
+                    
                 }
                 
             }
@@ -1120,8 +1154,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
     }
     
     //print details of playing stream
-//    @objc
- //   override open func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?)
+    //    @objc
+    //   override open func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?)
     
     
     
@@ -1130,82 +1164,100 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
                                of object: Any?,
                                change: [NSKeyValueChangeKey : Any]?,
                                context: UnsafeMutableRawPointer?)
-     {
+    {
         
         
-       
         
-       
+        
+        
         var newData : String = ""
         var nowPlayingData : String = ""
         
         
-       if (keyPath == "timedMetadata")
-       {
-        
-        
+        if (keyPath == "timedMetadata")
+        {
+            
+            
             let data: AVPlayerItem = object as! AVPlayerItem
-        
-            for item in data.timedMetadata! as [AVMetadataItem] {
-                if (item != nil)
-                {
-                    newData.append(" ∞∞ ")
-                    newData.append(item.value!.description)
+            
+            if (data.timedMetadata != nil) {
+                
+                for item in data.timedMetadata! as [AVMetadataItem] {
+                    if (item != nil)
+                    {
+                        newData.append(" ∞∞ ")
+                        newData.append(item.value!.description)
+                        
+                    }
+                }
+                
+                if (newData != nil && newData != previousStationData) {
+                    previousStationData = newData
+                    nowPlayingData = playNextData + newData
+                    statusUpdate(message: nowPlayingData)
                     
                 }
             }
-        
-        if (newData != nil && newData != previousStationData) {
-            previousStationData = newData
-            nowPlayingData = playNextData + newData
-            statusUpdate(message: nowPlayingData)
-
-        }
-        
         }
         else if (keyPath == "status")
-       {
-        
+        {
+            
             let playerItem:AVPlayerItem = object as! AVPlayerItem
-        
-        
-        if playerItem.status ==  AVPlayerItemStatus.readyToPlay{
-            nowPlayingData = playNextData
-            playPauseImageUpdate(play: false)
             
             
-            statusUpdate(message: nowPlayingData)
-        } else if playerItem.status == AVPlayerItemStatus.failed {
-            statusUpdate(message: "Unable to play radio stream. Try another station.", error: true)
-             playPauseImageUpdate(play: true)
-          //  payAndPauseBar.isOpaque = true
+            if playerItem.status ==  AVPlayerItemStatus.readyToPlay{
+                nowPlayingData = playNextData
+                playAndPauseBar.isEnabled = true
+                if (prevStationHistory.count > 1) {
+                    reWind.isEnabled = true
+                }
+                else
+                {
+                    // reWind.isEnabled = false
+                }
+                
+                if (nextStationHistory.count > 0) {
+                    fastForward.isEnabled = true
+                }
+                else {
+                    //  fastForward.isEnabled = false
+                }
+                
+                playPauseImageUpdate(play: false)
+                
+                
+                statusUpdate(message: nowPlayingData)
+            } else if playerItem.status == AVPlayerItemStatus.failed {
+                statusUpdate(message: "Unable to play radio stream. Try another station.", error: true)
+                playAndPauseBar.isEnabled = false
+                //playPauseImageUpdate(play: true)
+                //  payAndPauseBar.isOpaque = true
+                
+                
+            }
             
-            //remove the invalid item from history
-            //prevStationHistory.removeLast()
+            
         }
-        
-        
+        else if (keyPath == "rate") {
+            //let player:AVPlayer = object as! AVPlayer
+            switch (object! as AnyObject).rate as Float {
+            case 0.0:
+                playPauseImageUpdate(play: true)
+                //  payAndPauseBar.isOpaque = false
+                
+                
+            case 1.0:
+                playPauseImageUpdate(play: false)
+                //  payAndPauseBar.isOpaque = false
+                
+            default:
+                // shouldn't get here...
+                true
+            }
+            
         }
-       else if (keyPath == "rate") {
-        //let player:AVPlayer = object as! AVPlayer
-        switch (object! as AnyObject).rate as Float {
-        case 0.0:
-            playPauseImageUpdate(play: true)
-          //  payAndPauseBar.isOpaque = false
-
-
-        case 1.0:            
-            playPauseImageUpdate(play: false)
-          //  payAndPauseBar.isOpaque = false
-
-        default:
-            // shouldn't get here...
-            true
-        }
-        
-       }
-       else {
-        return
+        else {
+            return
         }
     }
     
@@ -1218,26 +1270,34 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
                 self.nowPlayingLabel.textColor = UIColor.white
                 self.nowPlayingLabel.font.withSize(20.0)
                 self.nowPlayingLabel.backgroundColor = UIColor.red
+                self.nowPlayingLabel.fadeLength = 3
             }
             else {
-                self.nowPlayingLabel.textColor = UIColor(red:0.04, green:0.29, blue:0.60, alpha:1.0)
-                 self.nowPlayingLabel.font.withSize(14.0)
-                self.nowPlayingLabel.backgroundColor = UIColor(red:0.98, green:0.98, blue:0.98, alpha:1.0)
+                self.nowPlayingLabel.textColor = self.DARK_FOREGROUND_COLOR
+                self.nowPlayingLabel.font.withSize(14.0)
+                self.nowPlayingLabel.backgroundColor = self.LIGHT_BACKGROUND_COLOR
+                self.nowPlayingLabel.fadeLength = 3
             }
         }
         
-         print(message)
+        print(message)
         
     }
     
     func playPauseImageUpdate(play: Bool)
     {
-         DispatchQueue.main.async {
+        DispatchQueue.main.async {
             if (play) {
-                self.playAndPauseBar.image = UIImage(named: "play")
+                //self.playAndPauseBar.image = UIImage(named: "play")
+                self.playAndPauseBar.setFAIcon(icon: .FAPlay, iconSize: self.PLAY_BUTTON_SIZE)
+                self.playAndPauseBar.tintColor = self.DARK_FOREGROUND_COLOR
+                
             }
             else {
-                self.playAndPauseBar.image = UIImage(named: "pause")
+                //self.playAndPauseBar.image = UIImage(named: "pause")
+                self.playAndPauseBar.setFAIcon(icon: .FAPause, iconSize: self.PLAY_BUTTON_SIZE-3)
+                self.playAndPauseBar.tintColor = self.DARK_FOREGROUND_COLOR
+                
             }
         }
     }
@@ -1259,7 +1319,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
             let dest = segue.destination as! TableViewController
             dest.tvcDelegate = self
             dest.station = favoriteStation
-          //  print("There is data in favories", dest.station)
+            //  print("There is data in favories", dest.station)
             
         default:
             print("Unknown segue")
@@ -1273,8 +1333,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         
         present(alert, animated: true, completion: nil)
     }
-  
-
+    
+    
     
 }
 

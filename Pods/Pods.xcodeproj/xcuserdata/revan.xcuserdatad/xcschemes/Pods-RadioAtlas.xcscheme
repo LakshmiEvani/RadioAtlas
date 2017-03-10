@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "3109F0AE5235867F7C1DE721AE76E984"
+               BlueprintIdentifier = "A032BA9AD4F0B2D067223DC41EA2FC39"
                BuildableName = "Pods_RadioAtlas.framework"
                BlueprintName = "Pods-RadioAtlas"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "3109F0AE5235867F7C1DE721AE76E984"
+            BlueprintIdentifier = "A032BA9AD4F0B2D067223DC41EA2FC39"
             BuildableName = "Pods_RadioAtlas.framework"
             BlueprintName = "Pods-RadioAtlas"
             ReferencedContainer = "container:Pods.xcodeproj">

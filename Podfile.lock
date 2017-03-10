@@ -1,12 +1,15 @@
 PODS:
+  - Font-Awesome-Swift (1.6.1)
   - MarqueeLabel/Swift (3.0.1)
 
 DEPENDENCIES:
+  - Font-Awesome-Swift (~> 1.6.1)
   - MarqueeLabel/Swift
 
 SPEC CHECKSUMS:
+  Font-Awesome-Swift: 70ab020f6749d7048bb49807c3e78b702d78afca
   MarqueeLabel: 80ba85d2b76a9f5fa6c13de337db80bcd94feb1d
 
-PODFILE CHECKSUM: c9b94af680a3f123afda344d0f4335a26a81273b
+PODFILE CHECKSUM: e3b6fd0c4452e12b7ddc967d9f97ddc72ea4b8f8
 
 COCOAPODS: 1.2.0

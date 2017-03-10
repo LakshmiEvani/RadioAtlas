@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="LUv-BG-LVY">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1217" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Zf7-N9-cZI">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -34,7 +34,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MYB-NJ-cZb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2207.1999999999998" y="784.85757121439292"/>
+            <point key="canvasLocation" x="-2206" y="785"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="xvi-4S-AL1">
@@ -47,38 +47,19 @@
                     <view key="view" contentMode="scaleToFill" id="nc6-VV-wxp" customClass="UIViewControl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="evI-1B-gGe">
-                                <rect key="frame" x="279" y="20" width="66" height="74"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="66" id="GfS-tM-Wt4"/>
-                                </constraints>
-                                <state key="normal" title="Go">
-                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                                </state>
-                                <connections>
-                                    <segue destination="Zf7-N9-cZI" kind="showDetail" id="YBn-Zs-k4c"/>
-                                </connections>
-                            </button>
-                        </subviews>
                         <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="evI-1B-gGe" firstAttribute="top" secondItem="zsC-yk-md7" secondAttribute="bottom" id="Bna-QT-P3q"/>
-                            <constraint firstItem="7Ds-q0-Az3" firstAttribute="top" secondItem="evI-1B-gGe" secondAttribute="bottom" constant="573" id="J1x-48-ZXQ"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="evI-1B-gGe" secondAttribute="trailing" constant="14" id="eqh-mf-767"/>
-                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aGM-7K-c3B" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1532" y="784.85757121439292"/>
+            <point key="canvasLocation" x="-1531" y="785"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="UR7-Df-xLF">
             <objects>
                 <navigationController toolbarHidden="NO" id="Zf7-N9-cZI" sceneMemberID="viewController">
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="KIJ-8L-Ia5">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="KIJ-8L-Ia5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -107,13 +88,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" pitchEnabled="NO" showsUserLocation="YES" showsBuildings="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bB8-uh-7h7">
-                                <rect key="frame" x="0.0" y="20" width="386" height="575"/>
+                                <rect key="frame" x="-11" y="20" width="402" height="647"/>
                                 <connections>
                                     <outlet property="delegate" destination="tmg-mo-T3o" id="UMY-Gj-Sfq"/>
                                 </connections>
                             </mapView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" editable="NO" text="Loading Radio Stations" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fb2-Ol-aye">
-                                <rect key="frame" x="40" y="362" width="296.5" height="34"/>
+                                <rect key="frame" x="40" y="362" width="294" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="FZV-7I-0OM"/>
                                 </constraints>
@@ -122,21 +103,15 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <activityIndicatorView contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="tJP-a8-iaI">
-                                <rect key="frame" x="170" y="315" width="37" height="37"/>
+                                <rect key="frame" x="169" y="315" width="37" height="37"/>
                                 <color key="color" red="0.035294117649999998" green="0.2901960784" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                             </activityIndicatorView>
-                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="center" translatesAutoresizingMaskIntoConstraints="NO" id="TCg-qb-4VU">
-                                <rect key="frame" x="40" y="271" width="296.5" height="125"/>
+                            <imageView hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="center" translatesAutoresizingMaskIntoConstraints="NO" id="TCg-qb-4VU">
+                                <rect key="frame" x="40" y="271" width="294" height="125"/>
                             </imageView>
-                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="lOb-E8-kPT">
-                                <rect key="frame" x="265" y="91" width="94" height="29"/>
-                                <connections>
-                                    <action selector="ZoomInAndZoomOut:" destination="tmg-mo-T3o" eventType="valueChanged" id="JZQ-0A-2sg"/>
-                                </connections>
-                            </stepper>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6PE-Lx-BlR" userLabel="Marquee" customClass="MarqueeLabel" customModule="MarqueeLabel">
-                                <rect key="frame" x="375" y="594" width="0.0" height="29"/>
-                                <color key="backgroundColor" red="0.97638851404190063" green="0.97652500867843628" blue="0.9763454794883728" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <rect key="frame" x="-11" y="594" width="386" height="29"/>
+                                <color key="backgroundColor" red="0.96862745098039216" green="0.94901960784313721" blue="0.9137254901960784" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="29" id="ka8-pE-RE8"/>
                                 </constraints>
@@ -148,7 +123,7 @@
                                         <real key="value" value="0.0"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="fadeLength">
-                                        <real key="value" value="2"/>
+                                        <real key="value" value="4"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="scrollRate">
                                         <real key="value" value="0.0"/>
@@ -165,48 +140,65 @@
                             <constraint firstItem="TCg-qb-4VU" firstAttribute="leading" secondItem="fb2-Ol-aye" secondAttribute="leading" id="5i3-wG-GpI"/>
                             <constraint firstItem="TCg-qb-4VU" firstAttribute="trailing" secondItem="fb2-Ol-aye" secondAttribute="trailing" id="61m-ZT-9bb"/>
                             <constraint firstItem="fb2-Ol-aye" firstAttribute="top" secondItem="tJP-a8-iaI" secondAttribute="bottom" constant="10" id="HFe-Gc-tb8"/>
-                            <constraint firstItem="lOb-E8-kPT" firstAttribute="top" secondItem="7yS-y9-ht0" secondAttribute="bottom" constant="27" id="Ibt-Hq-Qdi"/>
-                            <constraint firstItem="lOb-E8-kPT" firstAttribute="trailing" secondItem="Jba-SE-lO6" secondAttribute="trailingMargin" id="Ja0-kJ-vSi"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="bB8-uh-7h7" secondAttribute="trailing" constant="-27" id="PAV-Y1-XEd"/>
+                            <constraint firstItem="bB8-uh-7h7" firstAttribute="centerX" secondItem="tJP-a8-iaI" secondAttribute="centerX" constant="2.5" id="JYH-p1-XkV"/>
+                            <constraint firstItem="6PE-Lx-BlR" firstAttribute="leading" secondItem="bB8-uh-7h7" secondAttribute="leading" id="PER-Ym-039"/>
                             <constraint firstItem="fb2-Ol-aye" firstAttribute="leading" secondItem="Jba-SE-lO6" secondAttribute="leadingMargin" constant="24" id="Q2Q-Fb-SZQ"/>
+                            <constraint firstItem="bB8-uh-7h7" firstAttribute="centerX" secondItem="Jba-SE-lO6" secondAttribute="centerX" constant="2.5" id="USP-ax-L08"/>
                             <constraint firstAttribute="trailing" secondItem="6PE-Lx-BlR" secondAttribute="trailing" id="d29-lv-4RV"/>
                             <constraint firstItem="TCg-qb-4VU" firstAttribute="bottom" secondItem="fb2-Ol-aye" secondAttribute="bottom" id="d5Y-2R-clc"/>
                             <constraint firstItem="TCg-qb-4VU" firstAttribute="centerY" secondItem="Jba-SE-lO6" secondAttribute="centerY" id="fCZ-nI-Tex"/>
                             <constraint firstItem="tJP-a8-iaI" firstAttribute="centerX" secondItem="fb2-Ol-aye" secondAttribute="centerX" id="hvB-Rw-Typ"/>
-                            <constraint firstItem="o2O-Le-CHD" firstAttribute="top" secondItem="bB8-uh-7h7" secondAttribute="bottom" constant="28" id="piu-OH-PW3"/>
-                            <constraint firstItem="bB8-uh-7h7" firstAttribute="top" secondItem="Jba-SE-lO6" secondAttribute="top" constant="20" symbolic="YES" id="tdW-jA-t6l"/>
-                            <constraint firstItem="bB8-uh-7h7" firstAttribute="leading" secondItem="Jba-SE-lO6" secondAttribute="leading" id="um4-aK-f5s"/>
-                            <constraint firstItem="bB8-uh-7h7" firstAttribute="centerX" secondItem="tJP-a8-iaI" secondAttribute="centerX" constant="4.3333333333333144" id="xNX-7d-uEH"/>
+                            <constraint firstItem="bB8-uh-7h7" firstAttribute="leading" secondItem="Jba-SE-lO6" secondAttribute="leadingMargin" constant="-27" id="tty-IM-QTS"/>
+                            <constraint firstItem="bB8-uh-7h7" firstAttribute="top" secondItem="Jba-SE-lO6" secondAttribute="top" constant="20" symbolic="YES" id="vWy-hB-7Wd"/>
+                            <constraint firstItem="bB8-uh-7h7" firstAttribute="bottom" secondItem="o2O-Le-CHD" secondAttribute="top" constant="44" id="wmG-rp-a4p"/>
                             <constraint firstItem="tJP-a8-iaI" firstAttribute="centerY" secondItem="Jba-SE-lO6" secondAttribute="centerY" id="yZm-z3-AFJ"/>
                         </constraints>
                     </view>
                     <toolbarItems>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="wEv-tC-5eU"/>
-                        <barButtonItem image="favorite" id="25h-66-d73">
+                        <barButtonItem title="Out" id="gk6-a2-hJq" userLabel="Zoom Out">
                             <inset key="imageInsets" minX="119" minY="40" maxX="150" maxY="40"/>
                             <connections>
-                                <segue destination="QDi-LV-j8K" kind="show" identifier="favoriteStations" id="57F-xd-O6o"/>
+                                <action selector="btnZoomOutClick:" destination="tmg-mo-T3o" id="FfF-oK-wNF"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="vM3-pu-Dpj"/>
+                        <barButtonItem title="In" id="nbd-VV-u5V" userLabel="Zoom In">
+                            <inset key="imageInsets" minX="119" minY="40" maxX="150" maxY="40"/>
+                            <connections>
+                                <action selector="btnZoomInClick:" destination="tmg-mo-T3o" id="dML-rH-2TG"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="sAE-Wv-qOg"/>
+                        <barButtonItem title="prev" id="g9N-bQ-dMq">
+                            <connections>
+                                <action selector="reWindAction:" destination="tmg-mo-T3o" id="O1z-rZ-bl9"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="kXF-p9-MBl"/>
-                        <barButtonItem systemItem="bookmarks" id="CcV-zP-cKQ"/>
+                        <barButtonItem title="play" id="Dmu-D9-iUE">
+                            <connections>
+                                <action selector="playAndPauseBarAction:" destination="tmg-mo-T3o" id="GKb-mM-ogU"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="uV0-6j-o1b"/>
-                        <barButtonItem systemItem="fastForward" id="SEq-Uf-H3Y">
+                        <barButtonItem title="next" id="SEq-Uf-H3Y">
                             <inset key="imageInsets" minX="40" minY="35" maxX="40" maxY="32"/>
                             <connections>
                                 <action selector="fastForwardAction:" destination="tmg-mo-T3o" id="qAa-5u-cAx"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="lXa-51-11y"/>
-                        <barButtonItem systemItem="pause" id="Dmu-D9-iUE">
+                        <barButtonItem title="fav" id="25h-66-d73">
+                            <inset key="imageInsets" minX="119" minY="40" maxX="150" maxY="40"/>
                             <connections>
-                                <action selector="playAndPauseBarAction:" destination="tmg-mo-T3o" id="GKb-mM-ogU"/>
+                                <segue destination="QDi-LV-j8K" kind="show" identifier="favoriteStations" id="57F-xd-O6o"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="W6U-na-qYx"/>
-                        <barButtonItem systemItem="rewind" id="g9N-bQ-dMq">
+                        <barButtonItem title="world" id="CcV-zP-cKQ" userLabel="World">
                             <connections>
-                                <action selector="reWindAction:" destination="tmg-mo-T3o" id="O1z-rZ-bl9"/>
+                                <action selector="barBtnWorldClick:" destination="tmg-mo-T3o" id="Hfv-5j-g9l"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="syO-b5-x0L"/>
@@ -215,11 +207,13 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="activityIndicator" destination="tJP-a8-iaI" id="24W-oK-3MB"/>
+                        <outlet property="barBtnWorld" destination="CcV-zP-cKQ" id="CV6-Pn-s2y"/>
+                        <outlet property="btnZoomIn" destination="nbd-VV-u5V" id="e7S-fr-80H"/>
+                        <outlet property="btnZoomOut" destination="gk6-a2-hJq" id="lTa-qF-ele"/>
                         <outlet property="centerFocus" destination="TCg-qb-4VU" id="cHp-tU-6V9"/>
                         <outlet property="fastForward" destination="SEq-Uf-H3Y" id="HCJ-vE-FqV"/>
                         <outlet property="favorite" destination="25h-66-d73" id="n2H-kT-1IF"/>
                         <outlet property="mapView" destination="bB8-uh-7h7" id="inN-Sp-EsF"/>
-                        <outlet property="mapViewZoomStepper" destination="lOb-E8-kPT" id="5iu-Zy-E28"/>
                         <outlet property="nowPlayingLabel" destination="6PE-Lx-BlR" id="WSk-T1-oDU"/>
                         <outlet property="playAndPauseBar" destination="Dmu-D9-iUE" id="Tjr-zc-9CL"/>
                         <outlet property="progressMessage" destination="fb2-Ol-aye" id="UAX-fW-zdp"/>
@@ -229,7 +223,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XaR-vv-HOm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-628.53260869565224" y="20.289855072463769"/>
+            <point key="canvasLocation" x="-626.53673163418296" y="21.600000000000001"/>
         </scene>
         <!--DetailViewController-->
         <scene sceneID="FzL-Jt-Bdd">
@@ -280,7 +274,7 @@
                                         <rect key="frame" x="0.0" y="28" width="399" height="56"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VVm-P0-Ydo" id="M5L-R4-1zb">
-                                            <rect key="frame" x="0.0" y="0.0" width="399" height="56"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="399" height="55"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kgf-L1-h9y">
@@ -334,6 +328,5 @@
     </scenes>
     <resources>
         <image name="center" width="123" height="123"/>
-        <image name="favorite" width="12" height="12"/>
     </resources>
 </document>

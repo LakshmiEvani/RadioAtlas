@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A032BA9AD4F0B2D067223DC41EA2FC39"
-               BuildableName = "Pods_RadioAtlas.framework"
-               BlueprintName = "Pods-RadioAtlas"
+               BlueprintIdentifier = "BA453546C51032641C49CACBC22725EE"
+               BuildableName = "Font_Awesome_Swift.framework"
+               BlueprintName = "Font-Awesome-Swift"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,9 +45,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "A032BA9AD4F0B2D067223DC41EA2FC39"
-            BuildableName = "Pods_RadioAtlas.framework"
-            BlueprintName = "Pods-RadioAtlas"
+            BlueprintIdentifier = "BA453546C51032641C49CACBC22725EE"
+            BuildableName = "Font_Awesome_Swift.framework"
+            BlueprintName = "Font-Awesome-Swift"
             ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
