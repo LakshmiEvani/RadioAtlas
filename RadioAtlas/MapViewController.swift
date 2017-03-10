@@ -212,7 +212,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.setNetworkActivityIndicatorVisible(visible: true)
         
-        // setWorldRegion(animated: false)
+        //setWorldRegion(animated: false)
         mapView.delegate = self
         self.addAnnotation()
         
@@ -255,7 +255,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         }
         
         mapView.setRegion(worldRegion,animated: animated)
-        centerFocus.isHidden = false
+        
         
         
     }
@@ -368,12 +368,13 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         //Paint the annotations by setting region
         isMapLoaded = true
         
+        
         nowPlayingLabel.text = "Move map to tune radio station at a location OR Tap dots to play. Pinch or double-tap to zoom."
         nowPlayingLabel.triggerScrollStart()
         
         setWorldRegion(animated: false)
-        activityIndicator.isHidden = true
-        progressMessage.isHidden = true
+        
+        
         
         locationManager = CLLocationManager()
         
@@ -385,6 +386,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         
         if CLLocationManager.locationServicesEnabled() {
             locationManager.requestLocation()
+            
         }
     }
     
@@ -395,7 +397,14 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         let center = CLLocationCoordinate2D(latitude: userLocation.coordinate.latitude, longitude: userLocation.coordinate.longitude)
         let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 4.075, longitudeDelta: 4.075))
         
-        //mapView.setRegion(region, animated: true)
+       
+        mapView.setRegion(region, animated: true)
+        
+        activityIndicator.isHidden = true
+        progressMessage.isHidden = true
+        btnZoomOut.isEnabled = true
+        barBtnWorld.isEnabled = true
+        centerFocus.isHidden = false
         
         
     }
@@ -520,7 +529,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
                             DispatchQueue.main.async() {
                                 
                                 //self.mapView.addAnnotation(annotation)
-                                self.progressMessage.text = "Loading " + String(counter) + " Radio Stations"
+                                self.progressMessage.text = "Loading " + String(counter) + " Radio Stations..."
                                 
                             }
                             //RE* end
