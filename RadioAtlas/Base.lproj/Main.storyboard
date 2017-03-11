@@ -77,7 +77,7 @@
         <!--Page View Controller-->
         <scene sceneID="ryg-43-i5h">
             <objects>
-                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="LUv-BG-LVY" customClass="PageViewController" customModule="RadioAtlas" customModuleProvider="target" sceneMemberID="viewController"/>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="LUv-BG-LVY" customClass="PageViewController" customModule="RadioAtlas" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T36-qH-22N" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-3042" y="785"/>
