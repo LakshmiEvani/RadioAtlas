@@ -33,7 +33,17 @@ extension MKMapView {
     }
 }
 
-
+extension UIImage {
+    func makeImageWithColorAndSize(color: UIColor, size: CGSize) -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(size, false, 0)
+        color.setFill()
+        let rect = CGRect(x: 0, y: 0, width: size.width, height: size.height)
+        UIRectFill(rect)
+        var image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return image!
+    }
+}
 
 
 class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDelegate, CLLocationManagerDelegate, NSFetchedResultsControllerDelegate, UIPopoverPresentationControllerDelegate,RadioAVPlayerItemDelegate,RadioAVPlayerDelegate ,UIGestureRecognizerDelegate, TableViewControllerDelegate {
@@ -63,6 +73,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
     
     @IBOutlet weak var progressMessage: UITextView!
     @IBOutlet weak var volumeControl: UISlider!
+    
+    @IBOutlet weak var tunerToggle: UISwitch!
     // Properties
     
     var appDelegate: AppDelegate!
@@ -89,6 +101,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
     private let PlayerStatusObservingContext = UnsafeMutablePointer<Int>(bitPattern: 1)
     
     @IBOutlet weak var mapViewZoomStepper: UIStepper!
+    @IBOutlet weak var tunerLabel: UILabel!
     //var mapViewZoomStepperValue: Double = -1.0
     
     
@@ -101,6 +114,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
     let PLAY_BUTTON_SIZE : CGFloat = 35
     let MAX_ZOOM_OUT = 17.0
     let MAX_ZOOM_IN = 5.0
+    let PLAY_ALL_MODE : Bool = false
+    //var tunerMode : Bool = false
     
     
     //var userLoc : CLLocation = 0.0
@@ -161,12 +176,38 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         favorite.tintColor = DARK_FOREGROUND_COLOR
         
         
-        btnZoomIn.setFAIcon(icon: .FAExpand, iconSize: TOOLBAR_BUTTON_SIZE)
+        btnZoomIn.setFAIcon(icon: .FASearchPlus, iconSize: TOOLBAR_BUTTON_SIZE)
         btnZoomIn.tintColor = DARK_FOREGROUND_COLOR
         
-        btnZoomOut.setFAIcon(icon: .FACompress, iconSize: TOOLBAR_BUTTON_SIZE)
+        btnZoomOut.setFAIcon(icon: .FASearchMinus, iconSize: TOOLBAR_BUTTON_SIZE)
         btnZoomOut.tintColor = DARK_FOREGROUND_COLOR
         btnZoomOut.isEnabled = false
+        
+        tunerToggle.backgroundColor = DARK_FOREGROUND_COLOR
+        tunerToggle.layer.cornerRadius = 16.0
+        
+        /*
+         let button = UIButton(type: .custom)
+         button.titleLabel?.numberOfLines = 2
+         button.titleLabel?.lineBreakMode = .byWordWrapping
+         button.titleLabel?.textColor = DARK_FOREGROUND_COLOR
+         button.setTitle("Tuner\nOn", for: .normal)
+         button.sizeToFit()
+         
+         btnMode.customView = button
+         */
+        // btnMode.setFAIcon(icon: .FADotCircleO, iconSize: TOOLBAR_BUTTON_SIZE)
+        
+        
+        //btnMode.tintColor = DARK_FOREGROUND_COLOR
+        
+        
+        let btnFont = UIFont.boldSystemFont(ofSize: 14)
+        
+        //btnMode.setTitleTextAttributes([NSFontAttributeName : btnFont], for: .normal)
+        //btnMode.setBackgroundVerticalPositionAdjustment(-200, for: .default)
+        //btnMode.setBackgroundImage(UIImage().makeImageWithColorAndSize(color:DARK_FOREGROUND_COLOR, size: CGSize(width: 1, height: 1)), for: .normal, barMetrics: .default)
+        // btnMode.setTitlePositionAdjustment(UIOffset(horizontal: 100, vertical: 30), for: .default)
         
         nowPlayingLabel.backgroundColor = self.LIGHT_BACKGROUND_COLOR
         
@@ -331,6 +372,17 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         
     }
     
+    @IBAction func tunerToggleChange(_ sender: Any) {
+        let tunerON = (sender as! UISwitch).isOn
+        
+        if (tunerON) {
+            centerFocus.isHidden = false
+            tunerLabel.text = "Tuner ON"
+        }else {
+            centerFocus.isHidden = true
+              tunerLabel.text = "Tuner OFF"
+        }
+    }
     
     func zoomOutPinAnnotationLocation(targetMapViewName : MKMapView?,delta: Double)
     {
@@ -397,14 +449,17 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         let center = CLLocationCoordinate2D(latitude: userLocation.coordinate.latitude, longitude: userLocation.coordinate.longitude)
         let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 4.075, longitudeDelta: 4.075))
         
-       
-        mapView.setRegion(region, animated: true)
+        
+        //mapView.setRegion(region, animated: true)
         
         activityIndicator.isHidden = true
         progressMessage.isHidden = true
         btnZoomOut.isEnabled = true
         barBtnWorld.isEnabled = true
-        centerFocus.isHidden = false
+        
+        if (tunerToggle.isOn) {
+            centerFocus.isHidden = false
+        }
         
         
     }
@@ -415,12 +470,28 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
     
     
     
+    
+    
     @IBAction func barBtnWorldClick(_ sender: Any) {
         
+        if (PLAY_ALL_MODE) {
+            let annotationNonClusteredArray = self.clusteringManager.allAnnotations()
+            
+            for annotation in annotationNonClusteredArray {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                    self.playFromAnnotation(annotation: annotation as! PinAnnotation)
+                }
+                
+            }
+            
+        }
+        else {
+            
+            setWorldRegion(animated: true, changeCenter: true)
+            barBtnWorld.isEnabled = false
+            btnZoomOut.isEnabled = false
+        }
         
-        setWorldRegion(animated: true, changeCenter: true)
-        barBtnWorld.isEnabled = false
-        btnZoomOut.isEnabled = false
         
         
     }
@@ -635,7 +706,10 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
             //prevStationHistory.popLast()!
             let annotation : PinAnnotation = prevStationHistory.last!
             
-            //playFromAnnotation(annotation: annotation)
+            if(!tunerToggle.isOn) {
+                mapView.selectAnnotation(annotation, animated: true)
+                
+            }
             
             let center = CLLocationCoordinate2D(latitude: annotation.coordinate.latitude, longitude: annotation.coordinate.longitude)
             
@@ -667,6 +741,10 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
             var annotation : PinAnnotation = nextStationHistory.popLast()!
             //prevStationHistory.append(annotation)
             //playFromAnnotation(annotation: annotation)
+            if(!tunerToggle.isOn) {
+                mapView.selectAnnotation(annotation, animated: true)
+                
+            }
             let center = CLLocationCoordinate2D(latitude: annotation.coordinate.latitude, longitude: annotation.coordinate.longitude)
             
             //navigate map back to the previous annotation
@@ -878,6 +956,10 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
                 var closestStation : MKAnnotation
                 if (annotationArray.count > 0)
                 {
+                    if (!self.tunerToggle.isOn) {
+                        return
+                    }
+                    
                     closestStation = self.findClosestStation(annotations: annotationNonClusteredArray,coordinate: self.mapView.centerCoordinate)
                     //print(closestStation.title)
                     DispatchQueue.main.async {
@@ -1238,6 +1320,10 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
                 statusUpdate(message: nowPlayingData)
             } else if playerItem.status == AVPlayerItemStatus.failed {
                 statusUpdate(message: "Unable to play radio stream. Try another station.", error: true)
+                if (currentlyPlaying != nil)
+                {
+                    print(currentlyPlaying?.title)
+                }
                 playAndPauseBar.isEnabled = false
                 //playPauseImageUpdate(play: true)
                 //  payAndPauseBar.isOpaque = true
