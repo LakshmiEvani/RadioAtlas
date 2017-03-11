@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1217" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Zf7-N9-cZI">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="xpH-kv-Z0Z">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -10,13 +10,77 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--PageCViewController-->
+        <scene sceneID="7kX-fs-xOi">
+            <objects>
+                <viewController id="xpH-kv-Z0Z" userLabel="PageCViewController" customClass="PageCViewController" customModule="RadioAtlas" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="lDL-f7-ULf"/>
+                        <viewControllerLayoutGuide type="bottom" id="JEI-6g-6fY"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="18j-qn-6gG">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uce-OD-A6B">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <connections>
+                                    <segue destination="LUv-BG-LVY" kind="embed" id="j40-7B-odO"/>
+                                </connections>
+                            </containerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KeP-TX-5U9">
+                                <rect key="frame" x="329" y="41" width="30" height="30"/>
+                                <state key="normal" title="Go">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <segue destination="Zf7-N9-cZI" kind="show" id="Cd0-nX-P6r"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Launch" translatesAutoresizingMaskIntoConstraints="NO" id="yRC-X3-7FU">
+                                <rect key="frame" x="98" y="41" width="212" height="101"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="101" id="VOT-nE-dB0"/>
+                                    <constraint firstAttribute="width" constant="212" id="WTl-sM-7Ag"/>
+                                </constraints>
+                            </imageView>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="BZ7-vp-h1S">
+                                <rect key="frame" x="157" y="570" width="60" height="37"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="Vfe-5n-Ygy"/>
+                                </constraints>
+                            </pageControl>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Uce-OD-A6B" firstAttribute="top" secondItem="18j-qn-6gG" secondAttribute="top" id="47R-CN-BBk"/>
+                            <constraint firstItem="Uce-OD-A6B" firstAttribute="leading" secondItem="18j-qn-6gG" secondAttribute="leading" id="7sW-cR-TzX"/>
+                            <constraint firstAttribute="bottom" secondItem="BZ7-vp-h1S" secondAttribute="bottom" constant="60" id="FKC-I1-WAg"/>
+                            <constraint firstItem="KeP-TX-5U9" firstAttribute="leading" secondItem="yRC-X3-7FU" secondAttribute="trailing" constant="19" id="H7Q-YF-555"/>
+                            <constraint firstItem="KeP-TX-5U9" firstAttribute="trailing" secondItem="18j-qn-6gG" secondAttribute="trailingMargin" id="IIN-yl-Q7M"/>
+                            <constraint firstAttribute="trailing" secondItem="Uce-OD-A6B" secondAttribute="trailing" id="KcM-h5-XqF"/>
+                            <constraint firstItem="Uce-OD-A6B" firstAttribute="bottom" secondItem="JEI-6g-6fY" secondAttribute="top" id="f3b-fs-bgV"/>
+                            <constraint firstItem="KeP-TX-5U9" firstAttribute="top" secondItem="lDL-f7-ULf" secondAttribute="bottom" constant="21" id="nDY-Cp-jAF"/>
+                            <constraint firstItem="yRC-X3-7FU" firstAttribute="top" secondItem="KeP-TX-5U9" secondAttribute="top" id="uHZ-L5-wKY"/>
+                            <constraint firstItem="BZ7-vp-h1S" firstAttribute="centerX" secondItem="Uce-OD-A6B" secondAttribute="centerX" id="zr9-NU-3GF"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="containerView" destination="Uce-OD-A6B" id="2gJ-l0-B9x"/>
+                        <outlet property="pageControl" destination="BZ7-vp-h1S" id="xCE-kF-cwN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5Id-fS-FG8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2343.1999999999998" y="35.532233883058474"/>
+        </scene>
         <!--Page View Controller-->
         <scene sceneID="ryg-43-i5h">
             <objects>
                 <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="LUv-BG-LVY" customClass="PageViewController" customModule="RadioAtlas" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T36-qH-22N" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2132" y="22"/>
+            <point key="canvasLocation" x="-3042" y="785"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="R0c-OL-Bcw">
@@ -29,7 +93,7 @@
                     <view key="view" contentMode="scaleToFill" id="aav-pn-zO0">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MYB-NJ-cZb" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -52,7 +116,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aGM-7K-c3B" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1531" y="785"/>
+            <point key="canvasLocation" x="-1532" y="784.85757121439292"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="UR7-Df-xLF">
@@ -327,6 +391,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Launch" width="621" height="1104"/>
         <image name="center" width="123" height="123"/>
     </resources>
 </document>
