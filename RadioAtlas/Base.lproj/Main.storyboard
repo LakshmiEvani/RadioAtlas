@@ -197,17 +197,39 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tuner OFF" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="imM-tk-bsr">
+                                <rect key="frame" x="225" y="81" width="134" height="15"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="134" id="5TG-g1-AFe"/>
+                                    <constraint firstAttribute="height" constant="15" id="qV2-dB-car"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="15"/>
+                                <color key="textColor" red="0.10196078431372549" green="0.21176470588235294" blue="0.52549019607843139" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="0Fn-fB-cf4">
+                                <rect key="frame" x="310" y="100" width="51" height="31"/>
+                                <color key="tintColor" red="0.1019607843" green="0.21176470589999999" blue="0.52549019610000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="onTintColor" red="0.1019607843" green="0.21176470589999999" blue="0.52549019610000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="tunerToggleChange:" destination="tmg-mo-T3o" eventType="valueChanged" id="TXo-Mc-eA9"/>
+                                </connections>
+                            </switch>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="6PE-Lx-BlR" firstAttribute="bottom" secondItem="o2O-Le-CHD" secondAttribute="top" id="2jA-c2-JcR"/>
                             <constraint firstItem="TCg-qb-4VU" firstAttribute="leading" secondItem="fb2-Ol-aye" secondAttribute="leading" id="5i3-wG-GpI"/>
                             <constraint firstItem="TCg-qb-4VU" firstAttribute="trailing" secondItem="fb2-Ol-aye" secondAttribute="trailing" id="61m-ZT-9bb"/>
+                            <constraint firstItem="imM-tk-bsr" firstAttribute="top" secondItem="7yS-y9-ht0" secondAttribute="bottom" constant="17" id="Emr-Xb-Rep"/>
                             <constraint firstItem="fb2-Ol-aye" firstAttribute="top" secondItem="tJP-a8-iaI" secondAttribute="bottom" constant="10" id="HFe-Gc-tb8"/>
                             <constraint firstItem="bB8-uh-7h7" firstAttribute="centerX" secondItem="tJP-a8-iaI" secondAttribute="centerX" constant="2.5" id="JYH-p1-XkV"/>
+                            <constraint firstItem="imM-tk-bsr" firstAttribute="trailing" secondItem="0Fn-fB-cf4" secondAttribute="trailing" id="JcX-2d-y1I"/>
                             <constraint firstItem="6PE-Lx-BlR" firstAttribute="leading" secondItem="bB8-uh-7h7" secondAttribute="leading" id="PER-Ym-039"/>
                             <constraint firstItem="fb2-Ol-aye" firstAttribute="leading" secondItem="Jba-SE-lO6" secondAttribute="leadingMargin" constant="24" id="Q2Q-Fb-SZQ"/>
+                            <constraint firstItem="imM-tk-bsr" firstAttribute="trailing" secondItem="Jba-SE-lO6" secondAttribute="trailingMargin" id="RVX-We-fH4"/>
                             <constraint firstItem="bB8-uh-7h7" firstAttribute="centerX" secondItem="Jba-SE-lO6" secondAttribute="centerX" constant="2.5" id="USP-ax-L08"/>
+                            <constraint firstItem="0Fn-fB-cf4" firstAttribute="top" secondItem="imM-tk-bsr" secondAttribute="bottom" constant="4" id="ZR6-UR-naF"/>
                             <constraint firstAttribute="trailing" secondItem="6PE-Lx-BlR" secondAttribute="trailing" id="d29-lv-4RV"/>
                             <constraint firstItem="TCg-qb-4VU" firstAttribute="bottom" secondItem="fb2-Ol-aye" secondAttribute="bottom" id="d5Y-2R-clc"/>
                             <constraint firstItem="TCg-qb-4VU" firstAttribute="centerY" secondItem="Jba-SE-lO6" secondAttribute="centerY" id="fCZ-nI-Tex"/>
@@ -220,7 +242,7 @@
                     </view>
                     <toolbarItems>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="wEv-tC-5eU"/>
-                        <barButtonItem title="Out" id="gk6-a2-hJq" userLabel="Zoom Out">
+                        <barButtonItem title="out" id="gk6-a2-hJq" userLabel="Zoom Out">
                             <inset key="imageInsets" minX="119" minY="40" maxX="150" maxY="40"/>
                             <connections>
                                 <action selector="btnZoomOutClick:" destination="tmg-mo-T3o" id="FfF-oK-wNF"/>
@@ -282,12 +304,14 @@
                         <outlet property="playAndPauseBar" destination="Dmu-D9-iUE" id="Tjr-zc-9CL"/>
                         <outlet property="progressMessage" destination="fb2-Ol-aye" id="UAX-fW-zdp"/>
                         <outlet property="reWind" destination="g9N-bQ-dMq" id="bng-8d-BVh"/>
+                        <outlet property="tunerLabel" destination="imM-tk-bsr" id="u85-lR-tRD"/>
+                        <outlet property="tunerToggle" destination="0Fn-fB-cf4" id="c2t-Dj-28R"/>
                         <segue destination="Kpc-D8-xBc" kind="show" identifier="stationDetails" id="y3w-l2-U3i"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XaR-vv-HOm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-626.53673163418296" y="21.600000000000001"/>
+            <point key="canvasLocation" x="-628" y="21.139430284857571"/>
         </scene>
         <!--DetailViewController-->
         <scene sceneID="FzL-Jt-Bdd">
@@ -321,7 +345,7 @@
         <!--TableViewController-->
         <scene sceneID="jSf-L1-8mC">
             <objects>
-                <viewController id="QDi-LV-j8K" userLabel="TableViewController" customClass="TableViewController" customModule="RadioAtlas" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Favorite Stations" id="QDi-LV-j8K" userLabel="TableViewController" customClass="TableViewController" customModule="RadioAtlas" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="bQp-HI-dGC"/>
                         <viewControllerLayoutGuide type="bottom" id="4Fv-gI-LhB"/>
@@ -387,7 +411,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vDN-Ey-gw7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="200.625" y="406.25"/>
+            <point key="canvasLocation" x="199.19999999999999" y="406.14692653673166"/>
         </scene>
     </scenes>
     <resources>
