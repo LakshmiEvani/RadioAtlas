@@ -1,0 +1,6 @@
+framework module Pods_RadioAtlasUITests {
+  umbrella header "Pods-RadioAtlasUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

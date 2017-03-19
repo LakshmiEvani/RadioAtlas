@@ -1,0 +1,6 @@
+framework module Pods_RadioAtlas {
+  umbrella header "Pods-RadioAtlas-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -49,6 +49,7 @@ extension Client {
                         _ = try i[6] as? String
                         _ = try i[7] as? String
                         _ = try i[8] as? String
+                        _ = try i[9] as? String
                         let latitude =  i[3] as? String
                         let longitude =  i[4] as? String
                         let streamUrl = i[2] as? String

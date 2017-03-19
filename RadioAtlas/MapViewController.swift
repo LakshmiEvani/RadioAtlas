@@ -88,6 +88,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
     private var playerItemContext = 0
     private var isUpdating = false
     var isMapLoaded = false
+    var playAllTimer: Timer!
     
     
     var regionWillChangeAnimatedCalled : Bool = false
@@ -115,6 +116,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
     let MAX_ZOOM_OUT = 17.0
     let MAX_ZOOM_IN = 5.0
     let PLAY_ALL_MODE : Bool = false
+    let TIMER_INTERVAL  = 0.5
     //var tunerMode : Bool = false
     
     
@@ -122,6 +124,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
     var playerItem : AVPlayerItem? = nil
     //var nowPlayingData : String = ""
     var playNextData : String = ""
+    
     
     var previousStationData : String = ""
     var prevStationHistory = [PinAnnotation]()
@@ -141,6 +144,18 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         setUIAttributes()
         initializations()
         
+    }
+    
+    func invalidateTimer()
+    {
+        if (playAllTimer != nil) {
+            playAllTimer.invalidate()
+        }
+        
+    }
+    
+    deinit {
+        invalidateTimer()
     }
     
     
@@ -380,7 +395,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
             tunerLabel.text = "Tuner ON"
         }else {
             centerFocus.isHidden = true
-              tunerLabel.text = "Tuner OFF"
+            tunerLabel.text = "Tuner OFF"
         }
     }
     
@@ -468,21 +483,48 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         print("Error \(error)")
     }
     
+    var aPlayer: AVPlayer!
+    var timeObserver: AnyObject!
     
+    func timedPlay(url: String) {
+        let timeInterval: TimeInterval = 5
+        aPlayer = AVPlayer(url: NSURL(string: url)! as URL)
+        let a : Any? = CMTimeMake(Int64(timeInterval), 1)
+        
+        let timesArray = [a as! NSValue]
+        
+        timeObserver = aPlayer.addBoundaryTimeObserver(forTimes: timesArray, queue:nil) { () -> Void in
+            print("5s reached")
+            self.aPlayer.removeTimeObserver(self.timeObserver)
+            self.aPlayer.pause()
+            } as AnyObject!
+        
+        aPlayer.play()
+    }
     
+   
+    var annIndex = 1
+    
+    func runTimedCode() {
+        let anns = self.clusteringManager.allAnnotations()
+        if (annIndex <= anns.count) {
+            //timedPlay(url: (anns[annIndex - 1] as! PinAnnotation).streamUrl)
+            //playFromAnnotation(annotation: anns[annIndex-1] as! PinAnnotation)
+            let station = anns[annIndex-1]
+            
+            mapView.addAnnotation(station)
+            mapView.selectAnnotation(station, animated: true)
+            annIndex+=1
+        }
+    }
     
     
     @IBAction func barBtnWorldClick(_ sender: Any) {
         
         if (PLAY_ALL_MODE) {
-            let annotationNonClusteredArray = self.clusteringManager.allAnnotations()
+            //tunerToggle.isOn = true
+            playAllTimer = Timer.scheduledTimer(timeInterval: TimeInterval(TIMER_INTERVAL), target: self, selector: #selector(runTimedCode), userInfo: nil, repeats: true)
             
-            for annotation in annotationNonClusteredArray {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                    self.playFromAnnotation(annotation: annotation as! PinAnnotation)
-                }
-                
-            }
             
         }
         else {
@@ -572,6 +614,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
                             let streamUrl = dictionary.streamUrl
                             let webUrl = dictionary.websiteURL
                             let id = dictionary.id
+                            let isValid = dictionary.isValid
                             var location: String!
                             
                             if state != "" && state != nil {
@@ -585,17 +628,16 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
                             }
                             
                             // Here we create the annotation and set its coordiate, title, and subtitle properties
-                            
-                            let annotation = PinAnnotation(id: id!, name: name!, streamUrl:streamUrl!, websiteURL: webUrl!,location: location, latitude: lat, longitude: lon )
-                            
-                            annotation.streamUrl = streamUrl
-                            
-                            
-                            
-                            // Finally we place the annotation in an array of annotations.
-                            
-                            self.annotations.append(annotation)
-                            
+                            if (isValid != "N") {
+                                let annotation = PinAnnotation(id: id!, name: name!, streamUrl:streamUrl!, websiteURL: webUrl!,location: location, latitude: lat, longitude: lon )
+                                
+                                annotation.streamUrl = streamUrl
+                                
+                                // Finally we place the annotation in an array of annotations.
+                                self.annotations.append(annotation)
+                                
+                            }
+                           
                             //RE* begin
                             DispatchQueue.main.async() {
                                 
@@ -668,28 +710,28 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         
         if (playerItem != nil)
         {
-            removeObservers(playerItem: playerItem!)
+            removePlayerItemObserver(playerItem: playerItem! as! RadioAVPlayerItem)
         }
+
         
-        
-        playerItem = RadioAVPlayerItem(url: NSURL(string: music) as! URL)
-        addObservers(playerItem: playerItem!)
-        
-        
-        
-        Music.sharedInstance.musicStream(playerItem: playerItem! as! RadioAVPlayerItem, viewController: self)
-        playPauseImageUpdate(play: false)
+        if (NSURL(string: music) != nil) {
+            playerItem = RadioAVPlayerItem(url: NSURL(string: music) as! URL)
+            addObservers(playerItem: playerItem!)
+            Music.sharedInstance.musicStream(playerItem: playerItem! as! RadioAVPlayerItem, viewController: self)
+            playPauseImageUpdate(play: false)
+        }
+        else
+        {
+            handleErrorStation(streamUrl: music)
+        }
         
     }
     
-    func removeObservers(playerItem: AVPlayerItem) {
-        playerItem.removeObserver(self, forKeyPath: "timedMetadata")
-        playerItem.removeObserver(self, forKeyPath:"status")
-    }
     
     func removePlayerObservers(player: RadioAVPlayer) {
         player.removeObserver(self, forKeyPath: "currentItem.status")
         player.removeObserver(self, forKeyPath: "currentItem.duration")
+        player.removeObserver(self, forKeyPath: "rate")
         
     }
     
@@ -761,7 +803,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         
     }
     
-    
+    var observerRemoved : Bool = false
     
     func addObservers(playerItem: AVPlayerItem) {
         
@@ -781,15 +823,19 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
             options: [.old, .new],
             context: nil)
         
+        observerRemoved = false
+        
     }
     
     func removePlayerItemObserver(playerItem: RadioAVPlayerItem)
     {
-        playerItem.removeObserver(self, forKeyPath: "timedMetadata")
-        playerItem.removeObserver(self, forKeyPath: "status")
+        if (!observerRemoved) {
+            playerItem.removeObserver(self, forKeyPath: "timedMetadata")
+            playerItem.removeObserver(self, forKeyPath: "status")
+            observerRemoved = true
+        }
+        
     }
-    
-    
     
     
     @IBAction func volumeControlAction(_ sender: Any) {
@@ -1109,10 +1155,12 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
     func playFromAnnotation(annotation: PinAnnotation) {
         
         playNextData = annotation.name
+        
         if (annotation.location != nil) {
             self.playNextData = self.playNextData + " ∞∞ " + annotation.location
         }
         
+    
         playMusic(music: annotation.streamUrl)
         currentlyPlaying = annotation
         prevStationHistory.append(annotation)
@@ -1319,14 +1367,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
                 
                 statusUpdate(message: nowPlayingData)
             } else if playerItem.status == AVPlayerItemStatus.failed {
-                statusUpdate(message: "Unable to play radio stream. Try another station.", error: true)
-                if (currentlyPlaying != nil)
-                {
-                    print(currentlyPlaying?.title)
-                }
-                playAndPauseBar.isEnabled = false
-                //playPauseImageUpdate(play: true)
-                //  payAndPauseBar.isOpaque = true
+                handleErrorStation()
+                
                 
                 
             }
@@ -1354,6 +1396,27 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         else {
             return
         }
+    }
+    
+    func handleErrorStation(streamUrl : String="") {
+        
+        statusUpdate(message: "Unable to play radio stream. Try another station.", error: true)
+        
+        
+        if (currentlyPlaying != nil)
+        {
+            print(currentlyPlaying?.title)
+            print("Invalid Station: ",(currentlyPlaying as! PinAnnotation).streamUrl)
+        }
+        else{
+            print("Invalid Station: ", streamUrl)
+
+        }
+        playAndPauseBar.isEnabled = false
+        //playPauseImageUpdate(play: true)
+        //  payAndPauseBar.isOpaque = true
+
+        
     }
     
     func statusUpdate(message: String,error: Bool = false) {

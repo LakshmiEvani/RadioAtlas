@@ -24,6 +24,7 @@ struct RadioInfo {
     var city: String?
     var state: String?
     var country : String?
+    var isValid : String?
     
     static var radioInfo = [RadioInfo]()
     
@@ -43,6 +44,7 @@ struct RadioInfo {
         city = stations[6] as? String
         state = stations[7] as? String
         country = stations[8] as? String
+        isValid = stations[9] as? String
         
         //   print("The latitude & The longitude", "\(latitude)\(longitude)")
     }
