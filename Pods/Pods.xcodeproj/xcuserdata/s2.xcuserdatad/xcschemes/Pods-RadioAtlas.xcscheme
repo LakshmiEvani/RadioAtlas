@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0820"
+   LastUpgradeVersion = "0700"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "3109F0AE5235867F7C1DE721AE76E984"
+               BlueprintIdentifier = "A032BA9AD4F0B2D067223DC41EA2FC39"
                BuildableName = "Pods_RadioAtlas.framework"
                BlueprintName = "Pods-RadioAtlas"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "3109F0AE5235867F7C1DE721AE76E984"
+            BlueprintIdentifier = "A032BA9AD4F0B2D067223DC41EA2FC39"
             BuildableName = "Pods_RadioAtlas.framework"
             BlueprintName = "Pods-RadioAtlas"
             ReferencedContainer = "container:Pods.xcodeproj">
@@ -60,15 +60,6 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "3109F0AE5235867F7C1DE721AE76E984"
-            BuildableName = "Pods_RadioAtlas.framework"
-            BlueprintName = "Pods-RadioAtlas"
-            ReferencedContainer = "container:Pods.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

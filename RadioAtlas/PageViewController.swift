@@ -11,15 +11,33 @@ import UIKit
 class PageViewController: UIPageViewController {
     
     weak var tutorialDelegate: PageViewControllerDelegate?
+    // MARK: - Stored Properties
+    
+    enum SceneDescriptionFor {
+        static let header = ["Capture Your Moment",
+                             "Share Your Joy"]
+                            // "Sync Your Life"]
+        
+        static let subheader = ["Take pictures with incredible filters and control.",
+                                "Connect with your friends. Sharing is caring."]
+                               // "Synchronize your data across iOS devices seamlessly."]
+    }
+    
+    let images = ["link", "play&pause"]
     
     private(set) lazy var orderedViewControllers: [UIViewController] = {
+        
+        
         return [self.newColoredViewController(color: "Grey"),
-                self.newColoredViewController(color: "Blue")]
+                self.newColoredViewController(color: "Blue"),
+                self.newColoredViewController(color: "Green")]
     }()
     
     private func newColoredViewController(color: String) -> UIViewController {
-        return UIStoryboard(name: "Main", bundle: nil) .
-            instantiateViewController(withIdentifier: "\(color)ViewController")
+        return
+            UIStoryboard(name: "Main", bundle: nil) .
+                instantiateViewController(withIdentifier: "\(color)ViewController")
+
     }
 
     override func viewDidLoad() {
@@ -27,12 +45,16 @@ class PageViewController: UIPageViewController {
         dataSource = self
         delegate = self
 
+        
+       
         // Do any additional setup after loading the view.
         if let initialViewController = orderedViewControllers.first {
             scrollToViewController(initialViewController)
+            //viewControllerAtIndex(0)
+           
         }
-        
         tutorialDelegate?.PageViewController(self,didUpdatePageCount: orderedViewControllers.count)
+        
     }
     
     
@@ -42,7 +64,7 @@ class PageViewController: UIPageViewController {
     func scrollToNextViewController() {
         if let visibleViewController = viewControllers?.first,
             let nextViewController = pageViewController(self,
-                                                        viewControllerAfter: visibleViewController) {
+            viewControllerAfter: visibleViewController) {
             scrollToViewController(nextViewController)
         }
     }
@@ -96,23 +118,27 @@ class PageViewController: UIPageViewController {
     }
 
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    // MARK - Helper Methods
+    
+ /*   fileprivate func viewControllerAtIndex(_ index: Int) -> PageCViewController? {
+        guard index != NSNotFound || (index >= 0 && index < SceneDescriptionFor.header.count) else { return nil }
+        guard let validStoryboard = self.storyboard, let validPageContentViewController = validStoryboard.instantiateViewController(withIdentifier: "PageCViewController") as? PageCViewController else { return nil }
+        
+        validPageContentViewController.pageIndex = index
+        validPageContentViewController.headerDescription = SceneDescriptionFor.header[index]
+        validPageContentViewController.subheaderDescription = SceneDescriptionFor.subheader[index]
+        validPageContentViewController.imageFile = self.images[index]
+        
+        return validPageContentViewController
+        
+    }*/
 }
 
 extension PageViewController: UIPageViewControllerDataSource {
     
     func pageViewController(_ pageViewController: UIPageViewController,
                             viewControllerBefore viewController: UIViewController) -> UIViewController? {
-            guard let viewControllerIndex = orderedViewControllers.index(of: viewController) else {
+            guard var viewControllerIndex = orderedViewControllers.index(of: viewController) else {
                 return nil
             }
             
@@ -125,7 +151,8 @@ extension PageViewController: UIPageViewControllerDataSource {
             guard orderedViewControllers.count > previousIndex else {
                 return nil
             }
-            
+        
+      
             return orderedViewControllers[previousIndex]
     }
     
@@ -181,6 +208,8 @@ protocol PageViewControllerDelegate: class {
      */
     func PageViewController(_ PageViewController: PageViewController,
                             didUpdatePageIndex index: Int)
+    
+    
     
 }
 
