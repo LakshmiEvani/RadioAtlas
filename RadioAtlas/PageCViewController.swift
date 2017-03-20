@@ -35,50 +35,42 @@ class PageCViewController: UIViewController {
         }
     }
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         startButton.layer.cornerRadius = 4
        
-        Timer.scheduledTimer(timeInterval: 7.0, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: false)
+        timer = Timer.scheduledTimer(timeInterval: 4.0, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
+        timer.fire()
     }
     
   
     internal func updateTimer() {
-        
-     /*   let pvcs = PageViewController?.childViewControllers as! [PageCViewController]
-        let itemIndex = pvcs[0].updateCounter
-        let firstController = getItemController(itemIndex: itemIndex+1)!
-        let startingViewControllers = [firstController]
-        PageViewController!.setViewControllers(startingViewControllers, direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)
- */
+       
+  
      if updateCounter < 3  {
      
-     pageControl.currentPage = updateCounter
-  //  imageView.image = UIImage(named: String(updateCounter + 1) + ".png")
+        pageControl.currentPage = updateCounter
     
-     PageViewController?.scrollToViewController(index: pageControl.currentPage)
-     //pageControl.setViewControllers([PageViewController], direction: .Forward, animated: true, completion: nil)
-     updateCounter = updateCounter + 1
+        PageViewController?.scrollToViewController(index: pageControl.currentPage)
+        //pageControl.setViewControllers([PageViewController], direction: .Forward, animated: true, completion: nil)
+        
+        if (updateCounter == 2) {
+            timer.invalidate()
+        }
+        else {
+            
+            updateCounter = updateCounter + 1
+        }
+     
      } else {
      
-     updateCounter = 0
+        updateCounter = 0
      }
      
 }
     
 
-    
-  /*  private func getItemController(itemIndex: Int) -> PageCViewController? {
-        
-        if itemIndex < pageControl.numberOfPages {
-            let pageItemController = self.storyboard!.instantiateViewController(withIdentifier: "PageCViewController") as! PageCViewController
-            pageItemController.itemIndex = itemIndex
-            pageItemController.imageName = pageControl[itemIndex]
-            return pageItemController
-        }
-        
-        return nil
-    }*/
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let PageViewController = segue.destination as? PageViewController {
