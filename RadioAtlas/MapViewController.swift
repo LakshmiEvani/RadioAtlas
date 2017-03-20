@@ -436,11 +436,19 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         isMapLoaded = true
         
         
-        nowPlayingLabel.text = "Move map to tune radio station at a location OR Tap dots to play. Pinch or double-tap to zoom."
+        nowPlayingLabel.text = "Tap dots to play. Turn Tuner ON to tune on map move."
         nowPlayingLabel.triggerScrollStart()
         
         setWorldRegion(animated: false)
         
+        activityIndicator.isHidden = true
+        progressMessage.isHidden = true
+        //btnZoomOut.isEnabled = true
+        // barBtnWorld.isEnabled = true
+        
+        if (tunerToggle.isOn) {
+            centerFocus.isHidden = false
+        }
         
         
         locationManager = CLLocationManager()
@@ -467,40 +475,13 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         
         //mapView.setRegion(region, animated: true)
         
-        activityIndicator.isHidden = true
-        progressMessage.isHidden = true
-        btnZoomOut.isEnabled = true
-        barBtnWorld.isEnabled = true
-        
-        if (tunerToggle.isOn) {
-            centerFocus.isHidden = false
-        }
-        
         
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("Error \(error)")
     }
-    
-    var aPlayer: AVPlayer!
-    var timeObserver: AnyObject!
-    
-    func timedPlay(url: String) {
-        let timeInterval: TimeInterval = 5
-        aPlayer = AVPlayer(url: NSURL(string: url)! as URL)
-        let a : Any? = CMTimeMake(Int64(timeInterval), 1)
-        
-        let timesArray = [a as! NSValue]
-        
-        timeObserver = aPlayer.addBoundaryTimeObserver(forTimes: timesArray, queue:nil) { () -> Void in
-            print("5s reached")
-            self.aPlayer.removeTimeObserver(self.timeObserver)
-            self.aPlayer.pause()
-            } as AnyObject!
-        
-        aPlayer.play()
-    }
+
     
    
     var annIndex = 1
