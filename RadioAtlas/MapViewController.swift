@@ -1069,7 +1069,9 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
                 mapView.selectAnnotation(closestStation, animated: true)
                 
                 // When zooming into cluster, turn on Tuner mode, unless it's explicitly been turned off
-                turnONTuner()
+                if (!tunerTurnedOff) {
+                    turnONTuner()
+                }
             }
             
             
@@ -1114,11 +1116,11 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
     
     func turnONTuner()
     {
-         if (!tunerTurnedOff) {
+        
             tunerToggle.isOn = true
             tunerLabel.text = "Tuner ON"
             centerFocus.isHidden = false
-        }
+        
     }
     
     func findClosestStation(annotations:[MKAnnotation], coordinate:CLLocationCoordinate2D) -> MKAnnotation {
