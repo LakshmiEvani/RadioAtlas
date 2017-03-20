@@ -269,6 +269,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.setNetworkActivityIndicatorVisible(visible: true)
         
+        
         //setWorldRegion(animated: false)
         mapView.delegate = self
         self.addAnnotation()
@@ -447,6 +448,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         
         activityIndicator.isHidden = true
         progressMessage.isHidden = true
+        
         //btnZoomOut.isEnabled = true
         // barBtnWorld.isEnabled = true
         
@@ -503,6 +505,44 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         }
     }
     
+    var audioPlayer : AVAudioPlayer!
+    var playAudioRepeatedly = true
+    
+    func playTunerAudio()
+    {
+        // set URL of the sound
+        let soundURL = NSURL(fileURLWithPath: Bundle.main.path(forResource: "RadioTuner", ofType: "m4a")!)
+        do
+        {
+            audioPlayer = try AVAudioPlayer(contentsOf: soundURL as URL)
+            audioPlayer.delegate = self
+            
+            if (audioPlayer!.prepareToPlay())
+            {
+                audioPlayer!.play()
+            }
+        }
+        catch
+        { }
+    }
+    
+    func stopTunerAudio() {
+        if (audioPlayer != nil) {
+            audioPlayer.stop()
+        }
+        
+    }
+    
+    
+    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
+       // if (playAudioRepeatedly)
+       // {
+            audioPlayer!.play()
+       // }
+    }
+    
+    
+
     
     @IBAction func barBtnWorldClick(_ sender: Any) {
         
@@ -689,7 +729,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         previousStationData = ""
         
         
-        
+        playTunerAudio()
         statusUpdate(message: "Tuning to Radio Station..")
         
         
@@ -1344,6 +1384,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
             
             
             if playerItem.status ==  AVPlayerItemStatus.readyToPlay{
+                
+                stopTunerAudio()
                 nowPlayingData = playNextData
                 playAndPauseBar.isEnabled = true
                 if (prevStationHistory.count > 1) {

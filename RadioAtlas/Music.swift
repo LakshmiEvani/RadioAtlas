@@ -45,6 +45,7 @@ class Music {
             
                 
                 self.audioPlayer = RadioAVPlayer(playerItem: playerItem)
+                
                 self.audioPlayer.delegate = viewController
                 self.audioPlayer.addObservers(del: viewController)
                 
