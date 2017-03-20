@@ -39,7 +39,7 @@ class PageCViewController: UIViewController {
         super.viewDidLoad()
         startButton.layer.cornerRadius = 4
        
-        Timer.scheduledTimer(timeInterval: 7.0, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
+        Timer.scheduledTimer(timeInterval: 7.0, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: false)
     }
     
   

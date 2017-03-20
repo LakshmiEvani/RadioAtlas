@@ -436,7 +436,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         isMapLoaded = true
         
         
-        nowPlayingLabel.text = "Tap dots to play. Turn Tuner ON to tune on map move."
+        nowPlayingLabel.text = "Tap dots to play. Turn Tuner ON to play station nearest to map center."
         nowPlayingLabel.triggerScrollStart()
         
         setWorldRegion(animated: false)
