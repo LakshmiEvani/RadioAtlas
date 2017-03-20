@@ -527,6 +527,6 @@ What sounds familiar...or foreign? What sounds like home?</string>
         <image name="Image-1" width="2456" height="3357"/>
         <image name="center" width="123" height="123"/>
         <image name="playing-station" width="1725" height="3067"/>
-        <image name="whitelogo" width="1012" height="261"/>
+        <image name="whitelogo" width="919" height="243"/>
     </resources>
 </document>
