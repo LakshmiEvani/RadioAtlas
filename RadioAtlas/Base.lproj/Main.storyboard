@@ -92,7 +92,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" alpha="0.55000000000000004" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Image" translatesAutoresizingMaskIntoConstraints="NO" id="gqf-U8-qZN">
+                            <imageView userInteractionEnabled="NO" alpha="0.55000000000000004" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="boombox" translatesAutoresizingMaskIntoConstraints="NO" id="gqf-U8-qZN">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reconnect with home" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gIV-WP-7vx">
@@ -523,8 +523,8 @@ What sounds familiar...or foreign? What sounds like home?</string>
         </scene>
     </scenes>
     <resources>
-        <image name="Image" width="1242" height="2209"/>
         <image name="Image-1" width="2456" height="3357"/>
+        <image name="boombox" width="1242" height="2209"/>
         <image name="center" width="123" height="123"/>
         <image name="playing-station" width="1725" height="3067"/>
         <image name="whitelogo" width="919" height="243"/>

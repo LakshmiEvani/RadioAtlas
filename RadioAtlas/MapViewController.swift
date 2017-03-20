@@ -99,6 +99,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
     var mapDragged : Bool = false
     var prevZoomLevel : Double = 17.0
     var currentlyPlaying: MKAnnotation? = nil
+    var tunerTurnedOff: Bool = false
     private let PlayerStatusObservingContext = UnsafeMutablePointer<Int>(bitPattern: 1)
     
     @IBOutlet weak var mapViewZoomStepper: UIStepper!
@@ -391,11 +392,14 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         let tunerON = (sender as! UISwitch).isOn
         
         if (tunerON) {
-            centerFocus.isHidden = false
-            tunerLabel.text = "Tuner ON"
-        }else {
+            turnONTuner()
+        }
+        else {
             centerFocus.isHidden = true
             tunerLabel.text = "Tuner OFF"
+            
+            //user explicitly turned off tuner
+            tunerTurnedOff = true
         }
     }
     
@@ -1063,6 +1067,9 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
                 
                 mapView.addAnnotation(closestStation)
                 mapView.selectAnnotation(closestStation, animated: true)
+                
+                // When zooming into cluster, turn on Tuner mode, unless it's explicitly been turned off
+                turnONTuner()
             }
             
             
@@ -1103,6 +1110,15 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         regionChangedBecauseAnnotationSelected = false
         
         
+    }
+    
+    func turnONTuner()
+    {
+         if (!tunerTurnedOff) {
+            tunerToggle.isOn = true
+            tunerLabel.text = "Tuner ON"
+            centerFocus.isHidden = false
+        }
     }
     
     func findClosestStation(annotations:[MKAnnotation], coordinate:CLLocationCoordinate2D) -> MKAnnotation {
