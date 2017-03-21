@@ -45,6 +45,8 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
+                                    <action selector="startButtonClick:" destination="xpH-kv-Z0Z" eventType="touchUpOutside" id="BXi-QP-LXs"/>
+                                    <action selector="startButtonDown:" destination="xpH-kv-Z0Z" eventType="touchDown" id="4Ex-MW-k2q"/>
                                     <segue destination="Zf7-N9-cZI" kind="show" id="Cd0-nX-P6r"/>
                                 </connections>
                             </button>
@@ -95,7 +97,7 @@
                             <imageView userInteractionEnabled="NO" alpha="0.55000000000000004" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="boombox" translatesAutoresizingMaskIntoConstraints="NO" id="gqf-U8-qZN">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reconnect with home" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gIV-WP-7vx">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reconnect with home." textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gIV-WP-7vx">
                                 <rect key="frame" x="52" y="355" width="217" height="24"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <color key="textColor" red="0.97647058819999999" green="0.97647058819999999" blue="0.97647058819999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -262,13 +264,20 @@ What sounds familiar...or foreign? What sounds like home?</string>
                     </view>
                     <toolbarItems>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="wEv-tC-5eU"/>
+                        <barButtonItem title="info" id="SsK-x6-JB3" userLabel="Info">
+                            <inset key="imageInsets" minX="119" minY="40" maxX="150" maxY="40"/>
+                            <connections>
+                                <action selector="btnZoomOutClick:" destination="tmg-mo-T3o" id="Gcz-cG-OUP"/>
+                                <segue destination="nod-nw-5Ef" kind="show" identifier="settings" id="gbF-Nj-HaX"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="8QJ-rz-hoD"/>
                         <barButtonItem title="out" id="gk6-a2-hJq" userLabel="Zoom Out">
                             <inset key="imageInsets" minX="119" minY="40" maxX="150" maxY="40"/>
                             <connections>
                                 <action selector="btnZoomOutClick:" destination="tmg-mo-T3o" id="FfF-oK-wNF"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem style="plain" systemItem="flexibleSpace" id="vM3-pu-Dpj"/>
                         <barButtonItem title="In" id="nbd-VV-u5V" userLabel="Zoom In">
                             <inset key="imageInsets" minX="119" minY="40" maxX="150" maxY="40"/>
                             <connections>
@@ -314,6 +323,7 @@ What sounds familiar...or foreign? What sounds like home?</string>
                     <connections>
                         <outlet property="activityIndicator" destination="tJP-a8-iaI" id="24W-oK-3MB"/>
                         <outlet property="barBtnWorld" destination="CcV-zP-cKQ" id="CV6-Pn-s2y"/>
+                        <outlet property="btnSettings" destination="SsK-x6-JB3" id="FKa-40-him"/>
                         <outlet property="btnZoomIn" destination="nbd-VV-u5V" id="e7S-fr-80H"/>
                         <outlet property="btnZoomOut" destination="gk6-a2-hJq" id="lTa-qF-ele"/>
                         <outlet property="centerFocus" destination="TCg-qb-4VU" id="cHp-tU-6V9"/>
@@ -432,6 +442,34 @@ What sounds familiar...or foreign? What sounds like home?</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vDN-Ey-gw7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="199.19999999999999" y="406.14692653673166"/>
+        </scene>
+        <!--Table View Controller-->
+        <scene sceneID="EhF-ge-uyL">
+            <objects>
+                <tableViewController id="nod-nw-5Ef" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="tMk-Gt-t5k">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="PWq-y9-jel">
+                                <rect key="frame" x="0.0" y="28" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PWq-y9-jel" id="BiE-lT-rfZ">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="nod-nw-5Ef" id="0Xk-Mi-HvU"/>
+                            <outlet property="delegate" destination="nod-nw-5Ef" id="rF9-8k-0wm"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7lr-ki-pPf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="195" y="1016"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="2OI-QU-6hy">

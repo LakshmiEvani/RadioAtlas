@@ -72,6 +72,17 @@ class PageCViewController: UIViewController {
     
 
 
+    @IBAction func startButtonDown(_ sender: Any) {
+        if (timer != nil) {
+            timer.invalidate()
+        }
+        if (self.PageViewController != nil) {
+            self.PageViewController?.dismiss(animated: false, completion: nil)
+        }
+       
+        self.dismiss(animated: false, completion: nil)
+    }
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let PageViewController = segue.destination as? PageViewController {
             self.PageViewController = PageViewController

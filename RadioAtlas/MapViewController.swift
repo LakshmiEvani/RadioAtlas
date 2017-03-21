@@ -21,6 +21,8 @@ extension MKMapView {
     // 2 will zoom out x2
     // .5 will zoom in by x2
     
+    
+    
     func setZoomByDelta(delta: Double, animated: Bool, center: CLLocationCoordinate2D) {
         var _region = region;
         var _span = region.span;
@@ -30,6 +32,45 @@ extension MKMapView {
         _region.center = center
         
         setRegion(_region, animated: animated)
+    }
+    
+    func changeCenter(center: CLLocationCoordinate2D) {
+        
+        region.center = center
+    }
+    
+    func longitudeToPixelSpaceX(longitude : Double) -> Double {
+        let mercadorRadius : Double =  85445659.44705395
+        let mercadorOffset : Double = 268435456
+        
+        return round(mercadorOffset + mercadorRadius * longitude * M_PI / 180.0)
+    }
+    
+    func getZoomLevel() -> Double {
+        let mercadorRadius : Double =  85445659.44705395
+        let mercadorOffset : Double = 268435456
+        
+        let centerPixelX = self.longitudeToPixelSpaceX(longitude: centerCoordinate.longitude);
+        let centerPixelY = self.longitudeToPixelSpaceX(longitude: centerCoordinate.latitude);
+        
+    
+        
+      
+        let maxGoogleLevels = log2(MKMapSizeWorld.width / 256.0)
+        
+        let longitudeDelta : CLLocationDegrees = self.region.span.longitudeDelta
+        let mapWidthInPixes = self.bounds.size.width
+        print("longitudeDelta: ", longitudeDelta)
+        
+        let zoomScale = longitudeDelta * mercadorRadius * M_PI / (180.0 * Double(mapWidthInPixes))
+        var zoomer  = ceil(maxGoogleLevels - log2(zoomScale))
+        
+        if (zoomer < 0 ) {
+            zoomer = 0
+        }
+            
+        return zoomer
+        
     }
 }
 
@@ -51,6 +92,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
     //Outlets
     @IBOutlet weak var favorite: UIBarButtonItem!
     
+    @IBOutlet weak var btnSettings: UIBarButtonItem!
     @IBOutlet weak var centerFocus: UIImageView!
     
     @IBOutlet weak var fastForward: UIBarButtonItem!
@@ -97,8 +139,9 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
     var skipRegionAnnotationSelection : Bool = false
     var skipRegionClustering : Bool = false
     var mapDragged : Bool = false
-    var prevZoomLevel : Double = 17.0
+   
     var currentlyPlaying: MKAnnotation? = nil
+    var playNext: MKAnnotation? = nil
     var tunerTurnedOff: Bool = false
     private let PlayerStatusObservingContext = UnsafeMutablePointer<Int>(bitPattern: 1)
     
@@ -114,7 +157,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
     let LIGHT_BACKGROUND_COLOR = UIColor(red:0.98, green:0.98, blue:0.98, alpha:1.0)
     let TOOLBAR_BUTTON_SIZE : CGFloat = 25
     let PLAY_BUTTON_SIZE : CGFloat = 35
-    let MAX_ZOOM_OUT = 17.0
+    let MAX_ZOOM_OUT = 18.0
+    var prevZoomLevel : Double = 18.0
     let MAX_ZOOM_IN = 5.0
     let PLAY_ALL_MODE : Bool = false
     let TIMER_INTERVAL  = 0.5
@@ -176,7 +220,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         
         reWind.setFAIcon(icon: .FAStepBackward, iconSize: TOOLBAR_BUTTON_SIZE)
         reWind.tintColor = DARK_FOREGROUND_COLOR
-        reWind.isEnabled = false
+        //*reWind.isEnabled = false
         
         //reWind.setTitleTextAttributes([NSForegroundColorAttributeName:DISABLED_COLOR], for: UIControlState.disabled)
         
@@ -205,6 +249,10 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         
         tunerToggle.backgroundColor = DARK_FOREGROUND_COLOR
         tunerToggle.layer.cornerRadius = 16.0
+        
+        btnSettings.setFAIcon(icon: .FAInfoCircle, iconSize: TOOLBAR_BUTTON_SIZE)
+        btnSettings.tintColor = DARK_FOREGROUND_COLOR
+        btnSettings.isEnabled = true
         
         /*
          let button = UIButton(type: .custom)
@@ -309,7 +357,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         worldRegion = MKCoordinateRegionForMapRect(MKMapRectWorld)
         skipRegionAnnotationSelection = true
         //set the world zoom level
-        self.prevZoomLevel == 17.0
+        self.prevZoomLevel == MAX_ZOOM_OUT
         
         if (changeCenter && currentlyPlaying != nil)
         {
@@ -782,8 +830,10 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
             let center = CLLocationCoordinate2D(latitude: annotation.coordinate.latitude, longitude: annotation.coordinate.longitude)
             
             //navigate map back to the previous annotation
+            playNext = annotation
+            //*mapView.setZoomByDelta(delta: 1, animated: false, center: annotation.coordinate)
+            mapView.changeCenter(center: annotation.coordinate)
             
-            mapView.setZoomByDelta(delta: 1, animated: true, center: annotation.coordinate)
             
             // mapView.setRegion(region,animated: true)
             
@@ -821,7 +871,10 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
             let center = CLLocationCoordinate2D(latitude: annotation.coordinate.latitude, longitude: annotation.coordinate.longitude)
             
             //navigate map back to the previous annotation
-            mapView.setZoomByDelta(delta: 1, animated: true, center: annotation.coordinate)
+            playNext = annotation
+
+            //*mapView.setZoomByDelta(delta: 1, animated: false, center: annotation.coordinate)
+            mapView.changeCenter(center: annotation.coordinate)
             // nextStationHistory.removeLast()
             
             if(!tunerToggle.isOn) {
@@ -976,6 +1029,9 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         
     }
     
+
+    
+    
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
         
         if (!isMapLoaded) {
@@ -999,6 +1055,12 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
             let mapRectWidth = self.mapView.visibleMapRect.size.width
             let scale = mapBoundsWidth / mapRectWidth
             let zoomLevel : Double = abs(ceil(log2(scale)))
+            /*
+            print ("mapBoundsWidth: " ,  mapBoundsWidth)
+            print ("mapRectWidth: " ,  mapRectWidth)
+            print ("scale: " ,  scale)*/
+            print ("zoom level: " ,  zoomLevel)
+            print ("new zoom level: " ,  mapView.getZoomLevel())
             //let zoomLevel : Double = 20.0 - abs(zoomExponent)
             
             
@@ -1020,7 +1082,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
             {
                 self.prevZoomLevel = zoomLevel
             }
-            else if (zoomLevel != self.prevZoomLevel) // Means that map is zoomed in or out
+            else if (abs(zoomLevel - self.prevZoomLevel) > 2 ) // Means that map is zoomed in or out
             {
                 self.prevZoomLevel = zoomLevel
                 //Only if user dragged zoomed the map
@@ -1045,13 +1107,19 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
                         return
                     }
                     
+                    if (self.playNext != nil)
+                    {
+                     closestStation = self.playNext!
+                     self.playNext = nil
+                    }
+                    else {
                     closestStation = self.findClosestStation(annotations: annotationNonClusteredArray,coordinate: self.mapView.centerCoordinate)
+                    }
                     //print(closestStation.title)
                     DispatchQueue.main.async {
                         // self.playFromAnnotation(annotation: closestStation as! PinAnnotation)
                         self.selectedFromRegionChange = true
                         self.dropAnnotation(annotation: closestStation)
-                        
                         self.selectedFromRegionChange = false
                         
                         
@@ -1068,7 +1136,17 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         
     }
     
+    func playFromFavorites(annotation: PinAnnotation)
+    {
+        playNext = annotation
+        dropAnnotation(annotation: annotation)
+        //mapView.selectAnnotation(annotation, animated: true)
+        
+    }
+    
     func dropAnnotation(annotation : MKAnnotation) {
+        
+        
         let visibleAnnotations : Set = mapView.annotations(in: mapView.visibleMapRect)
         let isAnnotationVisible : Bool = visibleAnnotations.contains(annotation as! AnyHashable)
         
@@ -1077,7 +1155,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         }
         
         mapView.selectAnnotation(annotation, animated: true)
-
         
     }
     
@@ -1110,7 +1187,13 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
                     delta = 1.0
                 }
                 
-                mapView.setZoomByDelta(delta: delta, animated: true, center: closestStation.coordinate)
+                if (delta == 1.0)
+                {
+                    mapView.changeCenter(center: closestStation.coordinate)
+                }
+                else {
+                    mapView.setZoomByDelta(delta: delta, animated: true, center: closestStation.coordinate)
+                }
                 
                 btnZoomOut.isEnabled = true
                 barBtnWorld.isEnabled = true
@@ -1161,7 +1244,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
             
             //  print("Music stream playing",toOpen)
             self.playFromAnnotation(annotation: annotation)
-            
             
             
         }

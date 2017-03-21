@@ -10,10 +10,13 @@ import Foundation
 import UIKit
 import CoreData
 import AVFoundation
+import MapKit
 
 
 protocol TableViewControllerDelegate {
     func playFromAnnotation(annotation: PinAnnotation)
+    func playFromFavorites(annotation: PinAnnotation)
+    func dropAnnotation(annotation: MKAnnotation)
 }
 
 
@@ -144,15 +147,32 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
         let favoriteObject = (fetchedResultsController?.object(at: indexPath))! as Station
         
         let dummyAnnotation = PinAnnotation(id: favoriteObject.id!, name: favoriteObject.name!, streamUrl: favoriteObject.streamURL!, websiteURL: favoriteObject.websiteURL!, location: favoriteObject.location!, latitude: favoriteObject.latitude, longitude: favoriteObject.longitude)
+      
+        
+        //self.dismiss(animated: true, completion: {self.navigate(annotation: dummyAnnotation)})
+        
+        
+        _ = navigationController?.popViewController(animated: true)
         
         if (tvcDelegate != nil) {
-            tvcDelegate?.playFromAnnotation(annotation: dummyAnnotation)
+            tvcDelegate?.dropAnnotation(annotation: dummyAnnotation)
         }
+        
                 /*
         var playerItem = AVPlayerItem(url: NSURL(string: favoriteObject.streamURL!) as! URL)
         
         Music.sharedInstance.musicStream(playerItem: playerItem as! RadioAVPlayerItem)
         */
+        
+    }
+    
+    func navigate(annotation: PinAnnotation) {
+        
+        _ = navigationController?.popViewController(animated: true)
+        
+        if (tvcDelegate != nil) {
+            tvcDelegate?.playFromFavorites(annotation: annotation)
+        }
         
     }
     

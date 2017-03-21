@@ -24,19 +24,25 @@
             <PersistentString
                value = "ceil(zoomExponent)">
             </PersistentString>
+            <PersistentString
+               value = "playNext">
+            </PersistentString>
          </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "MapViewController.reWindAction(Any) -&gt; ():MapViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "prevStationHistory">
-            </PersistentString>
-            <PersistentString
                value = "nextStationHistory">
             </PersistentString>
             <PersistentString
                value = "skipRegionClustering">
+            </PersistentString>
+            <PersistentString
+               value = "prevStationHistory">
+            </PersistentString>
+            <PersistentString
+               value = "playNext">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -54,6 +60,17 @@
       </ContextState>
       <ContextState
          contextName = "specialized MapViewController.(mapView(MKMapView, regionDidChangeAnimated : Bool) -&gt; ()).(closure #1).(closure #2):MapViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "MKMapView.setZoomByDelta(delta : Double, animated : Bool, center : CLLocationCoordinate2D) -&gt; ():MapViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "_span.longitudeDelta">
+            </PersistentString>
+            <PersistentString
+               value = "_span.latitudeDelta">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "MapViewController.playMusic(music : String) -&gt; ():MapViewController.swift">
