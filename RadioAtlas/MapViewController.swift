@@ -141,7 +141,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
     var mapDragged : Bool = false
    
     var currentlyPlaying: MKAnnotation? = nil
-    var playNext: MKAnnotation? = nil
+    var playNext: PinAnnotation? = nil
     var tunerTurnedOff: Bool = false
     private let PlayerStatusObservingContext = UnsafeMutablePointer<Int>(bitPattern: 1)
     
@@ -644,40 +644,10 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
                             
                             
                             /* Get the lat and lon values to create a coordinate */
-                            let upperBound = 0.09
-                            let lowerBound = 0.01
-                            var lat_temp : CLLocationDegrees
-                            var lon_temp : CLLocationDegrees
+                            var lat = dictionary.latitude
+                            var lon = dictionary.longitude
                             
-                            
-                            
-                            let range = upperBound - lowerBound
-                            var randomValue = (Double(arc4random_uniform(UINT32_MAX)) / Double(UINT32_MAX)) * range + lowerBound
-                            let  y = Double(round(randomValue * 100000)/100000)
-                            
-                            // print(CLLocationDegrees(dictionary.latitude!))
-                            // print(CLLocationDegrees(dictionary.longitude!))
-                            
-                            if (counter % 8 == 0 || counter % 9 == 0) {
-                                lat_temp = CLLocationDegrees(dictionary.latitude!) + CLLocationDegrees(y)
-                                lon_temp = CLLocationDegrees(dictionary.longitude!) + CLLocationDegrees(y)
-                            }
-                            else if (counter % 6 == 0 || counter % 7 == 0) {
-                                lat_temp = CLLocationDegrees(dictionary.latitude!) - CLLocationDegrees(y)
-                                lon_temp = CLLocationDegrees(dictionary.longitude!) - CLLocationDegrees(y)
-                            }
-                            else if (counter % 4 == 0 || counter % 5 == 0) {
-                                lat_temp = CLLocationDegrees(dictionary.latitude!) - CLLocationDegrees(y)
-                                lon_temp = CLLocationDegrees(dictionary.longitude!) + CLLocationDegrees(y)
-                            }
-                            else {
-                                lat_temp = CLLocationDegrees(dictionary.latitude!) + CLLocationDegrees(y)
-                                lon_temp = CLLocationDegrees(dictionary.longitude!) - CLLocationDegrees(y)
-                            }
-                            
-                            
-                            let lat = lat_temp
-                            let lon = lon_temp
+                            self.getTempLatLon(lat: &lat!, lon: &lon!, randomizer: counter )
                             
                             //RE* End
                             
@@ -706,7 +676,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
                             
                             // Here we create the annotation and set its coordiate, title, and subtitle properties
                             if (isValid != "N") {
-                                let annotation = PinAnnotation(id: id!, name: name!, streamUrl:streamUrl!, websiteURL: webUrl!,location: location, latitude: lat, longitude: lon )
+                                let annotation = PinAnnotation(id: id!, name: name!, streamUrl:streamUrl!, websiteURL: webUrl!,location: location, latitude: lat!, longitude: lon! )
                                 
                                 annotation.streamUrl = streamUrl
                                 
@@ -774,7 +744,38 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         }
     }
     
-    
+    func getTempLatLon(lat: inout Double, lon: inout Double, randomizer: Int) {
+        
+        let upperBound = 0.09
+        let lowerBound = 0.01
+        
+        
+        
+        let range = upperBound - lowerBound
+        let randomValue = (Double(arc4random_uniform(UINT32_MAX)) / Double(UINT32_MAX)) * range + lowerBound
+        let  y = Double(round(randomValue * 100000)/100000)
+        
+        
+        if (randomizer % 8 == 0 || randomizer % 9 == 0) {
+            lat = CLLocationDegrees(lat) + CLLocationDegrees(y)
+            lon = CLLocationDegrees(lon) + CLLocationDegrees(y)
+        }
+        else if (randomizer % 6 == 0 || randomizer % 7 == 0) {
+            lat = CLLocationDegrees(lat) - CLLocationDegrees(y)
+            lon = CLLocationDegrees(lon) - CLLocationDegrees(y)
+        }
+        else if (randomizer % 4 == 0 || randomizer % 5 == 0) {
+            lat = CLLocationDegrees(lat) - CLLocationDegrees(y)
+            lon = CLLocationDegrees(lon) + CLLocationDegrees(y)
+        }
+        else {
+            lat = CLLocationDegrees(lat) + CLLocationDegrees(y)
+            lon = CLLocationDegrees(lon) - CLLocationDegrees(y)
+        }
+        
+
+        
+    }
     
     func playMusic(music: String) {
         
@@ -972,7 +973,9 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
             
             let button = UIButton(type: .detailDisclosure)
             button.backgroundRect(forBounds: CGRect(x: 0, y: 0, width: 60, height: 60))
-            button.setImage(UIImage(named: "favorite3"), for: .normal)
+            var favorite_image : UIImage = UIImage(named: "favorite3")!
+            
+            button.setImage(favorite_image, for: .normal)
             annotationView?.leftCalloutAccessoryView = button
             
             // Right accessory view
@@ -988,7 +991,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         }
         
         
-        if checkIfExists(name:annotation.title!!){
+        if checkIfFavorite(name:annotation.title!!){
             
             annotationView?.image = UIImage(named: "favorite")
         }
@@ -1142,6 +1145,16 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         //dropAnnotation(annotation: annotation)
         if (tunerToggle.isOn) {
             playNext = annotation
+            
+            let visibleAnnotations  = Array(mapView.annotations(in: mapView.visibleMapRect))
+            for anno in visibleAnnotations {
+                if ((anno as! PinAnnotation).id == playNext?.id) {
+                    playNext?.latitude = (anno as! PinAnnotation).latitude
+                    playNext?.longitude = (anno as! PinAnnotation).longitude
+                    break
+                }
+               
+            }
             mapView.changeCenter(center: annotation.coordinate)
         }
         else {
@@ -1157,7 +1170,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
     }
     
     func dropAnnotation(annotation : MKAnnotation) {
-        
         
         let visibleAnnotations : Set = mapView.annotations(in: mapView.visibleMapRect)
         let isAnnotationVisible : Bool = visibleAnnotations.contains(annotation as! AnyHashable)
@@ -1213,7 +1225,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
                 
                 let annotationView = closestStation as! PinAnnotation
                 
-                if (self.checkIfExists(name: annotationView.name))
+                if (self.checkIfFavorite(name: annotationView.name))
                 {
                     view.leftCalloutAccessoryView = nil
                 }
@@ -1241,16 +1253,19 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         }
         
         
-        view.image = UIImage(named: "pinView")
+        let annotation = view.annotation as! PinAnnotation
+       
+        if (!checkIfFavorite(name: annotation.name)) {
+            view.image = UIImage(named: "pinView")
+        }
+       
+        
         appDelegate.setNetworkActivityIndicatorVisible(visible: false)
         
         sharedContext.perform {
             
             
-            let annotation = view.annotation as! PinAnnotation
-            
-            
-            if (self.checkIfExists(name: annotation.name))
+            if (self.checkIfFavorite(name: annotation.name))
             {
                 view.leftCalloutAccessoryView = nil
             }
@@ -1328,7 +1343,46 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
     }
     
     
-    func checkIfExists(name:String) -> Bool {
+    func updateLatLongIfFavorite(annotation:PinAnnotation) -> PinAnnotation {
+        
+        let name = annotation.name
+        
+        // Initialize Fetch Request
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>()
+        
+        // Create Entity Description
+        let entityDescription = NSEntityDescription.entity(forEntityName: "Station", in: self.sharedContext)
+        
+        // Configure Fetch Request
+        fetchRequest.entity = entityDescription
+        
+        do {
+            let result = try self.sharedContext.fetch(fetchRequest)
+            //print(result)
+            
+            for found in result {
+                //  print((found as! Station).name)
+                if ((found as! Station).name == name) {
+                    //   print(name)
+                    
+                    annotation.latitude = (found as! Station).latitude
+                    annotation.longitude = (found as! Station).longitude
+                    return annotation
+                }
+                
+            }
+            
+        } catch {
+            let fetchError = error as NSError
+            //  print(fetchError)
+        }
+        
+        return annotation
+    }
+
+    
+    
+    func checkIfFavorite(name:String) -> Bool {
         
         // Initialize Fetch Request
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>()
@@ -1418,7 +1472,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
                 do {
                     
                     
-                    if (self.checkIfExists(name: annotationView.name))
+                    if (self.checkIfFavorite(name: annotationView.name))
                     {
                         let alertTitle = "Favorite Exists"
                         let alertMessage = "This station is already in your favorites"

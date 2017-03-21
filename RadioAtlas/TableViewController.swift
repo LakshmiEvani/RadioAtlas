@@ -14,9 +14,9 @@ import MapKit
 
 
 protocol TableViewControllerDelegate {
-    func playFromAnnotation(annotation: PinAnnotation)
+   
     func playFromFavorites(annotation: PinAnnotation)
-    func dropAnnotation(annotation: MKAnnotation)
+    
 }
 
 
