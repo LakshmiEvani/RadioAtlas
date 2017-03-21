@@ -1138,9 +1138,21 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
     
     func playFromFavorites(annotation: PinAnnotation)
     {
-        playNext = annotation
-        dropAnnotation(annotation: annotation)
-        //mapView.selectAnnotation(annotation, animated: true)
+        turnONTuner()
+        //dropAnnotation(annotation: annotation)
+        if (tunerToggle.isOn) {
+            playNext = annotation
+            mapView.changeCenter(center: annotation.coordinate)
+        }
+        else {
+            mapView.changeCenter(center: annotation.coordinate)
+            dropAnnotation(annotation: annotation)
+          //    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                
+            self.mapView.selectAnnotation(annotation, animated: false)
+               // self.mapView.selectAnnotation(self.mapView.annotations.last!, animated: true)
+            //}
+        }
         
     }
     
@@ -1228,6 +1240,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
             return
         }
         
+        
         view.image = UIImage(named: "pinView")
         appDelegate.setNetworkActivityIndicatorVisible(visible: false)
         
@@ -1247,6 +1260,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
             
             
         }
+        
+        
         
         regionWillChangeAnimatedCalled = false
         regionChangedBecauseAnnotationSelected = false

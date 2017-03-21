@@ -151,12 +151,10 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         //self.dismiss(animated: true, completion: {self.navigate(annotation: dummyAnnotation)})
         
+        navigate(annotation: dummyAnnotation)
+        //_ = navigationController?.popViewController(animated: true)
         
-        _ = navigationController?.popViewController(animated: true)
         
-        if (tvcDelegate != nil) {
-            tvcDelegate?.dropAnnotation(annotation: dummyAnnotation)
-        }
         
                 /*
         var playerItem = AVPlayerItem(url: NSURL(string: favoriteObject.streamURL!) as! URL)
