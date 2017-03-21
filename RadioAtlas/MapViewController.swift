@@ -177,6 +177,10 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         reWind.setFAIcon(icon: .FAStepBackward, iconSize: TOOLBAR_BUTTON_SIZE)
         reWind.tintColor = DARK_FOREGROUND_COLOR
         reWind.isEnabled = false
+        
+        //reWind.setTitleTextAttributes([NSForegroundColorAttributeName:DISABLED_COLOR], for: UIControlState.disabled)
+        
+        
         // reWind.imageInsets = UIEdgeInsets.init(top: 0, left: -15, bottom: -20, right: 0)
         
         playAndPauseBar.setFAIcon(icon: .FAPlay, iconSize: PLAY_BUTTON_SIZE)
@@ -773,10 +777,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
             //prevStationHistory.popLast()!
             let annotation : PinAnnotation = prevStationHistory.last!
             
-            if(!tunerToggle.isOn) {
-                mapView.selectAnnotation(annotation, animated: true)
-                
-            }
+
             
             let center = CLLocationCoordinate2D(latitude: annotation.coordinate.latitude, longitude: annotation.coordinate.longitude)
             
@@ -787,11 +788,19 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
             // mapView.setRegion(region,animated: true)
             
             
+            if(!tunerToggle.isOn) {
+                
+                dropAnnotation(annotation: annotation)
+                
+            }
+            
             prevStationHistory.removeLast()
             
             if (prevStationHistory.count < 1)
             {
-                reWind.isEnabled = false
+                
+                //reWind.isEnabled = false
+                
             }
             
             
@@ -804,24 +813,29 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         
         if (nextStationHistory.count > 0) {
             
-            //reWind.isEnabled = true
+            reWind.isEnabled = true
             var annotation : PinAnnotation = nextStationHistory.popLast()!
             //prevStationHistory.append(annotation)
             //playFromAnnotation(annotation: annotation)
-            if(!tunerToggle.isOn) {
-                mapView.selectAnnotation(annotation, animated: true)
-                
-            }
+
             let center = CLLocationCoordinate2D(latitude: annotation.coordinate.latitude, longitude: annotation.coordinate.longitude)
             
             //navigate map back to the previous annotation
             mapView.setZoomByDelta(delta: 1, animated: true, center: annotation.coordinate)
             // nextStationHistory.removeLast()
             
+            if(!tunerToggle.isOn) {
+                
+                dropAnnotation(annotation: annotation)
+                
+            }
+            
+            
             if (nextStationHistory.count == 0)
             {
                 fastForward.isEnabled = false
             }
+            
             
             
         }
@@ -1036,16 +1050,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
                     DispatchQueue.main.async {
                         // self.playFromAnnotation(annotation: closestStation as! PinAnnotation)
                         self.selectedFromRegionChange = true
+                        self.dropAnnotation(annotation: closestStation)
                         
-                        
-                        let visibleAnnotations : Set = mapView.annotations(in: mapView.visibleMapRect)
-                        let isAnnotationVisible : Bool = visibleAnnotations.contains(closestStation as! AnyHashable)
-                        
-                        if (!isAnnotationVisible) {
-                            mapView.addAnnotation(closestStation)
-                        }
-                        
-                        mapView.selectAnnotation(closestStation, animated: true)
                         self.selectedFromRegionChange = false
                         
                         
@@ -1062,6 +1068,18 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         
     }
     
+    func dropAnnotation(annotation : MKAnnotation) {
+        let visibleAnnotations : Set = mapView.annotations(in: mapView.visibleMapRect)
+        let isAnnotationVisible : Bool = visibleAnnotations.contains(annotation as! AnyHashable)
+        
+        if (!isAnnotationVisible) {
+            mapView.addAnnotation(annotation)
+        }
+        
+        mapView.selectAnnotation(annotation, animated: true)
+
+        
+    }
     
     
     
@@ -1203,8 +1221,11 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         playMusic(music: annotation.streamUrl)
         currentlyPlaying = annotation
         prevStationHistory.append(annotation)
-        
-        
+        reWind.isEnabled = true
+        if (prevStationHistory.count > 1 )
+        {
+            reWind.isEnabled = true
+        }
         
         
     }
