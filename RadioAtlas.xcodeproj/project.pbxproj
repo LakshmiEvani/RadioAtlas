@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4B6901DD1E820E22005230BB /* RadioTuner.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4B6901DC1E820E22005230BB /* RadioTuner.mp3 */; };
+		4B6901DF1E822456005230BB /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B6901DE1E822456005230BB /* SettingsController.swift */; };
 		4B6D27CC1E614674002A56BF /* RadioAVPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B6D27CB1E614674002A56BF /* RadioAVPlayer.swift */; };
 		4B6D27CE1E6147A2002A56BF /* RadioAVPlayerItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B6D27CD1E6147A2002A56BF /* RadioAVPlayerItem.swift */; };
 		4B7275221E5A8CF0004D9A33 /* FBAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7275171E5A8CF0004D9A33 /* FBAnnotation.swift */; };
@@ -77,6 +78,7 @@
 		18956C87962CF36D650C1CE1 /* Pods-RadioAtlasTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RadioAtlasTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RadioAtlasTests/Pods-RadioAtlasTests.release.xcconfig"; sourceTree = "<group>"; };
 		2731D04F69021E7CCFC4062E /* Pods_RadioAtlasUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RadioAtlasUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B6901DC1E820E22005230BB /* RadioTuner.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = RadioTuner.mp3; sourceTree = "<group>"; };
+		4B6901DE1E822456005230BB /* SettingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
 		4B6D27CB1E614674002A56BF /* RadioAVPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadioAVPlayer.swift; sourceTree = "<group>"; };
 		4B6D27CD1E6147A2002A56BF /* RadioAVPlayerItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadioAVPlayerItem.swift; sourceTree = "<group>"; };
 		4B7275171E5A8CF0004D9A33 /* FBAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBAnnotation.swift; sourceTree = "<group>"; };
@@ -251,6 +253,7 @@
 				91D754901E6CDF4B00872A27 /* PageViewController.swift */,
 				9172E7511E74536800049E71 /* PageCViewController.swift */,
 				9175D7201E7DB53D0091DC20 /* ColoredViewController.swift */,
+				4B6901DE1E822456005230BB /* SettingsController.swift */,
 			);
 			name = "View Controller";
 			sourceTree = "<group>";
@@ -616,6 +619,7 @@
 				873B60161E2FBBAF0057D735 /* TableViewController.swift in Sources */,
 				4B7275261E5A8CF0004D9A33 /* FBAnnotationClusterViewConfiguration.swift in Sources */,
 				4B7275251E5A8CF0004D9A33 /* FBAnnotationClusterView.swift in Sources */,
+				4B6901DF1E822456005230BB /* SettingsController.swift in Sources */,
 				91DC8D521E64F23700C891DA /* CustomToolbar.swift in Sources */,
 				9172E7521E74536800049E71 /* PageCViewController.swift in Sources */,
 				873B5FE21E2FB6970057D735 /* MapViewController.swift in Sources */,

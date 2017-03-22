@@ -87,7 +87,7 @@ extension UIImage {
 }
 
 
-class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDelegate, CLLocationManagerDelegate, NSFetchedResultsControllerDelegate, UIPopoverPresentationControllerDelegate,RadioAVPlayerItemDelegate,RadioAVPlayerDelegate ,UIGestureRecognizerDelegate, TableViewControllerDelegate {
+class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDelegate, CLLocationManagerDelegate, NSFetchedResultsControllerDelegate, UIPopoverPresentationControllerDelegate,RadioAVPlayerItemDelegate,RadioAVPlayerDelegate ,UIGestureRecognizerDelegate, TableViewControllerDelegate, SettingsControllerDelegate {
     
     //Outlets
     @IBOutlet weak var favorite: UIBarButtonItem!
@@ -162,9 +162,10 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
     let MAX_ZOOM_IN = 5.0
     let PLAY_ALL_MODE : Bool = false
     let TIMER_INTERVAL  = 0.5
+    
     //var tunerMode : Bool = false
     
-    
+    var muteTuner: Bool = false
     //var userLoc : CLLocation = 0.0
     var playerItem : AVPlayerItem? = nil
     //var nowPlayingData : String = ""
@@ -284,6 +285,11 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         
         //btnNext.isHidden = true
         // payAndPauseBar.isOpaque = true
+    }
+    
+    func muteTunerSound(muted: Bool)
+    {
+        muteTuner = muted
     }
     
     func toggleFavorites() {
@@ -575,6 +581,9 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
     
     func playTunerAudio()
     {
+        if (muteTuner) {
+            return
+        }
         // set URL of the sound
         let soundURL = NSURL(fileURLWithPath: Bundle.main.path(forResource: "RadioTuner", ofType: "mp3")!)
         do
@@ -584,7 +593,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
             
             if (audioPlayer!.prepareToPlay())
             {
-                audioPlayer.setVolume(1.0, fadeDuration: 0)
+                audioPlayer.setVolume(0.5, fadeDuration: 0)
                 audioPlayer!.play()
             }
         }
@@ -770,21 +779,53 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         let  y = Double(round(randomValue * 100000)/100000)
         
         
-        if (randomizer % 8 == 0 || randomizer % 9 == 0) {
+        if (randomizer % 12 == 0) {
             lat = CLLocationDegrees(lat) + CLLocationDegrees(y)
             lon = CLLocationDegrees(lon) + CLLocationDegrees(y)
         }
-        else if (randomizer % 6 == 0 || randomizer % 7 == 0) {
-            lat = CLLocationDegrees(lat) - CLLocationDegrees(y)
+        else if (randomizer % 11 == 0) {
+            lat = CLLocationDegrees(lat) + CLLocationDegrees(y)
             lon = CLLocationDegrees(lon) - CLLocationDegrees(y)
         }
-        else if (randomizer % 4 == 0 || randomizer % 5 == 0) {
+        else if (randomizer % 10 == 0) {
             lat = CLLocationDegrees(lat) - CLLocationDegrees(y)
             lon = CLLocationDegrees(lon) + CLLocationDegrees(y)
         }
-        else {
-            lat = CLLocationDegrees(lat) + CLLocationDegrees(y)
+        else if (randomizer % 9 == 0) {
+            lat = CLLocationDegrees(lat) - CLLocationDegrees(y)
             lon = CLLocationDegrees(lon) - CLLocationDegrees(y)
+        }
+        else if (randomizer % 8 == 0) {
+            lat = CLLocationDegrees(lat) + CLLocationDegrees(y/2)
+            lon = CLLocationDegrees(lon) + CLLocationDegrees(y)
+        }
+        else if (randomizer % 7 == 0) {
+            lat = CLLocationDegrees(lat) + CLLocationDegrees(y)
+            lon = CLLocationDegrees(lon) + CLLocationDegrees(y/2)
+        }
+        else if (randomizer % 6 == 0) {
+            lat = CLLocationDegrees(lat) + CLLocationDegrees(y/2)
+            lon = CLLocationDegrees(lon) - CLLocationDegrees(y)
+        }
+        else if (randomizer % 5 == 0) {
+            lat = CLLocationDegrees(lat) + CLLocationDegrees(y)
+            lon = CLLocationDegrees(lon) - CLLocationDegrees(y/2)
+        }
+        else if (randomizer % 4 == 0) {
+            lat = CLLocationDegrees(lat) - CLLocationDegrees(y/2)
+            lon = CLLocationDegrees(lon) + CLLocationDegrees(y)
+        }
+        else if (randomizer % 3 == 0) {
+            lat = CLLocationDegrees(lat) - CLLocationDegrees(y)
+            lon = CLLocationDegrees(lon) + CLLocationDegrees(y/2)
+        }
+        else if (randomizer % 2 == 0) {
+            lat = CLLocationDegrees(lat) - CLLocationDegrees(y/2)
+            lon = CLLocationDegrees(lon) - CLLocationDegrees(y)
+        }
+        else  {
+            lat = CLLocationDegrees(lat) - CLLocationDegrees(y)
+            lon = CLLocationDegrees(lon) - CLLocationDegrees(y/2)
         }
         
 
@@ -1173,10 +1214,12 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
                
             }
             }
-            mapView.changeCenter(center: annotation.coordinate)
+            //*mapView.changeCenter(center: annotation.coordinate)
+            mapView.setZoomByDelta(delta: 1.0, animated: true, center: (playNext?.coordinate)!)
         }
         else {
-            mapView.changeCenter(center: annotation.coordinate)
+            mapView.setZoomByDelta(delta: 1.0, animated: true, center: annotation.coordinate)
+            //*mapView.changeCenter(center: annotation.coordinate)
             dropAnnotation(annotation: annotation)
           //    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                 
@@ -1685,7 +1728,13 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
             let dest = segue.destination as! TableViewController
             dest.tvcDelegate = self
             dest.station = favoriteStation
+            break
             //  print("There is data in favories", dest.station)
+        case "settings":
+            
+            let dest = segue.destination as! SettingsController
+            dest.delegate = self
+            
             
         default:
             print("Unknown segue")

@@ -148,6 +148,7 @@ What sounds familiar...or foreign? What sounds like home?</string>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="KIJ-8L-Ia5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.90196078431372551" green="0.92549019607843142" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translucent="NO" id="kHg-ZA-Kcb" customClass="CustomToolbar" customModule="RadioAtlas" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="524" width="320" height="44"/>
@@ -445,33 +446,102 @@ What sounds familiar...or foreign? What sounds like home?</string>
             </objects>
             <point key="canvasLocation" x="199.19999999999999" y="406.14692653673166"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Settings & Information-->
         <scene sceneID="EhF-ge-uyL">
             <objects>
-                <tableViewController id="nod-nw-5Ef" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="tMk-Gt-t5k">
+                <tableViewController title="Settings &amp; Information" id="nod-nw-5Ef" customClass="SettingsController" customModule="RadioAtlas" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="tMk-Gt-t5k">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="PWq-y9-jel">
-                                <rect key="frame" x="0.0" y="28" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PWq-y9-jel" id="BiE-lT-rfZ">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
+                        <color key="separatorColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <inset key="separatorInset" minX="30" minY="0.0" maxX="30" maxY="0.0"/>
+                        <color key="sectionIndexColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="sectionIndexBackgroundColor" red="0.90196078431372551" green="0.92549019607843142" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
+                        <sections>
+                            <tableViewSection headerTitle="  " id="FyM-8q-zNL">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" shouldIndentWhileEditing="NO" reuseIdentifier="MuteTuner" id="BNj-ao-bZo" userLabel="Mute Tuner">
+                                        <rect key="frame" x="0.0" y="28" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BNj-ao-bZo" id="dYY-pz-Lr2">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" red="0.89019607840000003" green="0.92549019610000005" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.90196078431372551" green="0.92549019607843142" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
+                                        <inset key="separatorInset" minX="30" minY="0.0" maxX="30" maxY="0.0"/>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" shouldIndentWhileEditing="NO" reuseIdentifier="AddStation" id="ZRW-HJ-GT3" userLabel="Add Station">
+                                        <rect key="frame" x="0.0" y="72" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZRW-HJ-GT3" id="YGb-K2-rYY">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" red="0.89019607840000003" green="0.92549019610000005" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.90196078430000004" green="0.92549019610000005" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        <inset key="separatorInset" minX="30" minY="0.0" maxX="30" maxY="0.0"/>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" shouldIndentWhileEditing="NO" reuseIdentifier="AddStation" id="Da1-fP-wwO" userLabel="Report">
+                                        <rect key="frame" x="0.0" y="116" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Da1-fP-wwO" id="4KV-Tx-pYM">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" red="0.89019607840000003" green="0.92549019610000005" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.90196078430000004" green="0.92549019610000005" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        <inset key="separatorInset" minX="30" minY="0.0" maxX="30" maxY="0.0"/>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="  " id="BQ9-90-aV6">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="AboutRA" id="PWq-y9-jel" userLabel="About RA">
+                                        <rect key="frame" x="0.0" y="188" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PWq-y9-jel" id="BiE-lT-rfZ">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" red="0.89019607840000003" green="0.92549019610000005" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.90196078431372551" green="0.92549019607843142" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="tintColor" red="0.039215686270000001" green="0.20392156859999999" blue="0.3921568627" alpha="1" colorSpace="calibratedRGB"/>
+                                        <inset key="separatorInset" minX="30" minY="0.0" maxX="30" maxY="0.0"/>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" shouldIndentWhileEditing="NO" reuseIdentifier="AddStation" id="GVJ-qK-bKr" userLabel="GitHub">
+                                        <rect key="frame" x="0.0" y="232" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GVJ-qK-bKr" id="XQ6-g1-Fvf">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" red="0.89019607840000003" green="0.92549019610000005" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.90196078430000004" green="0.92549019610000005" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        <inset key="separatorInset" minX="30" minY="0.0" maxX="30" maxY="0.0"/>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
                         <connections>
                             <outlet property="dataSource" destination="nod-nw-5Ef" id="0Xk-Mi-HvU"/>
                             <outlet property="delegate" destination="nod-nw-5Ef" id="rF9-8k-0wm"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="lblAboutRA" destination="PWq-y9-jel" id="7CU-RW-cwP"/>
+                        <outlet property="lblAddRadioStation" destination="ZRW-HJ-GT3" id="lAh-aw-MBD"/>
+                        <outlet property="lblGitHub" destination="GVJ-qK-bKr" id="W2Y-on-EgJ"/>
+                        <outlet property="lblMuteTuner" destination="BNj-ao-bZo" id="wee-Vq-X8h"/>
+                        <outlet property="lblReport" destination="Da1-fP-wwO" id="Ydc-qC-2QI"/>
+                        <outlet property="tvSettings" destination="tMk-Gt-t5k" id="dYc-1Z-zp2"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7lr-ki-pPf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="195" y="1016"/>
+            <point key="canvasLocation" x="195" y="1015.1408450704225"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="2OI-QU-6hy">
@@ -565,8 +635,9 @@ What sounds familiar...or foreign? What sounds like home?</string>
     <resources>
         <image name="Image-1" width="2456" height="3357"/>
         <image name="boombox" width="1242" height="2209"/>
-        <image name="center" width="123" height="123"/>
+        <image name="center" width="124" height="124"/>
         <image name="playing-station" width="1725" height="3067"/>
         <image name="whitelogo" width="919" height="243"/>
     </resources>
+    <color key="tintColor" red="0.039215686270000001" green="0.20392156859999999" blue="0.3921568627" alpha="1" colorSpace="calibratedRGB"/>
 </document>
