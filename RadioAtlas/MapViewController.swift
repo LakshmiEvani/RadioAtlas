@@ -576,7 +576,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
     func playTunerAudio()
     {
         // set URL of the sound
-        let soundURL = NSURL(fileURLWithPath: Bundle.main.path(forResource: "RadioTuner", ofType: "m4a")!)
+        let soundURL = NSURL(fileURLWithPath: Bundle.main.path(forResource: "RadioTuner", ofType: "mp3")!)
         do
         {
             audioPlayer = try AVAudioPlayer(contentsOf: soundURL as URL)
@@ -584,6 +584,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
             
             if (audioPlayer!.prepareToPlay())
             {
+                audioPlayer.setVolume(5, fadeDuration: 0)
                 audioPlayer!.play()
             }
         }

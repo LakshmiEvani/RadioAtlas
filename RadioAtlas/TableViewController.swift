@@ -51,7 +51,7 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         
         
-        print("Items in Station:", station)
+        //print("Items in Station:", station)
         let fetchRequest: NSFetchRequest<Station> =  Station.fetchRequest()
         
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "streamURL", ascending: true)]
@@ -99,13 +99,13 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         
         // Populate cell from the NSManagedObject instance
-        print("Object for configuration: \(selectedObject)")
+        //print("Object for configuration: \(selectedObject)")
     }
     
     
     func numberOfSections(in tableView: UITableView) -> Int {
         if let fc = fetchedResultsController {
-            print("numberofsections \(fc.sections?.count)")
+          //  print("numberofsections \(fc.sections?.count)")
             return (fc.sections?.count)!
         } else {
             return 0
@@ -115,7 +115,7 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         if let fc = fetchedResultsController {
-            print("numberofsectionsinrow \(fc.sections![section].numberOfObjects)")
+            //print("numberofsectionsinrow \(fc.sections![section].numberOfObjects)")
             
             return fc.sections![section].numberOfObjects
         } else {

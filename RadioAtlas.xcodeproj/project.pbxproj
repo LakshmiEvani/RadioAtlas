@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4B6901DD1E820E22005230BB /* RadioTuner.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4B6901DC1E820E22005230BB /* RadioTuner.mp3 */; };
 		4B6D27CC1E614674002A56BF /* RadioAVPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B6D27CB1E614674002A56BF /* RadioAVPlayer.swift */; };
 		4B6D27CE1E6147A2002A56BF /* RadioAVPlayerItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B6D27CD1E6147A2002A56BF /* RadioAVPlayerItem.swift */; };
 		4B7275221E5A8CF0004D9A33 /* FBAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7275171E5A8CF0004D9A33 /* FBAnnotation.swift */; };
@@ -21,7 +22,6 @@
 		4B72752C1E5A8CF0004D9A33 /* FBZoomLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7275211E5A8CF0004D9A33 /* FBZoomLevel.swift */; };
 		4B72752E1E5A8DD1004D9A33 /* FBBoundingBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B72752D1E5A8DD1004D9A33 /* FBBoundingBox.swift */; };
 		4BC167441E8053D900317B3C /* RadioTuner.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 4BC167431E8053D900317B3C /* RadioTuner.m4a */; };
-		4BC167461E805D1600317B3C /* RadioTuner.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4BC167451E805D1600317B3C /* RadioTuner.mp3 */; };
 		585E7ECFF98FAEB26632A021 /* Pods_RadioAtlas.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A544FBC0C1CF8C48FF927B31 /* Pods_RadioAtlas.framework */; };
 		7D67D284014609AA2167E64A /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		81F51C7EF9DFDA44E0713AC7 /* Pods_RadioAtlasTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67B8E6D29DCA2EE58DA0BACC /* Pods_RadioAtlasTests.framework */; };
@@ -76,6 +76,7 @@
 /* Begin PBXFileReference section */
 		18956C87962CF36D650C1CE1 /* Pods-RadioAtlasTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RadioAtlasTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RadioAtlasTests/Pods-RadioAtlasTests.release.xcconfig"; sourceTree = "<group>"; };
 		2731D04F69021E7CCFC4062E /* Pods_RadioAtlasUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RadioAtlasUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4B6901DC1E820E22005230BB /* RadioTuner.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = RadioTuner.mp3; sourceTree = "<group>"; };
 		4B6D27CB1E614674002A56BF /* RadioAVPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadioAVPlayer.swift; sourceTree = "<group>"; };
 		4B6D27CD1E6147A2002A56BF /* RadioAVPlayerItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadioAVPlayerItem.swift; sourceTree = "<group>"; };
 		4B7275171E5A8CF0004D9A33 /* FBAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBAnnotation.swift; sourceTree = "<group>"; };
@@ -90,7 +91,6 @@
 		4B7275211E5A8CF0004D9A33 /* FBZoomLevel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBZoomLevel.swift; sourceTree = "<group>"; };
 		4B72752D1E5A8DD1004D9A33 /* FBBoundingBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBBoundingBox.swift; sourceTree = "<group>"; };
 		4BC167431E8053D900317B3C /* RadioTuner.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = RadioTuner.m4a; sourceTree = "<group>"; };
-		4BC167451E805D1600317B3C /* RadioTuner.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = RadioTuner.mp3; sourceTree = "<group>"; };
 		4FD6ABCF3E54E52169449B89 /* Pods-RadioAtlasUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RadioAtlasUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RadioAtlasUITests/Pods-RadioAtlasUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		5B90876A0EC360AAC0265B8E /* Pods-RadioAtlasUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RadioAtlasUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RadioAtlasUITests/Pods-RadioAtlasUITests.release.xcconfig"; sourceTree = "<group>"; };
 		67B8E6D29DCA2EE58DA0BACC /* Pods_RadioAtlasTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RadioAtlasTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -259,7 +259,7 @@
 			isa = PBXGroup;
 			children = (
 				4BC167431E8053D900317B3C /* RadioTuner.m4a */,
-				4BC167451E805D1600317B3C /* RadioTuner.mp3 */,
+				4B6901DC1E820E22005230BB /* RadioTuner.mp3 */,
 				873B5FE91E2FB6970057D735 /* Assets.xcassets */,
 				91DB82AD1E6D198B0073046E /* Main.storyboard */,
 				873B5FEB1E2FB6970057D735 /* LaunchScreen.storyboard */,
@@ -439,7 +439,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4BC167461E805D1600317B3C /* RadioTuner.mp3 in Resources */,
+				4B6901DD1E820E22005230BB /* RadioTuner.mp3 in Resources */,
 				91DB82AF1E6D198B0073046E /* Main.storyboard in Resources */,
 				873B5FED1E2FB6970057D735 /* LaunchScreen.storyboard in Resources */,
 				873B5FEA1E2FB6970057D735 /* Assets.xcassets in Resources */,
