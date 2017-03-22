@@ -16,6 +16,7 @@ import MapKit
 protocol TableViewControllerDelegate {
    
     func playFromFavorites(annotation: PinAnnotation)
+    func toggleFavorites()
     
 }
 
@@ -198,6 +199,7 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
                     let context: NSManagedObjectContext = self.fetchedResultsController.managedObjectContext
                     context.delete(self.fetchedResultsController.object(at: indexPath))
                     CoreDataStackManager.sharedInstance().saveContext()
+                    self.tvcDelegate?.toggleFavorites()
                 }
                 
                 

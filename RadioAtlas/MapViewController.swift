@@ -253,8 +253,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         btnSettings.setFAIcon(icon: .FAInfoCircle, iconSize: TOOLBAR_BUTTON_SIZE)
         btnSettings.tintColor = DARK_FOREGROUND_COLOR
         btnSettings.isEnabled = true
-        
-        /*
+        toggleFavorites()
+                /*
          let button = UIButton(type: .custom)
          button.titleLabel?.numberOfLines = 2
          button.titleLabel?.lineBreakMode = .byWordWrapping
@@ -286,6 +286,18 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         // payAndPauseBar.isOpaque = true
     }
     
+    func toggleFavorites() {
+        
+        if (getFavorites().count > 0) {
+            favorite.isEnabled = true
+        }
+        else
+        {
+            favorite.isEnabled = false
+        }
+        
+
+    }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated);
@@ -1349,9 +1361,9 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
     
 
 
-    
-    
-    func checkIfFavorite(name:String) -> Bool {
+    func getFavorites() -> [Any] {
+        
+        var result = [Any]()
         
         // Initialize Fetch Request
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>()
@@ -1363,9 +1375,25 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         fetchRequest.entity = entityDescription
         
         do {
-            let result = try self.sharedContext.fetch(fetchRequest)
+             result = try self.sharedContext.fetch(fetchRequest)
             //print(result)
             
+            return result
+        } catch {
+            let fetchError = error as NSError
+            //  print(fetchError)
+        }
+        
+        return result
+        
+    }
+    
+    func checkIfFavorite(name:String) -> Bool {
+      
+        let result = getFavorites()
+        
+        if (result.count > 0) {
+        
             for found in result {
                 //  print((found as! Station).name)
                 if ((found as! Station).name == name) {
@@ -1375,10 +1403,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
                 }
                 
             }
-            
-        } catch {
-            let fetchError = error as NSError
-            //  print(fetchError)
         }
         
         return false
@@ -1458,6 +1482,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
                         
                         //lighten the favorites icon
                         view.leftCalloutAccessoryView = nil
+                        toggleFavorites()
                         
                         
                     }
