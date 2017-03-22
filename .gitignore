@@ -1,6 +1,3 @@
-
-# Created by https://www.gitignore.io/api/xcode,macos
-
 ### macOS ###
 *.DS_Store
 .AppleDouble
@@ -31,11 +28,9 @@ Temporary Items
 
 ### Xcode ###
 build
-*.xcodeproj/*
 !*.xcodeproj/project.pbxproj
 !*.xcworkspace/contents.xcworkspacedata
 /*.gcno
 DerivedData/
 info
 
-# End of https://www.gitignore.io/api/xcode,macos
