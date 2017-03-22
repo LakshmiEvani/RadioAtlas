@@ -466,7 +466,29 @@ What sounds familiar...or foreign? What sounds like home?</string>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BNj-ao-bZo" id="dYY-pz-Lr2">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mute Tuner Sound" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DJx-uf-84U">
+                                                    <rect key="frame" x="8" y="11" width="141" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="9n3-nW-myA">
+                                                    <rect key="frame" x="251" y="6" width="51" height="31"/>
+                                                    <color key="tintColor" red="0.1019607843" green="0.21176470589999999" blue="0.52549019610000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="onTintColor" red="0.1019607843" green="0.21176470589999999" blue="0.52549019610000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <connections>
+                                                        <action selector="muteSwitchChanged:" destination="nod-nw-5Ef" eventType="valueChanged" id="mAt-Lh-fVf"/>
+                                                    </connections>
+                                                </switch>
+                                            </subviews>
                                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="trailingMargin" secondItem="9n3-nW-myA" secondAttribute="trailing" constant="12" id="9MJ-wv-zbh"/>
+                                                <constraint firstItem="9n3-nW-myA" firstAttribute="centerY" secondItem="DJx-uf-84U" secondAttribute="centerY" id="F1y-Cw-pJ5"/>
+                                                <constraint firstItem="DJx-uf-84U" firstAttribute="leading" secondItem="dYY-pz-Lr2" secondAttribute="leadingMargin" id="dkV-jD-kUV"/>
+                                                <constraint firstItem="DJx-uf-84U" firstAttribute="centerY" secondItem="dYY-pz-Lr2" secondAttribute="centerY" id="k6t-dp-UAx"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
@@ -529,7 +551,9 @@ What sounds familiar...or foreign? What sounds like home?</string>
                         <outlet property="lblAddRadioStation" destination="ZRW-HJ-GT3" id="lAh-aw-MBD"/>
                         <outlet property="lblGitHub" destination="GVJ-qK-bKr" id="W2Y-on-EgJ"/>
                         <outlet property="lblMuteTuner" destination="BNj-ao-bZo" id="wee-Vq-X8h"/>
+                        <outlet property="lblMuteTunerText" destination="DJx-uf-84U" id="MNE-d9-RSr"/>
                         <outlet property="lblReport" destination="Da1-fP-wwO" id="Ydc-qC-2QI"/>
+                        <outlet property="muteSwitch" destination="9n3-nW-myA" id="YHz-b4-3dD"/>
                         <outlet property="tvSettings" destination="tMk-Gt-t5k" id="dYc-1Z-zp2"/>
                     </connections>
                 </tableViewController>

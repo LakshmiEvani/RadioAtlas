@@ -23,13 +23,16 @@ class SettingsController : UITableViewController {
     @IBOutlet weak var lblAddRadioStation: UITableViewCell!
     @IBOutlet weak var lblGitHub: UITableViewCell!
     
+    @IBOutlet weak var muteSwitch: UISwitch!
     @IBOutlet var tvSettings: UITableView!
     @IBOutlet weak var lblReport: UITableViewCell!
     @IBOutlet weak var lblMuteTuner: UITableViewCell!
+    @IBOutlet weak var lblMuteTunerText: UILabel!
     let DARK_FOREGROUND_COLOR = UIColor(red:0.04, green:0.29, blue:0.60, alpha:1.0)
     let FONT_SIZE : CGFloat = 25.0
     let ICON_SIZE : CGFloat = 25.0
     var delegate : SettingsControllerDelegate?
+    var initialMuteSwitch : Bool = false
     
     override func viewDidLoad() {
         
@@ -64,32 +67,34 @@ class SettingsController : UITableViewController {
     func cellValues(cell: UITableViewCell) {
         cell.textLabel?.textColor = DARK_FOREGROUND_COLOR
     }
+    @IBAction func muteSwitchChanged(_ sender: Any) {
+        
+        setMuteSwitchStatus(isOn: muteSwitch.isOn)
+    }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let indexPath = tableView.indexPathForSelectedRow
+    func setMuteSwitchStatus(isOn : Bool) {
         
-        let currentCell = tableView.cellForRow(at: indexPath!)! as UITableViewCell
-        
-        if(currentCell.textLabel!.text?.contains("Unmute"))! {
+        if (isOn) {
             
-            lblMuteTuner.textLabel?.setFAText(prefixText: "", icon: FAType.FAVolumeUp, postfixText: "   Mute Tuner Sound", size: FONT_SIZE,iconSize: ICON_SIZE)
-            delegate?.muteTunerSound(muted: false)
+            lblMuteTunerText?.setFAText(prefixText: "   ", icon: FAType.FAVolumeOff, postfixText: "   Unmute Tuner Sound", size: FONT_SIZE,iconSize: ICON_SIZE)
+            delegate?.muteTunerSound(muted: true)
             
         }
         else
         {
-            lblMuteTuner.textLabel?.setFAText(prefixText: "", icon: FAType.FAVolumeOff, postfixText: "   Unmute Tuner Sound", size: FONT_SIZE,iconSize: ICON_SIZE)
-            delegate?.muteTunerSound(muted: true)
-            
+            lblMuteTunerText?.setFAText(prefixText: "   ", icon: FAType.FAVolumeUp, postfixText: "   Mute Tuner Sound", size: FONT_SIZE,iconSize: ICON_SIZE)
+            delegate?.muteTunerSound(muted: false)
         }
-        //print(currentCell.textLabel!.text)
+        
     }
+    
+
 
     
     func initUI() {
         
-        let frame = CGRect(x: 20, y: 20, width: 140, height: 65)
-        lblAboutRA.frame(forAlignmentRect: frame)
+       // let frame = CGRect(x: 20, y: 20, width: 140, height: 65)
+       // lblAboutRA.frame(forAlignmentRect: frame)
         lblAboutRA.textLabel?.setFAText(prefixText: "", icon: .FAExternalLink, postfixText: "  More About Radio Atlas", size: FONT_SIZE,iconSize: ICON_SIZE)
         lblAboutRA.textLabel?.textColor = DARK_FOREGROUND_COLOR
         
@@ -98,10 +103,30 @@ class SettingsController : UITableViewController {
         //lblAboutRA.accessoryView?.tintColor = DARK_FOREGROUND_COLOR
         
         
-        lblMuteTuner.textLabel?.setFAText(prefixText: "", icon: FAType.FAVolumeUp, postfixText: "   Mute Tuner Sound", size: FONT_SIZE,iconSize: ICON_SIZE)
+        //lblMuteTunerText.setFAText(prefixText: "   ", icon: FAType.FAVolumeUp, postfixText: "   Mute Tuner Sound", size: FONT_SIZE,iconSize: ICON_SIZE)
 
-        lblMuteTuner.textLabel?.textColor = DARK_FOREGROUND_COLOR
-        lblMuteTuner.sizeToFit()
+        lblMuteTunerText.textColor = DARK_FOREGROUND_COLOR
+        muteSwitch.isOn = initialMuteSwitch
+        //setMuteSwitchStatus(isOn: initialMuteSwitch)
+        
+        if (initialMuteSwitch) {
+            
+            lblMuteTunerText?.setFAText(prefixText: "   ", icon: FAType.FAVolumeOff, postfixText: "   Unmute Tuner Sound", size: FONT_SIZE,iconSize: ICON_SIZE)
+            
+            //delegate?.muteTunerSound(muted: true)
+            
+        }
+        else
+        {
+            lblMuteTunerText?.setFAText(prefixText: "   ", icon: FAType.FAVolumeUp, postfixText: "   Mute Tuner Sound", size: FONT_SIZE,iconSize: ICON_SIZE)
+            //delegate?.muteTunerSound(muted: false)
+        }
+
+        
+        muteSwitch.backgroundColor = DARK_FOREGROUND_COLOR
+        muteSwitch.layer.cornerRadius = 16.0
+        
+        //lblMuteTunerText.sizeToFit()
         //lblMuteTuner.accessoryView?.tintColor = DARK_FOREGROUND_COLOR
         
         
@@ -120,6 +145,10 @@ class SettingsController : UITableViewController {
         
         lblGitHub.textLabel?.textColor = DARK_FOREGROUND_COLOR
         lblGitHub.sizeToFit()
+        
+
+        
+  
         
     }
 }

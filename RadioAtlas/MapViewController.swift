@@ -1779,6 +1779,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         case "settings":
             
             let dest = segue.destination as! SettingsController
+            dest.initialMuteSwitch = muteTuner
             dest.delegate = self
             
             
