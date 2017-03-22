@@ -584,7 +584,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
             
             if (audioPlayer!.prepareToPlay())
             {
-                audioPlayer.setVolume(5, fadeDuration: 0)
+                audioPlayer.setVolume(1.0, fadeDuration: 0)
                 audioPlayer!.play()
             }
         }
