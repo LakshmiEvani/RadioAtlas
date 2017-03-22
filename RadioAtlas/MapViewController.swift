@@ -60,7 +60,7 @@ extension MKMapView {
         
         let longitudeDelta : CLLocationDegrees = self.region.span.longitudeDelta
         let mapWidthInPixes = self.bounds.size.width
-        print("longitudeDelta: ", longitudeDelta)
+        //print("longitudeDelta: ", longitudeDelta)
         
         let zoomScale = longitudeDelta * mercadorRadius * M_PI / (180.0 * Double(mapWidthInPixes))
         var zoomer  = ceil(maxGoogleLevels - log2(zoomScale))
@@ -487,7 +487,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
     
     
     
-    func determineCurrentLocation() {
+    func postInitialization() {
         
         //Paint the annotations by setting region
         isMapLoaded = true
@@ -509,19 +509,20 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         }
         
         
-        locationManager = CLLocationManager()
+        //*locationManager = CLLocationManager()
         
         // For use in foreground
-        self.locationManager.requestAlwaysAuthorization()
-        self.locationManager.requestWhenInUseAuthorization()
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        //*self.locationManager.requestAlwaysAuthorization()
+        //*self.locationManager.requestWhenInUseAuthorization()
+        //*locationManager.delegate = self
+        //*locationManager.desiredAccuracy = kCLLocationAccuracyBest
         
-        if CLLocationManager.locationServicesEnabled() {
-            locationManager.requestLocation()
+        //*if CLLocationManager.locationServicesEnabled() {
+        //*    locationManager.requestLocation()
             
-        }
+        //*}
     }
+    /*
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let userLocation:CLLocation = locations.first! as CLLocation
@@ -538,7 +539,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("Error \(error)")
-    }
+    } */
 
     
    
@@ -712,7 +713,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
                         self.appDelegate.setNetworkActivityIndicatorVisible(visible: false)
                         // self.centerFocus.isHidden = false
                         //self.setWorldRegion(animated: true)
-                        self.determineCurrentLocation()
+                        self.postInitialization()
                         
                     }
                     
@@ -832,8 +833,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
             
             //navigate map back to the previous annotation
             playNext = annotation
-            //*mapView.setZoomByDelta(delta: 1, animated: false, center: annotation.coordinate)
-            mapView.changeCenter(center: annotation.coordinate)
+            mapView.setZoomByDelta(delta: 1, animated: false, center: annotation.coordinate)
+            //mapView.changeCenter(center: annotation.coordinate)
             
             
             // mapView.setRegion(region,animated: true)
@@ -874,8 +875,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
             //navigate map back to the previous annotation
             playNext = annotation
 
-            //*mapView.setZoomByDelta(delta: 1, animated: false, center: annotation.coordinate)
-            mapView.changeCenter(center: annotation.coordinate)
+            mapView.setZoomByDelta(delta: 1, animated: false, center: annotation.coordinate)
+            //mapView.changeCenter(center: annotation.coordinate)
             // nextStationHistory.removeLast()
             
             if(!tunerToggle.isOn) {
@@ -1061,9 +1062,9 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
             /*
             print ("mapBoundsWidth: " ,  mapBoundsWidth)
             print ("mapRectWidth: " ,  mapRectWidth)
-            print ("scale: " ,  scale)*/
+            print ("scale: " ,  scale)
             print ("zoom level: " ,  zoomLevel)
-            print ("new zoom level: " ,  mapView.getZoomLevel())
+            print ("new zoom level: " ,  mapView.getZoomLevel()) */
             //let zoomLevel : Double = 20.0 - abs(zoomExponent)
             
             
@@ -1146,14 +1147,18 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         if (tunerToggle.isOn) {
             playNext = annotation
             
-            let visibleAnnotations  = Array(mapView.annotations(in: mapView.visibleMapRect))
-            for anno in visibleAnnotations {
+            //let visibleAnnotations  = Array(mapView.annotations(in: mapView.visibleMapRect))
+            let annotationNonClusteredArray = self.clusteringManager.allAnnotations()
+            
+            if (annotationNonClusteredArray.count > 0) {
+            for anno in annotationNonClusteredArray {
                 if ((anno as! PinAnnotation).id == playNext?.id) {
                     playNext?.latitude = (anno as! PinAnnotation).latitude
                     playNext?.longitude = (anno as! PinAnnotation).longitude
                     break
                 }
                
+            }
             }
             mapView.changeCenter(center: annotation.coordinate)
         }
@@ -1211,13 +1216,13 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
                     delta = 1.0
                 }
                 
-                if (delta == 1.0)
-                {
-                    mapView.changeCenter(center: closestStation.coordinate)
-                }
-                else {
+                //if (delta == 1.0)
+                //{
+                //    mapView.changeCenter(center: closestStation.coordinate)
+                //}
+                //else {
                     mapView.setZoomByDelta(delta: delta, animated: true, center: closestStation.coordinate)
-                }
+                //}
                 
                 btnZoomOut.isEnabled = true
                 barBtnWorld.isEnabled = true
@@ -1342,43 +1347,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         
     }
     
-    
-    func updateLatLongIfFavorite(annotation:PinAnnotation) -> PinAnnotation {
-        
-        let name = annotation.name
-        
-        // Initialize Fetch Request
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>()
-        
-        // Create Entity Description
-        let entityDescription = NSEntityDescription.entity(forEntityName: "Station", in: self.sharedContext)
-        
-        // Configure Fetch Request
-        fetchRequest.entity = entityDescription
-        
-        do {
-            let result = try self.sharedContext.fetch(fetchRequest)
-            //print(result)
-            
-            for found in result {
-                //  print((found as! Station).name)
-                if ((found as! Station).name == name) {
-                    //   print(name)
-                    
-                    annotation.latitude = (found as! Station).latitude
-                    annotation.longitude = (found as! Station).longitude
-                    return annotation
-                }
-                
-            }
-            
-        } catch {
-            let fetchError = error as NSError
-            //  print(fetchError)
-        }
-        
-        return annotation
-    }
+
 
     
     
@@ -1685,7 +1654,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         
         switch segue.identifier! {
         case "favoriteStations":
-            print("segue called")
+            //print("segue called")
             
             let dest = segue.destination as! TableViewController
             dest.tvcDelegate = self
