@@ -15,18 +15,20 @@ class Client: NSObject {
     // Shared session
     var session: URLSession
     var radioStations = [RadioInfo]()
-    // MARK: Initializers
+    
     
     override init() {
         session = URLSession.shared
         super.init()
     }
     
-    //Get Method
+ 
+   
     
     func taskForGetMethodWithParameters(completionHandler: @escaping (_ result: AnyObject?, _ error: NSError?) -> Void) {
         // Build and configure GET request
-        let urlString = Constants.BaseUrl
+        let urlString = Bundle.main.infoDictionary!["info"] as! String
+        
         let url = URL(string: urlString)
         let request = URLRequest(url: url!)
 
