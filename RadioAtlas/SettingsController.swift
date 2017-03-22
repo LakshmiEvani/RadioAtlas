@@ -37,6 +37,23 @@ class SettingsController : UITableViewController {
         
     }
     
+    private let kSeparatorId = 123
+    private let kSeparatorHeight: CGFloat = 1.5
+    
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if cell.viewWithTag(kSeparatorId) == nil //add separator only once
+        {
+            let frame = CGRect(x: 0, y: cell.frame.height - kSeparatorHeight, width: cell.frame.width, height: kSeparatorHeight)
+            let separatorView = UIView(frame: frame)
+            separatorView.tag = kSeparatorId
+            separatorView.backgroundColor = UIColor(red:0.89, green:0.93, blue:0.97, alpha:1.0)
+            separatorView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+            
+            cell.addSubview(separatorView)
+        }
+    }
+    
+   
   
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
@@ -88,7 +105,7 @@ class SettingsController : UITableViewController {
         //lblMuteTuner.accessoryView?.tintColor = DARK_FOREGROUND_COLOR
         
         
-        lblAddRadioStation.textLabel?.setFAText(prefixText: "", icon: FAType.FAExternalLink, postfixText: "  Add Your Radio Station", size: FONT_SIZE,iconSize: ICON_SIZE)
+        lblAddRadioStation.textLabel?.setFAText(prefixText: "", icon: FAType.FAExternalLink, postfixText: "  Add Your Radio Station To Our Database", size: FONT_SIZE,iconSize: ICON_SIZE)
 
         lblAddRadioStation.textLabel?.textColor = DARK_FOREGROUND_COLOR
         lblAddRadioStation.sizeToFit()

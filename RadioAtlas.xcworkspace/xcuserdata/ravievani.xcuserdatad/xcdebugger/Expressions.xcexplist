@@ -32,6 +32,20 @@
       </ContextState>
       <ContextState
          contextName = "MapViewController.observeValue(forKeyPath : String?, of : Any?, change : [NSKeyValueChangeKey : Any]?, context : UnsafeMutableRawPointer?) -&gt; ():MapViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "Music.sharedInstance.audioPlayer.currentItem.accessLog().extendedLogDataStringEncoding">
+            </PersistentString>
+            <PersistentString
+               value = "NSString(Music.sharedInstance.audioPlayer.currentItem.accessLog().extendedLogData())">
+            </PersistentString>
+            <PersistentString
+               value = "Music.sharedInstance.audioPlayer.currentItem.accessLog()">
+            </PersistentString>
+            <PersistentString
+               value = "Music.sharedInstance.audioPlayer.currentItem.accessLog().extendedLogData()">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "MKMapView.setZoomByDelta(delta : Double, animated : Bool, center : CLLocationCoordinate2D) -&gt; ():MapViewController.swift">
@@ -64,6 +78,14 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "MapViewController.(willEnterForeground() -&gt; ()).(closure #1):MapViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.pausedTime.rawValue">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "MapViewController.playFromAnnotation(annotation : PinAnnotation) -&gt; ():MapViewController.swift">
          <PersistentStrings>
             <PersistentString
@@ -92,6 +114,23 @@
       </ContextState>
       <ContextState
          contextName = "MapViewController.playFromFavorites(annotation : PinAnnotation) -&gt; ():MapViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "MapViewController.playAndPauseBarAction(Any) -&gt; ():MapViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "Music.sharedInstance.audioPlayer.currentItem.duration">
+            </PersistentString>
+            <PersistentString
+               value = "Music.sharedInstance.audioPlayer.currentItem.accessLog().events.count">
+            </PersistentString>
+            <PersistentString
+               value = "Music.sharedInstance.audioPlayer.rate">
+            </PersistentString>
+            <PersistentString
+               value = "Music.sharedInstance.audioPlayer.status">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "MapViewController.updateLatLongIfFavorite(annotation : PinAnnotation) -&gt; PinAnnotation:MapViewController.swift">

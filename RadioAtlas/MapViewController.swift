@@ -139,6 +139,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
     var skipRegionAnnotationSelection : Bool = false
     var skipRegionClustering : Bool = false
     var mapDragged : Bool = false
+    var pausedTime : DispatchTime = DispatchTime(uptimeNanoseconds: 0)
    
     var currentlyPlaying: MKAnnotation? = nil
     var playNext: PinAnnotation? = nil
@@ -183,13 +184,40 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
     // Core Data Convenience. Useful for fetching, adding and saving objects
     var sharedContext: NSManagedObjectContext = CoreDataStackManager.sharedInstance().managedObjectContext
     
+    private var foregroundNotification: NSObjectProtocol!
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
+       // NotificationCenter.default.addObserver(self, selector: Selector("willEnterForeground:"), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
+        
+        willEnterForeground()
+        
         setUIAttributes()
         initializations()
         
+    }
+    
+    deinit {
+        
+        NotificationCenter.default.removeObserver(foregroundNotification)
+        invalidateTimer()
+    }
+    
+    var playAfterReload : Bool = false
+    
+    func willEnterForeground() {
+        
+        foregroundNotification = NotificationCenter.default.addObserver(forName: NSNotification.Name.UIApplicationWillEnterForeground, object: nil, queue: OperationQueue.main) {
+            [unowned self] notification in
+            
+            if (!Music.sharedInstance.isPlaying)
+            {
+                self.playAfterReload = true
+            }
+            
+        }
+
     }
     
     func invalidateTimer()
@@ -200,9 +228,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         
     }
     
-    deinit {
-        invalidateTimer()
-    }
+  
     
     
     func setUIAttributes()
@@ -254,7 +280,10 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         btnSettings.setFAIcon(icon: .FAInfoCircle, iconSize: TOOLBAR_BUTTON_SIZE)
         btnSettings.tintColor = DARK_FOREGROUND_COLOR
         btnSettings.isEnabled = true
-        toggleFavorites()
+        
+        
+        favorite.isEnabled = false
+        
                 /*
          let button = UIButton(type: .custom)
          button.titleLabel?.numberOfLines = 2
@@ -310,6 +339,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         // navigationController?.isToolbarHidden = true
     }
     
+    
+    
     @IBAction func playAndPauseBarAction(_ sender: Any) {
         
         if Music.sharedInstance.isPlaying == true {
@@ -320,12 +351,22 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
                 playPauseImageUpdate(play: true)
                 Music.sharedInstance.isPlaying = false
                 appDelegate.setNetworkActivityIndicatorVisible(visible: false)
+                pausedTime = DispatchTime.now()
             }
             
         } else if Music.sharedInstance.isPlaying == false {
             
             if (Music.sharedInstance.audioPlayer != nil) {
-                Music.sharedInstance.audioPlayer.play()
+                
+                if (playAfterReload) {
+                    playAfterReload = false
+                    self.playTunerAudio()
+                    self.playFromAnnotation(annotation: self.currentlyPlaying as! PinAnnotation)
+                }
+                else {
+                    Music.sharedInstance.audioPlayer.play()
+                }
+                
                 playPauseImageUpdate(play: false)
                 Music.sharedInstance.isPlaying = true
                 appDelegate.setNetworkActivityIndicatorVisible(visible: true)
@@ -525,6 +566,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         if (tunerToggle.isOn) {
             centerFocus.isHidden = false
         }
+        
+        toggleFavorites()
         
         
         //*locationManager = CLLocationManager()
@@ -1553,10 +1596,13 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
                                change: [NSKeyValueChangeKey : Any]?,
                                context: UnsafeMutableRawPointer?)
     {
+        /*var datastring : NSString
         
+        if (Music.sharedInstance.audioPlayer.currentItem?.accessLog() != nil)  {
         
-        
-        
+            datastring = NSString(data: (Music.sharedInstance.audioPlayer.currentItem?.accessLog()?.extendedLogData())!, encoding: (Music.sharedInstance.audioPlayer.currentItem?.accessLog()?.extendedLogDataStringEncoding)!)!
+            print(datastring)
+        }*/
         
         var newData : String = ""
         var nowPlayingData : String = ""
