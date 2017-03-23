@@ -158,8 +158,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
     let LIGHT_BACKGROUND_COLOR = UIColor(red:0.98, green:0.98, blue:0.98, alpha:1.0)
     let TOOLBAR_BUTTON_SIZE : CGFloat = 25
     let PLAY_BUTTON_SIZE : CGFloat = 35
-    let MAX_ZOOM_OUT = 18.0
-    var prevZoomLevel : Double = 18.0
+    let MAX_ZOOM_OUT = 17.0
+    var prevZoomLevel : Double = 17.0
     let MAX_ZOOM_IN = 5.0
     let PLAY_ALL_MODE : Bool = false
     let TIMER_INTERVAL  = 0.5
@@ -1074,6 +1074,10 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
             var favorite_image : UIImage = UIImage(named: "favorite3")!
             
             button.setImage(favorite_image, for: .normal)
+            //button.setFAIcon(icon: .FAHeart, forState: .normal)
+            //button.setFAText(prefixText: "", icon: .FAHeart, postfixText: "", size: 20, forState: .normal)
+            button.tintColor = DARK_FOREGROUND_COLOR
+            
             annotationView?.leftCalloutAccessoryView = button
             
             // Right accessory view
@@ -1081,6 +1085,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
             let button1 = UIButton(type: .detailDisclosure)
             button1.backgroundRect(forBounds: CGRect(x: 0, y: 0, width: 60, height: 60))
             button1.setImage(UIImage(named: "open3"), for: .normal)
+            button1.tintColor = DARK_FOREGROUND_COLOR
             annotationView?.rightCalloutAccessoryView = button1
             
             

@@ -56,14 +56,54 @@ class SettingsController : UITableViewController {
         }
     }
     
-   
-  
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        var url : String = ""
+        
+        if (indexPath.section == 0) {
+            
+            switch indexPath.row {
+            case 1:
+                url =  "https://google.com"
+                
+                
+            case 2:
+                url = "https://google.com"
+                
+            default: break
+                
+            }
+            
+            UIApplication.shared.open(NSURL(string: url)! as URL, options: [:], completionHandler: nil)
+
+            
+        }
+        else {
+            
+            switch indexPath.row {
+            case 0:
+                url =  "https://google.com"
+                
+                
+            case 1:
+                url = "https://github.com/LakshmiEvani/RadioAtlas"
+                
+            default: break
+                
+            }
+            
+            UIApplication.shared.open(NSURL(string: url)! as URL, options: [:], completionHandler: nil)
+            
+        }
+        
+        
+    }
+    
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
     {
         return 65.0;//Choose your custom row height
     }
-   
+    
     func cellValues(cell: UITableViewCell) {
         cell.textLabel?.textColor = DARK_FOREGROUND_COLOR
     }
@@ -88,13 +128,13 @@ class SettingsController : UITableViewController {
         
     }
     
-
-
+    
+    
     
     func initUI() {
         
-       // let frame = CGRect(x: 20, y: 20, width: 140, height: 65)
-       // lblAboutRA.frame(forAlignmentRect: frame)
+        // let frame = CGRect(x: 20, y: 20, width: 140, height: 65)
+        // lblAboutRA.frame(forAlignmentRect: frame)
         lblAboutRA.textLabel?.setFAText(prefixText: "", icon: .FAExternalLink, postfixText: "  More About Radio Atlas", size: FONT_SIZE,iconSize: ICON_SIZE)
         lblAboutRA.textLabel?.textColor = DARK_FOREGROUND_COLOR
         
@@ -104,7 +144,7 @@ class SettingsController : UITableViewController {
         
         
         //lblMuteTunerText.setFAText(prefixText: "   ", icon: FAType.FAVolumeUp, postfixText: "   Mute Tuner Sound", size: FONT_SIZE,iconSize: ICON_SIZE)
-
+        
         lblMuteTunerText.textColor = DARK_FOREGROUND_COLOR
         muteSwitch.isOn = initialMuteSwitch
         //setMuteSwitchStatus(isOn: initialMuteSwitch)
@@ -121,7 +161,7 @@ class SettingsController : UITableViewController {
             lblMuteTunerText?.setFAText(prefixText: "   ", icon: FAType.FAVolumeUp, postfixText: "   Mute Tuner Sound", size: FONT_SIZE,iconSize: ICON_SIZE)
             //delegate?.muteTunerSound(muted: false)
         }
-
+        
         
         muteSwitch.backgroundColor = DARK_FOREGROUND_COLOR
         muteSwitch.layer.cornerRadius = 16.0
@@ -130,13 +170,13 @@ class SettingsController : UITableViewController {
         //lblMuteTuner.accessoryView?.tintColor = DARK_FOREGROUND_COLOR
         
         
-        lblAddRadioStation.textLabel?.setFAText(prefixText: "", icon: FAType.FAExternalLink, postfixText: "  Add Your Radio Station To Our Database", size: FONT_SIZE,iconSize: ICON_SIZE)
-
+        lblAddRadioStation.textLabel?.setFAText(prefixText: "", icon: FAType.FAExternalLink, postfixText: "  Submit a Radio Station", size: FONT_SIZE,iconSize: ICON_SIZE)
+        
         lblAddRadioStation.textLabel?.textColor = DARK_FOREGROUND_COLOR
         lblAddRadioStation.sizeToFit()
         
         lblReport.textLabel?.setFAText(prefixText: "", icon: FAType.FAExternalLink, postfixText: "  Report Problem, Feature or Feedback", size: FONT_SIZE,iconSize: ICON_SIZE)
-
+        
         lblReport.textLabel?.textColor = DARK_FOREGROUND_COLOR
         lblReport.sizeToFit()
         
@@ -146,9 +186,9 @@ class SettingsController : UITableViewController {
         lblGitHub.textLabel?.textColor = DARK_FOREGROUND_COLOR
         lblGitHub.sizeToFit()
         
-
         
-  
+        
+        
         
     }
 }
