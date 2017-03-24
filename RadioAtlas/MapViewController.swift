@@ -161,8 +161,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
     let LIGHT_BACKGROUND_COLOR = UIColor(red:0.98, green:0.98, blue:0.98, alpha:1.0)
     let TOOLBAR_BUTTON_SIZE : CGFloat = 25
     let PLAY_BUTTON_SIZE : CGFloat = 35
-    let MAX_ZOOM_OUT = 17.0
-    var prevZoomLevel : Double = 17.0
+    let MAX_ZOOM_OUT = 18.0
+    var prevZoomLevel : Double = 18.0
     let MAX_ZOOM_IN = 5.0
     let PLAY_ALL_MODE : Bool = false
     let TIMER_INTERVAL  = 0.5
@@ -419,7 +419,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         worldRegion = MKCoordinateRegionForMapRect(MKMapRectWorld)
         skipRegionAnnotationSelection = true
         //set the world zoom level
-        self.prevZoomLevel == MAX_ZOOM_OUT
+        self.prevZoomLevel = MAX_ZOOM_OUT
         
         if (changeCenter && currentlyPlaying != nil)
         {
@@ -678,6 +678,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
             setWorldRegion(animated: true, changeCenter: true)
             barBtnWorld.isEnabled = false
             btnZoomOut.isEnabled = false
+            //prevZoomLevel = MAX_ZOOM_OUT
         }
         
         
@@ -1403,6 +1404,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
             
             //  print("Music stream playing",toOpen)
             
+      
             
             self.playFromAnnotation(annotation: annotation)
             
@@ -1457,7 +1459,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
     func playFromAnnotation(annotation: PinAnnotation) {
         
         playNextData = annotation.name
-        playNext = annotation
+       // playNext = annotation
         
         
         if (annotation.location != nil) {
@@ -1466,7 +1468,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         
         
         playMusic(music: annotation.streamUrl)
-        playNext = nil
+       // playNext = nil
         currentlyPlaying = annotation
         prevStationHistory.append(annotation)
         reWind.isEnabled = true

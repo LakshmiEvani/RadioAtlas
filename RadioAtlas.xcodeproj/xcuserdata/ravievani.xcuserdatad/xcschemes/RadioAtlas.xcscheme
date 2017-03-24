@@ -113,6 +113,7 @@
    </AnalyzeAction>
    <ArchiveAction
       buildConfiguration = "Release"
+      customArchiveName = "RadioAtlas"
       revealArchiveInOrganizer = "YES">
    </ArchiveAction>
 </Scheme>

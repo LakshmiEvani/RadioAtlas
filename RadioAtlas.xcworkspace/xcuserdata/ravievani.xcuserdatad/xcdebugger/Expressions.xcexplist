@@ -165,13 +165,16 @@
          contextName = "MapViewController.(mapView(MKMapView, regionDidChangeAnimated : Bool) -&gt; ()).(closure #1):MapViewController.swift">
          <PersistentStrings>
             <PersistentString
+               value = "self.regionChangedBecauseAnnotationSelected">
+            </PersistentString>
+            <PersistentString
                value = "ceil(zoomExponent)">
             </PersistentString>
             <PersistentString
                value = "playNext">
             </PersistentString>
             <PersistentString
-               value = "self.regionChangedBecauseAnnotationSelected">
+               value = "&#10;self.prevZoomLevel">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

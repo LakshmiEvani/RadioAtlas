@@ -29,13 +29,13 @@
                                 </connections>
                             </containerView>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="BZ7-vp-h1S">
-                                <rect key="frame" x="130.5" y="456" width="60" height="37"/>
+                                <rect key="frame" x="130" y="456" width="60" height="37"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="60" id="A4s-aS-2fO"/>
                                 </constraints>
                             </pageControl>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KeP-TX-5U9">
-                                <rect key="frame" x="93.5" y="501" width="133" height="47"/>
+                                <rect key="frame" x="93" y="501" width="133" height="47"/>
                                 <color key="backgroundColor" red="0.83137254901960778" green="0.078431372549019607" blue="0.3529411764705882" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="133" id="XM7-5R-fk4"/>
@@ -104,7 +104,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TJn-ei-e7l">
-                                <rect key="frame" x="19" y="387" width="282" height="38.5"/>
+                                <rect key="frame" x="19" y="387" width="282" height="57.5"/>
                                 <string key="text">Tune into any place on the map. 
 What sounds familiar...or foreign? What sounds like home?</string>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
@@ -573,7 +573,7 @@ What sounds familiar...or foreign? What sounds like home?</string>
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" alpha="0.40000000000000002" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Image-1" translatesAutoresizingMaskIntoConstraints="NO" id="RiJ-cL-bhA">
+                            <imageView userInteractionEnabled="NO" alpha="0.40000000000000002" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="radiotable" translatesAutoresizingMaskIntoConstraints="NO" id="RiJ-cL-bhA">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thousands of live radio stations, local to their regions. Discover their local music, talks, news and thoughts." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xUL-Gy-VSo">
@@ -651,10 +651,10 @@ What sounds familiar...or foreign? What sounds like home?</string>
         </scene>
     </scenes>
     <resources>
-        <image name="Image-1" width="2456" height="3357"/>
         <image name="boombox" width="1242" height="2209"/>
         <image name="center" width="124" height="124"/>
         <image name="playing-station" width="1725" height="3067"/>
+        <image name="radiotable" width="1242" height="2209"/>
         <image name="whitelogo" width="919" height="243"/>
     </resources>
     <color key="tintColor" red="0.039215686270000001" green="0.20392156859999999" blue="0.3921568627" alpha="1" colorSpace="calibratedRGB"/>
