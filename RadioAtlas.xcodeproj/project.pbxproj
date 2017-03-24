@@ -12,6 +12,7 @@
 		4B6901E11E83223F005230BB /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 4B6901E01E83223E005230BB /* .gitignore */; };
 		4B6901E31E832311005230BB /* info in Resources */ = {isa = PBXBuildFile; fileRef = 4B6901E21E832311005230BB /* info */; };
 		4B6901E61E83327C005230BB /* info in Resources */ = {isa = PBXBuildFile; fileRef = 4B6901E51E83327C005230BB /* info */; };
+		4B6901E91E859E65005230BB /* AlertLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B6901E81E859E65005230BB /* AlertLabel.swift */; };
 		4B6D27CC1E614674002A56BF /* RadioAVPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B6D27CB1E614674002A56BF /* RadioAVPlayer.swift */; };
 		4B6D27CE1E6147A2002A56BF /* RadioAVPlayerItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B6D27CD1E6147A2002A56BF /* RadioAVPlayerItem.swift */; };
 		4B7275221E5A8CF0004D9A33 /* FBAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7275171E5A8CF0004D9A33 /* FBAnnotation.swift */; };
@@ -85,6 +86,7 @@
 		4B6901E01E83223E005230BB /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		4B6901E21E832311005230BB /* info */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = info; sourceTree = "<group>"; };
 		4B6901E51E83327C005230BB /* info */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = info; sourceTree = "<group>"; };
+		4B6901E81E859E65005230BB /* AlertLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertLabel.swift; sourceTree = "<group>"; };
 		4B6D27CB1E614674002A56BF /* RadioAVPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadioAVPlayer.swift; sourceTree = "<group>"; };
 		4B6D27CD1E6147A2002A56BF /* RadioAVPlayerItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadioAVPlayerItem.swift; sourceTree = "<group>"; };
 		4B7275171E5A8CF0004D9A33 /* FBAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBAnnotation.swift; sourceTree = "<group>"; };
@@ -172,6 +174,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4B6901E71E859E4D005230BB /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				4B6901E81E859E65005230BB /* AlertLabel.swift */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
 		4B6D27CF1E61ED2E002A56BF /* ClusterPins */ = {
 			isa = PBXGroup;
 			children = (
@@ -247,6 +257,7 @@
 		873B60101E2FBB4E0057D735 /* View Controller */ = {
 			isa = PBXGroup;
 			children = (
+				4B6901E71E859E4D005230BB /* Utils */,
 				4B6D27CF1E61ED2E002A56BF /* ClusterPins */,
 				873B5FDF1E2FB6970057D735 /* AppDelegate.swift */,
 				873B5FEE1E2FB6970057D735 /* Info.plist */,
@@ -657,6 +668,7 @@
 				873B60181E2FBBC00057D735 /* TableViewCell.swift in Sources */,
 				4B7275221E5A8CF0004D9A33 /* FBAnnotation.swift in Sources */,
 				9175D7211E7DB53D0091DC20 /* ColoredViewController.swift in Sources */,
+				4B6901E91E859E65005230BB /* AlertLabel.swift in Sources */,
 				4B7275231E5A8CF0004D9A33 /* FBAnnotationCluster.swift in Sources */,
 				873B60311E2FBE6E0057D735 /* Station+CoreDataClass.swift in Sources */,
 				4B7275281E5A8CF0004D9A33 /* FBBoundingBox+MapKit.swift in Sources */,

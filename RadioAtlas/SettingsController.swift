@@ -2,7 +2,6 @@
 //  SettingsController.swift
 //  RadioAtlas
 //
-//  Created by Ravi Evani on 3/21/17.
 //  Copyright © 2017 Souji. All rights reserved.
 //
 

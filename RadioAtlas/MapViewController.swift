@@ -15,6 +15,8 @@ import MarqueeLabel
 import Font_Awesome_Swift
 
 
+
+
 extension MKMapView {
     
     // delta is the zoom factor
@@ -35,11 +37,11 @@ extension MKMapView {
     }
     
     func changeCenter(center: CLLocationCoordinate2D) {
-       
+        
         var _span = region.span;
         region.center = center
         region.span = _span;
-       
+        
     }
     
     func longitudeToPixelSpaceX(longitude : Double) -> Double {
@@ -88,6 +90,8 @@ extension UIImage {
         return image!
     }
 }
+
+
 
 
 class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDelegate, CLLocationManagerDelegate, NSFetchedResultsControllerDelegate, UIPopoverPresentationControllerDelegate,RadioAVPlayerItemDelegate,RadioAVPlayerDelegate ,UIGestureRecognizerDelegate, TableViewControllerDelegate, SettingsControllerDelegate {
@@ -158,14 +162,15 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
     let configuration = FBAnnotationClusterViewConfiguration.default()
     let DARK_FOREGROUND_COLOR = UIColor(red:0.04, green:0.29, blue:0.60, alpha:1.0)
     let DISABLED_COLOR = UIColor.init(white: 0.8, alpha: 1.0)
+    let ALERT_COLOR = UIColor(red:0.83, green:0.08, blue:0.35, alpha:1.0)
     let LIGHT_BACKGROUND_COLOR = UIColor(red:0.98, green:0.98, blue:0.98, alpha:1.0)
     let TOOLBAR_BUTTON_SIZE : CGFloat = 25
     let PLAY_BUTTON_SIZE : CGFloat = 35
     let MAX_ZOOM_OUT = 18.0
     var prevZoomLevel : Double = 18.0
     let MAX_ZOOM_IN = 5.0
-    let PLAY_ALL_MODE : Bool = false
-    let TIMER_INTERVAL  = 0.5
+    let PLAY_ALL_MODE : Bool = true
+    let TIMER_INTERVAL  = 20
     
     //var tunerMode : Bool = false
     
@@ -287,36 +292,14 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         
         favorite.isEnabled = false
         
-        /*
-         let button = UIButton(type: .custom)
-         button.titleLabel?.numberOfLines = 2
-         button.titleLabel?.lineBreakMode = .byWordWrapping
-         button.titleLabel?.textColor = DARK_FOREGROUND_COLOR
-         button.setTitle("Tuner\nOn", for: .normal)
-         button.sizeToFit()
-         
-         btnMode.customView = button
-         */
-        // btnMode.setFAIcon(icon: .FADotCircleO, iconSize: TOOLBAR_BUTTON_SIZE)
-        
-        
-        //btnMode.tintColor = DARK_FOREGROUND_COLOR
-        
         
         let btnFont = UIFont.boldSystemFont(ofSize: 14)
         
-        //btnMode.setTitleTextAttributes([NSFontAttributeName : btnFont], for: .normal)
-        //btnMode.setBackgroundVerticalPositionAdjustment(-200, for: .default)
-        //btnMode.setBackgroundImage(UIImage().makeImageWithColorAndSize(color:DARK_FOREGROUND_COLOR, size: CGSize(width: 1, height: 1)), for: .normal, barMetrics: .default)
-        // btnMode.setTitlePositionAdjustment(UIOffset(horizontal: 100, vertical: 30), for: .default)
+        
         
         nowPlayingLabel.backgroundColor = self.LIGHT_BACKGROUND_COLOR
         
-        //fastForward.setFAText(prefixText: "testting", icon: nil, postfixText: "", size: 20)
         
-        
-        //btnNext.isHidden = true
-        // payAndPauseBar.isOpaque = true
     }
     
     func muteTunerSound(muted: Bool)
@@ -572,53 +555,38 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         
         toggleFavorites()
         
+        if(PLAY_ALL_MODE) {
+            barBtnWorld.isEnabled = true
+        }
         
-        //*locationManager = CLLocationManager()
         
-        // For use in foreground
-        //*self.locationManager.requestAlwaysAuthorization()
-        //*self.locationManager.requestWhenInUseAuthorization()
-        //*locationManager.delegate = self
-        //*locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        
-        //*if CLLocationManager.locationServicesEnabled() {
-        //*    locationManager.requestLocation()
-        
-        //*}
     }
-    /*
-     
-     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-     let userLocation:CLLocation = locations.first! as CLLocation
-     //userLoc = userLocation
-     
-     let center = CLLocationCoordinate2D(latitude: userLocation.coordinate.latitude, longitude: userLocation.coordinate.longitude)
-     let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 4.075, longitudeDelta: 4.075))
-     
-     
-     //mapView.setRegion(region, animated: true)
-     
-     
-     }
-     
-     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-     print("Error \(error)")
-     } */
     
-    
-    
-    var annIndex = 1
     
     func runTimedCode() {
         let anns = self.clusteringManager.allAnnotations()
+        
+        let annIndex = Int(arc4random_uniform(UInt32(anns.count))) + 1
+        
         if (annIndex <= anns.count) {
-            //timedPlay(url: (anns[annIndex - 1] as! PinAnnotation).streamUrl)
-            //playFromAnnotation(annotation: anns[annIndex-1] as! PinAnnotation)
-            let station = anns[annIndex-1]
             
-            mapView.addAnnotation(station)
-            mapView.selectAnnotation(station, animated: true)
-            annIndex+=1
+            let station = anns[annIndex-1]
+            if (type(of: station) == PinAnnotation.self) {
+                
+                playNext = station as! PinAnnotation
+                let center = CLLocationCoordinate2D(latitude: station.coordinate.latitude, longitude: station.coordinate.longitude)
+                
+                //self.mapView.setZoomByDelta(delta: 1, animated: false, center: annotation.coordinate)
+                mapView.changeCenter(center: station.coordinate)
+                
+                if (!tunerToggle.isOn) {
+                    
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+                        self.dropAnnotation(annotation: station)
+                    }
+                }
+                
+            }
         }
     }
     
@@ -667,17 +635,38 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
     
     @IBAction func barBtnWorldClick(_ sender: Any) {
         
+        
+        setWorldRegion(animated: true, changeCenter: true)
+        btnZoomOut.isEnabled = false
+        
         if (PLAY_ALL_MODE) {
-            //tunerToggle.isOn = true
-            playAllTimer = Timer.scheduledTimer(timeInterval: TimeInterval(TIMER_INTERVAL), target: self, selector: #selector(runTimedCode), userInfo: nil, repeats: true)
             
+            if (playAllTimer == nil) {
+                
+                
+                //tunerToggle.isOn = true
+                playAllTimer = Timer.scheduledTimer(timeInterval: TimeInterval(TIMER_INTERVAL), target: self, selector: #selector(runTimedCode), userInfo: nil, repeats: true)
+                playAllTimer.fire()
+                barBtnWorld.tintColor = ALERT_COLOR
+                
+                //Show descriptive alert message
+                let lblAlert = AlertLabel()
+                lblAlert.setFAText(prefixText: "Tuning to a different station every 20 seconds. Tap ", icon: FAType.FAGlobe, postfixText: " to stop.", size: 25)
+                lblAlert.showAlert(view: view)
+
+                
+            }
+            else{
+                playAllTimer.invalidate()
+                playAllTimer = nil
+                barBtnWorld.isEnabled = true
+                barBtnWorld.tintColor = DARK_FOREGROUND_COLOR
+            }
             
         }
         else {
-            
-            setWorldRegion(animated: true, changeCenter: true)
             barBtnWorld.isEnabled = false
-            btnZoomOut.isEnabled = false
+            
             //prevZoomLevel = MAX_ZOOM_OUT
         }
         
@@ -921,38 +910,38 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
             
             
             
-                nextStationHistory.append(prevStationHistory.popLast()!)
-                fastForward.isEnabled = true
-                //prevStationHistory.removeLast()
-                
-                //prevStationHistory.popLast()!
-                let annotation : PinAnnotation = prevStationHistory.last!
-                let center = CLLocationCoordinate2D(latitude: annotation.coordinate.latitude, longitude: annotation.coordinate.longitude)
-                
-                //navigate map back to the previous annotation
-                playNext = annotation
-                
-               
-                    
-//                self.mapView.setZoomByDelta(delta: 1, animated: false, center: annotation.coordinate)
-                mapView.changeCenter(center: annotation.coordinate)
-
-                if(!self.tunerToggle.isOn) {
-
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
-                        self.dropAnnotation(annotation: annotation)
-                    
-            }
+            nextStationHistory.append(prevStationHistory.popLast()!)
+            fastForward.isEnabled = true
+            //prevStationHistory.removeLast()
             
-  
-           
+            //prevStationHistory.popLast()!
+            let annotation : PinAnnotation = prevStationHistory.last!
+            let center = CLLocationCoordinate2D(latitude: annotation.coordinate.latitude, longitude: annotation.coordinate.longitude)
             
-
+            //navigate map back to the previous annotation
+            playNext = annotation
+            
+            
+            
+            //                self.mapView.setZoomByDelta(delta: 1, animated: false, center: annotation.coordinate)
+            mapView.changeCenter(center: annotation.coordinate)
+            
+            if(!self.tunerToggle.isOn) {
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+                    self.dropAnnotation(annotation: annotation)
+                    
+                }
+                
+                
+                
+                
+                
             }
             //mapView.changeCenter(center: annotation.coordinate)
             // mapView.setRegion(region,animated: true)
             
-  
+            
             
             prevStationHistory.removeLast()
             
@@ -1284,11 +1273,11 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
             self.mapView.changeCenter(center: (self.playNext?.coordinate)!)
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
-            
-            if(!self.tunerToggle.isOn) {
                 
-                self.dropAnnotation(annotation: annotation)
-                
+                if(!self.tunerToggle.isOn) {
+                    
+                    self.dropAnnotation(annotation: annotation)
+                    
                 }
             }
             
@@ -1404,7 +1393,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
             
             //  print("Music stream playing",toOpen)
             
-      
+            
             
             self.playFromAnnotation(annotation: annotation)
             
@@ -1459,7 +1448,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
     func playFromAnnotation(annotation: PinAnnotation) {
         
         playNextData = annotation.name
-       // playNext = annotation
+        // playNext = annotation
         
         
         if (annotation.location != nil) {
@@ -1468,7 +1457,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         
         
         playMusic(music: annotation.streamUrl)
-       // playNext = nil
+        // playNext = nil
         currentlyPlaying = annotation
         prevStationHistory.append(annotation)
         reWind.isEnabled = true
@@ -1630,13 +1619,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
                                change: [NSKeyValueChangeKey : Any]?,
                                context: UnsafeMutableRawPointer?)
     {
-        /*var datastring : NSString
-         
-         if (Music.sharedInstance.audioPlayer.currentItem?.accessLog() != nil)  {
-         
-         datastring = NSString(data: (Music.sharedInstance.audioPlayer.currentItem?.accessLog()?.extendedLogData())!, encoding: (Music.sharedInstance.audioPlayer.currentItem?.accessLog()?.extendedLogDataStringEncoding)!)!
-         print(datastring)
-         }*/
         
         var newData : String = ""
         var nowPlayingData : String = ""

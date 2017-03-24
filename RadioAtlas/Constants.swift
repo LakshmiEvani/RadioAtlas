@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import UIKit
+
 extension Client{
     
     
@@ -45,6 +47,14 @@ extension Client{
         static let Page = "page"
         static let per_page = "per_page"
         static let offset = "offset"
+    }
+    
+    struct Colors {
+        static let DARK_FOREGROUND_COLOR = UIColor(red:0.04, green:0.29, blue:0.60, alpha:1.0)
+        static let DISABLED_COLOR = UIColor.init(white: 0.8, alpha: 1.0)
+        static let ALERT_COLOR = UIColor(red:0.83, green:0.08, blue:0.35, alpha:1.0)
+        static let LIGHT_BACKGROUND_COLOR = UIColor(red:0.98, green:0.98, blue:0.98, alpha:1.0)
+
     }
     
     
