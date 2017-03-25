@@ -62,11 +62,11 @@ class SettingsController : UITableViewController {
             
             switch indexPath.row {
             case 1:
-                url =  "http://thoughtnerve.com/radioatlas/add-a-radio-station/"
+                url =  "https://radioatlas.info/radioatlas/add-a-radio-station/?app=1"
                 
                 
             case 2:
-                url = "http://thoughtnerve.com/radioatlas/report-feedback/"
+                url = "https://radioatlas.info/radioatlas/report-feedback/?app=1"
                 
             default: break
                 

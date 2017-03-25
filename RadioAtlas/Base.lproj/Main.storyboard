@@ -460,7 +460,7 @@ What sounds familiar...or foreign? What sounds like home?</string>
                         <sections>
                             <tableViewSection headerTitle=" " id="FyM-8q-zNL">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" shouldIndentWhileEditing="NO" reuseIdentifier="MuteTuner" id="BNj-ao-bZo" userLabel="Mute Tuner">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" shouldIndentWhileEditing="NO" reuseIdentifier="MuteTuner" id="BNj-ao-bZo" userLabel="Mute Tuner">
                                         <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BNj-ao-bZo" id="dYY-pz-Lr2">
