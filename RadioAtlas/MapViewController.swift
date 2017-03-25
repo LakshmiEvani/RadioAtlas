@@ -221,8 +221,16 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
             
             if (!Music.sharedInstance.isPlaying)
             {
-                self.playAfterReload = true
+                //self.playAfterReload = true
+                if (self.currentlyPlaying != nil) {
+                    self.playTunerAudio()
+                    self.playFromAnnotation(annotation: self.currentlyPlaying as! PinAnnotation)
+                    self.playPauseImageUpdate(play: false)
+                    Music.sharedInstance.isPlaying = true
+                }
+               
             }
+           
             
         }
         
@@ -344,14 +352,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
             
             if (Music.sharedInstance.audioPlayer != nil) {
                 
-                if (playAfterReload) {
-                    playAfterReload = false
-                    self.playTunerAudio()
-                    self.playFromAnnotation(annotation: self.currentlyPlaying as! PinAnnotation)
-                }
-                else {
-                    Music.sharedInstance.audioPlayer.play()
-                }
+                Music.sharedInstance.audioPlayer.play()
                 
                 playPauseImageUpdate(play: false)
                 Music.sharedInstance.isPlaying = true

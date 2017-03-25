@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RadioAtlas/MapViewController.swift"
-            timestampString = "512076378.967204"
+            timestampString = "512107712.688094"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1475"
-            endingLineNumber = "1475"
+            startingLineNumber = "1476"
+            endingLineNumber = "1476"
             landmarkName = "getFavorites()"
             landmarkType = "7">
          </BreakpointContent>
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RadioAtlas/MapViewController.swift"
-            timestampString = "512076378.967204"
+            timestampString = "512107712.688094"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1490"
-            endingLineNumber = "1490"
+            startingLineNumber = "1491"
+            endingLineNumber = "1491"
             landmarkName = "getFavorites()"
             landmarkType = "7">
          </BreakpointContent>
@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RadioAtlas/MapViewController.swift"
-            timestampString = "512076378.967204"
+            timestampString = "512107712.688094"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "715"
-            endingLineNumber = "715"
+            startingLineNumber = "716"
+            endingLineNumber = "716"
             landmarkName = "addAnnotation()"
             landmarkType = "7">
          </BreakpointContent>
@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RadioAtlas/MapViewController.swift"
-            timestampString = "512076378.967204"
+            timestampString = "512107712.688094"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1531"
-            endingLineNumber = "1531"
+            startingLineNumber = "1532"
+            endingLineNumber = "1532"
             landmarkName = "verifyUrl(urlString:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RadioAtlas/MapViewController.swift"
-            timestampString = "512076378.967204"
+            timestampString = "512107712.688094"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1520"
-            endingLineNumber = "1520"
+            startingLineNumber = "1521"
+            endingLineNumber = "1521"
             landmarkName = "MapViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -90,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RadioAtlas/MapViewController.swift"
-            timestampString = "512076378.967204"
+            timestampString = "512107712.688094"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1519"
-            endingLineNumber = "1519"
+            startingLineNumber = "1520"
+            endingLineNumber = "1520"
             landmarkName = "checkIfFavorite(name:)"
             landmarkType = "7">
          </BreakpointContent>

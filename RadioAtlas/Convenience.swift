@@ -11,7 +11,7 @@ import CoreData
 
 extension Client {
     
-    // MARK: RadioStation API
+   
     func getStations(completionHandler: @escaping (_ result: [RadioInfo]?, _ errorString: String?) -> Void){
         
         

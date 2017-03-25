@@ -31,8 +31,7 @@ class Client: NSObject {
         
         let url = URL(string: urlString)
         let request = URLRequest(url: url!)
-
-        print("The request is:",request)
+        
         // Make the request
         let task = session.dataTask(with: request, completionHandler: { (data, response, error) in
             
