@@ -80,7 +80,7 @@ class SettingsController : UITableViewController {
             
             switch indexPath.row {
             case 0:
-                url =  "http://thoughtnerve.com/radioatlas/about-radio-atlas/"
+                url =  "https://radioatlas.info/?app=1"
                 
                 
             case 1:

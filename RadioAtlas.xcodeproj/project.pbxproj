@@ -415,7 +415,7 @@
 				TargetAttributes = {
 					873B5FDB1E2FB6970057D735 = {
 						CreatedOnToolsVersion = 8.2;
-						DevelopmentTeam = 879NQX5T3A;
+						DevelopmentTeam = 578M3XU72L;
 						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
@@ -833,11 +833,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				DEVELOPMENT_TEAM = 879NQX5T3A;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = 578M3XU72L;
 				INFOPLIST_FILE = RadioAtlas/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.evani.RadioAtlas;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.evani.RadioAtlas-distribution";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -851,11 +852,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				DEVELOPMENT_TEAM = 879NQX5T3A;
+				DEVELOPMENT_TEAM = 578M3XU72L;
 				INFOPLIST_FILE = RadioAtlas/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.evani.RadioAtlas;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.evani.RadioAtlas-distribution";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
