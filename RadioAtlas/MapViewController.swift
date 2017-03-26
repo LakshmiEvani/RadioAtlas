@@ -116,6 +116,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
     
     @IBOutlet weak var btnZoomIn: UIBarButtonItem!
     
+    @IBOutlet weak var lblAlert: AlertLabel!
     @IBOutlet weak var barBtnWorld: UIBarButtonItem!
     @IBOutlet weak var nowPlayingLabel: MarqueeLabel!
     
@@ -344,12 +345,13 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         if Music.sharedInstance.isPlaying == true {
             
             if (Music.sharedInstance.audioPlayer != nil) {
-                
+                resetPlayAllTimer()
                 Music.sharedInstance.audioPlayer.pause()
                 playPauseImageUpdate(play: true)
                 Music.sharedInstance.isPlaying = false
                 appDelegate.setNetworkActivityIndicatorVisible(visible: false)
                 pausedTime = DispatchTime.now()
+                
             }
             
         } else if Music.sharedInstance.isPlaying == false {
@@ -564,7 +566,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         isMapLoaded = true
         
         
-        nowPlayingLabel.text = "Tap dots to play. Turn Tuner ON to play station nearest to map center."
+        nowPlayingLabel.text = "Tap dots to begin playing."
         nowPlayingLabel.triggerScrollStart()
         
         setWorldRegion(animated: false)
@@ -662,7 +664,13 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         
     }
     
-    
+    func resetPlayAllTimer() {
+        if (playAllTimer != nil) {
+            playAllTimer.invalidate()
+            playAllTimer = nil
+            barBtnWorld.tintColor = DARK_FOREGROUND_COLOR
+        }
+    }
     
     
     @IBAction func barBtnWorldClick(_ sender: Any) {
@@ -691,7 +699,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
                 barBtnWorld.tintColor = ALERT_COLOR
                 
                 //Show descriptive alert message
-                let lblAlert = AlertLabel()
+                
                 lblAlert.setFAText(prefixText: "Playing 20 second previews of stations within map region. Tap ", icon: FAType.FAGlobe, postfixText: " to stop.", size: 25)
                 lblAlert.showAlert(view: view)
 
@@ -720,6 +728,14 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         var closestStation : String
         var distanceToStation : CLLocationDegrees
         distanceToStation = 200.0
+        
+        
+        DispatchQueue.main.async() {
+            
+            //self.mapView.addAnnotation(annotation)
+            self.progressMessage.text = "Loading thousands of live radio stations..."
+            
+        }
         
         client.getStations { (result, error) in
             
@@ -789,7 +805,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
                             DispatchQueue.main.async() {
                                 
                                 //self.mapView.addAnnotation(annotation)
-                                self.progressMessage.text = "Loading " + String(counter) + " Radio Stations..."
+                                self.progressMessage.text = "Loading " + String(counter) + " Live Radio Stations..."
                                 
                             }
                             //RE* end
@@ -945,11 +961,13 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         
     }
     
+  
+    
     @IBAction func reWindAction(_ sender: Any) {
         
         if (prevStationHistory.count > 1) {
             
-            
+            resetPlayAllTimer()
             
             nextStationHistory.append(prevStationHistory.popLast()!)
             fastForward.isEnabled = true
@@ -1806,7 +1824,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         
         DispatchQueue.main.async {
             
-            self.nowPlayingLabel.text = message
+            self.nowPlayingLabel.text = message.removingPercentEncoding
             if(error) {
                 self.nowPlayingLabel.textColor = UIColor.white
                 self.nowPlayingLabel.font.withSize(20.0)

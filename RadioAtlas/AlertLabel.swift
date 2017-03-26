@@ -22,6 +22,7 @@ class AlertLabel: UILabel {
     }
     
     func showAlert(view: UIView) {
+        self.isHidden = false
         self.backgroundColor = LIGHT_BACKGROUND_COLOR
         
         self.layer.masksToBounds = true
@@ -34,6 +35,8 @@ class AlertLabel: UILabel {
         self.textAlignment = .center
         self.alpha = 0.96
         self.numberOfLines = 3
+        
+        /*
         self.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(self)
         
@@ -55,7 +58,7 @@ class AlertLabel: UILabel {
             views: ["superview":view, "label":self])
         
         view.addConstraints(constraints)
-        view.addConstraints([ widthConstraint, heightConstraint])
+        view.addConstraints([ widthConstraint, heightConstraint]) */
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 8) {
             self.isHidden = true

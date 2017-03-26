@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RadioAtlas/MapViewController.swift"
-            timestampString = "512237777.421803"
+            timestampString = "512242001.658452"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1347"
-            endingLineNumber = "1347"
+            startingLineNumber = "1365"
+            endingLineNumber = "1365"
             landmarkName = "dropAnnotation(annotation:)"
             landmarkType = "7">
          </BreakpointContent>
