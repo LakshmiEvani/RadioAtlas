@@ -133,8 +133,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
     
     var appDelegate: AppDelegate!
     var client = Client.sharedInstance()
-    var radioInfo = [RadioInfo]()
-    var locationManager = CLLocationManager()
+    //*var radioInfo = [RadioInfo]()
+    //*var locationManager = CLLocationManager()
     var favoriteStation = [Station]()
     // var favorite : Bool = false
     var annotations = [MKAnnotation]()
@@ -156,6 +156,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
     var currentlyPlaying: MKAnnotation? = nil
     var playNext: PinAnnotation? = nil
     var tunerTurnedOff: Bool = false
+    
     private let PlayerStatusObservingContext = UnsafeMutablePointer<Int>(bitPattern: 1)
     
     @IBOutlet weak var mapViewZoomStepper: UIStepper!
@@ -177,6 +178,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
     let PLAY_ALL_MODE : Bool = true
     let TIMER_INTERVAL  = 20
     
+    
     //var tunerMode : Bool = false
     
     var muteTuner: Bool = false
@@ -189,6 +191,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
     var previousStationData : String = ""
     var prevStationHistory = [PinAnnotation]()
     var nextStationHistory = [PinAnnotation]()
+    
     
     
     // @IBOutlet weak var playAndPause: UIButton!
@@ -501,7 +504,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         
         var status : Bool = false
         
-        if (getZoomLevel() >= MAX_ZOOM_OUT - 1 ) {
+        if (getZoomLevel() >= MAX_ZOOM_OUT - 2 ) {
             //set to world region
             setWorldRegion(animated: true, changeCenter: true)
             btnZoomOut.isEnabled = false
@@ -566,7 +569,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         isMapLoaded = true
         
         
-        nowPlayingLabel.text = "Tap dots to begin playing."
+        nowPlayingLabel.text = "Tap dots to begin playing"
         nowPlayingLabel.triggerScrollStart()
         
         setWorldRegion(animated: false)
@@ -587,6 +590,28 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
             barBtnWorld.isEnabled = true
         }
         
+        //if radiostation id is passed, then play that annotation
+        playInitalRadioStation(annotationId: appDelegate.param)
+        
+        
+        
+    }
+    
+    func playInitalRadioStation(annotationId : String) {
+        
+        if (annotationId != "")
+        {
+            for annotation in annotations {
+                let anno : PinAnnotation =  annotation as! PinAnnotation
+                if (anno.id == annotationId)
+                {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                        self.dropAnnotation(annotation: anno)
+                    }
+                    break
+                }
+            }
+        }
         
     }
     
@@ -682,6 +707,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
             
             if (playAllTimer == nil) {
                 
+                //playInitalRadioStation(annotationId: "2401")
                 
                 //tunerToggle.isOn = true
                 
@@ -691,6 +717,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
 
                 let visibleMapRect = self.mapView.visibleMapRect
                 timerAnnotations = self.clusteringManager.pinAnnotationsRect(withinMapRect: visibleMapRect, zoomScale: timerScale)
+                
+                
                 
                 playAllTimer = Timer.scheduledTimer(timeInterval: TimeInterval(TIMER_INTERVAL), target: self, selector: #selector(runTimedCode), userInfo: nil, repeats: true)
 
@@ -1263,7 +1291,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
             
             if (!self.regionChangedBecauseAnnotationSelected) {
                 
-                var closestStation : MKAnnotation
+                var closestStations = [MKAnnotation?](repeating: nil, count:2)
                 if (annotationArray.count > 0)
                 {
                     if (!self.tunerToggle.isOn) {
@@ -1272,18 +1300,19 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
                     
                     if (self.playNext != nil)
                     {
-                        closestStation = self.playNext!
+                        closestStations[0] = self.playNext!
                         self.playNext = nil
                     }
                     else {
-                        closestStation = self.findClosestStation(annotations: annotationNonClusteredArray,coordinate: self.mapView.centerCoordinate)
+                        closestStations = self.findClosestStation(annotations: annotationNonClusteredArray,coordinate: self.mapView.centerCoordinate)
+                        
                     }
                     //print(closestStation.title)
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.25)  {
                         
                         // self.playFromAnnotation(annotation: closestStation as! PinAnnotation)
                         self.selectedFromRegionChange = true
-                        self.dropAnnotation(annotation: closestStation)
+                        self.dropAnnotation(annotation: closestStations[0]!)
                         self.selectedFromRegionChange = false
                         
                         
@@ -1383,18 +1412,19 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         
         //view.canShowCallout = true
         
+        
         regionChangedBecauseAnnotationSelected = regionWillChangeAnimatedCalled
         
         if view is FBAnnotationClusterView {
             //let annotationCluster = view.annotation as! FBAnnotation
             
             var clusterAnnotations : [MKAnnotation]
-            var closestStation : MKAnnotation
+            var closestStations = [MKAnnotation?](repeating: nil, count:2)
             
             let cView = view as! FBAnnotationClusterView
             clusterAnnotations = cView.getClusterAnnotations()
             if (clusterAnnotations.count > 0) {
-                closestStation = findClosestStation(annotations: cView.getClusterAnnotations() as! [PinAnnotation],coordinate: (cView.annotation?.coordinate)!)
+                closestStations = findClosestStation(annotations: cView.getClusterAnnotations() as! [PinAnnotation],coordinate: (cView.annotation?.coordinate)!)
                 
                 //do not zoom in if user dragged map, else zoom in if user selected point
                 var delta = 0.03125
@@ -1408,14 +1438,14 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
                 //    mapView.changeCenter(center: closestStation.coordinate)
                 //}
                 //else {
-                mapView.setZoomByDelta(delta: delta, animated: true, center: closestStation.coordinate)
+                mapView.setZoomByDelta(delta: delta, animated: true, center: (closestStations[0]?.coordinate)!)
                 //}
                 
                 btnZoomOut.isEnabled = true
                 barBtnWorld.isEnabled = true
                 
                 
-                let annotationView = closestStation as! PinAnnotation
+                let annotationView = closestStations[0] as! PinAnnotation
                 
                 if (self.checkIfFavorite(name: annotationView.name))
                 {
@@ -1429,8 +1459,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
                     self.playNext = annotationView
                 }
                 
-                mapView.addAnnotation(closestStation)
-                mapView.selectAnnotation(closestStation, animated: false)
+                mapView.addAnnotation(closestStations[0]!)
+                mapView.selectAnnotation(closestStations[0]!, animated: false)
                 
                 // When zooming into cluster, turn on Tuner mode, unless it's explicitly been turned off
                 if (!tunerTurnedOff) {
@@ -1505,9 +1535,10 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         
     }
     
-    func findClosestStation(annotations:[MKAnnotation], coordinate:CLLocationCoordinate2D) -> MKAnnotation {
+    func findClosestStation(annotations:[MKAnnotation], coordinate:CLLocationCoordinate2D) -> [MKAnnotation] {
         
         var closest : MKAnnotation = annotations[0]
+        var nextClosest : MKAnnotation = annotations[0]
         
         
         //Max possible distance between 2 points
@@ -1523,6 +1554,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
             let clusterCoord : CLLocation = CLLocation(latitude: coordinate.latitude,longitude: coordinate.longitude)
             
             if (clusterCoord.distance(from: annotationCoord) <= distance) {
+                nextClosest = closest
                 closest = annotation
                 distance = clusterCoord.distance(from: annotationCoord)
             }
@@ -1530,7 +1562,9 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
             
         }
         
-        return closest
+        let closestStatons : [MKAnnotation] = [closest, nextClosest]
+        
+        return closestStatons
     }
     
     func playFromAnnotation(annotation: PinAnnotation) {
@@ -1799,21 +1833,61 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         }
     }
     
+    var badAnnotations = [PinAnnotation]()
+    
+    func isBadAnnotation(annotationtoCheck : PinAnnotation) -> Bool {
+        for anno in badAnnotations {
+            let annotation = anno as PinAnnotation
+            if (annotation.id == annotationtoCheck.id)
+            {
+                return true
+            }
+        }
+        
+        return false
+    }
+    
     func handleErrorStation(streamUrl : String="") {
         
-        statusUpdate(message: "Unable to play radio stream. Try another station.", error: true)
+        if (!Reachability.isConnectedToNetwork() || (Reachability.currentReachabilityStatus == .notReachable))
+        {
+            statusUpdate(message: "Unable to connect to the internet.", error: true)
+            return
+        }
+        else {
+            statusUpdate(message: "Unable to play radio stream. Trying another station.", error: true)
+        }
         
         
-        if (currentlyPlaying != nil)
+        badAnnotations.append(currentlyPlaying! as! PinAnnotation)
+        
+        //Try one of two other closest stations
+        
+        let annotationNonClusteredArray = self.clusteringManager.allAnnotations()
+        var closestStations = [MKAnnotation?](repeating: nil, count:2)
+        closestStations = findClosestStation(annotations: annotationNonClusteredArray,coordinate: self.mapView.centerCoordinate)
+        
+        
+        if (!isBadAnnotation(annotationtoCheck: closestStations[0] as! PinAnnotation)) {
+            dropAnnotation(annotation: closestStations[0]!)
+        }
+        else if (!isBadAnnotation(annotationtoCheck: closestStations[1] as! PinAnnotation)) {
+            dropAnnotation(annotation: closestStations[1]!)
+            
+        }
+        else if (currentlyPlaying != nil)
         {
             print(currentlyPlaying?.title)
+            statusUpdate(message: "Unable to play radio stream. Please try another station.", error: true)
             print("Invalid Station: ",(currentlyPlaying as! PinAnnotation).streamUrl)
         }
         else{
+            
+            statusUpdate(message: "Unable to play radio stream. Please try another station.", error: true)
             print("Invalid Station: ", streamUrl)
             
         }
-        playAndPauseBar.isEnabled = false
+       
         //playPauseImageUpdate(play: true)
         //  payAndPauseBar.isOpaque = true
         
@@ -1828,7 +1902,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
             if(error) {
                 self.nowPlayingLabel.textColor = UIColor.white
                 self.nowPlayingLabel.font.withSize(20.0)
-                self.nowPlayingLabel.backgroundColor = UIColor.red
+                self.nowPlayingLabel.backgroundColor = self.ALERT_COLOR
                 self.nowPlayingLabel.fadeLength = 3
             }
             else {

@@ -17,6 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var activityIndicatorSetVisibleCount = 0
     var setCategoryErr: NSError!
     var activationErr: NSError!
+    var param : String = ""
     
        //Network Activity Indicator
     
@@ -36,6 +37,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        return true
+    }
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        param = url.host!
+        
         return true
     }
     

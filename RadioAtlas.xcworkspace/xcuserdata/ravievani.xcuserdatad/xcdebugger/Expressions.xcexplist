@@ -98,6 +98,14 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "MapViewController.checkZoomOutButtonStatus() -&gt; Bool:MapViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "getZoomLevel()">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "MapViewController.didDragMap(gestureRecognizer : UIGestureRecognizer) -&gt; ():MapViewController.swift">
          <PersistentStrings>
             <PersistentString
@@ -133,6 +141,14 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "MapViewController.postInitialization() -&gt; ():MapViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "annotations">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "MapViewController.(mapView(MKMapView, didSelect : MKAnnotationView) -&gt; ()).(closure #1):MapViewController.swift">
          <PersistentStrings>
             <PersistentString
@@ -153,6 +169,20 @@
       </ContextState>
       <ContextState
          contextName = "MapViewController.dropAnnotation(annotation : PinAnnotation) -&gt; ():MapViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "MapViewController.handleErrorStation(streamUrl : String) -&gt; ():MapViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "badAnnotations">
+            </PersistentString>
+            <PersistentString
+               value = "closestStations[1]?.title">
+            </PersistentString>
+            <PersistentString
+               value = "currentlyPlaying?.title">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "MapViewController.playFromFavorites(annotation : PinAnnotation) -&gt; ():MapViewController.swift">
