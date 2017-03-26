@@ -104,7 +104,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TJn-ei-e7l">
-                                <rect key="frame" x="19" y="387" width="282" height="57.5"/>
+                                <rect key="frame" x="19" y="387" width="282" height="38.5"/>
                                 <string key="text">Tune into any place on the map. 
 What sounds familiar...or foreign? What sounds like home?</string>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
@@ -175,24 +175,20 @@ What sounds familiar...or foreign? What sounds like home?</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" pitchEnabled="NO" showsUserLocation="YES" showsBuildings="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bB8-uh-7h7">
-                                <rect key="frame" x="-11" y="20" width="347" height="548"/>
+                                <rect key="frame" x="-11" y="64" width="348" height="432"/>
                                 <connections>
                                     <outlet property="delegate" destination="tmg-mo-T3o" id="UMY-Gj-Sfq"/>
                                 </connections>
                             </mapView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" editable="NO" text="Loading Radio Stations" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fb2-Ol-aye">
-                                <rect key="frame" x="40" y="312.5" width="241" height="34"/>
+                                <rect key="frame" x="58" y="315.5" width="204" height="34"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="34" id="FZV-7I-0OM"/>
+                                    <constraint firstAttribute="height" constant="34" id="ZeW-Fo-LSH"/>
                                 </constraints>
                                 <color key="textColor" red="0.035294117647058823" green="0.29019607843137257" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <activityIndicatorView contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="tJP-a8-iaI">
-                                <rect key="frame" x="142" y="265.5" width="37" height="37"/>
-                                <color key="color" red="0.035294117649999998" green="0.2901960784" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
-                            </activityIndicatorView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6PE-Lx-BlR" userLabel="Marquee" customClass="MarqueeLabel" customModule="MarqueeLabel">
                                 <rect key="frame" x="-11" y="495" width="331" height="29"/>
                                 <color key="backgroundColor" red="0.96862745098039216" green="0.94901960784313721" blue="0.9137254901960784" alpha="1" colorSpace="calibratedRGB"/>
@@ -236,33 +232,36 @@ What sounds familiar...or foreign? What sounds like home?</string>
                                 </connections>
                             </switch>
                             <imageView hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="center" translatesAutoresizingMaskIntoConstraints="NO" id="TCg-qb-4VU">
-                                <rect key="frame" x="80" y="259.5" width="160" height="49"/>
+                                <rect key="frame" x="97.5" y="259.5" width="124" height="49"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="49" id="zbz-1v-tCK"/>
+                                    <constraint firstAttribute="height" constant="49" id="bY9-6a-mkf"/>
                                 </constraints>
                             </imageView>
+                            <activityIndicatorView contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="tJP-a8-iaI">
+                                <rect key="frame" x="141.5" y="265.5" width="37" height="37"/>
+                                <color key="color" red="0.035294117649999998" green="0.2901960784" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="6PE-Lx-BlR" firstAttribute="bottom" secondItem="o2O-Le-CHD" secondAttribute="top" id="2jA-c2-JcR"/>
+                            <constraint firstItem="o2O-Le-CHD" firstAttribute="top" secondItem="bB8-uh-7h7" secondAttribute="bottom" constant="28" id="45f-VM-J38"/>
+                            <constraint firstItem="fb2-Ol-aye" firstAttribute="leading" secondItem="Jba-SE-lO6" secondAttribute="leadingMargin" constant="42" id="5M4-ZQ-Kab"/>
+                            <constraint firstItem="TCg-qb-4VU" firstAttribute="centerX" secondItem="fb2-Ol-aye" secondAttribute="centerX" id="85z-HF-tON"/>
+                            <constraint firstItem="bB8-uh-7h7" firstAttribute="top" secondItem="7yS-y9-ht0" secondAttribute="bottom" id="CRU-TQ-Qhw"/>
+                            <constraint firstItem="bB8-uh-7h7" firstAttribute="leading" secondItem="6PE-Lx-BlR" secondAttribute="leading" id="E8e-7K-RJI"/>
                             <constraint firstItem="imM-tk-bsr" firstAttribute="top" secondItem="7yS-y9-ht0" secondAttribute="bottom" constant="17" id="Emr-Xb-Rep"/>
-                            <constraint firstItem="fb2-Ol-aye" firstAttribute="top" secondItem="tJP-a8-iaI" secondAttribute="bottom" constant="10" id="HFe-Gc-tb8"/>
-                            <constraint firstItem="bB8-uh-7h7" firstAttribute="centerX" secondItem="tJP-a8-iaI" secondAttribute="centerX" constant="2.5" id="JYH-p1-XkV"/>
+                            <constraint firstItem="tJP-a8-iaI" firstAttribute="centerX" secondItem="TCg-qb-4VU" secondAttribute="centerX" id="Gfp-Gd-0Kk"/>
+                            <constraint firstItem="fb2-Ol-aye" firstAttribute="centerX" secondItem="Jba-SE-lO6" secondAttribute="centerX" id="HhY-DP-icy"/>
                             <constraint firstItem="imM-tk-bsr" firstAttribute="trailing" secondItem="0Fn-fB-cf4" secondAttribute="trailing" id="JcX-2d-y1I"/>
-                            <constraint firstItem="6PE-Lx-BlR" firstAttribute="leading" secondItem="bB8-uh-7h7" secondAttribute="leading" id="PER-Ym-039"/>
-                            <constraint firstItem="fb2-Ol-aye" firstAttribute="leading" secondItem="Jba-SE-lO6" secondAttribute="leadingMargin" constant="24" id="Q2Q-Fb-SZQ"/>
                             <constraint firstItem="imM-tk-bsr" firstAttribute="trailing" secondItem="Jba-SE-lO6" secondAttribute="trailingMargin" id="RVX-We-fH4"/>
-                            <constraint firstItem="bB8-uh-7h7" firstAttribute="centerX" secondItem="Jba-SE-lO6" secondAttribute="centerX" constant="2.5" id="USP-ax-L08"/>
+                            <constraint firstItem="tJP-a8-iaI" firstAttribute="centerY" secondItem="TCg-qb-4VU" secondAttribute="centerY" id="X5J-li-Ohq"/>
+                            <constraint firstItem="bB8-uh-7h7" firstAttribute="leading" secondItem="Jba-SE-lO6" secondAttribute="leadingMargin" constant="-27" id="XfK-Cw-Ktk"/>
                             <constraint firstItem="0Fn-fB-cf4" firstAttribute="top" secondItem="imM-tk-bsr" secondAttribute="bottom" constant="4" id="ZR6-UR-naF"/>
-                            <constraint firstItem="TCg-qb-4VU" firstAttribute="centerX" secondItem="tJP-a8-iaI" secondAttribute="centerX" id="bZs-E3-st8"/>
                             <constraint firstAttribute="trailing" secondItem="6PE-Lx-BlR" secondAttribute="trailing" id="d29-lv-4RV"/>
-                            <constraint firstItem="tJP-a8-iaI" firstAttribute="centerX" secondItem="fb2-Ol-aye" secondAttribute="centerX" id="hvB-Rw-Typ"/>
-                            <constraint firstItem="TCg-qb-4VU" firstAttribute="leading" secondItem="Jba-SE-lO6" secondAttribute="leadingMargin" constant="64" id="lun-oW-jMy"/>
-                            <constraint firstItem="bB8-uh-7h7" firstAttribute="leading" secondItem="Jba-SE-lO6" secondAttribute="leadingMargin" constant="-27" id="tty-IM-QTS"/>
-                            <constraint firstItem="bB8-uh-7h7" firstAttribute="top" secondItem="Jba-SE-lO6" secondAttribute="top" constant="20" symbolic="YES" id="vWy-hB-7Wd"/>
-                            <constraint firstItem="TCg-qb-4VU" firstAttribute="centerY" secondItem="tJP-a8-iaI" secondAttribute="centerY" id="vqw-Tk-9Ha"/>
-                            <constraint firstItem="bB8-uh-7h7" firstAttribute="bottom" secondItem="o2O-Le-CHD" secondAttribute="top" constant="44" id="wmG-rp-a4p"/>
-                            <constraint firstItem="tJP-a8-iaI" firstAttribute="centerY" secondItem="Jba-SE-lO6" secondAttribute="centerY" id="yZm-z3-AFJ"/>
+                            <constraint firstItem="fb2-Ol-aye" firstAttribute="top" secondItem="TCg-qb-4VU" secondAttribute="bottom" constant="7" id="nnW-7c-lNB"/>
+                            <constraint firstItem="tJP-a8-iaI" firstAttribute="centerY" secondItem="Jba-SE-lO6" secondAttribute="centerY" id="pXO-P3-ngH"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="bB8-uh-7h7" secondAttribute="trailing" constant="-33" id="rVd-6l-cXh"/>
                         </constraints>
                     </view>
                     <toolbarItems>

@@ -3,24 +3,18 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "MapViewController.mapView(MKMapView, didSelect : MKAnnotationView) -&gt; ():MapViewController.swift">
+         contextName = "MapViewController.didTapMap(gestureRecognizer : UIGestureRecognizer) -&gt; ():MapViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "regionChangedBecauseAnnotationSelected">
+               value = "UIGestureRecognizerState.began">
             </PersistentString>
             <PersistentString
-               value = "view.image">
-            </PersistentString>
-            <PersistentString
-               value = "view.image?.description">
+               value = "mapTapped">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "TableViewController.navigate(annotation : PinAnnotation) -&gt; ():TableViewController.swift">
-      </ContextState>
-      <ContextState
-         contextName = "AppDelegate.checkOrientation(viewController : UIViewController?) -&gt; Int:AppDelegate.swift">
       </ContextState>
       <ContextState
          contextName = "SettingsController.tableView(UITableView, didSelectRowAt : IndexPath) -&gt; ():SettingsController.swift">
@@ -30,6 +24,20 @@
             </PersistentString>
             <PersistentString
                value = "currentCell.textLabel!">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "MapViewController.runTimedCode() -&gt; ():MapViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "MKMapView.setZoomByDelta(delta : Double, animated : Bool, center : CLLocationCoordinate2D) -&gt; ():MapViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "_span.longitudeDelta">
+            </PersistentString>
+            <PersistentString
+               value = "_span.latitudeDelta">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -51,18 +59,24 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "MKMapView.setZoomByDelta(delta : Double, animated : Bool, center : CLLocationCoordinate2D) -&gt; ():MapViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "_span.longitudeDelta">
-            </PersistentString>
-            <PersistentString
-               value = "_span.latitudeDelta">
-            </PersistentString>
-         </PersistentStrings>
+         contextName = "AppDelegate.checkOrientation(viewController : UIViewController?) -&gt; Int:AppDelegate.swift">
       </ContextState>
       <ContextState
          contextName = "MapViewController.findClosestStation(annotations : [PinAnnotation], coordinate : CLLocationCoordinate2D) -&gt; MKAnnotation:MapViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "MapViewController.mapView(MKMapView, didSelect : MKAnnotationView) -&gt; ():MapViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "regionChangedBecauseAnnotationSelected">
+            </PersistentString>
+            <PersistentString
+               value = "view.image">
+            </PersistentString>
+            <PersistentString
+               value = "view.image?.description">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "UITableViewCell.prepareDisclosureIndicator() -&gt; ():SettingsController.swift">
@@ -74,6 +88,25 @@
       </ContextState>
       <ContextState
          contextName = "MapViewController.playTunerAudio() -&gt; ():MapViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "MapViewController.(dropAnnotation(annotation : MKAnnotation) -&gt; ()).(closure #1):MapViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.mapView.view(for: annotation)?.isSelected">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "MapViewController.didDragMap(gestureRecognizer : UIGestureRecognizer) -&gt; ():MapViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "UIGestureRecognizerState.began">
+            </PersistentString>
+            <PersistentString
+               value = "gestureRecognizer.state">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "MapViewController.playMusic(music : String) -&gt; ():MapViewController.swift">
@@ -183,6 +216,17 @@
       </ContextState>
       <ContextState
          contextName = "MapViewController.(didDragMap(gestureRecognizer : UIGestureRecognizer) -&gt; ()).(closure #1):MapViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "MapViewController.mapView(MKMapView, regionDidChangeAnimated : Bool) -&gt; ():MapViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "mapTapped">
+            </PersistentString>
+            <PersistentString
+               value = "skipRegionClustering">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "MapViewController.reWindAction(Any) -&gt; ():MapViewController.swift">
