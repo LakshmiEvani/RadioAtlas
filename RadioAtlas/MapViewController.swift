@@ -48,6 +48,18 @@ extension MKMapView {
         
     }
     
+    func shift() {
+        
+        var _span = region.span;
+        let lat = CLLocationDegrees(region.center.latitude) + CLLocationDegrees(0.0000001)
+        let lon = CLLocationDegrees(region.center.longitude) + CLLocationDegrees(0.0000001)
+        let newCenter = CLLocationCoordinate2D(latitude: lat, longitude: lon)
+        
+        region.center = newCenter
+        region.span = _span;
+        
+    }
+    
     func longitudeToPixelSpaceX(longitude : Double) -> Double {
         let mercadorRadius : Double =  85445659.44705395
         let mercadorOffset : Double = 268435456
@@ -92,6 +104,19 @@ extension UIImage {
         var image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         return image!
+    }
+}
+
+extension Array {
+    var shuffle:[Element] {
+        var elements = self
+        for index in 0..<elements.count {
+            let anotherIndex = Int(arc4random_uniform(UInt32(elements.count-index)))+index
+            if anotherIndex != index {
+                swap(&elements[index], &elements[anotherIndex])
+            }
+        }
+        return elements
     }
 }
 
@@ -157,6 +182,10 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
     var playNext: PinAnnotation? = nil
     var tunerTurnedOff: Bool = false
     
+    var timerAnnotations = [MKAnnotation]()
+    var timerAnnotationsIndex = 1
+    
+    
     private let PlayerStatusObservingContext = UnsafeMutablePointer<Int>(bitPattern: 1)
     
     @IBOutlet weak var mapViewZoomStepper: UIStepper!
@@ -177,6 +206,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
     let MAX_ZOOM_IN = 5.0
     let PLAY_ALL_MODE : Bool = true
     let TIMER_INTERVAL  = 20
+    let systemSoundID: SystemSoundID = 1057
     
     
     //var tunerMode : Bool = false
@@ -569,7 +599,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         isMapLoaded = true
         
         
-        nowPlayingLabel.text = "Tap dots to begin playing"
+        nowPlayingLabel.text = "Tap dots or clusters to begin playing."
         nowPlayingLabel.triggerScrollStart()
         
         setWorldRegion(animated: false)
@@ -603,6 +633,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         {
             for annotation in annotations {
                 let anno : PinAnnotation =  annotation as! PinAnnotation
+                playNext = anno
                 if (anno.id == annotationId)
                 {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
@@ -651,46 +682,64 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
     
     
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
-        // if (playAudioRepeatedly)
-        // {
+        
         audioPlayer!.play()
-        // }
+        
     }
     
-    var timerAnnotations = [MKAnnotation]()
+
     
     func runTimedCode() {
         
+        if (timerAnnotations != nil && timerAnnotations.count <= 0)
+        {
+            return
+        }
         
-        let annIndex = Int(arc4random_uniform(UInt32(timerAnnotations.count))) + 1
+        barBtnWorld.tintColor = ALERT_COLOR
+        lblAlert.setFAText(prefixText: "Playing 20 second previews of stations within map region. Tap ", icon: FAType.FAGlobe, postfixText: " to stop.", size: 25)
+        lblAlert.showAlert(view: view)
         
-        if (annIndex <= timerAnnotations.count) {
+        if (timerAnnotationsIndex <= timerAnnotations.count) {
             
-            let station = timerAnnotations[annIndex-1]
-            //if (type(of: station) == PinAnnotation.self) {
-           // if (mapView.view(for: station)?.image != UIImage(named: "pinView"))
-           // {
-                
-                playNext = station as! PinAnnotation
-                let center = CLLocationCoordinate2D(latitude: station.coordinate.latitude, longitude: station.coordinate.longitude)
-                
-                //self.mapView.setZoomByDelta(delta: 1, animated: false, center: annotation.coordinate)
-                mapView.changeCenter(center: station.coordinate)
-                
-                if (!tunerToggle.isOn) {
-                    
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
-                        self.dropAnnotation(annotation: station)
-                    }
-                }
+            let station = timerAnnotations[timerAnnotationsIndex-1]
+            
+            playNext = station as! PinAnnotation
+            
+            
+            let visibleAnnotations : Set = mapView.annotations(in: mapView.visibleMapRect)
+            let isAnnotationVisible : Bool = visibleAnnotations.contains(station as! AnyHashable)
+            
+            //Do not execute code within region change because explicitly selecting annotation
+            skipRegionClustering = true
+            
+            if (!isAnnotationVisible) {
+                mapView.addAnnotation(station)
             }
             
-            //  }
+            playNext = station as! PinAnnotation
+            mapView.selectAnnotation(station, animated: true)
+            
+            timerAnnotationsIndex += 1
+          
+            }
+        else
+        {
+            resetPlayAllTimer()
+            lblAlert.setFAText(prefixText: "Finished playing stations in region. Tap ", icon: FAType.FAGlobe, postfixText: " to replay.", size: 25)
+            lblAlert.showAlert(view: view)
+            AudioServicesPlaySystemSound (systemSoundID)
+
+            
+        }
+        
         
     }
     
     func resetPlayAllTimer() {
         if (playAllTimer != nil) {
+            timerAnnotationsIndex = 1
+            timerAnnotations.removeAll()
             playAllTimer.invalidate()
             playAllTimer = nil
             barBtnWorld.tintColor = DARK_FOREGROUND_COLOR
@@ -716,21 +765,12 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
                 let timerScale = mapBoundsWidth / mapRectWidth
 
                 let visibleMapRect = self.mapView.visibleMapRect
-                timerAnnotations = self.clusteringManager.pinAnnotationsRect(withinMapRect: visibleMapRect, zoomScale: timerScale)
-                
-                
+                timerAnnotations = self.clusteringManager.pinAnnotationsRect(withinMapRect: visibleMapRect, zoomScale: timerScale).shuffle
                 
                 playAllTimer = Timer.scheduledTimer(timeInterval: TimeInterval(TIMER_INTERVAL), target: self, selector: #selector(runTimedCode), userInfo: nil, repeats: true)
 
-
                 playAllTimer.fire()
-                barBtnWorld.tintColor = ALERT_COLOR
-                
-                //Show descriptive alert message
-                
-                lblAlert.setFAText(prefixText: "Playing 20 second previews of stations within map region. Tap ", icon: FAType.FAGlobe, postfixText: " to stop.", size: 25)
-                lblAlert.showAlert(view: view)
-
+               
                 
             }
             else{
@@ -1333,7 +1373,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
     {
         
         playNext = annotation
-        
+        resetPlayAllTimer()
         
         //let visibleAnnotations  = Array(mapView.annotations(in: mapView.visibleMapRect))
         let annotationNonClusteredArray = self.clusteringManager.allAnnotations()
@@ -1381,7 +1421,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         
         mapView.view(for: annotation)?.canShowCallout = true
         mapView.deselectAnnotation(annotation, animated: false)
-        mapView.selectAnnotation(annotation, animated: false)
+        mapView.selectAnnotation(annotation, animated: true)
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
             
@@ -1391,7 +1431,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
                 if (!(self.mapView.view(for: annotation)?.isSelected)!) {
                     self.skipRegionClustering = true
                     
-                    self.mapView.changeCenter(center: annotation.coordinate)
+                    self.mapView.shift()
                 }
             }
             

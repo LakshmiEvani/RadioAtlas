@@ -3,6 +3,28 @@
    version = "1.0">
    <ContextStates>
       <ContextState
+         contextName = "MapViewController.runTimedCode() -&gt; ():MapViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "timerAnnotations">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "TableViewController.navigate(annotation : PinAnnotation) -&gt; ():TableViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "MapViewController.playFromFavorites(annotation : PinAnnotation) -&gt; ():MapViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "MapViewController.barBtnWorldClick(Any) -&gt; ():MapViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "playAllTimer">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "MapViewController.didTapMap(gestureRecognizer : UIGestureRecognizer) -&gt; ():MapViewController.swift">
          <PersistentStrings>
             <PersistentString
@@ -12,57 +34,6 @@
                value = "mapTapped">
             </PersistentString>
          </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "TableViewController.navigate(annotation : PinAnnotation) -&gt; ():TableViewController.swift">
-      </ContextState>
-      <ContextState
-         contextName = "SettingsController.tableView(UITableView, didSelectRowAt : IndexPath) -&gt; ():SettingsController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "indexPath.row">
-            </PersistentString>
-            <PersistentString
-               value = "currentCell.textLabel!">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "MapViewController.runTimedCode() -&gt; ():MapViewController.swift">
-      </ContextState>
-      <ContextState
-         contextName = "MKMapView.setZoomByDelta(delta : Double, animated : Bool, center : CLLocationCoordinate2D) -&gt; ():MapViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "_span.longitudeDelta">
-            </PersistentString>
-            <PersistentString
-               value = "_span.latitudeDelta">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "MapViewController.observeValue(forKeyPath : String?, of : Any?, change : [NSKeyValueChangeKey : Any]?, context : UnsafeMutableRawPointer?) -&gt; ():MapViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "Music.sharedInstance.audioPlayer.currentItem.accessLog().extendedLogDataStringEncoding">
-            </PersistentString>
-            <PersistentString
-               value = "NSString(Music.sharedInstance.audioPlayer.currentItem.accessLog().extendedLogData())">
-            </PersistentString>
-            <PersistentString
-               value = "Music.sharedInstance.audioPlayer.currentItem.accessLog()">
-            </PersistentString>
-            <PersistentString
-               value = "Music.sharedInstance.audioPlayer.currentItem.accessLog().extendedLogData()">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "AppDelegate.checkOrientation(viewController : UIViewController?) -&gt; Int:AppDelegate.swift">
-      </ContextState>
-      <ContextState
-         contextName = "MapViewController.findClosestStation(annotations : [PinAnnotation], coordinate : CLLocationCoordinate2D) -&gt; MKAnnotation:MapViewController.swift">
       </ContextState>
       <ContextState
          contextName = "MapViewController.mapView(MKMapView, didSelect : MKAnnotationView) -&gt; ():MapViewController.swift">
@@ -75,52 +46,6 @@
             </PersistentString>
             <PersistentString
                value = "view.image?.description">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "UITableViewCell.prepareDisclosureIndicator() -&gt; ():SettingsController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "image">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "MapViewController.playTunerAudio() -&gt; ():MapViewController.swift">
-      </ContextState>
-      <ContextState
-         contextName = "MapViewController.(dropAnnotation(annotation : MKAnnotation) -&gt; ()).(closure #1):MapViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "self.mapView.view(for: annotation)?.isSelected">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "MapViewController.checkZoomOutButtonStatus() -&gt; Bool:MapViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "getZoomLevel()">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "MapViewController.didDragMap(gestureRecognizer : UIGestureRecognizer) -&gt; ():MapViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "UIGestureRecognizerState.began">
-            </PersistentString>
-            <PersistentString
-               value = "gestureRecognizer.state">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "MapViewController.playMusic(music : String) -&gt; ():MapViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "NSURL(string: music)">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -141,66 +66,21 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "MapViewController.postInitialization() -&gt; ():MapViewController.swift">
+         contextName = "MapViewController.checkZoomOutButtonStatus() -&gt; Bool:MapViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "annotations">
+               value = "getZoomLevel()">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "MapViewController.(mapView(MKMapView, didSelect : MKAnnotationView) -&gt; ()).(closure #1):MapViewController.swift">
+         contextName = "SettingsController.tableView(UITableView, didSelectRowAt : IndexPath) -&gt; ():SettingsController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "view.annotation">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "MapViewController.mapView(MKMapView, viewFor : MKAnnotation) -&gt; MKAnnotationView?:MapViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "annotation.coordinate">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "SettingsController.viewDidLoad() -&gt; ():SettingsController.swift">
-      </ContextState>
-      <ContextState
-         contextName = "MapViewController.dropAnnotation(annotation : PinAnnotation) -&gt; ():MapViewController.swift">
-      </ContextState>
-      <ContextState
-         contextName = "MapViewController.handleErrorStation(streamUrl : String) -&gt; ():MapViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "badAnnotations">
+               value = "indexPath.row">
             </PersistentString>
             <PersistentString
-               value = "closestStations[1]?.title">
-            </PersistentString>
-            <PersistentString
-               value = "currentlyPlaying?.title">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "MapViewController.playFromFavorites(annotation : PinAnnotation) -&gt; ():MapViewController.swift">
-      </ContextState>
-      <ContextState
-         contextName = "MapViewController.playAndPauseBarAction(Any) -&gt; ():MapViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "Music.sharedInstance.audioPlayer.currentItem.duration">
-            </PersistentString>
-            <PersistentString
-               value = "Music.sharedInstance.audioPlayer.currentItem.accessLog().events.count">
-            </PersistentString>
-            <PersistentString
-               value = "Music.sharedInstance.audioPlayer.rate">
-            </PersistentString>
-            <PersistentString
-               value = "Music.sharedInstance.audioPlayer.status">
+               value = "currentCell.textLabel!">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -222,7 +102,144 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "MapViewController.reWindAction(Any) -&gt; ():MapViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "nextStationHistory">
+            </PersistentString>
+            <PersistentString
+               value = "skipRegionClustering">
+            </PersistentString>
+            <PersistentString
+               value = "prevStationHistory">
+            </PersistentString>
+            <PersistentString
+               value = "playNext">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "MapViewController.dropAnnotation(annotation : PinAnnotation) -&gt; ():MapViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "MapViewController.(didDragMap(gestureRecognizer : UIGestureRecognizer) -&gt; ()).(closure #1):MapViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "MapViewController.didDragMap(gestureRecognizer : UIGestureRecognizer) -&gt; ():MapViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "UIGestureRecognizerState.began">
+            </PersistentString>
+            <PersistentString
+               value = "gestureRecognizer.state">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "MapViewController.postInitialization() -&gt; ():MapViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "annotations">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "MapViewController.playAndPauseBarAction(Any) -&gt; ():MapViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "Music.sharedInstance.audioPlayer.currentItem.duration">
+            </PersistentString>
+            <PersistentString
+               value = "Music.sharedInstance.audioPlayer.currentItem.accessLog().events.count">
+            </PersistentString>
+            <PersistentString
+               value = "Music.sharedInstance.audioPlayer.rate">
+            </PersistentString>
+            <PersistentString
+               value = "Music.sharedInstance.audioPlayer.status">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "MapViewController.findClosestStation(annotations : [PinAnnotation], coordinate : CLLocationCoordinate2D) -&gt; PinAnnotation:MapViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "MapViewController.mapView(MKMapView, regionDidChangeAnimated : Bool) -&gt; ():MapViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "mapTapped">
+            </PersistentString>
+            <PersistentString
+               value = "skipRegionClustering">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "MapViewController.(mapView(MKMapView, didSelect : MKAnnotationView) -&gt; ()).(closure #1):MapViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "view.annotation">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "MapViewController.observeValue(forKeyPath : String?, of : Any?, change : [NSKeyValueChangeKey : Any]?, context : UnsafeMutableRawPointer?) -&gt; ():MapViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "Music.sharedInstance.audioPlayer.currentItem.accessLog().extendedLogDataStringEncoding">
+            </PersistentString>
+            <PersistentString
+               value = "NSString(Music.sharedInstance.audioPlayer.currentItem.accessLog().extendedLogData())">
+            </PersistentString>
+            <PersistentString
+               value = "Music.sharedInstance.audioPlayer.currentItem.accessLog()">
+            </PersistentString>
+            <PersistentString
+               value = "Music.sharedInstance.audioPlayer.currentItem.accessLog().extendedLogData()">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "MapViewController.findClosestStation(annotations : [PinAnnotation], coordinate : CLLocationCoordinate2D) -&gt; MKAnnotation:MapViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "AppDelegate.checkOrientation(viewController : UIViewController?) -&gt; Int:AppDelegate.swift">
+      </ContextState>
+      <ContextState
+         contextName = "MapViewController.handleErrorStation(streamUrl : String) -&gt; ():MapViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "badAnnotations">
+            </PersistentString>
+            <PersistentString
+               value = "closestStations[1]?.title">
+            </PersistentString>
+            <PersistentString
+               value = "currentlyPlaying?.title">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "MapViewController.playMusic(music : String) -&gt; ():MapViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "NSURL(string: music)">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "MapViewController.playTunerAudio() -&gt; ():MapViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "MapViewController.mapView(MKMapView, viewFor : MKAnnotation) -&gt; MKAnnotationView?:MapViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "annotation.coordinate">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "SettingsController.viewDidLoad() -&gt; ():SettingsController.swift">
       </ContextState>
       <ContextState
          contextName = "MapViewController.(mapView(MKMapView, regionDidChangeAnimated : Bool) -&gt; ()).(closure #1):MapViewController.swift">
@@ -245,33 +262,29 @@
          contextName = "specialized MapViewController.(mapView(MKMapView, regionDidChangeAnimated : Bool) -&gt; ()).(closure #1).(closure #2):MapViewController.swift">
       </ContextState>
       <ContextState
-         contextName = "MapViewController.(didDragMap(gestureRecognizer : UIGestureRecognizer) -&gt; ()).(closure #1):MapViewController.swift">
-      </ContextState>
-      <ContextState
-         contextName = "MapViewController.mapView(MKMapView, regionDidChangeAnimated : Bool) -&gt; ():MapViewController.swift">
+         contextName = "MKMapView.setZoomByDelta(delta : Double, animated : Bool, center : CLLocationCoordinate2D) -&gt; ():MapViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "mapTapped">
+               value = "_span.longitudeDelta">
             </PersistentString>
             <PersistentString
-               value = "skipRegionClustering">
+               value = "_span.latitudeDelta">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "MapViewController.reWindAction(Any) -&gt; ():MapViewController.swift">
+         contextName = "UITableViewCell.prepareDisclosureIndicator() -&gt; ():SettingsController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "nextStationHistory">
+               value = "image">
             </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "MapViewController.(dropAnnotation(annotation : MKAnnotation) -&gt; ()).(closure #1):MapViewController.swift">
+         <PersistentStrings>
             <PersistentString
-               value = "skipRegionClustering">
-            </PersistentString>
-            <PersistentString
-               value = "prevStationHistory">
-            </PersistentString>
-            <PersistentString
-               value = "playNext">
+               value = "self.mapView.view(for: annotation)?.isSelected">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
