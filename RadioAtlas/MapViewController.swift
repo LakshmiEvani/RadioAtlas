@@ -1431,7 +1431,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
                 if (!(self.mapView.view(for: annotation)?.isSelected)!) {
                     self.skipRegionClustering = true
                     
-                    self.mapView.shift()
+                    self.mapView.changeCenter(center: annotation.coordinate)
                 }
             }
             

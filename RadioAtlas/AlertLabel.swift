@@ -26,7 +26,7 @@ class AlertLabel: UILabel {
         self.backgroundColor = LIGHT_BACKGROUND_COLOR
         
         self.layer.masksToBounds = true
-        self.layer.cornerRadius = 10.0
+        self.layer.cornerRadius = 5.0
         //self.setFAText(prefixText: "Tuning to a different station every 20 seconds. Tap ", icon: FAType.FAGlobe, postfixText: " to stop.", size: 25)
         self.setFAColor(color: ALERT_COLOR)
         
