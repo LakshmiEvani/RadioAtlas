@@ -2,7 +2,18 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "RA-Slider3.pdf"
+      "filename" : "playing-station1x.png",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "playing-station2x.png",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "playing-station3x.png",
+      "scale" : "3x"
     }
   ],
   "info" : {

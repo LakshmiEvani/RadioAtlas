@@ -1529,6 +1529,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         
         if (!checkIfFavorite(name: annotation.name)) {
             view.image = UIImage(named: "pinView")
+            
         }
         
         
