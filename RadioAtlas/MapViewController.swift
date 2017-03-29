@@ -266,9 +266,9 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
                     self.playPauseImageUpdate(play: false)
                     Music.sharedInstance.isPlaying = true
                 }
-               
+                
             }
-           
+            
             
         }
         
@@ -432,12 +432,12 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
             mapTapped = false
             mapDragged = true
         }
-
+        
         
         
         
     }
-
+    
     
     
     func addPlayerObservers(player: RadioAVPlayer) {
@@ -687,7 +687,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         
     }
     
-
+    
     
     func runTimedCode() {
         
@@ -721,15 +721,15 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
             mapView.selectAnnotation(station, animated: true)
             
             timerAnnotationsIndex += 1
-          
-            }
+            
+        }
         else
         {
             resetPlayAllTimer()
             lblAlert.setFAText(prefixText: "Finished playing stations in region. Tap ", icon: FAType.FAGlobe, postfixText: " to replay.", size: 25)
             lblAlert.showAlert(view: view)
             AudioServicesPlaySystemSound (systemSoundID)
-
+            
             
         }
         
@@ -763,14 +763,14 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
                 let mapBoundsWidth = Double(self.mapView.bounds.size.width)
                 let mapRectWidth = self.mapView.visibleMapRect.size.width
                 let timerScale = mapBoundsWidth / mapRectWidth
-
+                
                 let visibleMapRect = self.mapView.visibleMapRect
                 timerAnnotations = self.clusteringManager.pinAnnotationsRect(withinMapRect: visibleMapRect, zoomScale: timerScale).shuffle
                 
                 playAllTimer = Timer.scheduledTimer(timeInterval: TimeInterval(TIMER_INTERVAL), target: self, selector: #selector(runTimedCode), userInfo: nil, repeats: true)
-
+                
                 playAllTimer.fire()
-               
+                
                 
             }
             else{
@@ -1029,7 +1029,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         
     }
     
-  
+    
     
     @IBAction func reWindAction(_ sender: Any) {
         
@@ -1245,12 +1245,12 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
     
     func didTapMap(gestureRecognizer: UIGestureRecognizer) {
         
-         mapTapped = true
+        mapTapped = true
         
-       // if (gestureRecognizer.state == UIGestureRecognizerState.began) {
-         //  mapTapped = true
+        // if (gestureRecognizer.state == UIGestureRecognizerState.began) {
+        //  mapTapped = true
         //}
-
+        
     }
     
     func mapView(_ mapView: MKMapView, regionWillChangeAnimated animated: Bool) {
@@ -1347,16 +1347,20 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
                         closestStations = self.findClosestStation(annotations: annotationNonClusteredArray,coordinate: self.mapView.centerCoordinate)
                         
                     }
-                    //print(closestStation.title)
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.25)  {
-                        
-                        // self.playFromAnnotation(annotation: closestStation as! PinAnnotation)
-                        self.selectedFromRegionChange = true
-                        self.dropAnnotation(annotation: closestStations[0]!)
-                        self.selectedFromRegionChange = false
-                        
-                        
-                        //   self.mapView.setZoomByDelta(delta: 1, animated: true, center: closestStation.coordinate)
+                    
+                    //if ((closestStations[0]?.title)! != (self.currentlyPlaying?.title)!) {
+                      if ((closestStations[0] as! PinAnnotation).id != (self.currentlyPlaying as! PinAnnotation).id) {
+                        //print(closestStation.title)
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25)  {
+                            
+                            // self.playFromAnnotation(annotation: closestStation as! PinAnnotation)
+                            self.selectedFromRegionChange = true
+                            self.dropAnnotation(annotation: closestStations[0]!)
+                            self.selectedFromRegionChange = false
+                            
+                            
+                            //   self.mapView.setZoomByDelta(delta: 1, animated: true, center: closestStation.coordinate)
+                        }
                     }
                     
                     
@@ -1495,8 +1499,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
                 if (self.mapTapped)
                 {
                     
-                    self.mapTapped = false
-                    self.playNext = annotationView
+                    //self.mapTapped = false
+                    //self.playNext = annotationView
                 }
                 
                 mapView.addAnnotation(closestStations[0]!)
@@ -1928,7 +1932,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
             print("Invalid Station: ", streamUrl)
             
         }
-       
+        
         //playPauseImageUpdate(play: true)
         //  payAndPauseBar.isOpaque = true
         

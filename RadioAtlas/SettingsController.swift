@@ -134,7 +134,7 @@ class SettingsController : UITableViewController {
         
         // let frame = CGRect(x: 20, y: 20, width: 140, height: 65)
         // lblAboutRA.frame(forAlignmentRect: frame)
-        lblAboutRA.textLabel?.setFAText(prefixText: "", icon: .FAExternalLink, postfixText: "  More About Radio Atlas", size: FONT_SIZE,iconSize: ICON_SIZE)
+        lblAboutRA.textLabel?.setFAText(prefixText: "", icon: .FAExternalLink, postfixText: "  More About Radio Universe", size: FONT_SIZE,iconSize: ICON_SIZE)
         lblAboutRA.textLabel?.textColor = DARK_FOREGROUND_COLOR
         
         

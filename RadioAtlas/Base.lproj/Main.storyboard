@@ -104,7 +104,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TJn-ei-e7l">
-                                <rect key="frame" x="19" y="299" width="282" height="38.5"/>
+                                <rect key="frame" x="19" y="299" width="282" height="57.5"/>
                                 <string key="text">Tune into any place on the map. 
 What sounds familiar...or foreign? What sounds like home?</string>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
@@ -283,7 +283,7 @@ What sounds familiar...or foreign? What sounds like home?</string>
                                 <segue destination="nod-nw-5Ef" kind="show" identifier="settings" id="gbF-Nj-HaX"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem style="plain" systemItem="flexibleSpace" id="8QJ-rz-hoD"/>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="FCV-oS-j3B"/>
                         <barButtonItem title="out" id="gk6-a2-hJq" userLabel="Zoom Out">
                             <inset key="imageInsets" minX="119" minY="40" maxX="150" maxY="40"/>
                             <connections>
@@ -330,7 +330,7 @@ What sounds familiar...or foreign? What sounds like home?</string>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="syO-b5-x0L"/>
                     </toolbarItems>
-                    <navigationItem key="navigationItem" title="Radio Atlas" id="ZCy-SQ-FfS"/>
+                    <navigationItem key="navigationItem" title="Radio Universe" id="ZCy-SQ-FfS"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="activityIndicator" destination="tJP-a8-iaI" id="24W-oK-3MB"/>
@@ -405,7 +405,7 @@ What sounds familiar...or foreign? What sounds like home?</string>
                                         <rect key="frame" x="0.0" y="28" width="344" height="56"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VVm-P0-Ydo" id="M5L-R4-1zb">
-                                            <rect key="frame" x="0.0" y="0.0" width="344" height="55"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="344" height="55.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kgf-L1-h9y">
@@ -474,7 +474,7 @@ What sounds familiar...or foreign? What sounds like home?</string>
                                         <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BNj-ao-bZo" id="dYY-pz-Lr2">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mute Tuner Sound" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DJx-uf-84U">
@@ -506,7 +506,7 @@ What sounds familiar...or foreign? What sounds like home?</string>
                                         <rect key="frame" x="0.0" y="72" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZRW-HJ-GT3" id="YGb-K2-rYY">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </tableViewCellContentView>
@@ -516,7 +516,7 @@ What sounds familiar...or foreign? What sounds like home?</string>
                                         <rect key="frame" x="0.0" y="116" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Da1-fP-wwO" id="4KV-Tx-pYM">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </tableViewCellContentView>
@@ -530,7 +530,7 @@ What sounds familiar...or foreign? What sounds like home?</string>
                                         <rect key="frame" x="0.0" y="188" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PWq-y9-jel" id="BiE-lT-rfZ">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -542,7 +542,7 @@ What sounds familiar...or foreign? What sounds like home?</string>
                                         <rect key="frame" x="0.0" y="232" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GVJ-qK-bKr" id="XQ6-g1-Fvf">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </tableViewCellContentView>
@@ -661,11 +661,11 @@ What sounds familiar...or foreign? What sounds like home?</string>
         </scene>
     </scenes>
     <resources>
-        <image name="boombox" width="1242" height="2209"/>
+        <image name="boombox" width="375" height="667"/>
         <image name="center" width="124" height="124"/>
-        <image name="playing-station" width="1725" height="3067"/>
-        <image name="radiotable" width="1242" height="2209"/>
-        <image name="whitelogo" width="919" height="243"/>
+        <image name="playing-station" width="375" height="666"/>
+        <image name="radiotable" width="375" height="667"/>
+        <image name="whitelogo" width="1065" height="243"/>
     </resources>
     <color key="tintColor" red="0.039215686270000001" green="0.20392156859999999" blue="0.3921568627" alpha="1" colorSpace="calibratedRGB"/>
 </document>
