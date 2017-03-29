@@ -1351,7 +1351,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
                     //if ((closestStations[0]?.title)! != (self.currentlyPlaying?.title)!) {
                       if ((closestStations[0] as! PinAnnotation).id != (self.currentlyPlaying as! PinAnnotation).id) {
                         //print(closestStation.title)
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25)  {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5)  {
                             
                             // self.playFromAnnotation(annotation: closestStation as! PinAnnotation)
                             self.selectedFromRegionChange = true
