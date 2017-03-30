@@ -321,8 +321,9 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         favorite.tintColor = DARK_FOREGROUND_COLOR
         
         
-        btnZoomIn.setFAIcon(icon: .FASearchPlus, iconSize: TOOLBAR_BUTTON_SIZE)
-        btnZoomIn.tintColor = DARK_FOREGROUND_COLOR
+        //btnZoomIn.setFAIcon(icon: .FASearchPlus, iconSize: TOOLBAR_BUTTON_SIZE)
+        //btnZoomIn.tintColor = DARK_FOREGROUND_COLOR
+        
         
         btnZoomOut.setFAIcon(icon: .FASearchMinus, iconSize: TOOLBAR_BUTTON_SIZE)
         btnZoomOut.tintColor = DARK_FOREGROUND_COLOR
@@ -431,6 +432,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
             
             mapTapped = false
             mapDragged = true
+            playNext = nil
+            
         }
         
         
@@ -489,8 +492,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
     @IBAction func btnZoomOutClick(_ sender: Any) {
         
         regionChangedBecauseAnnotationSelected = false
-        zoomOutPinAnnotationLocation(targetMapViewName: mapView, delta: 2.5)
-        btnZoomIn.isEnabled = true
+        zoomOutPinAnnotationLocation(targetMapViewName: mapView, delta: 4)
+        //btnZoomIn.isEnabled = true
     }
     
     func getZoomLevel() -> Double {
@@ -511,7 +514,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         if (getZoomLevel() <= MAX_ZOOM_IN) {
             
             //No more Zoom in allowed
-            btnZoomIn.isEnabled = false
+            //btnZoomIn.isEnabled = false
             
         } else {
             
@@ -579,7 +582,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
             //checkZoomOutButtonStatus()
         }
         
-        btnZoomIn.isEnabled = true
+        //btnZoomIn.isEnabled = true
         
     }
     
@@ -697,7 +700,16 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         }
         
         barBtnWorld.tintColor = ALERT_COLOR
-        lblAlert.setFAText(prefixText: "Playing 20 second previews of stations within map region. Tap ", icon: FAType.FAGlobe, postfixText: " to stop.", size: 25)
+        if (timerAnnotationsIndex > 1) {
+            
+            lblAlert.setFAText(prefixText: "Tap ", icon: FAType.FAGlobe, postfixText: " to stop auto-play within map region.", size: 25)
+            
+        }
+        else
+        {
+            lblAlert.setFAText(prefixText: "Playing 20 second previews of stations within map region. Tap ", icon: FAType.FAGlobe, postfixText: " to stop.", size: 25)
+        }
+
         lblAlert.showAlert(view: view)
         
         if (timerAnnotationsIndex <= timerAnnotations.count) {
@@ -1349,9 +1361,9 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
                     }
                     
                     //if ((closestStations[0]?.title)! != (self.currentlyPlaying?.title)!) {
-                      if ((closestStations[0] as! PinAnnotation).id != (self.currentlyPlaying as! PinAnnotation).id) {
+                      if ((self.currentlyPlaying == nil) || (closestStations[0] as! PinAnnotation).id != (self.currentlyPlaying as! PinAnnotation).id) {
                         //print(closestStation.title)
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5)  {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25)  {
                             
                             // self.playFromAnnotation(annotation: closestStation as! PinAnnotation)
                             self.selectedFromRegionChange = true
@@ -1412,7 +1424,22 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
     
     
     
-    
+    func refreshCallout(annotation : MKAnnotation) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+            
+            if ((self.mapView.view(for: annotation) != nil) && self.mapView.view(for: annotation)?.isSelected != nil)
+            {
+                //move map a little bit for annotation to display but do not activate the logic inside region change
+                if (!(self.mapView.view(for: annotation)?.isSelected)!) {
+                    self.skipRegionClustering = true
+                    
+                    self.mapView.changeCenter(center: annotation.coordinate)
+                }
+            }
+            
+        }
+
+    }
     
     func dropAnnotation(annotation : MKAnnotation) {
         
@@ -1427,19 +1454,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         mapView.deselectAnnotation(annotation, animated: false)
         mapView.selectAnnotation(annotation, animated: true)
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
-            
-            if ((self.mapView.view(for: annotation) != nil) && self.mapView.view(for: annotation)?.isSelected != nil)
-            {
-                //move map a little bit for annotation to display but do not activate the logic inside region change
-                if (!(self.mapView.view(for: annotation)?.isSelected)!) {
-                    self.skipRegionClustering = true
-                    
-                    self.mapView.changeCenter(center: annotation.coordinate)
-                }
-            }
-            
-        }
+        refreshCallout(annotation: annotation)
         
         
         
@@ -1447,7 +1462,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
     
     
     
-    
+    var clusterTapped : Bool =  false
     
     // This delegate method is implemented to respond to taps. It opens the system browser
     // to the URL specified in the annotationViews subtitle property.
@@ -1464,6 +1479,10 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
             
             var clusterAnnotations : [MKAnnotation]
             var closestStations = [MKAnnotation?](repeating: nil, count:2)
+            
+            if (!tunerTurnedOff) {
+                turnONTuner()
+            }
             
             let cView = view as! FBAnnotationClusterView
             clusterAnnotations = cView.getClusterAnnotations()
@@ -1496,20 +1515,24 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
                     view.leftCalloutAccessoryView = nil
                 }
                 
+                
+                
                 if (self.mapTapped)
                 {
                     
+                    clusterTapped = true
                     //self.mapTapped = false
                     //self.playNext = annotationView
                 }
                 
-                mapView.addAnnotation(closestStations[0]!)
-                mapView.selectAnnotation(closestStations[0]!, animated: false)
                 
+                dropAnnotation(annotation: closestStations[0]!)
+                
+                //mapView.addAnnotation(closestStations[0]!)
+                //mapView.selectAnnotation(closestStations[0]!, animated: false)
+                //refreshCallout(annotation: closestStations[0]!)
                 // When zooming into cluster, turn on Tuner mode, unless it's explicitly been turned off
-                if (!tunerTurnedOff) {
-                    turnONTuner()
-                }
+
             }
             
             
@@ -1549,10 +1572,14 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
             
             //  print("Music stream playing",toOpen)
             
-            if (self.mapTapped)
+            if (self.mapTapped && !self.clusterTapped)
             {
                 self.mapTapped = false
                 self.playNext = annotation
+            }
+            else
+            {
+                self.clusterTapped = false
             }
             
             self.playFromAnnotation(annotation: annotation)

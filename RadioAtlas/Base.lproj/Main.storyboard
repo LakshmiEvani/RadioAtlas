@@ -290,12 +290,6 @@ What sounds familiar...or foreign? What sounds like home?</string>
                                 <action selector="btnZoomOutClick:" destination="tmg-mo-T3o" id="FfF-oK-wNF"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem title="In" id="nbd-VV-u5V" userLabel="Zoom In">
-                            <inset key="imageInsets" minX="119" minY="40" maxX="150" maxY="40"/>
-                            <connections>
-                                <action selector="btnZoomInClick:" destination="tmg-mo-T3o" id="dML-rH-2TG"/>
-                            </connections>
-                        </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="sAE-Wv-qOg"/>
                         <barButtonItem title="prev" id="g9N-bQ-dMq">
                             <connections>
@@ -336,7 +330,6 @@ What sounds familiar...or foreign? What sounds like home?</string>
                         <outlet property="activityIndicator" destination="tJP-a8-iaI" id="24W-oK-3MB"/>
                         <outlet property="barBtnWorld" destination="CcV-zP-cKQ" id="CV6-Pn-s2y"/>
                         <outlet property="btnSettings" destination="SsK-x6-JB3" id="FKa-40-him"/>
-                        <outlet property="btnZoomIn" destination="nbd-VV-u5V" id="e7S-fr-80H"/>
                         <outlet property="btnZoomOut" destination="gk6-a2-hJq" id="lTa-qF-ele"/>
                         <outlet property="centerFocus" destination="TCg-qb-4VU" id="cHp-tU-6V9"/>
                         <outlet property="fastForward" destination="SEq-Uf-H3Y" id="HCJ-vE-FqV"/>
