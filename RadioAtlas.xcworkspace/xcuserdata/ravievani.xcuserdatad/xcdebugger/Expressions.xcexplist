@@ -3,6 +3,9 @@
    version = "1.0">
    <ContextStates>
       <ContextState
+         contextName = "MapViewController.dropAnnotation(annotation : MKAnnotation) -&gt; ():MapViewController.swift">
+      </ContextState>
+      <ContextState
          contextName = "MapViewController.runTimedCode() -&gt; ():MapViewController.swift">
          <PersistentStrings>
             <PersistentString
@@ -39,13 +42,21 @@
          contextName = "MapViewController.mapView(MKMapView, didSelect : MKAnnotationView) -&gt; ():MapViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "regionChangedBecauseAnnotationSelected">
+               value = "view.image?.description">
             </PersistentString>
             <PersistentString
                value = "view.image">
             </PersistentString>
             <PersistentString
-               value = "view.image?.description">
+               value = "regionChangedBecauseAnnotationSelected">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "MapViewController.(btnShazamClick(Any) -&gt; ()).(closure #1):MapViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "UIApplication.shared.canOpenURL(shazamURL! as URL)">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -91,10 +102,10 @@
                value = "annotation.coordinate">
             </PersistentString>
             <PersistentString
-               value = "(found as! Station).longitude">
+               value = "annotation.latitude">
             </PersistentString>
             <PersistentString
-               value = "annotation.latitude">
+               value = "(found as! Station).longitude">
             </PersistentString>
             <PersistentString
                value = "(found as! Station).latitude">
@@ -209,13 +220,13 @@
          contextName = "MapViewController.handleErrorStation(streamUrl : String) -&gt; ():MapViewController.swift">
          <PersistentStrings>
             <PersistentString
+               value = "currentlyPlaying?.title">
+            </PersistentString>
+            <PersistentString
                value = "badAnnotations">
             </PersistentString>
             <PersistentString
                value = "closestStations[1]?.title">
-            </PersistentString>
-            <PersistentString
-               value = "currentlyPlaying?.title">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

@@ -136,11 +136,13 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
     @IBOutlet weak var reWind: UIBarButtonItem!
     @IBOutlet weak var playAndPauseBar: UIBarButtonItem!
     
+    @IBOutlet weak var btnShazam: UIBarButtonItem!
     @IBOutlet var mapView: MKMapView!
     // @IBOutlet weak var btnNext: UIButton!
     
-    @IBOutlet weak var btnZoomIn: UIBarButtonItem!
+    //@IBOutlet weak var btnZoomIn: UIBarButtonItem!
     
+    @IBOutlet weak var btnZoomIn: UIButton!
     @IBOutlet weak var lblAlert: AlertLabel!
     @IBOutlet weak var barBtnWorld: UIBarButtonItem!
     @IBOutlet weak var nowPlayingLabel: MarqueeLabel!
@@ -148,7 +150,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
     // @IBOutlet weak var btnPrev: UIButton!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
-    @IBOutlet weak var btnZoomOut: UIBarButtonItem!
+    @IBOutlet weak var btnZoomOut: UIButton!
+   // @IBOutlet weak var btnZoomOut: UIBarButtonItem!
     
     @IBOutlet weak var progressMessage: UITextView!
     @IBOutlet weak var volumeControl: UISlider!
@@ -321,13 +324,21 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         favorite.tintColor = DARK_FOREGROUND_COLOR
         
         
-        //btnZoomIn.setFAIcon(icon: .FASearchPlus, iconSize: TOOLBAR_BUTTON_SIZE)
-        //btnZoomIn.tintColor = DARK_FOREGROUND_COLOR
+        //btnZoomIn.setFAIcon(icon: .FASearchPlus, forState: .normal)
+        btnZoomIn.setFAText(prefixText: "", icon: FAType.FASearchPlus, postfixText: "", size: 30, forState: .normal)
+        btnZoomIn.tintColor = DARK_FOREGROUND_COLOR
+        btnZoomIn.layer.cornerRadius = 5.0
+        btnZoomIn.layer.borderColor = DARK_FOREGROUND_COLOR.cgColor
+        btnZoomIn.layer.borderWidth = 0.25
         
-        
-        btnZoomOut.setFAIcon(icon: .FASearchMinus, iconSize: TOOLBAR_BUTTON_SIZE)
-        btnZoomOut.tintColor = DARK_FOREGROUND_COLOR
+        //btnZoomOut.setFAIcon(icon: .FASearchMinus, forState: .normal)
+        btnZoomOut.tintColor = UIColor.lightGray
         btnZoomOut.isEnabled = false
+        btnZoomOut.setFAText(prefixText: "", icon: FAType.FASearchMinus, postfixText: "", size: 30, forState: .normal)
+        btnZoomOut.layer.cornerRadius = 5.0
+        btnZoomOut.layer.borderWidth = 0.25
+        btnZoomOut.layer.borderColor = DARK_FOREGROUND_COLOR.cgColor
+
         
         tunerToggle.backgroundColor = DARK_FOREGROUND_COLOR
         tunerToggle.layer.cornerRadius = 16.0
@@ -335,6 +346,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         btnSettings.setFAIcon(icon: .FAInfoCircle, iconSize: TOOLBAR_BUTTON_SIZE)
         btnSettings.tintColor = DARK_FOREGROUND_COLOR
         btnSettings.isEnabled = true
+        
+        btnShazam.width = 20
         
         
         favorite.isEnabled = false
@@ -481,20 +494,33 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
     
     
     @IBAction func btnZoomInClick(_ sender: Any) {
+        regionChangedBecauseAnnotationSelected = false
+        zoomInPinAnnotationLocation(targetMapViewName: mapView, delta: 3.5)
+        
+    }
+   /* @IBAction func btnZoomInClick(_ sender: Any) {
         
         regionChangedBecauseAnnotationSelected = false
         zoomInPinAnnotationLocation(targetMapViewName: mapView, delta: 2.5)
         
         
         
-    }
+    } */
     
     @IBAction func btnZoomOutClick(_ sender: Any) {
+        regionChangedBecauseAnnotationSelected = false
+        zoomOutPinAnnotationLocation(targetMapViewName: mapView, delta: 4)
+        btnZoomIn.isEnabled = true
+        btnZoomIn.tintColor = DARK_FOREGROUND_COLOR
+    }
+    
+    
+  /*  @IBAction func btnZoomOutClick(_ sender: Any) {
         
         regionChangedBecauseAnnotationSelected = false
         zoomOutPinAnnotationLocation(targetMapViewName: mapView, delta: 4)
-        //btnZoomIn.isEnabled = true
-    }
+        btnZoomIn.isEnabled = true
+    } */
     
     func getZoomLevel() -> Double {
         let mapBoundsWidth = Double(self.mapView.bounds.size.width)
@@ -514,7 +540,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         if (getZoomLevel() <= MAX_ZOOM_IN) {
             
             //No more Zoom in allowed
-            //btnZoomIn.isEnabled = false
+            btnZoomIn.isEnabled = false
+            btnZoomIn.tintColor = UIColor.lightGray
             
         } else {
             
@@ -529,6 +556,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         }
         
         btnZoomOut.isEnabled = true
+        btnZoomOut.tintColor = DARK_FOREGROUND_COLOR
         barBtnWorld.isEnabled = true
         
     }
@@ -541,6 +569,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
             //set to world region
             setWorldRegion(animated: true, changeCenter: true)
             btnZoomOut.isEnabled = false
+            btnZoomOut.tintColor = UIColor.lightGray
             //*barBtnWorld.isEnabled = false
             status = true
             
@@ -582,7 +611,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
             //checkZoomOutButtonStatus()
         }
         
-        //btnZoomIn.isEnabled = true
+        btnZoomIn.isEnabled = true
+        btnZoomIn.tintColor = DARK_FOREGROUND_COLOR
         
     }
     
@@ -1385,6 +1415,32 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
         
     }
     
+    @IBAction func btnShazamClick(_ sender: Any) {
+        
+        lblAlert.text = "Opening Shazam to identify music."
+        self.lblAlert.showAlert(view: self.view)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            
+            let shazamHook = "shazam://"
+            let shazamURL = URL(string: shazamHook)
+            
+            
+            if (UIApplication.shared.canOpenURL(shazamURL! as URL))
+            {
+                UIApplication.shared.open(shazamURL!)
+                
+            } else {
+                //redirect to safari because the user doesn't have shazam
+                
+                UIApplication.shared.open(URL(string: "https://itunes.apple.com/us/app/shazam-discover-music-artists-videos-lyrics/id284993459")!)
+            }
+            
+        }
+        
+        
+    }
+
     func playFromFavorites(annotation: PinAnnotation)
     {
         
@@ -1505,6 +1561,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDeleg
                 //}
                 
                 btnZoomOut.isEnabled = true
+                btnZoomOut.tintColor = DARK_FOREGROUND_COLOR
                 barBtnWorld.isEnabled = true
                 
                 

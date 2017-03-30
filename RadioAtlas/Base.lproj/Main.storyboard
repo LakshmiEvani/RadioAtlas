@@ -181,7 +181,7 @@ What sounds familiar...or foreign? What sounds like home?</string>
                                 </connections>
                             </mapView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" editable="NO" text="Loading Radio Stations" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fb2-Ol-aye">
-                                <rect key="frame" x="58" y="271.5" width="204" height="48.5"/>
+                                <rect key="frame" x="58" y="272" width="204" height="48"/>
                                 <color key="textColor" red="0.035294117647058823" green="0.29019607843137257" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -229,13 +229,13 @@ What sounds familiar...or foreign? What sounds like home?</string>
                                 </connections>
                             </switch>
                             <imageView hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="center" translatesAutoresizingMaskIntoConstraints="NO" id="TCg-qb-4VU">
-                                <rect key="frame" x="98.5" y="215.5" width="124" height="49"/>
+                                <rect key="frame" x="98" y="216" width="124" height="49"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="49" id="bY9-6a-mkf"/>
                                 </constraints>
                             </imageView>
                             <activityIndicatorView contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="tJP-a8-iaI">
-                                <rect key="frame" x="142.5" y="221.5" width="37" height="37"/>
+                                <rect key="frame" x="142" y="222" width="37" height="37"/>
                                 <color key="color" red="0.035294117649999998" green="0.2901960784" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                             </activityIndicatorView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mBz-0R-XyG" customClass="AlertLabel" customModule="RadioAtlas" customModuleProvider="target">
@@ -247,30 +247,55 @@ What sounds familiar...or foreign? What sounds like home?</string>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uLK-p5-zil">
+                                <rect key="frame" x="264" y="313" width="40" height="40"/>
+                                <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="2rg-Nx-tN3"/>
+                                </constraints>
+                                <state key="normal" title="In"/>
+                                <connections>
+                                    <action selector="btnZoomInClick:" destination="tmg-mo-T3o" eventType="touchUpInside" id="onk-KL-PAX"/>
+                                </connections>
+                            </button>
+                            <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7vV-c9-hN4">
+                                <rect key="frame" x="264" y="356" width="40" height="30"/>
+                                <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Out"/>
+                                <connections>
+                                    <action selector="btnZoomOutClick:" destination="tmg-mo-T3o" eventType="touchUpInside" id="vOZ-Cu-4UO"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="fb2-Ol-aye" firstAttribute="leading" secondItem="Jba-SE-lO6" secondAttribute="leadingMargin" constant="42" id="2MA-vv-meC"/>
                             <constraint firstItem="6PE-Lx-BlR" firstAttribute="bottom" secondItem="o2O-Le-CHD" secondAttribute="top" id="2jA-c2-JcR"/>
                             <constraint firstItem="o2O-Le-CHD" firstAttribute="top" secondItem="bB8-uh-7h7" secondAttribute="bottom" constant="28" id="45f-VM-J38"/>
+                            <constraint firstItem="7vV-c9-hN4" firstAttribute="top" secondItem="uLK-p5-zil" secondAttribute="bottom" constant="3" id="4TU-u9-usD"/>
                             <constraint firstItem="bB8-uh-7h7" firstAttribute="top" secondItem="7yS-y9-ht0" secondAttribute="bottom" id="CRU-TQ-Qhw"/>
                             <constraint firstItem="bB8-uh-7h7" firstAttribute="leading" secondItem="6PE-Lx-BlR" secondAttribute="leading" id="E8e-7K-RJI"/>
                             <constraint firstItem="imM-tk-bsr" firstAttribute="top" secondItem="7yS-y9-ht0" secondAttribute="bottom" constant="17" id="Emr-Xb-Rep"/>
                             <constraint firstItem="tJP-a8-iaI" firstAttribute="centerX" secondItem="TCg-qb-4VU" secondAttribute="centerX" id="Gfp-Gd-0Kk"/>
                             <constraint firstItem="imM-tk-bsr" firstAttribute="trailing" secondItem="0Fn-fB-cf4" secondAttribute="trailing" id="JcX-2d-y1I"/>
+                            <constraint firstItem="7vV-c9-hN4" firstAttribute="trailing" secondItem="mBz-0R-XyG" secondAttribute="trailing" id="JtB-P1-iFD"/>
                             <constraint firstItem="mBz-0R-XyG" firstAttribute="top" secondItem="fb2-Ol-aye" secondAttribute="bottom" constant="49" id="K4q-Gm-py7"/>
                             <constraint firstItem="fb2-Ol-aye" firstAttribute="centerX" secondItem="mBz-0R-XyG" secondAttribute="centerX" id="Pld-pb-kyM"/>
                             <constraint firstItem="imM-tk-bsr" firstAttribute="trailing" secondItem="Jba-SE-lO6" secondAttribute="trailingMargin" id="RVX-We-fH4"/>
                             <constraint firstItem="fb2-Ol-aye" firstAttribute="top" secondItem="TCg-qb-4VU" secondAttribute="bottom" constant="7" id="UAm-Kg-mN0"/>
+                            <constraint firstItem="uLK-p5-zil" firstAttribute="leading" secondItem="fb2-Ol-aye" secondAttribute="trailing" constant="2" id="WTG-mj-QRv"/>
                             <constraint firstItem="tJP-a8-iaI" firstAttribute="centerY" secondItem="TCg-qb-4VU" secondAttribute="centerY" id="X5J-li-Ohq"/>
                             <constraint firstItem="bB8-uh-7h7" firstAttribute="leading" secondItem="Jba-SE-lO6" secondAttribute="leadingMargin" constant="-27" id="XfK-Cw-Ktk"/>
                             <constraint firstItem="0Fn-fB-cf4" firstAttribute="top" secondItem="imM-tk-bsr" secondAttribute="bottom" constant="4" id="ZR6-UR-naF"/>
                             <constraint firstAttribute="trailing" secondItem="6PE-Lx-BlR" secondAttribute="trailing" id="d29-lv-4RV"/>
+                            <constraint firstItem="6PE-Lx-BlR" firstAttribute="top" secondItem="7vV-c9-hN4" secondAttribute="bottom" constant="21" id="hQ2-ER-1xA"/>
                             <constraint firstItem="mBz-0R-XyG" firstAttribute="trailing" secondItem="0Fn-fB-cf4" secondAttribute="trailing" id="j0i-Re-Ppc"/>
+                            <constraint firstItem="uLK-p5-zil" firstAttribute="trailing" secondItem="7vV-c9-hN4" secondAttribute="trailing" id="n77-an-qqG"/>
                             <constraint firstItem="tJP-a8-iaI" firstAttribute="centerY" secondItem="Jba-SE-lO6" secondAttribute="centerY" id="pXO-P3-ngH"/>
                             <constraint firstItem="fb2-Ol-aye" firstAttribute="centerX" secondItem="TCg-qb-4VU" secondAttribute="centerX" id="qax-4I-KSN"/>
                             <constraint firstItem="mBz-0R-XyG" firstAttribute="bottom" secondItem="o2O-Le-CHD" secondAttribute="top" id="rSS-tc-kUE"/>
                             <constraint firstAttribute="trailingMargin" secondItem="bB8-uh-7h7" secondAttribute="trailing" constant="-33" id="rVd-6l-cXh"/>
+                            <constraint firstItem="uLK-p5-zil" firstAttribute="leading" secondItem="7vV-c9-hN4" secondAttribute="leading" id="xhh-EW-SJG"/>
                             <constraint firstItem="fb2-Ol-aye" firstAttribute="centerX" secondItem="Jba-SE-lO6" secondAttribute="centerX" id="zvF-T5-L40"/>
                         </constraints>
                     </view>
@@ -284,10 +309,9 @@ What sounds familiar...or foreign? What sounds like home?</string>
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="FCV-oS-j3B"/>
-                        <barButtonItem title="out" id="gk6-a2-hJq" userLabel="Zoom Out">
-                            <inset key="imageInsets" minX="119" minY="40" maxX="150" maxY="40"/>
+                        <barButtonItem image="shazam" id="bdJ-1Z-nhd" userLabel="shazam">
                             <connections>
-                                <action selector="btnZoomOutClick:" destination="tmg-mo-T3o" id="FfF-oK-wNF"/>
+                                <action selector="btnShazamClick:" destination="tmg-mo-T3o" id="tYt-Kq-fRU"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="sAE-Wv-qOg"/>
@@ -316,7 +340,7 @@ What sounds familiar...or foreign? What sounds like home?</string>
                                 <segue destination="QDi-LV-j8K" kind="show" identifier="favoriteStations" id="57F-xd-O6o"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem style="plain" systemItem="flexibleSpace" id="W6U-na-qYx"/>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="RV5-YY-2ok"/>
                         <barButtonItem title="world" id="CcV-zP-cKQ" userLabel="World">
                             <connections>
                                 <action selector="barBtnWorldClick:" destination="tmg-mo-T3o" id="Hfv-5j-g9l"/>
@@ -330,7 +354,9 @@ What sounds familiar...or foreign? What sounds like home?</string>
                         <outlet property="activityIndicator" destination="tJP-a8-iaI" id="24W-oK-3MB"/>
                         <outlet property="barBtnWorld" destination="CcV-zP-cKQ" id="CV6-Pn-s2y"/>
                         <outlet property="btnSettings" destination="SsK-x6-JB3" id="FKa-40-him"/>
-                        <outlet property="btnZoomOut" destination="gk6-a2-hJq" id="lTa-qF-ele"/>
+                        <outlet property="btnShazam" destination="bdJ-1Z-nhd" id="417-Ai-681"/>
+                        <outlet property="btnZoomIn" destination="uLK-p5-zil" id="Afo-gk-gNp"/>
+                        <outlet property="btnZoomOut" destination="7vV-c9-hN4" id="XOj-5q-OFA"/>
                         <outlet property="centerFocus" destination="TCg-qb-4VU" id="cHp-tU-6V9"/>
                         <outlet property="fastForward" destination="SEq-Uf-H3Y" id="HCJ-vE-FqV"/>
                         <outlet property="favorite" destination="25h-66-d73" id="n2H-kT-1IF"/>
@@ -658,6 +684,7 @@ What sounds familiar...or foreign? What sounds like home?</string>
         <image name="center" width="124" height="124"/>
         <image name="playing-station" width="375" height="666"/>
         <image name="radiotable" width="375" height="667"/>
+        <image name="shazam" width="25" height="25"/>
         <image name="whitelogo" width="1065" height="243"/>
     </resources>
     <color key="tintColor" red="0.039215686270000001" green="0.20392156859999999" blue="0.3921568627" alpha="1" colorSpace="calibratedRGB"/>
