@@ -1,3 +1,3 @@
 # About Radio Universe
-![youtube.jpg]({{site.baseurl}}/media/youtube.jpg)
+![youtube.jpg](/media/youtube.jpg)
 
